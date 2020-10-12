@@ -233,5 +233,11 @@ return [
             'user' => 1,
             'admin' => 2
         ]
+    ],
+    'HTTP' => [
+        'CREATED' => 201,
+        'OK' => 200,
+        'NOT_FOUND' => 404,
+        'UNAUTHORIZED' => 203
     ]
 ];

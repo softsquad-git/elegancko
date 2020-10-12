@@ -244,6 +244,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   data: function data() {
@@ -52348,11 +52351,9 @@ var render = function() {
                         [_c("span", { staticClass: "fa fa-search" })]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "b-nav-item",
-                        { attrs: { to: { name: "IndexPage" } } },
-                        [_c("span", { staticClass: "fa fa-user" })]
-                      ),
+                      _c("b-nav-item", { attrs: { to: { name: "Login" } } }, [
+                        _c("span", { staticClass: "fa fa-user" })
+                      ]),
                       _vm._v(" "),
                       _c(
                         "b-nav-item",
@@ -52371,7 +52372,9 @@ var render = function() {
         ],
         1
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "body" }, [_c("router-view")], 1)
   ])
 }
 var staticRenderFns = [
@@ -67653,14 +67656,32 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/products',
     name: 'ProductsIndex',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./components/pages/products/Index */ "./resources/js/components/pages/products/Index.vue"));
+      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./components/pages/products/Index */ "./resources/js/components/pages/products/Index.vue"));
     }
   }, {
     path: '/product/:title/:id',
     name: 'ProductShow',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/pages/products/Show */ "./resources/js/components/pages/products/Show.vue"));
+      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./components/pages/products/Show */ "./resources/js/components/pages/products/Show.vue"));
     }
+  }, {
+    path: '/auth',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./components/auth/AuthLayout */ "./resources/js/components/auth/AuthLayout.vue"));
+    },
+    children: [{
+      path: 'login',
+      name: 'Login',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./components/auth/Login */ "./resources/js/components/auth/Login.vue"));
+      }
+    }, {
+      path: 'register',
+      name: 'Register',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./components/auth/Register */ "./resources/js/components/auth/Register.vue"));
+      }
+    }]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({

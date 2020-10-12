@@ -27,6 +27,22 @@ const router = new VueRouter({
             path: '/product/:title/:id',
             name: 'ProductShow',
             component: () => import('./components/pages/products/Show')
+        },
+        {
+            path: '/auth',
+            component: () => import('./components/auth/AuthLayout'),
+            children: [
+                {
+                    path: 'login',
+                    name: 'Login',
+                    component: () => import('./components/auth/Login')
+                },
+                {
+                    path: 'register',
+                    name: 'Register',
+                    component: () => import('./components/auth/Register')
+                }
+            ]
         }
     ]
 })

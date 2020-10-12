@@ -15,6 +15,8 @@ class CreateUserVerifyKeyTable extends Migration
     {
         Schema::create('user_verify_key', function (Blueprint $table) {
             $table->id();
+            $table->string('_key');
+            $table->integer('user_id')->index();
             $table->timestamps();
         });
     }

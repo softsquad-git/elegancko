@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Sansita+Swashed:wght@300&display=swap);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
@@ -10897,5 +10897,139 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.title {
+  display: block;
+  width: 100%;
+  font-family: "Sansita Swashed", cursive;
+  font-size: 39px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.auth {
+  height: 100vh;
+  width: 99.2%;
+}
+
+.auth-bg {
+  background: url("https://previews.123rf.com/images/artmim/artmim1903/artmim190300506/120077688-beautiful-pretty-model-woman-in-red-dress-and-high-heels-shoes-standing-on-white-banner-background-w.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color: #555555;
+  line-height: 1.2;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 2px solid gray;
+  border-radius: 0;
+}
+
+.main-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: auto;
+  height: 50px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  background: #febccb;
+}
+
+.auth-action {
+  padding: 15px;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  font-family: "Sansita Swashed", cursive;
+  font-size: 39px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.auth {
+  height: 100vh;
+  width: 99.2%;
+}
+
+.auth-bg {
+  background: url("https://previews.123rf.com/images/artmim/artmim1903/artmim190300506/120077688-beautiful-pretty-model-woman-in-red-dress-and-high-heels-shoes-standing-on-white-banner-background-w.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+.form-group {
+  margin-bottom: 2rem !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  font-family: "Lato", sans-serif !important;
+  font-size: 20px !important;
+  color: #555555 !important;
+  line-height: 1.2;
+  padding: 0 2px;
+  border: 0 !important;
+  border-bottom: 2px solid gray !important;
+  border-radius: 0 !important;
+}
+
+.main-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 20px !important;
+  min-width: auto !important;
+  height: 50px !important;
+  font-family: "Lato", sans-serif !important;
+  font-size: 16px !important;
+  color: #fff !important;
+  line-height: 1.2 !important;
+  background: #febccb !important;
+}
+
+.auth-action {
+  padding: 15px !important;
+}
+
+a,
+a:hover {
+  text-decoration: none !important;
+}
+
+.link-register {
+  line-height: 50px;
+  padding: 0 20px;
+  font-weight: bold;
+  color: #dabbc2;
+}
+
+.pointer:hover {
+  cursor: pointer;
 }
 

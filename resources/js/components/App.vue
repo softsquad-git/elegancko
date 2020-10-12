@@ -20,7 +20,7 @@
                             </b-nav-form>
                             <b-nav-item @click="isSearchTopForm ^= true" :to="{name: 'IndexPage'}"><span
                                 class="fa fa-search"></span></b-nav-item>
-                            <b-nav-item :to="{name: 'IndexPage'}"><span class="fa fa-user"></span></b-nav-item>
+                            <b-nav-item :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
                             <b-nav-item :to="{name: 'IndexPage'}"><span class="fa fa-shopping-basket"></span>
                             </b-nav-item>
 
@@ -28,6 +28,9 @@
                     </b-collapse>
                 </b-navbar>
             </div>
+        </section>
+        <section class="body">
+            <router-view/>
         </section>
     </div>
 </template>

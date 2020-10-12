@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('post_code')->nullable();
             $table->string('address')->nullable();
-            $table->boolean('is_activated')->default(Helpers\STATUS_OFF);
+            $table->boolean('is_activated')->default(Helpers\Status::STATUS_OFF);
             $table->integer('role')->default(config('app.users.roles.user'));
             $table->timestamps();
         });

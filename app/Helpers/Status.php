@@ -2,5 +2,7 @@
 
 namespace App\Helpers;
 
-const STATUS_ON = 1;
-const STATUS_OFF = 0;
+class Status {
+    const STATUS_ON = 1;
+    const STATUS_OFF = 0;
+}
