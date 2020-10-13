@@ -9,4 +9,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
       include 'api/user.api.php';
       include 'api/admin.api.php';
    });
+   Route::group(['prefix' => 'categories', 'namespace' => 'Categories'], function () {
+       Route::get('all', 'CategoryController@index');
+       Route::get('find/{alias}', 'CategoryController@findByAlias');
+       Route::get('find/id/{categoryId}', 'CategoryController@findById');
+   });
 });

@@ -6,6 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueRouter);
+require('./bootstrap');
 
 import App from "./components/App";
 import IndexPage from "./components/pages/IndexPage";

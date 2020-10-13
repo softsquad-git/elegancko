@@ -13,6 +13,8 @@
                                 <select id="category" class="form-control" aria-label="Kategoria"
                                         v-model="data.category">
                                     <option selected value="">Wybierz kategorię</option>
+                                    <option v-for="category in categories" :value="category.id">{{ category.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-2">
@@ -21,6 +23,32 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="home-categories">
+                <div v-if="categories.length >= 5" class="row">
+                    <div v-for="category in categories.slice(0, 2)"
+                         :class="checkClass(2)">
+                        <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
+
+                        </div>
+                    </div>
+                    <div class="mt-4" v-for="category in categories.slice(2, 5)"
+                         :class="checkClass(3)">
+                        <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row" v-else>
+                    <div v-for="category in categories.slice(0, 3)"
+                         :class="checkClass(3)">
+                         <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
+
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,13 +63,75 @@
                 data: {
                     title: '',
                     category: ''
-                }
+                },
+                categories: []
             }
         },
         methods: {
             search() {
                 //
+            },
+            loadCategories() {
+                this.$axios.get('categories/all')
+                    .then((data) => {
+                        this.categories = data.data.data;
+                        console.log(data.data.data)
+                    })
+                    .catch(() => {
+                        //
+                    })
+            },
+            checkClass(count) {
+                let col = {
+                    xl: 4,
+                    lg: 4,
+                    md: 4,
+                    sm: 12,
+                    xs: 12
+                };
+                switch (count) {
+                    case 1:
+                        col = {
+                            xl: 6,
+                            lg: 6,
+                            md: 6,
+                            sm: 12,
+                            xs: 12
+                        }
+                        break;
+                    case 2:
+                        col = {
+                            xl: 6,
+                            lg: 6,
+                            md: 6,
+                            sm: 12,
+                            xs: 12
+                        }
+                        break;
+                    case 3:
+                        col = {
+                            xl: 4,
+                            lg: 4,
+                            md: 4,
+                            sm: 12,
+                            xs: 12
+                        }
+                        break;
+                    case 4:
+                        col = {
+                            xl: 3,
+                            lg: 3,
+                            md: 3,
+                            sm: 12,
+                            xs: 12
+                        }
+                        break;
+                }
+                return 'col-xl-'+col.xl+' col-lg-'+col.lg+' col-md-'+col.md+' col-sm-'+col.sm+' col-xs-'+col.xs;
             }
+        },
+        created() {
+            this.loadCategories();
         }
     }
 </script>
@@ -69,5 +159,10 @@
         background-position: center center;
         height: 100vh;
         position: relative;
+    }
+    .home-categories .single-category {
+        min-height: 600px;
+        background-size: cover;
+        background-position: center center;
     }
 </style>

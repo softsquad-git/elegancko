@@ -1,7 +1,7 @@
 window._ = require('lodash');
 import Vue from 'vue'
 
-window.axios = require('axios')
+window.axios = require('axios');
 Vue.prototype.$axios = axios;
 
 axios.defaults.baseURL = 'http://localhost:8000/api/'
