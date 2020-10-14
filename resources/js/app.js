@@ -44,6 +44,27 @@ const router = new VueRouter({
                     component: () => import('./components/auth/Register')
                 }
             ]
+        },
+        {
+            path: '/admin',
+            component: () => import('./components/admin/AdminLayout'),
+            children: [
+                {
+                    path: '',
+                    component: () => import('./components/admin/AdminPageIndex'),
+                    name: 'AdminPageIndex'
+                },
+                {
+                    path: 'products',
+                    component: () => import('./components/admin/products/AdminProductsList'),
+                    name: 'AdminProductsList'
+                },
+                {
+                    path: 'product/:action/:id?',
+                    component: () => import('./components/admin/products/AdminDataProduct'),
+                    name: 'AdminDataProduct'
+                }
+            ]
         }
     ]
 })

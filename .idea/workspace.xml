@@ -20,21 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Helpers/VerifyEmailHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/AuthLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/Products/ProductColorRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/Products/ProductSizeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Products/ProductColorService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Products/ProductImageService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Products/ProductSizeService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminCreateProduct.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/elegancko.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/elegancko.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Products/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Products/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Products/ProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Products/ProductRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Products/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Products/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Products/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Products/ProductService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/.idea/database.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/admin.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/admin.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +177,11 @@
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ikHrCMfpD35Vt1U5kqzcwxLpa4" />
@@ -224,6 +240,10 @@
       <workItem from="1602490181337" duration="24000" />
       <workItem from="1602525483684" duration="8444000" />
       <workItem from="1602534424142" duration="894000" />
+      <workItem from="1602658908966" duration="610000" />
+      <workItem from="1602676225908" duration="4932000" />
+      <workItem from="1602687012092" duration="2252000" />
+      <workItem from="1602692680492" duration="327000" />
     </task>
     <servers />
   </component>
