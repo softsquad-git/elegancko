@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use \Exception;
 use \Illuminate\Http\JsonResponse;
 use \Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\App;
 
 class CategoryController extends Controller
 {
@@ -38,7 +39,8 @@ class CategoryController extends Controller
             'parent_id' => $request->get('parent_id'),
             'pagination' => $request->get('pagination'),
             'ordering' => $request->get('ordering'),
-            'is_active' => $request->get('is_active')
+            'is_active' => $request->get('is_active'),
+            'locale' => App::getLocale()
         ];
         try {
             $data = $this->categoryRepository->findAll($params);

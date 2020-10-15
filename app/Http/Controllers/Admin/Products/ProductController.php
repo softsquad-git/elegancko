@@ -58,7 +58,8 @@ class ProductController extends Controller
             'category_id' => $request->get('category_id'),
             'is_activated' => $request->get('is_activated'),
             'ordering' => $request->get('ordering'),
-            'pagination' => $request->get('pagination')
+            'pagination' => $request->get('pagination'),
+            'locale' => $request->get('locale')
         ];
         try {
             $data = $this->productRepository->findAll($params);

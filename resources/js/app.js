@@ -63,6 +63,16 @@ const router = new VueRouter({
                     path: 'product/:action/:id?',
                     component: () => import('./components/admin/products/AdminDataProduct'),
                     name: 'AdminDataProduct'
+                },
+                {
+                    path: 'categories',
+                    component: () => import('./components/admin/categories/AdminCategoriesList'),
+                    name: 'AdminCategoriesList'
+                },
+                {
+                    path: 'category/:action/:id?',
+                    component: () => import('./components/admin/categories/AdminDataCategory'),
+                    name: 'AdminDataCategory'
                 }
             ]
         }

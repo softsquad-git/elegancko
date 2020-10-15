@@ -5,7 +5,6 @@ namespace App\Repositories\Categories;
 use App\Helpers\Status;
 use App\Models\Category;
 use \Exception;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryRepository
@@ -20,18 +19,21 @@ class CategoryRepository
         $alias = $params['alias'];
         $parentId = $params['parent_id'];
         $isActive = $params['is_active'];
-        $data = Category::orderBy('id', $params['ordering'] ?? config('app.df.ordering'))
-            ->where('locale', App::getLocale());
+        $locale = $params['locale'];
+        $data = Category::orderBy('id', $params['ordering'] ?? config('app.df.ordering'));
         if (!empty($name))
             $data->where('name', 'like' . '%' . $name . '%');
         if (!empty($alias))
             $data->where('alias', $alias);
         if (!empty($parentId))
             $data->where('parent_id', $parentId);
-        if (!empty($isActive) && Auth::check() && Auth::user()->role == config('app.users.roles.admin'))
+        if (Auth::user()->role == config('app.users.roles.admin') && !empty($isActive))
             $data->where('is_active', $isActive);
-        else
+        if (Auth::user()->role != config('app.users.roles.admin'))
             $data->where('is_active', Status::STATUS_ON);
+        if (!empty($locale)) {
+            $data->where('locale', $locale);
+        }
         return $data->paginate($params['pagination'] ?? config('app.df.pagination'));
     }
 

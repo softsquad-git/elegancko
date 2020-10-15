@@ -7,8 +7,7 @@
             <b-button :to="{name: 'AdminDataProduct', params: {action: 'create'}}" variant="outline-secondary"><span
                 class="fa fa-plus"></span>
             </b-button>
-            <b-button variant="outline-secondary"><span class="fa fa-search"></span>
-            </b-button>
+            <b-button variant="outline-secondary"><span class="fa fa-search"></span></b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>

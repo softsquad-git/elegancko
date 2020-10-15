@@ -47,7 +47,8 @@ class CategoryController extends Controller
             'parent_id' => $request->get('parent_id'),
             'pagination' => $request->get('pagination'),
             'ordering' => $request->get('ordering'),
-            'is_active' => $request->get('is_active')
+            'is_active' => $request->get('is_active'),
+            'locale' => $request->get('locale')
         ];
         try {
             $data = $this->categoryRepository->findAll($params);

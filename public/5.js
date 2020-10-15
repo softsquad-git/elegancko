@@ -78,6 +78,12 @@ var render = function() {
                     [_vm._v("Produkty")]
                   ),
                   _vm._v(" "),
+                  _c(
+                    "b-nav-item",
+                    { attrs: { to: { name: "AdminCategoriesList" } } },
+                    [_vm._v("Kategorie")]
+                  ),
+                  _vm._v(" "),
                   _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
                     _vm._v("Użytkownicy")
                   ]),

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use \Exception;
 use \Illuminate\Http\JsonResponse;
 use \Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\App;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,8 @@ class ProductController extends Controller
             'category_id' => $request->get('category_id'),
             'is_activated' => $request->get('is_activated'),
             'ordering' => $request->get('ordering'),
-            'pagination' => $request->get('pagination')
+            'pagination' => $request->get('pagination'),
+            'locale' => App::getLocale()
         ];
         try {
             $data = $this->productRepository->findAll($params);
