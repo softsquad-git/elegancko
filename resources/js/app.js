@@ -73,6 +73,16 @@ const router = new VueRouter({
                     path: 'category/:action/:id?',
                     component: () => import('./components/admin/categories/AdminDataCategory'),
                     name: 'AdminDataCategory'
+                },
+                {
+                    path: 'users',
+                    component: () => import('./components/admin/users/AdminUsersList'),
+                    name: 'AdminUsersList'
+                },
+                {
+                    path: 'user/:id',
+                    component: () => import('./components/admin/users/AdminUserFind'),
+                    name: 'AdminUserFind'
                 }
             ]
         }

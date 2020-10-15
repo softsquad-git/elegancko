@@ -84,9 +84,11 @@ var render = function() {
                     [_vm._v("Kategorie")]
                   ),
                   _vm._v(" "),
-                  _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
-                    _vm._v("Użytkownicy")
-                  ]),
+                  _c(
+                    "b-nav-item",
+                    { attrs: { to: { name: "AdminUsersList" } } },
+                    [_vm._v("Użytkownicy")]
+                  ),
                   _vm._v(" "),
                   _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
                     _vm._v("Ustawienia")

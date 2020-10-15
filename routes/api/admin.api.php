@@ -35,4 +35,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::put('update/{shipmentId}', 'ShipmentController@update');
         Route::delete('remove/{shipmentId}', 'ShipmentController@remove');
     });
+    Route::group(['prefix' => 'users', 'namespace' => 'Users'], function () {
+        Route::get('all', 'UserController@index');
+        Route::get('find/{userId}', 'UserController@findById');
+    });
 });

@@ -7,7 +7,7 @@
                 <b-nav-item :to="{name: 'IndexPage'}">Panel administracyjny</b-nav-item>
                 <b-nav-item :to="{name: 'AdminProductsList'}">Produkty</b-nav-item>
                 <b-nav-item :to="{name: 'AdminCategoriesList'}">Kategorie</b-nav-item>
-                <b-nav-item :to="{name: 'IndexPage'}">Użytkownicy</b-nav-item>
+                <b-nav-item :to="{name: 'AdminUsersList'}">Użytkownicy</b-nav-item>
                 <b-nav-item :to="{name: 'IndexPage'}">Ustawienia</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
