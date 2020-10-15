@@ -32,6 +32,7 @@
         <section class="body">
             <router-view/>
         </section>
+        <vue-confirm-dialog></vue-confirm-dialog>
     </div>
 </template>
 

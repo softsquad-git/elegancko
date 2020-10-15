@@ -35,10 +35,10 @@
         },
         methods: {
             save() {
-                this.axios.post('auth/login', this.data)
+                this.$axios.post('auth/login', this.data)
                 .then((data) => {
                     if (data.data.success === 1) {
-                        localStorage.setItem('token', data.data.token);
+                        localStorage.setItem('token', data.data.access_token);
                         localStorage.setItem('userId', data.data.user_id);
                     }
                 })

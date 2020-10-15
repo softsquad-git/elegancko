@@ -6,9 +6,12 @@ use App\Models\Products\Product;
 use App\Repositories\Categories\CategoryRepository;
 use App\Repositories\Products\ProductRepository;
 use \Exception;
+use Illuminate\Support\Facades\App;
 
 class ProductService
 {
+    const RESOURCE_TYPE = 'products';
+
     /**
      * @var ProductRepository
      */
@@ -36,11 +39,57 @@ class ProductService
      */
     public function create(array $data)
     {
-        $this->categoryRepository->findById($data['category_id']);
-        $data['colors_ids'] = json_encode($data['colors_ids'], true);
-        $data['sizes_ids'] = json_encode($data['sizes_ids'], true);
-        $data['shipments_ids'] = json_encode(config('app.df.shipments'), true);
+        if (empty($data['category_id'])) {
+            if (App::getLocale() == 'pl')
+                $data['category_id'] = $this->categoryRepository->findByAlias('bez-kategorii')->id;
+            else
+                $data['category_id'] = $this->categoryRepository->findByAlias('no-category')->id;
+        }
+        else
+            $this->categoryRepository->findById($data['category_id']);
+
+        $sizeIds = [];
+        $colorIds = [];
+        $shipmentIds = [];
+        if (isset($data['sizes'])) {
+            foreach ($data['sizes'] as $size) {
+                $sizeIds[] = $size['id'];
+            }
+        }
+        if (isset($data['colors'])) {
+            foreach ($data['colors'] as $color) {
+                $colorIds[] = $color['id'];
+            }
+        }
+        if (isset($data['shipments'])) {
+            foreach ($data['shipments'] as $shipment) {
+                $shipmentIds[] = $shipment['id'];
+            }
+        }
         $item = Product::create($data);
+        if (count($sizeIds) > 0) {
+            $syncSizes = [];
+            foreach ($sizeIds as $id) {
+                $syncSizes[$id] = ['product_id' => $item->id];
+            }
+            $item->sizes()->sync($syncSizes);
+        }
+        if (count($colorIds) > 0) {
+            $syncColors = [];
+            foreach ($colorIds as $id) {
+                $syncColors[$id] = ['product_id' => $item->id];
+            }
+            $item->colors()->sync($syncColors);
+        }
+        if (count($shipmentIds)) {
+            $syncShipments = [];
+            foreach ($shipmentIds as $id) {
+                $syncShipments[$id] = ['product_id' => $item->id];
+            }
+            $item->shipments()->sync($syncShipments);
+        }
+
+
         if (empty($item))
             throw new Exception(trans('exceptions.no_created'));
         return $item;

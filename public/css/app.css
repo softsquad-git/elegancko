@@ -11033,3 +11033,37 @@ a:hover {
   cursor: pointer;
 }
 
+.admin-page .title {
+  font-family: "Lato", cursive;
+  display: inline;
+}
+
+.admin-page .options {
+  float: right;
+  margin-top: 5px;
+}
+
+.admin-products-single {
+  border: 1px solid #dcdada;
+  border-radius: 3px;
+  height: auto;
+  margin: 10px auto;
+}
+
+.admin-product-content {
+  padding: 10px 0;
+}
+
+.admin-product-content a {
+  color: #464545;
+}
+
+.admin-products-single .info {
+  font-size: 15px;
+}
+
+.admin-products-single .info a,
+.admin-products-single .info .text-bold {
+  font-weight: bold;
+}
+

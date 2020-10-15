@@ -242,6 +242,7 @@ return [
     ],
     'df' => [
         'ordering' => 'DESC',
-        'pagination' => 20
+        'pagination' => 20,
+        'assets' => 'assets/data'
     ]
 ];

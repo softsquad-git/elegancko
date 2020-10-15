@@ -86,12 +86,12 @@ class ProductController extends Controller
      * @param ProductRequest $request
      * @return JsonResponse
      */
-    public function store(ProductRequest $request): JsonResponse
+    public function create(ProductRequest $request): JsonResponse
     {
         try {
             $item = $this->productService->create($request->all());
             if ($request->hasFile('images'))
-                $this->productImageService->upload($request->file('images'), $item->id);
+                $this->productImageService->upload($request->file('images'), $item);
             return $this->successResponse(trans('messages.created'));
         } catch (Exception $e) {
             return $this->errorResponse($e);
@@ -108,7 +108,7 @@ class ProductController extends Controller
         try {
             $item = $this->productService->update($request->all(), $productId);
             if ($request->hasFile('images'))
-                $this->productImageService->upload($request->file('images'), $item->id);
+                $this->productImageService->upload($request->file('images'), $item);
             return $this->successResponse(trans('messages.updated'));
         } catch (Exception $e) {
             return $this->errorResponse($e);

@@ -21,9 +21,8 @@ class CreateProductsTable extends Migration
             $table->text('content');
             $table->boolean('is_activated')->default(1);
             $table->string('locale')->default('pl');
-            $table->json('colors_ids')->nullable();
-            $table->json('sizes_ids')->nullable();
-            $table->json('shipments_ids')->nullable();
+            $table->decimal('price')->default(0);
+            $table->integer('type');
             $table->timestamps();
         });
     }
