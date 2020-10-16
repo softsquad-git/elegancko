@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.17.3",
+        "v-viewer": "^1.5.1",
         "vue-confirm-dialog": "^1.0.2",
         "vue-moment": "^4.1.0",
         "vue-multiselect": "^2.1.6",

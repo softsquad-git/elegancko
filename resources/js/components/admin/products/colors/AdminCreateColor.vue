@@ -2,7 +2,7 @@
     <b-modal ref="create-color" hide-footer :title="title">
         <form @submit.prevent="save">
             <div class="form-group">
-                <input id="key" type="color" placeholder="Klucz" class="form-control" aria-label="Klucz"
+                <input id="key" type="text" placeholder="Klucz" class="form-control" aria-label="Klucz"
                        v-model="data.hex">
             </div>
             <div class="form-group">
@@ -30,6 +30,7 @@ export default {
     },
     methods: {
         save() {
+            console.log(this.data)
             this.$axios.post('admin/products/colors/create', this.data)
             .then((data) => {
                 if (data.data.success === 1) {

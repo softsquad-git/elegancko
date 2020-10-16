@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Products;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Products\ProductResource;
 use App\Http\Resources\Products\ProductsResource;
 use App\Repositories\Products\ProductRepository;
 use Illuminate\Http\Request;
@@ -44,6 +45,20 @@ class ProductController extends Controller
         try {
             $data = $this->productRepository->findAll($params);
             return ProductsResource::collection($data);
+        } catch (Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+
+    /**
+     * @param int $productId
+     * @return ProductResource|JsonResponse
+     */
+    public function findById(int $productId)
+    {
+        try {
+            $item = $this->productRepository->findById($productId);
+            return new ProductResource($item);
         } catch (Exception $e) {
             return $this->errorResponse($e);
         }

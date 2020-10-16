@@ -4,10 +4,13 @@
             {{ title }}
         </h4>
         <div class="options">
-            <b-button @click="createShipmentModal" variant="outline-secondary"><span class="fa fa-shipping-fast"></span></b-button>
-            <b-button @click="createColorModal" variant="outline-secondary"><span class="fa fa-palette"></span></b-button>
+            <b-button @click="createShipmentModal" variant="outline-secondary"><span class="fa fa-shipping-fast"></span>
+            </b-button>
+            <b-button @click="createColorModal" variant="outline-secondary"><span class="fa fa-palette"></span>
+            </b-button>
             <b-button @click="createSizeModal" variant="outline-secondary"><span class="fa fa-expand"></span></b-button>
-            <b-button :to="{name: 'AdminProductsList'}" variant="outline-danger"><span class="fa fa-times"></span></b-button>
+            <b-button :to="{name: 'AdminProductsList'}" variant="outline-danger"><span class="fa fa-times"></span>
+            </b-button>
         </div>
         <div class="content mt-4">
             <form @submit.prevent="save">
@@ -53,7 +56,8 @@
                         </select>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6">
-                        <input id="price" type="number" @input="handleInput" aria-label="Cena" v-model="data.price" placeholder="Cena" class="form-control">
+                        <input id="price" type="number" @input="handleInput" aria-label="Cena" v-model="data.price"
+                               placeholder="Cena" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -67,7 +71,7 @@
                             :multiple="true"
                             track-by="id"
                             :close-on-select="false"
-                            ></multiselect>
+                        ></multiselect>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <label for="size">Rozmiar</label>
@@ -79,7 +83,7 @@
                             :close-on-select="false"
                             :multiple="true"
                             track-by="id"
-                            ></multiselect>
+                        ></multiselect>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <label for="shipment">Wysyłka</label>
@@ -96,6 +100,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
+                        <b-form-group label="Dodaj zdjęcia:" label-for="file-default" label-cols-sm="2">
+                            <b-form-file ref="file" multiple v-on:change="handleFileUpload()" id="file-default"></b-form-file>
+                        </b-form-group>
 
                     </div>
                 </div>
@@ -158,16 +165,40 @@ export default {
     },
     methods: {
         save() {
-            console.log(this.data)
-            this.$axios.post('admin/products/create', this.data)
+            this.data.images = this.$refs.file.files;
+            if (this.data.images.length > 0) {
+                let formData = new FormData();
+                for (let i = 0; i < this.data.images.length; i++) {
+                    let image = this.data.images[i];
+                    formData.append('images[' + i + ']', image, image.name);
+                    formData.append('title', this.data.title);
+                    formData.append('category_id', this.data.category_id);
+                    formData.append('content', this.data.content);
+                    formData.append('description', this.data.description);
+                    formData.append('locale', this.data.locale);
+                    formData.append('sizes', this.data.sizes);
+                    formData.append('shipments', this.data.shipments);
+                    formData.append('price', this.data.price);
+                    formData.append('type', this.data.type);
+                    formData.append('colors', this.data.colors);
+                }
+                return  this.saveData(formData)
+            }
+            return  this.saveData(this.data)
+        },
+        saveData(data) {
+            this.$axios.post(this.$route.params.id ? `admin/products/update/${this.$route.params.id}` : 'admin/products/create', data)
                 .then((data) => {
                     if (data.data.success === 1) {
-                        this.$router.push({name: ''})
+                        this.$router.push({name: 'AdminProductsList'})
                     }
                 })
                 .catch((error) => {
                     //
                 })
+        },
+        handleFileUpload() {
+            this.data.images = this.$refs.file.files;
         },
         loadCategories() {
             this.$axios.get('categories/all')
@@ -189,26 +220,26 @@ export default {
         },
         loadDataSizes() {
             this.$axios.get('admin/products/sizes/all')
-            .then((data) => {
-                this.sizes = data.data.data
-            })
+                .then((data) => {
+                    this.sizes = data.data.data
+                })
         },
         loadDataColors() {
             this.$axios.get('admin/products/colors/all')
-            .then((data) => {
-                this.colors = data.data.data
-            })
+                .then((data) => {
+                    this.colors = data.data.data
+                })
         },
         loadDataShipments() {
             this.$axios.get('admin/shipments/all')
-            .then((data) => {
-                this.shipments = data.data.data;
-            })
+                .then((data) => {
+                    this.shipments = data.data.data;
+                })
         },
-        handleInput (e) {
+        handleInput(e) {
             let stringValue = e.target.value.toString()
             let regex = /^\d*(\.\d{1,2})?$/
-            if(!stringValue.match(regex) && this.price!== '') {
+            if (!stringValue.match(regex) && this.price !== '') {
                 this.data.price = this.previousPrice
             }
             this.previousPrice = this.data.price
@@ -216,16 +247,16 @@ export default {
         checkAction() {
             if (this.$route.params.id !== null) {
                 this.$axios.get(`admin/products/find/${this.$route.params.id}`)
-                .then((data) => {
-                    const product = data.data.data;
-                    this.data.title = product.title;
-                    this.data.category_id = product.category.id;
-                    this.data.description = product.description;
-                    this.data.content = product.content;
-                    this.data.price = product.price.price;
-                    this.data.locale = product.locale;
-                    this.data.type = product.type;
-                })
+                    .then((data) => {
+                        const product = data.data.data;
+                        this.data.title = product.title;
+                        this.data.category_id = product.category.id;
+                        this.data.description = product.description;
+                        this.data.content = product.content;
+                        this.data.price = product.price.price;
+                        this.data.locale = product.locale;
+                        this.data.type = product.type;
+                    })
             }
         }
     },

@@ -21,4 +21,15 @@ class Images
             return asset(config('app.df.assets') . '/' . $resourceType . '/' . $resourceId . '/' . $image->src);
         return asset(config('app.df.assets') . '/' . $resourceType . '/df.png');
     }
+
+    /**
+     * @param int $resourceId
+     * @param string $resourceType
+     * @param string $path
+     * @return string
+     */
+    public static function getPath(int $resourceId, string $resourceType, string $path): string
+    {
+        return asset(config('app.df.assets').'/'.$resourceType.'/'.$resourceId.'/'.$path);
+    }
 }
