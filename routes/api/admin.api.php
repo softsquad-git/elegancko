@@ -39,4 +39,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('all', 'UserController@index');
         Route::get('find/{userId}', 'UserController@findById');
     });
+    Route::group(['prefix' => 'settings', 'namespace' => 'Settings'], function () {
+       Route::get('find-by/{type}', 'AdminSettingController@findByType');
+       Route::get('all', 'AdminSettingController@index');
+       Route::post('create', 'AdminSettingController@create');
+       Route::put('update/{settingId}', 'AdminSettingController@update');
+       Route::delete('remove/{settingId}', 'AdminSettingController@remove');
+       Route::group(['prefix' => 'type'], function () {
+           Route::get('all', 'AdminSettingTypeController@index');
+           Route::post('create', 'AdminSettingTypeController@create');
+           Route::put('update/{typeId}', 'AdminSettingTypeController@update');
+           Route::delete('remove/{typeId}', 'AdminSettingTypeController@remove');
+       });
+    });
 });

@@ -10,6 +10,7 @@ require('./bootstrap');
 
 import App from "./components/App";
 import IndexPage from "./components/pages/IndexPage";
+import store from './store';
 
 const router = new VueRouter({
     mode: 'history',
@@ -28,6 +29,11 @@ const router = new VueRouter({
             path: '/product/:title/:id',
             name: 'ProductShow',
             component: () => import('./components/pages/products/Show')
+        },
+        {
+            path: '/basket',
+            name: 'BasketIndexPage',
+            component: () => import('./components/pages/basket/BasketIndexPage')
         },
         {
             path: '/auth',
@@ -92,5 +98,6 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     components: {App},
-    router
+    router,
+    store: new Vuex.Store(store)
 });

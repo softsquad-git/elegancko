@@ -176,15 +176,15 @@ export default {
                     formData.append('content', this.data.content);
                     formData.append('description', this.data.description);
                     formData.append('locale', this.data.locale);
-                    formData.append('sizes', this.data.sizes);
-                    formData.append('shipments', this.data.shipments);
+                    formData.append('sizes', JSON.stringify(this.data.sizes));
+                    formData.append('shipments', JSON.stringify(this.data.shipments));
                     formData.append('price', this.data.price);
                     formData.append('type', this.data.type);
-                    formData.append('colors', this.data.colors);
+                    formData.append('colors', JSON.stringify(this.data.colors));
                 }
-                return  this.saveData(formData)
+                return this.saveData(formData)
             }
-            return  this.saveData(this.data)
+            return this.saveData(this.data)
         },
         saveData(data) {
             this.$axios.post(this.$route.params.id ? `admin/products/update/${this.$route.params.id}` : 'admin/products/create', data)

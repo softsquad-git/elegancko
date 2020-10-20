@@ -11037,12 +11037,12 @@ a:hover {
   cursor: pointer;
 }
 
-.admin-page .title {
+.title {
   font-family: "Lato", cursive;
   display: inline;
 }
 
-.admin-page .options {
+.options {
   float: right;
   margin-top: 5px;
 }

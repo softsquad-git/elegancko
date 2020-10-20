@@ -1,5 +1,10 @@
 window._ = require('lodash');
 import Vue from 'vue'
+import Vuex from 'vuex';
+
+window.Vuex = Vuex;
+
+Vue.use(Vuex);
 
 window.axios = require('axios');
 Vue.prototype.$axios = axios;

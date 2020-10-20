@@ -17,12 +17,12 @@ class ProductImageService
         if (count($images) > 0) {
             $_bPath = config('app.df.assets') . '/' . ProductService::RESOURCE_TYPE . '/' . $product->id;
             foreach ($images as $image) {
-                $file_name = md5(time() . Str::random(32)) . '.' . $image->getClientOriginalExtension();
-                $image->move($_bPath, $file_name);
+                $fileName = md5(time() . Str::random(32)) . '.' . $image->getClientOriginalExtension();
+                $image->move($_bPath, $fileName);
                 $product->images()->create([
                     'resource_id' => $product->id,
                     'resource_type' => ProductService::RESOURCE_TYPE,
-                    'src' => $file_name
+                    'src' => $fileName
                 ]);
             }
             return true;

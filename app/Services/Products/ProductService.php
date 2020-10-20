@@ -52,18 +52,18 @@ class ProductService
         $colorIds = [];
         $shipmentIds = [];
         if (isset($data['sizes'])) {
-            foreach ($data['sizes'] as $size) {
-                $sizeIds[] = $size['id'];
+            foreach (json_decode($data['sizes']) as $size) {
+                $sizeIds[] = $size->id;
             }
         }
         if (isset($data['colors'])) {
-            foreach ($data['colors'] as $color) {
-                $colorIds[] = $color['id'];
+            foreach (json_decode($data['colors']) as $color) {
+                $colorIds[] = $color->id;
             }
         }
         if (isset($data['shipments'])) {
-            foreach ($data['shipments'] as $shipment) {
-                $shipmentIds[] = $shipment['id'];
+            foreach (json_decode($data['shipments']) as $shipment) {
+                $shipmentIds[] = $shipment->id;
             }
         }
         $item = Product::create($data);

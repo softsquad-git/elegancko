@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="row mt-5 mb-5">
+    <div v-if="relatedProducts.length > 0" class="row mt-5 mb-5">
         <div class="col-12">
             <h4 class="title mb-2">W tej samej kategorii</h4>
         </div>
@@ -98,8 +98,7 @@ export default {
             data: {
                 color_id: '',
                 size_id: '',
-                product_id: '',
-                price: ''
+                product_id: ''
             },
             relatedProducts: []
         }
@@ -113,7 +112,21 @@ export default {
                 })
         },
         addBasket() {
-
+            this.data.product_id = this.$route.params.id;
+            this.data.color_id = this.data.color_id.id;
+            this.data.size_id = this.data.size_id.id;
+            if (localStorage.getItem('token') !== null) {
+                this.$axios.post('basket/create', this.data)
+                .then((data) => {
+                    if (data.data.success === 1) {
+                        this.data.color_id = '';
+                        this.data.size_id = '';
+                        alert('Dodano do koszyka')
+                    }
+                })
+            } else {
+                this.$store.commit('addToCart', this.data)
+            }
         },
         finalize() {
 
