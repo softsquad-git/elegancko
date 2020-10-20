@@ -8,7 +8,7 @@
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6">
             <h4 class="title">{{ product.title }}</h4>
-            <span class="text-bold">Kategoria: </span><router-link :to="''">{{ product.category.name }}</router-link>
+            <div><span class="text-bold">Kategoria: </span><router-link :to="{name: 'ProductsIndex', params: {category: product.category.alias }}">{{ product.category.name }}</router-link></div>
             <p class="desc">
                 {{ product.desc }}
             </p>
@@ -121,7 +121,11 @@ export default {
                     if (data.data.success === 1) {
                         this.data.color_id = '';
                         this.data.size_id = '';
-                        alert('Dodano do koszyka')
+                        this.$notify({
+                            group: 'notification-success',
+                            title: 'Udało się',
+                            text: 'Produkt został dodany do koszyka'
+                        })
                     }
                 })
             } else {

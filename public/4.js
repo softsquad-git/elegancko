@@ -189,6 +189,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var category = this.$route.params.category;
+
+    if (category) {
+      this.params.category = category;
+    }
+
     this.loadData();
     this.loadCategories();
   }
@@ -268,6 +274,7 @@ var render = function() {
     _c(
       "form",
       {
+        staticClass: "mt-4",
         on: {
           submit: function($event) {
             $event.preventDefault()

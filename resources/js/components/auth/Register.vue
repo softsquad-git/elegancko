@@ -3,7 +3,7 @@
         <h2 class="title mb-4">
             {{title}}
         </h2>
-        <form @submit.prevent="save">
+        <form class="mt-4" @submit.prevent="save">
             <div class="form-group">
                 <input id="name" class="form-control" aria-label="Imię" type="text" placeholder="Imię"
                        v-model="data.name">

@@ -111,7 +111,12 @@ export default {
                             this.$axios.delete(`admin/products/remove/${id}`)
                                 .then((data) => {
                                     if (data.data.success === 1) {
-                                        this.loadData()
+                                        this.loadData();
+                                        this.$notify({
+                                            group: 'foo',
+                                            title: 'Udało się',
+                                            text: 'Produkt został usunięty ze sklepu'
+                                        })
                                     }
                                 })
                         }

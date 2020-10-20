@@ -34,6 +34,8 @@
             <router-view/>
         </section>
         <vue-confirm-dialog></vue-confirm-dialog>
+        <notifications group="notification-success" position="bottom left" type="success"/>
+        <notifications group="notification-danger" position="bottom left" type="error"/>
     </div>
 </template>
 

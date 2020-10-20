@@ -3,17 +3,24 @@
 namespace App\Http\Resources\Admin\Settings;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use \Illuminate\Http\Request;
 
 class AdminSettingResource extends JsonResource
 {
+
     /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'type' => [
+                'id' => $this->type_id,
+                'name' => $this->type->name
+            ],
+            'value' => $this->value
+        ];
     }
 }

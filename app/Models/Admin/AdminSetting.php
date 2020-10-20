@@ -10,6 +10,11 @@ class AdminSetting extends Model
 {
     use HasFactory;
 
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
     protected $table = 'admin_settings';
 
     protected $fillable = [

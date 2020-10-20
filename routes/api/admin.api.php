@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
        Route::post('create', 'AdminSettingController@create');
        Route::put('update/{settingId}', 'AdminSettingController@update');
        Route::delete('remove/{settingId}', 'AdminSettingController@remove');
-       Route::group(['prefix' => 'type'], function () {
+       Route::group(['prefix' => 'types'], function () {
            Route::get('all', 'AdminSettingTypeController@index');
            Route::post('create', 'AdminSettingTypeController@create');
            Route::put('update/{typeId}', 'AdminSettingTypeController@update');

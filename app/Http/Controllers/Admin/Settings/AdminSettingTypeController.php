@@ -27,7 +27,10 @@ class AdminSettingTypeController extends Controller
      * @param AdminSettingTypeRepository $adminSettingTypeRepository
      * @param AdminSettingTypeService $adminSettingTypeService
      */
-    public function __construct(AdminSettingTypeRepository $adminSettingTypeRepository, AdminSettingTypeService $adminSettingTypeService)
+    public function __construct(
+        AdminSettingTypeRepository $adminSettingTypeRepository,
+        AdminSettingTypeService $adminSettingTypeService
+    )
     {
         $this->adminSettingTypeRepository = $adminSettingTypeRepository;
         $this->adminSettingTypeService = $adminSettingTypeService;

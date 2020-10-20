@@ -9,8 +9,10 @@ Vue.use(Vuex);
 window.axios = require('axios');
 Vue.prototype.$axios = axios;
 import VueConfirmDialog from 'vue-confirm-dialog'
+import VueNotification from "vue-notification";
 
 Vue.use(VueConfirmDialog)
+Vue.use(VueNotification);
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(require('vue-moment'));
 

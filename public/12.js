@@ -121,6 +121,12 @@ __webpack_require__.r(__webpack_exports__);
             _this2.$axios["delete"]("admin/products/remove/".concat(id)).then(function (data) {
               if (data.data.success === 1) {
                 _this2.loadData();
+
+                _this2.$notify({
+                  group: 'foo',
+                  title: 'Udało się',
+                  text: 'Produkt został usunięty ze sklepu'
+                });
               }
             });
           }

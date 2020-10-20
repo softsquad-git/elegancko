@@ -30,6 +30,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -47,10 +50,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     save: function save() {
+      var _this = this;
+
       this.$axios.post('auth/login', this.data).then(function (data) {
         if (data.data.success === 1) {
           localStorage.setItem('token', data.data.access_token);
           localStorage.setItem('userId', data.data.user_id);
+
+          _this.$router.push({
+            name: 'IndexPage'
+          });
         }
       })["catch"](function (error) {});
     }
@@ -142,6 +151,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var category = this.$route.params.category;
+
+    if (category) {
+      this.params.category = category;
+    }
+
     this.loadData();
     this.loadCategories();
   }
@@ -221,6 +236,7 @@ var render = function() {
     _c(
       "form",
       {
+        staticClass: "mt-4",
         on: {
           submit: function($event) {
             $event.preventDefault()
@@ -303,7 +319,7 @@ var render = function() {
                 staticClass: "link-register",
                 attrs: { to: { name: "Register" }, title: "Zarejestruj się" }
               },
-              [_vm._v("Zarejestruj się")]
+              [_vm._v("Zarejestruj się\n            ")]
             )
           ],
           1

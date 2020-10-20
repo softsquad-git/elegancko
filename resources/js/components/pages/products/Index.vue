@@ -68,6 +68,10 @@ export default {
         }
     },
     created() {
+        const category = this.$route.params.category;
+        if (category) {
+            this.params.category = category;
+        }
         this.loadData();
         this.loadCategories();
     }

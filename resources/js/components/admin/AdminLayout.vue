@@ -8,7 +8,10 @@
                 <b-nav-item :to="{name: 'AdminProductsList'}">Produkty</b-nav-item>
                 <b-nav-item :to="{name: 'AdminCategoriesList'}">Kategorie</b-nav-item>
                 <b-nav-item :to="{name: 'AdminUsersList'}">Użytkownicy</b-nav-item>
-                <b-nav-item :to="{name: 'IndexPage'}">Ustawienia</b-nav-item>
+                <b-nav-item-dropdown text="Ustawienia" right>
+                    <b-dropdown-item :to="{name: 'AdminPageSetting'}">Strony</b-dropdown-item>
+                    <b-dropdown-item :to="{name: 'AdminAccountSetting'}">Dane podstawowe</b-dropdown-item>
+                </b-nav-item-dropdown>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
                 <b-nav-item :to="{name: 'IndexPage'}">Wyloguj się</b-nav-item>

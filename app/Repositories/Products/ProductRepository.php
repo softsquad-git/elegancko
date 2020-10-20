@@ -19,7 +19,9 @@ class ProductRepository
         $category = $params['category_id'];
         $activated = $params['is_activated'];
         $locale = $params['locale'];
-        if (Auth::user()->role != config('app.user.roles.admin'))
+        if (Auth::check() && Auth::user()->role != config('app.user.roles.admin'))
+            $activated = Status::STATUS_ON;
+        else if (!Auth::check())
             $activated = Status::STATUS_ON;
         $data = Product::orderBy('id', $params['ordering'] ?? config('app.df.ordering'));
         if (!empty($title))

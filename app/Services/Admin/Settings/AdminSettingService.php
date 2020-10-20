@@ -28,9 +28,9 @@ class AdminSettingService
      */
     public function create(array $data)
     {
-        $item = $this->adminSettingRepository->findByType($data['type']);
+        $item = $this->adminSettingRepository->findByTypeId($data['type_id']);
         if (!empty($item))
-            $this->remove($data['type']);
+            $this->remove($item->id);
         $item = AdminSetting::create($data);
         if (!empty($item))
             return $item;

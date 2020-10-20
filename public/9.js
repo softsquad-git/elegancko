@@ -30,6 +30,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminLayout"
 });
@@ -90,9 +93,24 @@ var render = function() {
                     [_vm._v("Użytkownicy")]
                   ),
                   _vm._v(" "),
-                  _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
-                    _vm._v("Ustawienia")
-                  ])
+                  _c(
+                    "b-nav-item-dropdown",
+                    { attrs: { text: "Ustawienia", right: "" } },
+                    [
+                      _c(
+                        "b-dropdown-item",
+                        { attrs: { to: { name: "AdminPageSetting" } } },
+                        [_vm._v("Strony")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown-item",
+                        { attrs: { to: { name: "AdminAccountSetting" } } },
+                        [_vm._v("Dane podstawowe")]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),

@@ -143,7 +143,12 @@ vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(v_viewer__WEBPACK_IMPORTED_MODULE
           if (data.data.success === 1) {
             _this2.data.color_id = '';
             _this2.data.size_id = '';
-            alert('Dodano do koszyka');
+
+            _this2.$notify({
+              group: 'notification-success',
+              title: 'Udało się',
+              text: 'Produkt został dodany do koszyka'
+            });
           }
         });
       } else {
@@ -251,113 +256,121 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xl-6 col-lg-6 col-md-6" },
-        [
-          _c("h4", { staticClass: "title" }, [
-            _vm._v(_vm._s(_vm.product.title))
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-bold" }, [_vm._v("Kategoria: ")]),
-          _c("router-link", { attrs: { to: "" } }, [
-            _vm._v(_vm._s(_vm.product.category.name))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "desc" }, [
-            _vm._v(
-              "\n                " + _vm._s(_vm.product.desc) + "\n            "
+      _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
+        _c("h4", { staticClass: "title" }, [_vm._v(_vm._s(_vm.product.title))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c("span", { staticClass: "text-bold" }, [_vm._v("Kategoria: ")]),
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "ProductsIndex",
+                    params: { category: _vm.product.category.alias }
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.product.category.name))]
             )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "info" },
-            [
-              _c("span", { staticClass: "price" }, [
-                _vm._v(
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "desc" }, [
+          _vm._v(
+            "\n                " + _vm._s(_vm.product.desc) + "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "info" },
+          [
+            _c("span", { staticClass: "price" }, [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.product.price.price) +
                   " " +
-                    _vm._s(_vm.product.price.price) +
-                    " " +
-                    _vm._s(_vm.product.price.currency)
-                )
-              ]),
-              _vm._v(" "),
-              _c("multiselect", {
-                staticClass: "select-option",
-                attrs: {
-                  id: "size",
-                  options: _vm.product.sizes,
-                  label: "name",
-                  "close-on-select": true,
-                  multiple: false,
-                  placeholder: "Wybierz rozmiar",
-                  "track-by": "id"
-                },
-                model: {
-                  value: _vm.data.size_id,
-                  callback: function($$v) {
-                    _vm.$set(_vm.data, "size_id", $$v)
-                  },
-                  expression: "data.size_id"
-                }
-              }),
-              _vm._v(" "),
-              _c("multiselect", {
-                staticClass: "select-option",
-                attrs: {
-                  id: "color",
-                  options: _vm.product.colors,
-                  label: "name",
-                  "close-on-select": true,
-                  multiple: false,
-                  placeholder: "Wybierz kolor",
-                  "track-by": "id"
-                },
-                model: {
-                  value: _vm.data.color_id,
-                  callback: function($$v) {
-                    _vm.$set(_vm.data, "color_id", $$v)
-                  },
-                  expression: "data.color_id"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row mt-4" }, [
-            _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-success w-100",
-                  on: { click: _vm.addBasket }
-                },
-                [_vm._v("Dodaj do koszyka")]
+                  _vm._s(_vm.product.price.currency)
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-success w-100",
-                  on: { click: _vm.finalize }
+            _c("multiselect", {
+              staticClass: "select-option",
+              attrs: {
+                id: "size",
+                options: _vm.product.sizes,
+                label: "name",
+                "close-on-select": true,
+                multiple: false,
+                placeholder: "Wybierz rozmiar",
+                "track-by": "id"
+              },
+              model: {
+                value: _vm.data.size_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.data, "size_id", $$v)
                 },
-                [_vm._v("Kup teraz")]
-              )
-            ])
+                expression: "data.size_id"
+              }
+            }),
+            _vm._v(" "),
+            _c("multiselect", {
+              staticClass: "select-option",
+              attrs: {
+                id: "color",
+                options: _vm.product.colors,
+                label: "name",
+                "close-on-select": true,
+                multiple: false,
+                placeholder: "Wybierz kolor",
+                "track-by": "id"
+              },
+              model: {
+                value: _vm.data.color_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.data, "color_id", $$v)
+                },
+                expression: "data.color_id"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-4" }, [
+          _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-success w-100",
+                on: { click: _vm.addBasket }
+              },
+              [_vm._v("Dodaj do koszyka")]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12 mt-4" }, [
-              _c("p", { domProps: { innerHTML: _vm._s(_vm.product.content) } })
-            ])
+          _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-success w-100",
+                on: { click: _vm.finalize }
+              },
+              [_vm._v("Kup teraz")]
+            )
           ])
-        ],
-        1
-      )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 mt-4" }, [
+            _c("p", { domProps: { innerHTML: _vm._s(_vm.product.content) } })
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
     _vm.relatedProducts.length > 0

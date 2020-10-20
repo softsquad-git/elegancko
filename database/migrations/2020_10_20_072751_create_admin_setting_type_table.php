@@ -15,7 +15,7 @@ class CreateAdminSettingTypeTable extends Migration
     {
         Schema::create('admin_setting_type', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
+            $table->string('_key')->unique();
             $table->string('name');
         });
     }

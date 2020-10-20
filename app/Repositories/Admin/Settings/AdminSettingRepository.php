@@ -8,12 +8,12 @@ use \Exception;
 class AdminSettingRepository
 {
     /**
-     * @param string $type
+     * @param int $typeId
      * @return mixed
      */
-    public function findByType(string $type)
+    public function findByTypeId(int $typeId)
     {
-        return AdminSetting::where('type', $type)
+        return AdminSetting::where('type_id', $typeId)
             ->first();
     }
 
@@ -23,7 +23,7 @@ class AdminSettingRepository
      */
     public function findAll(array $params)
     {
-        return AdminSetting::orderBy($params['ordering'] ?? config('app.df.ordering'))
+        return AdminSetting::orderBy('id', $params['ordering'] ?? config('app.df.ordering'))
             ->paginate($params['pagination'] ?? config('app.df.pagination'));
     }
 

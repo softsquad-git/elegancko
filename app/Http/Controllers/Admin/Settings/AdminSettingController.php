@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\AdminSettingRequest;
+use App\Http\Resources\Admin\Settings\AdminSettingResource;
 use App\Repositories\Admin\Settings\AdminSettingRepository;
 use App\Services\Admin\Settings\AdminSettingService;
 use Illuminate\Http\Request;
 use \Exception;
 use \Illuminate\Http\JsonResponse;
+use \Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AdminSettingController extends Controller
 {
@@ -34,9 +36,9 @@ class AdminSettingController extends Controller
 
     /**
      * @param Request $request
-     * @return JsonResponse
+     * @return JsonResponse|AnonymousResourceCollection
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request)
     {
         try {
             $params = [
@@ -44,9 +46,7 @@ class AdminSettingController extends Controller
                 'pagination' => $request->get('pagination')
             ];
             $data = $this->adminSettingRepository->findAll($params);
-            return response()->json([
-                'data' => $data
-            ]);
+            return AdminSettingResource::collection($data);
         } catch (Exception $e) {
             return $this->errorResponse($e);
         }
@@ -86,11 +86,11 @@ class AdminSettingController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param AdminSettingRequest $request
      * @param int $settingId
      * @return JsonResponse
      */
-    public function update(Request $request, int $settingId): JsonResponse
+    public function update(AdminSettingRequest $request, int $settingId): JsonResponse
     {
         try {
             $this->adminSettingService->update($request->all(), $settingId);

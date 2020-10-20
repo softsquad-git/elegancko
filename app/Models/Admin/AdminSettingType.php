@@ -10,10 +10,15 @@ class AdminSettingType extends Model
 {
     use HasFactory;
 
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
     protected $table = 'admin_setting_type';
 
     protected $fillable = [
-        'key',
+        '_key',
         'name'
     ];
 
