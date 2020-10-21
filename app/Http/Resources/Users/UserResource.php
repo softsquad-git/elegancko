@@ -29,7 +29,11 @@ class UserResource extends JsonResource
             'is_activated' => $this->is_activated == Status::STATUS_ON ? true : false,
             'role' => Auth::user()->role == config('app.users.roles.admin') ? 'admin' : '',
             'c_orders' => 0,
-            'c_messages' => 0
+            'c_messages' => 0,
+            'city' => $this->city,
+            'post_code' => $this->post_code,
+            'address' => $this->address,
+            'phone' => $this->phone
         ];
     }
 }

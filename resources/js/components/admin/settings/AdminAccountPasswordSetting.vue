@@ -22,7 +22,8 @@ export default {
         return{
             data: {
                 new_password: '',
-                old_password: ''
+                old_password: '',
+                user_id: ''
             },
             title: 'Zmień hasło'
         }
@@ -41,6 +42,11 @@ export default {
                     })
                 }
             })
+        }
+    },
+    created() {
+        if (this.$route.params.id){
+            this.data.user_id = this.$route.params.id;
         }
     }
 }

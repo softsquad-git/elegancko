@@ -30,11 +30,13 @@ export default {
     data() {
         return {
             dataFirst: {
-                new_email: ''
+                new_email: '',
+                user_id: ''
             },
             dataSecond: {
                 new_email_key: '',
-                old_email_key: ''
+                old_email_key: '',
+                user_id: ''
             },
             title: 'Zmień adres E-mail',
             changeStatus: ''
@@ -89,6 +91,10 @@ export default {
     },
     created() {
         this.checkEmail();
+        if (this.$route.params.id) {
+            this.dataFirst.user_id = this.$route.params.id;
+            this.dataSecond.user_id = this.$route.params.id
+        }
     }
 }
 </script>

@@ -53,6 +53,7 @@
 <script>
 import AdminAccountPasswordSetting from "./AdminAccountPasswordSetting";
 import AdminAccountEmailSetting from "./AdminAccountEmailSetting";
+
 export default {
     name: "AdminAccountSetting",
     components: {AdminAccountEmailSetting, AdminAccountPasswordSetting},
@@ -85,33 +86,35 @@ export default {
                 })
         },
         loadData() {
-            this.$axios.get('user/logged')
+            let url = 'user/logged';
+            if (this.$route.params.id) {
+                url = `admin/users/find/${this.$route.params.id}`
+            }
+            this.$axios.get(url)
                 .then((data) => {
                     let user = data.data;
                     this.data.name = user.name;
                     this.data.last_name = user.last_name;
+                    if (this.$route.params.id) {
+                        user = data.data.data;
+                        this.data.name = user.name.first;
+                        this.data.last_name = user.name.last;
+                        this.data.user_id = this.$route.params.id;
+                    }
                     this.data.phone = user.phone;
                     this.data.city = user.city;
                     this.data.post_code = user.post_code;
                     this.data.address = user.address;
                 })
+        },
+    },
+    watch: {
+        '$route.params.id'() {
+            this.loadData();
         }
     },
     created() {
         this.loadData();
-        if (this.$route.params.id) {
-            this.$axios.get(`admin/users/find/${this.$route.params.id}`)
-            .then((data) => {
-                let user = data.data.data;
-                this.data.name = user.name;
-                this.data.last_name = user.last_name;
-                this.data.phone = user.phone;
-                this.data.city = user.city;
-                this.data.post_code = user.post_code;
-                this.data.address = user.address;
-                this.data.user_id = this.$route.params.id
-            })
-        }
     }
 }
 </script>
