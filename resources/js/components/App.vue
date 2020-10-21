@@ -6,7 +6,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-4">
                         <div class="logo-text">
                             <img v-if="logo !== ''" :src="logo" :alt="service_name">
-                            <span v-if="logo === ''">{{ service_name }}<sub>store</sub></span>
+                            <span v-if="logo === ''" v-html="service_name">{{ service_name }}</span>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-8">

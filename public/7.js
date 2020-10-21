@@ -163,7 +163,7 @@ __webpack_require__.r(__webpack_exports__);
     saveData: function saveData(data) {
       var _this2 = this;
 
-      var url = 'admin/setting/create';
+      var url = 'admin/settings/create';
 
       if (this.$route.params.id) {
         url = "admin/settings/update/".concat(this.$route.params.id);

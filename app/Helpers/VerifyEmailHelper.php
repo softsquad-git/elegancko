@@ -14,7 +14,7 @@ class VerifyEmailHelper
     /**
      * @return string
      */
-    private static function generate(): string
+    public static function generate(): string
     {
         return substr(md5(time() . Str::random(64)), 15, 15);
     }

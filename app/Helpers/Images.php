@@ -3,9 +3,11 @@
 namespace App\Helpers;
 
 use App\Models\Images\Image;
+use App\Repositories\Admin\Settings\AdminSettingTypeRepository;
 
 class Images
 {
+
     /**
      * @param int $resourceId
      * @param string $resourceType

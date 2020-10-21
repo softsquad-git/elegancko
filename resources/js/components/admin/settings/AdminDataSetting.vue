@@ -84,7 +84,7 @@ export default {
             }
         },
         saveData(data) {
-            let url = 'admin/setting/create'
+            let url = 'admin/settings/create'
             if (this.$route.params.id) {
                 url = `admin/settings/update/${this.$route.params.id}`
             }

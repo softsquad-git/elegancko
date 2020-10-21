@@ -8,6 +8,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
    Route::group(['middleware' => 'auth:api'], function () {
       include 'api/user.api.php';
       include 'api/admin.api.php';
+      include 'api/setting.api.php';
    });
    Route::group(['prefix' => 'categories', 'namespace' => 'Categories'], function () {
        Route::get('all', 'CategoryController@index');
