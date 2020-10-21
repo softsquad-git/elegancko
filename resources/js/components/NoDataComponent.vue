@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-danger text-center">
+    <div class="no-data text-center">
         {{ msg }}
     </div>
 </template>
@@ -19,5 +19,10 @@ export default {
 </script>
 
 <style scoped>
-
+.no-data {
+    width: 100%;
+    padding: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
 </style>

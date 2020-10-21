@@ -20,11 +20,33 @@ class ProductRepository
         $activated = $params['is_activated'];
         $locale = $params['locale'];
         $type = $params['type'];
+        $ordering = $params['ordering'];
         if (Auth::check() && Auth::user()->role != config('app.user.roles.admin'))
             $activated = Status::STATUS_ON;
         else if (!Auth::check())
             $activated = Status::STATUS_ON;
-        $data = Product::orderBy('id', $params['ordering'] ?? config('app.df.ordering'));
+        $orderBy = [
+            'file' => '',
+            'sort' => ''
+        ];
+        if (!empty($ordering)) {
+            if ($ordering == 'ASC' || $ordering == 'DESC') {
+              $orderBy['file'] = 'id';
+              $orderBy['sort'] = $ordering;
+            } else {
+                if ($ordering == 'PRICE_MIN') {
+                    $orderBy['file'] = 'price';
+                    $orderBy['sort'] = 'ASC';
+                } else {
+                    $orderBy['file'] = 'price';
+                    $orderBy['sort'] = 'DESC';
+                }
+            }
+        } else {
+            $orderBy['file'] = 'id';
+            $orderBy['sort'] = config('app.df.ordering');
+        }
+        $data = Product::orderBy($orderBy['file'], $orderBy['sort']);
         if (!empty($title))
             $data->where('title', 'like' . '%' . $title . '%');
         if (!empty($category))

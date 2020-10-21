@@ -4,7 +4,7 @@
             {{ title }}
         </h5>
         <div class="options">
-            <b-button variant="outline-secondary"><span class="fa fa-search"></span></b-button>
+            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span></b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>
@@ -22,6 +22,28 @@
                 <b-dropdown-item @click="pagination(24)">24</b-dropdown-item>
             </b-dropdown>
         </div>
+        <form v-if="showSearch" class="mt-3 mb-3" @submit.prevent="loadData">
+            <div class="row pl-3 pr-3">
+                <div class="col-xl-4 p-0 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..." v-model="params.name">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0 col-xs-12">
+                    <input id="email" aria-label="E-mail" class="form-control" placeholder="E-mail ..." v-model="params.email">
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 p-0 col-sm-12 col-xs-12">
+                    <select id="active" aria-label="Aktywny?" class="form-control" v-model="params.is_activated">
+                        <option selected value="">Aktywny?</option>
+                        <option value="1">Tak</option>
+                        <option value="0">Nie</option>
+                    </select>
+                </div>
+                <div class="col-xl-1 p-0 col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                    <b-button type="submit" class="search-btn w-100" variant="outline-secondary">
+                        <span class="fa fa-search"></span>
+                    </b-button>
+                </div>
+            </div>
+        </form>
         <div class="content">
             <div class="row">
                 <div v-for="user in data" class="col-12">
@@ -72,7 +94,8 @@ export default {
                 ordering: '',
                 pagination: ''
             },
-            data: []
+            data: [],
+            showSearch: false
         }
     },
     methods: {
@@ -101,5 +124,11 @@ export default {
 </script>
 
 <style scoped>
+.search-btn {
+    border-radius: 0;
+    font-size: 20px;
+    border: 0;
+    padding-top: 8px;
+}
 
 </style>

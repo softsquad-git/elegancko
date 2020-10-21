@@ -141,6 +141,11 @@ export default {
             })
         }
     },
+    watch: {
+        '$route.params.id' () {
+            this.getProduct();
+        }
+    },
     created() {
         this.getProduct();
         this.getRelatedProducts()

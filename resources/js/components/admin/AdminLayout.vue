@@ -29,5 +29,8 @@
 </script>
 
 <style scoped>
-
+.navbar {
+    border-bottom: 1px solid #e4e4e4!important;
+    margin-bottom: 30px!important;
+}
 </style>

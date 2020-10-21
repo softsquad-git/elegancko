@@ -11005,7 +11005,7 @@ body {
   line-height: 1.2;
   padding: 0 2px;
   border: 0 !important;
-  border-bottom: 2px solid gray !important;
+  border-bottom: 1px dotted gray !important;
   border-radius: 0 !important;
 }
 
@@ -11217,5 +11217,9 @@ footer .footer a.link {
 footer .footer a.fb {
   color: #757373;
   font-size: 22px;
+}
+
+.min-select {
+  border-bottom: 0 !important;
 }
 

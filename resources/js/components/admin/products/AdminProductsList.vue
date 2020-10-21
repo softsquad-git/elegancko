@@ -7,7 +7,7 @@
             <b-button :to="{name: 'AdminDataProduct', params: {action: 'create'}}" variant="outline-secondary"><span
                 class="fa fa-plus"></span>
             </b-button>
-            <b-button variant="outline-secondary"><span class="fa fa-search"></span></b-button>
+            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span></b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>
@@ -25,9 +25,47 @@
                 <b-dropdown-item @click="pagination(24)">24</b-dropdown-item>
             </b-dropdown>
         </div>
+        <form v-if="showSearch" class="mt-3 mb-3" @submit.prevent="loadData">
+            <div class="row pl-3 pr-3">
+                <div class="col-xl-2 p-0 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..." v-model="params.title">
+                </div>
+                <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category_id">
+                        <option selected value="">Wybierz kategorię</option>
+                        <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                    </select>
+                </div>
+                <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <select id="type" aria-label="Rodzaj" class="form-control" v-model="params.type">
+                        <option selected value="">Wybierz rodzaj</option>
+                        <option v-for="type in types" :value="type.value">{{ type.text }}</option>
+                    </select>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 p-0 col-xs-12">
+                    <select id="locale" aria-label="Język" class="form-control" v-model="params.locale">
+                        <option selected value="">Wybierz język</option>
+                        <option value="pl">PL</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-1 p-0 col-sm-12 col-xs-12">
+                    <select id="active" aria-label="Aktywny?" class="form-control" v-model="params.is_activated">
+                        <option selected value="">Aktywny?</option>
+                        <option value="1">Tak</option>
+                        <option value="0">Nie</option>
+                    </select>
+                </div>
+                <div class="col-xl-1 p-0 col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                    <b-button type="submit" class="search-btn w-100" variant="outline-secondary">
+                        <span class="fa fa-search"></span>
+                    </b-button>
+                </div>
+            </div>
+        </form>
         <div class="content">
             <div class="row">
-                <div v-for="product in data" class="col-12">
+                <div v-for="product in data.data" class="col-12">
                     <div class="admin-products-single">
                         <div class="row">
                             <div class="col-xl-1 col-lg-1 col-md-3">
@@ -72,11 +110,20 @@ export default {
             data: [],
             params: {
                 title: '',
-                category: '',
+                category_id: '',
                 is_activated: '',
                 ordering: '',
-                pagination: ''
-            }
+                pagination: '',
+                type: '',
+                locale: ''
+            },
+            categories: [],
+            types: [
+                {value: 2, text: 'Promocja'},
+                {value: 3, text: 'Nowość'},
+                {value: 4, text: 'Nowość w promocji'}
+            ],
+            showSearch: false
         }
     },
     methods: {
@@ -89,9 +136,10 @@ export default {
             this.loadData();
         },
         loadData() {
-            this.$axios.get(`admin/products/all?title=${this.params.title}&category_id=${this.params.category}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
+            this.$axios.get(`admin/products/all?title=${this.params.title}&category_id=${this.params.category_id}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
                 .then((data) => {
-                    this.data = data.data.data;
+                    this.data = data.data;
+                    this.loadCategories();
                 })
                 .catch(() => {
                     //
@@ -122,6 +170,12 @@ export default {
                     }
                 }
             )
+        },
+        loadCategories() {
+            this.$axios.get('categories/all')
+                .then((data) => {
+                    this.categories = data.data.data;
+                })
         }
     },
     created() {
@@ -132,5 +186,11 @@ export default {
 </script>
 
 <style scoped>
+.search-btn {
+    border-radius: 0;
+    font-size: 20px;
+    border: 0;
+    padding-top: 8px;
+}
 
 </style>
