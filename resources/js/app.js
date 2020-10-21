@@ -155,7 +155,7 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path: 'settings/account',
+                    path: 'settings/account/:id?',
                     component: () => import('./components/admin/settings/AdminAccountSetting'),
                     name: 'AdminAccountSetting',
                     meta: {

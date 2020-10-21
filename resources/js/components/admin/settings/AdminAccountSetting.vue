@@ -66,6 +66,7 @@ export default {
                 city: '',
                 post_code: '',
                 address: '',
+                user_id: ''
             }
         }
     },
@@ -98,6 +99,19 @@ export default {
     },
     created() {
         this.loadData();
+        if (this.$route.params.id) {
+            this.$axios.get(`admin/users/find/${this.$route.params.id}`)
+            .then((data) => {
+                let user = data.data.data;
+                this.data.name = user.name;
+                this.data.last_name = user.last_name;
+                this.data.phone = user.phone;
+                this.data.city = user.city;
+                this.data.post_code = user.post_code;
+                this.data.address = user.address;
+                this.data.user_id = this.$route.params.id
+            })
+        }
     }
 }
 </script>

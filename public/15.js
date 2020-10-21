@@ -92,6 +92,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminUsersList",
   data: function data() {
@@ -558,9 +564,14 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "btn btn-outline-secondary btn-sm",
-                        attrs: { to: "#" }
+                        attrs: {
+                          to: {
+                            name: "AdminAccountSetting",
+                            params: { id: user.id }
+                          }
+                        }
                       },
-                      [_vm._v("Edytuj")]
+                      [_vm._v("Edytuj\n                            ")]
                     ),
                     _vm._v(" "),
                     _c(

@@ -4,7 +4,8 @@
             {{ title }}
         </h5>
         <div class="options">
-            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span></b-button>
+            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span>
+            </b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>
@@ -25,10 +26,12 @@
         <form v-if="showSearch" class="mt-3 mb-3" @submit.prevent="loadData">
             <div class="row pl-3 pr-3">
                 <div class="col-xl-4 p-0 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..." v-model="params.name">
+                    <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..."
+                           v-model="params.name">
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0 col-xs-12">
-                    <input id="email" aria-label="E-mail" class="form-control" placeholder="E-mail ..." v-model="params.email">
+                    <input id="email" aria-label="E-mail" class="form-control" placeholder="E-mail ..."
+                           v-model="params.email">
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 p-0 col-sm-12 col-xs-12">
                     <select id="active" aria-label="Aktywny?" class="form-control" v-model="params.is_activated">
@@ -64,12 +67,15 @@
                                         Wysłane wiadomości: <span class="text-bold">{{ user.c_messages }}</span>
                                     </div>
                                     <div class="col-12 info">
-                                        Data rejestracji: <span class="text-bold">{{ user.created_at | moment('calendar') }}</span>
+                                        Data rejestracji: <span
+                                        class="text-bold">{{ user.created_at | moment('calendar') }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 text-right p-3">
-                                <router-link to="#" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
+                                <router-link :to="{name: 'AdminAccountSetting', params: {id: user.id}}"
+                                             class="btn btn-outline-secondary btn-sm">Edytuj
+                                </router-link>
                                 <b-button @click="remove(user.id)" class="btn-sm" variant="outline-secondary">Usuń
                                 </b-button>
                             </div>

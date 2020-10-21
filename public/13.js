@@ -252,7 +252,8 @@ __webpack_require__.r(__webpack_exports__);
         phone: '',
         city: '',
         post_code: '',
-        address: ''
+        address: '',
+        user_id: ''
       }
     };
   },
@@ -287,7 +288,22 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this3 = this;
+
     this.loadData();
+
+    if (this.$route.params.id) {
+      this.$axios.get("admin/users/find/".concat(this.$route.params.id)).then(function (data) {
+        var user = data.data.data;
+        _this3.data.name = user.name;
+        _this3.data.last_name = user.last_name;
+        _this3.data.phone = user.phone;
+        _this3.data.city = user.city;
+        _this3.data.post_code = user.post_code;
+        _this3.data.address = user.address;
+        _this3.data.user_id = _this3.$route.params.id;
+      });
+    }
   }
 });
 
