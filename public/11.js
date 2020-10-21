@@ -81,7 +81,8 @@ __webpack_require__.r(__webpack_exports__);
         is_active: '',
         locale: ''
       },
-      showAdminDataCategory: false
+      showAdminDataCategory: false,
+      category: null
     };
   },
   methods: {
@@ -108,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (type === 'edit') {
-        this.$refs.editCategoryWindow.edit(id); // id = object category
+        this.category = id; // id = object category
 
         this.showAdminDataCategory = true;
       } else if (type === 'remove') {
@@ -300,7 +301,7 @@ var render = function() {
       [
         _vm.showAdminDataCategory
           ? _c("admin-data-category", {
-              ref: "editCategoryWindow",
+              attrs: { category: _vm.category },
               on: { loadData: _vm.closeAdminDataCategory }
             })
           : _vm._e(),

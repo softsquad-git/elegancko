@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="top-banner-products" :style="'background: url('+banner+')'">
+            <h1 class="title title-top-banner">{{title}}</h1>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12">
@@ -8,18 +11,17 @@
                             <div class="single-product">
                                 <router-link
                                     :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
-                                    <img :src="product.image" class="product-image-photo" height="600"
-                                         :alt="product.title">
+                                    <div class="product-image-photo"
+                                         :style="'background: url('+product.image+')'"></div>
                                 </router-link>
                                 <router-link
                                     :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
                                     {{ product.title }}
                                 </router-link>
                                 <div class="footer">
-                            <span class="text-bold">
-                                {{ product.price.price }} {{ product.price.currency }}
-                            </span>
-                                    <span class="fa fa-heart-o"></span>
+                                    <span class="text-bold">
+                                        {{ product.price.price }} {{ product.price.currency }}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +44,8 @@ export default {
                 ordering: '',
                 pagination: ''
             },
-            data: []
+            data: [],
+            banner: ''
         }
     },
     methods: {
@@ -74,6 +77,11 @@ export default {
         }
         this.loadData();
         this.loadCategories();
+        this.$axios.get('front/settings/find-by-type/products_top_banner')
+            .then((data) => {
+                this.banner = data.data.data.value
+            });
+        document.title = this.title;
     }
 }
 </script>
@@ -84,5 +92,12 @@ export default {
     font-size: 20px;
     border: 0;
     padding-top: 8px;
+}
+.top-banner-products {
+    height: 600px;
+    background-position: top center;
+    background-size: cover;
+    text-align: center;
+    line-height: 600px;
 }
 </style>

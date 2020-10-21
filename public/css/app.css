@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Sansita+Swashed:wght@300&display=swap);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Sansita+Swashed);@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Sansita+Swashed:wght@300&display=swap);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
@@ -10962,6 +10962,12 @@ body {
   font-family: "Lato", cursive !important;
 }
 
+.logo-text {
+  font-family: "Sansita Swashed", cursive;
+  font-size: 35px;
+  font-weight: 100;
+}
+
 .title {
   display: block;
   width: 100%;
@@ -11104,15 +11110,9 @@ a:hover {
 }
 
 .product-image-photo {
-  bottom: 0;
-  display: block;
-  height: auto;
-  left: 0;
-  margin: auto;
-  max-width: 100%;
-  right: 0;
-  top: 0;
-  opacity: 1;
+  height: 490px;
+  background-position: top center !important;
+  background-size: cover !important;
 }
 
 .single-product {
@@ -11173,27 +11173,49 @@ a:hover {
   background: #151915 !important;
 }
 
-.vue-notification {
+.subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #937c6f;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.title-top-banner {
+  font-size: 5em;
+  font-weight: bold;
+  color: #fff;
+}
+
+footer .footer {
+  text-align: center;
+  margin-top: 100px;
+}
+
+footer .footer a {
+  color: #000;
+  font-weight: bold;
+}
+
+.footer .footer-info {
+  margin-top: 30px;
   padding: 10px;
-  margin: 0 5px 5px;
-  font-size: 12px;
-  color: #ffffff;
-  background: #44A4FC;
-  border-left: 5px solid #187FE7;
 }
 
-.vue-notification.warn {
-  background: #ffb648;
-  border-left-color: #f48a06;
+footer .footer a.link {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 10px;
 }
 
-.vue-notification.error {
-  background: #E54D42;
-  border-left-color: #B82E24;
-}
-
-.vue-notification.success {
-  background: #68CD86;
-  border-left-color: #42A85F;
+footer .footer a.fb {
+  color: #757373;
+  font-size: 22px;
 }
 

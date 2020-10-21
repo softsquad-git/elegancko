@@ -43,7 +43,8 @@ export default {
                     if (data.data.success === 1) {
                         localStorage.setItem('token', data.data.access_token);
                         localStorage.setItem('userId', data.data.user_id);
-                        this.$router.push({name: 'IndexPage'})
+                        this.$router.push({name: 'IndexPage'});
+                        window.location.reload();
                     }
                 })
                 .catch((error) => {

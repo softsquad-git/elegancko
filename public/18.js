@@ -87,6 +87,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminPageSetting",
@@ -110,7 +121,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$axios.get("admin/settings/all").then(function (data) {
         _this.data = data.data.data;
       });
-    }
+    },
+    remove: function remove(id) {}
   },
   created: function created() {
     this.loadData();
@@ -312,9 +324,59 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(setting.type.name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(setting.value))]),
+                    _c("td", [
+                      setting.resource_type === 2
+                        ? _c("img", {
+                            staticStyle: { width: "100px" },
+                            attrs: {
+                              src: setting.value,
+                              alt: setting.type.name
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      setting.resource_type === 1
+                        ? _c("span", [
+                            _c("span", {
+                              domProps: { innerHTML: _vm._s(setting.value) }
+                            })
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _c("td")
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-sm",
+                            attrs: {
+                              to: {
+                                name: "AdminDataSetting",
+                                params: { action: "edit", id: setting.id }
+                              }
+                            }
+                          },
+                          [_vm._v("Edytuj")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            staticClass: "btn-sm",
+                            attrs: { variant: "outline-secondary" },
+                            on: {
+                              click: function($event) {
+                                return _vm.remove(setting.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Usuń")]
+                        )
+                      ],
+                      1
+                    )
                   ])
                 }),
                 0

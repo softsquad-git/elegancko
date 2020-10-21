@@ -65,11 +65,14 @@ export default {
             type: null
         }
     },
+    props: {
+        category: null
+    },
     methods: {
         save() {
             let url = 'admin/categories/create';
-            if (this.type != null) {
-                let url = `admin/categories/update/${this.type}`;
+            if (this.category != null) {
+                url = `admin/categories/update/${this.type}`;
             }
             this.$axios.post(url, this.data)
                 .then((data) => {
@@ -100,7 +103,19 @@ export default {
         this.$axios.get(`admin/categories/all?parent_id=0`)
         .then((data) => {
             this.categories = data.data.data;
-        })
+        });
+        if (this.category !== null) {
+            this.$axios.get(`admin/categories/find/${this.category.id}`)
+            .then((data) => {
+                let category = data.data.data;
+                this.data.name = category.name;
+                this.data.parent_id = category.parent_id === 0 ? '' : category.parent_id;
+                this.data.alias = category.alias;
+                this.data.locale = category.locale;
+                this.data.is_active = category.is_active;
+                this.data.position = category.position === null ? '' : category.position;
+            })
+        }
     }
 }
 </script>

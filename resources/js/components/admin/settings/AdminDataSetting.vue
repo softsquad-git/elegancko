@@ -12,15 +12,25 @@
         <div class="content mt-4 mb-5">
             <form @submit.prevent="save">
                 <div class="form-group row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                        <select id="type" class="form-control" aria-label="Wybierz typ" v-model="data.type_id">
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12">
+                        <select :disabled="is_edit === true" id="type" class="form-control" aria-label="Wybierz typ" v-model="data.type_id">
                             <option selected value="">Wybierz typ</option>
                             <option v-for="type in types" :value="type.id">{{ type.name }}</option>
                         </select>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                        <input id="value" class="form-control" aria-label="Wartość" v-model="data.value"
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <select id="selectType" class="form-control" aria-label="Wybierz typ" v-model="data.resource_type">
+                            <option selected value="">Wybierz rodzaj</option>
+                            <option value="1">Tekst</option>
+                            <option value="2">Plik</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12">
+                        <input v-if="data.resource_type == 1" id="value" class="form-control" aria-label="Wartość" v-model="data.value"
                                placeholder="Wartość">
+                        <b-form-group v-if="data.resource_type == 2" label="Wbierz plik:" label-for="file-default" label-cols-sm="2">
+                            <b-form-file ref="files" id="file-default"></b-form-file>
+                        </b-form-group>
                     </div>
                 </div>
                 <div class="form-group">
@@ -43,9 +53,11 @@ export default {
             title: 'Dodaj ustawienia',
             data: {
                 type_id: '',
-                value: ''
+                resource_type: '',
+                value: '',
             },
-            types: []
+            types: [],
+            is_edit: false
         }
     },
     methods: {
@@ -59,18 +71,50 @@ export default {
             this.$refs.adminCreateSettingType.openModal();
         },
         save() {
-            this.$axios.post('admin/settings/create', this.data)
+            if (this.data.resource_type == 1) {
+                return this.saveData(this.data)
+            } else {
+                this.data.value = this.$refs.files.files;
+                let formData = new FormData();
+                let file = this.data.value;
+                formData.append('value', file[0], file.name);
+                formData.append('type_id', this.data.type_id);
+                formData.append('resource_type', this.data.resource_type);
+                return this.saveData(formData);
+            }
+        },
+        saveData(data) {
+            let url = 'admin/setting/create'
+            if (this.$route.params.id) {
+                url = `admin/settings/update/${this.$route.params.id}`
+            }
+            this.$axios.post(url, data)
                 .then((data) => {
                     if (data.data.success === 1) {
                         this.data.type_id = '';
                         this.data.value = '';
-                        alert('Dodano ustawienia')
+                        this.data.resource_type = '';
+                        this.$notify({
+                            group: 'notification-success',
+                            title: 'Udało się',
+                            text: 'Dane zostały zapisane'
+                        })
                     }
                 })
         }
     },
     created() {
         this.loadDataTypes();
+        if (this.$route.params.action === 'edit' && this.$route.params.id) {
+            this.$axios.get(`admin/settings/find/${this.$route.params.id}`)
+            .then((data) => {
+                let item = data.data.data;
+                this.data.type_id = item.type.id;
+                this.data.resource_type = item.resource_type;
+                this.data.value = item.value;
+                this.is_edit = true;
+            })
+        }
     }
 }
 </script>

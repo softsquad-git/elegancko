@@ -98,8 +98,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -238,7 +236,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container single-product-page" }, [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mb-2" }, [
       _c("div", { staticClass: "col-xl-6 col-lg-6 col-md-6" }, [
         _c(
           "div",
@@ -397,13 +395,9 @@ var render = function() {
                         }
                       },
                       [
-                        _c("img", {
+                        _c("div", {
                           staticClass: "product-image-photo",
-                          attrs: {
-                            src: item.image,
-                            height: "600",
-                            alt: item.title
-                          }
+                          style: "background: url(" + item.image + ")"
                         })
                       ]
                     ),
@@ -436,9 +430,7 @@ var render = function() {
                             _vm._s(item.price.currency) +
                             "\n                            "
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "fa fa-heart-o" })
+                      ])
                     ])
                   ],
                   1

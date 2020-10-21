@@ -1,57 +1,50 @@
 <template>
-    <div class="home">
-        <div class="top-section">
-            <div class="container-fluid">
-                <div class="search-form">
-                    <form @submit.prevent="search">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-5 col-md-5">
-                                <input id="title" class="form-control" aria-label="Tytuł" type="text"
-                                       placeholder="Tytuł ..." v-model="data.title">
-                            </div>
-                            <div class="col-xl-5 col-lg-5 col-md-5">
-                                <select id="category" class="form-control" aria-label="Kategoria"
-                                        v-model="data.category">
-                                    <option selected value="">Wybierz kategorię</option>
-                                    <option v-for="category in categories" :value="category.id">{{ category.name }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2">
-                                <button class="btn main-btn w-100" type="submit"><span class="fa fa-search"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="home-categories">
-                <div v-if="categories.length >= 5" class="row">
-                    <div v-for="category in categories.slice(0, 2)"
-                         :class="checkClass(2)">
-                        <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
-
-                        </div>
-                    </div>
-                    <div class="mt-4" v-for="category in categories.slice(2, 5)"
-                         :class="checkClass(3)">
-                        <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row" v-else>
-                    <div v-for="category in categories.slice(0, 3)"
-                         :class="checkClass(3)">
-                         <div class="single-category" v-bind:style="{ backgroundImage: 'url(' + category.image + ')' }">
-
-                         </div>
+<div class="home">
+<div class="top-banner" :style="'background: url('+top_banner+')'">er</div>
+    <div class="container text-center mt-5">
+        <div class="subtitle">Tylko najlepsze</div>
+        <div class="title text-uppercase">Promocje</div>
+        <div class="row mt-4 mb-5">
+            <div v-for="product in products_promo" class="col-xl-4 col-lg-4 col-md-4">
+                <div class="single-product">
+                    <router-link
+                        :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
+                        <div class="product-image-photo" :style="'background: url('+product.image+')'"></div>
+                    </router-link>
+                    <router-link
+                        :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
+                        {{ product.title }}
+                    </router-link>
+                    <div class="footer">
+                            <span class="text-bold">
+                                {{ product.price.price }} {{ product.price.currency }}
+                            </span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="subtitle">Tylko najlepsze</div>
+        <div class="title text-uppercase">Nowości</div>
+        <div class="row mt-4">
+            <div v-for="product in products_news" class="col-xl-4 col-lg-4 col-md-4">
+                <div class="single-product">
+                    <router-link
+                        :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
+                        <div class="product-image-photo" :style="'background: url('+product.image+')'"></div>
+                    </router-link>
+                    <router-link
+                        :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
+                        {{ product.title }}
+                    </router-link>
+                    <div class="footer">
+                            <span class="text-bold">
+                                {{ product.price.price }} {{ product.price.currency }}
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </template>
 
@@ -60,109 +53,40 @@
         name: "IndexPage",
         data() {
             return {
-                data: {
-                    title: '',
-                    category: ''
-                },
-                categories: []
+                top_banner: '',
+                products_promo: [],
+                products_news: []
             }
         },
         methods: {
-            search() {
-                //
+            loadProductsPromo() {
+                this.$axios.get('front/products/all?type=2&pagination=3')
+                .then((data) => {
+                    this.products_promo = data.data.data;
+                })
             },
-            loadCategories() {
-                this.$axios.get('categories/all')
-                    .then((data) => {
-                        this.categories = data.data.data;
-                        console.log(data.data.data)
-                    })
-                    .catch(() => {
-                        //
-                    })
-            },
-            checkClass(count) {
-                let col = {
-                    xl: 4,
-                    lg: 4,
-                    md: 4,
-                    sm: 12,
-                    xs: 12
-                };
-                switch (count) {
-                    case 1:
-                        col = {
-                            xl: 6,
-                            lg: 6,
-                            md: 6,
-                            sm: 12,
-                            xs: 12
-                        }
-                        break;
-                    case 2:
-                        col = {
-                            xl: 6,
-                            lg: 6,
-                            md: 6,
-                            sm: 12,
-                            xs: 12
-                        }
-                        break;
-                    case 3:
-                        col = {
-                            xl: 4,
-                            lg: 4,
-                            md: 4,
-                            sm: 12,
-                            xs: 12
-                        }
-                        break;
-                    case 4:
-                        col = {
-                            xl: 3,
-                            lg: 3,
-                            md: 3,
-                            sm: 12,
-                            xs: 12
-                        }
-                        break;
-                }
-                return 'col-xl-'+col.xl+' col-lg-'+col.lg+' col-md-'+col.md+' col-sm-'+col.sm+' col-xs-'+col.xs;
+            loadProductsNews() {
+                this.$axios.get('front/products/all?type=3&pagination=3')
+                .then((data) => {
+                    this.products_news = data.data.data;
+                })
             }
         },
         created() {
-            this.loadCategories();
+            this.$axios.get('front/settings/find-by-type/home_top_banner')
+            .then((data) => {
+                this.top_banner = data.data.data.value
+            });
+            this.loadProductsPromo();
+            this.loadProductsNews();
         }
     }
 </script>
 
 <style scoped>
-    .search-form {
-        padding: 30px;
-        background: #fff;
-        border: 1px solid #e8e4e4;
-        border-radius: 6px;
-        position: absolute;
-        width: 98.3%;
-        bottom: 50%;
-        top: 50%;
-        height: 114px;
-    }
-
-    #title, #category {
-        margin-top: 6px;
-    }
-
-    .top-section {
-        background: url("https://i.pinimg.com/originals/75/1d/2b/751d2b30f041d6a7ec336dbdef797311.jpg");
-        background-size: cover;
-        background-position: center center;
-        height: 100vh;
-        position: relative;
-    }
-    .home-categories .single-category {
-        min-height: 600px;
-        background-size: cover;
-        background-position: center center;
-    }
+.top-banner {
+    height: 90vh;
+    background-position: center center;
+    background-size: cover;
+}
 </style>

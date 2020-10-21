@@ -78,8 +78,25 @@ class AdminSettingController extends Controller
     public function create(AdminSettingRequest $request): JsonResponse
     {
         try {
-            $this->adminSettingService->create($request->all());
+            $data = $request->all();
+            if ($request->resource_type === $this->adminSettingService::ADMIN_SETTING_FILE)
+                $data['value'] = $request->file('value');
+            $this->adminSettingService->create($data);
             return $this->successResponse(trans('messages.created'));
+        } catch (Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+
+    /**
+     * @param int $settingId
+     * @return AdminSettingResource|JsonResponse
+     */
+    public function find(int $settingId)
+    {
+        try {
+            $item = $this->adminSettingRepository->findById($settingId);
+            return new AdminSettingResource($item);
         } catch (Exception $e) {
             return $this->errorResponse($e);
         }
@@ -93,6 +110,9 @@ class AdminSettingController extends Controller
     public function update(AdminSettingRequest $request, int $settingId): JsonResponse
     {
         try {
+            $data = $request->only(['resource_type', 'value']);
+            if ($request->resource_type === $this->adminSettingService::ADMIN_SETTING_FILE)
+                $data['value'] = $request->file('value');
             $this->adminSettingService->update($request->all(), $settingId);
             return $this->successResponse(trans('messages.updated'));
         } catch (Exception $e) {

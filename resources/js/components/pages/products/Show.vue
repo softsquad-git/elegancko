@@ -1,6 +1,6 @@
 <template>
 <div class="container single-product-page">
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-xl-6 col-lg-6 col-md-6">
             <div class="single-product-images" v-viewer>
                 <img class="w-100" v-for="image in product.images" :src="image" alt="'sd">
@@ -60,8 +60,7 @@
             <div class="single-product">
                 <router-link
                     :to="{name: 'ProductShow', params: {id: item.id, title: item.title}}">
-                    <img :src="item.image" class="product-image-photo" height="600"
-                         :alt="item.title">
+                    <div class="product-image-photo" :style="'background: url('+item.image+')'"></div>
                 </router-link>
                 <router-link
                     :to="{name: 'ProductShow', params: {id: item.id, title: item.title}}">
@@ -71,7 +70,6 @@
                             <span class="text-bold">
                                 {{ item.price.price }} {{ item.price.currency }}
                             </span>
-                    <span class="fa fa-heart-o"></span>
                 </div>
             </div>
         </div>

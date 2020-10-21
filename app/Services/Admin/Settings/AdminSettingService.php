@@ -2,12 +2,15 @@
 
 namespace App\Services\Admin\Settings;
 
+use App\Helpers\Upload;
 use App\Models\Admin\AdminSetting;
 use App\Repositories\Admin\Settings\AdminSettingRepository;
 use \Exception;
 
 class AdminSettingService
 {
+    const ADMIN_SETTING_TEXT = 1;
+    const ADMIN_SETTING_FILE = 2;
     /**
      * @var AdminSettingRepository
      */
@@ -31,6 +34,8 @@ class AdminSettingService
         $item = $this->adminSettingRepository->findByTypeId($data['type_id']);
         if (!empty($item))
             $this->remove($item->id);
+        if ($data['resource_type'] != AdminSettingService::ADMIN_SETTING_TEXT)
+            $data['value'] = Upload::single('settings/'.$data['resource_type'].'/'.$data['type_id'], $data['value']);
         $item = AdminSetting::create($data);
         if (!empty($item))
             return $item;
@@ -46,6 +51,8 @@ class AdminSettingService
     public function update(array $data, int $settingId)
     {
         $item = $this->adminSettingRepository->findById($settingId);
+        if ($data['resource_type'] != AdminSettingService::ADMIN_SETTING_TEXT)
+            $data['value'] = Upload::single('settings/'.$data['resource_type'].'/'.$item->type_id, $data['value']);
         $item->update($data);
         return $item;
     }

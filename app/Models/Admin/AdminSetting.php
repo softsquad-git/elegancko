@@ -19,6 +19,7 @@ class AdminSetting extends Model
 
     protected $fillable = [
         'type_id',
+        'resource_type',
         'value'
     ];
 

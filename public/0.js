@@ -75,14 +75,17 @@ __webpack_require__.r(__webpack_exports__);
       type: null
     };
   },
+  props: {
+    category: null
+  },
   methods: {
     save: function save() {
       var _this = this;
 
       var url = 'admin/categories/create';
 
-      if (this.type != null) {
-        var _url = "admin/categories/update/".concat(this.type);
+      if (this.category != null) {
+        url = "admin/categories/update/".concat(this.type);
       }
 
       this.$axios.post(url, this.data).then(function (data) {
@@ -114,6 +117,18 @@ __webpack_require__.r(__webpack_exports__);
     this.$axios.get("admin/categories/all?parent_id=0").then(function (data) {
       _this2.categories = data.data.data;
     });
+
+    if (this.category !== null) {
+      this.$axios.get("admin/categories/find/".concat(this.category.id)).then(function (data) {
+        var category = data.data.data;
+        _this2.data.name = category.name;
+        _this2.data.parent_id = category.parent_id === 0 ? '' : category.parent_id;
+        _this2.data.alias = category.alias;
+        _this2.data.locale = category.locale;
+        _this2.data.is_active = category.is_active;
+        _this2.data.position = category.position === null ? '' : category.position;
+      });
+    }
   }
 });
 

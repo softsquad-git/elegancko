@@ -53,8 +53,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 text-right p-3">
                                 <router-link :to="{name: 'AdminDataProduct', params: {action: 'edit', id: product.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
-                                <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">Usuń
-                                </b-button>
+                                <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>
                             </div>
                         </div>
                     </div>

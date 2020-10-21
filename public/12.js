@@ -74,7 +74,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminProductsList",
   data: function data() {
@@ -390,7 +389,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Usuń\n                            ")]
+                      [_vm._v("Usuń")]
                     )
                   ],
                   1

@@ -19,6 +19,7 @@ class ProductRepository
         $category = $params['category_id'];
         $activated = $params['is_activated'];
         $locale = $params['locale'];
+        $type = $params['type'];
         if (Auth::check() && Auth::user()->role != config('app.user.roles.admin'))
             $activated = Status::STATUS_ON;
         else if (!Auth::check())
@@ -32,6 +33,8 @@ class ProductRepository
             $data->where('is_activated', $activated);
         if (!empty($locale))
             $data->where('locale', $locale);
+        if (!empty($type))
+            $data->where('type', $type);
 
         return $data->paginate($params['pagination'] ?? config('app.df.pagination'));
     }

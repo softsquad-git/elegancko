@@ -37,8 +37,19 @@
                 <tr v-for="(setting, index) in data">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ setting.type.name }}</td>
-                    <td>{{ setting.value }}</td>
-                    <td></td>
+                    <td>
+                        <img v-if="setting.resource_type === 2" style="width: 100px" :src="setting.value" :alt="setting.type.name">
+                        <span v-if="setting.resource_type === 1"><span v-html="setting.value"></span> </span>
+                    </td>
+                    <td>
+                        <router-link
+                            :to="{name: 'AdminDataSetting',
+                             params: {action: 'edit', id: setting.id}}"
+                            class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
+                        <b-button @click="remove(setting.id)"
+                                  class="btn-sm"
+                                  variant="outline-secondary">Usuń</b-button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -68,6 +79,9 @@ export default {
             .then((data) => {
                 this.data = data.data.data;
             })
+        },
+        remove(id) {
+
         }
     },
     created() {

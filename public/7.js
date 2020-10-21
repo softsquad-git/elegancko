@@ -41,6 +41,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   data: function data() {
@@ -52,7 +54,8 @@ __webpack_require__.r(__webpack_exports__);
         ordering: '',
         pagination: ''
       },
-      data: []
+      data: [],
+      banner: ''
     };
   },
   methods: {
@@ -80,6 +83,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this3 = this;
+
     var category = this.$route.params.category;
 
     if (category) {
@@ -88,6 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loadData();
     this.loadCategories();
+    this.$axios.get('front/settings/find-by-type/products_top_banner').then(function (data) {
+      _this3.banner = data.data.data.value;
+    });
+    document.title = this.title;
   }
 });
 
@@ -105,7 +114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.search-btn[data-v-08f4c9bd] {\n    border-radius: 0;\n    font-size: 20px;\n    border: 0;\n    padding-top: 8px;\n}\n", ""]);
+exports.push([module.i, "\n.search-btn[data-v-08f4c9bd] {\n    border-radius: 0;\n    font-size: 20px;\n    border: 0;\n    padding-top: 8px;\n}\n.top-banner-products[data-v-08f4c9bd] {\n    height: 600px;\n    background-position: top center;\n    background-size: cover;\n    text-align: center;\n    line-height: 600px;\n}\n", ""]);
 
 // exports
 
@@ -158,6 +167,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "top-banner-products",
+        style: "background: url(" + _vm.banner + ")"
+      },
+      [
+        _c("h1", { staticClass: "title title-top-banner" }, [
+          _vm._v(_vm._s(_vm.title))
+        ])
+      ]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xl-12 col-lg-12 col-md-12" }, [
@@ -184,13 +206,9 @@ var render = function() {
                           }
                         },
                         [
-                          _c("img", {
+                          _c("div", {
                             staticClass: "product-image-photo",
-                            attrs: {
-                              src: product.image,
-                              height: "600",
-                              alt: product.title
-                            }
+                            style: "background: url(" + product.image + ")"
                           })
                         ]
                       ),
@@ -217,15 +235,13 @@ var render = function() {
                       _c("div", { staticClass: "footer" }, [
                         _c("span", { staticClass: "text-bold" }, [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                    " +
                               _vm._s(product.price.price) +
                               " " +
                               _vm._s(product.price.currency) +
-                              "\n                        "
+                              "\n                                "
                           )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "fa fa-heart-o" })
+                        ])
                       ])
                     ],
                     1

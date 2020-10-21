@@ -108,6 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminDataSetting",
@@ -119,9 +129,11 @@ __webpack_require__.r(__webpack_exports__);
       title: 'Dodaj ustawienia',
       data: {
         type_id: '',
+        resource_type: '',
         value: ''
       },
-      types: []
+      types: [],
+      is_edit: false
     };
   },
   methods: {
@@ -136,19 +148,56 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.adminCreateSettingType.openModal();
     },
     save: function save() {
+      if (this.data.resource_type == 1) {
+        return this.saveData(this.data);
+      } else {
+        this.data.value = this.$refs.files.files;
+        var formData = new FormData();
+        var file = this.data.value;
+        formData.append('value', file[0], file.name);
+        formData.append('type_id', this.data.type_id);
+        formData.append('resource_type', this.data.resource_type);
+        return this.saveData(formData);
+      }
+    },
+    saveData: function saveData(data) {
       var _this2 = this;
 
-      this.$axios.post('admin/settings/create', this.data).then(function (data) {
+      var url = 'admin/setting/create';
+
+      if (this.$route.params.id) {
+        url = "admin/settings/update/".concat(this.$route.params.id);
+      }
+
+      this.$axios.post(url, data).then(function (data) {
         if (data.data.success === 1) {
           _this2.data.type_id = '';
           _this2.data.value = '';
-          alert('Dodano ustawienia');
+          _this2.data.resource_type = '';
+
+          _this2.$notify({
+            group: 'notification-success',
+            title: 'Udało się',
+            text: 'Dane zostały zapisane'
+          });
         }
       });
     }
   },
   created: function created() {
+    var _this3 = this;
+
     this.loadDataTypes();
+
+    if (this.$route.params.action === 'edit' && this.$route.params.id) {
+      this.$axios.get("admin/settings/find/".concat(this.$route.params.id)).then(function (data) {
+        var item = data.data.data;
+        _this3.data.type_id = item.type.id;
+        _this3.data.resource_type = item.resource_type;
+        _this3.data.value = item.value;
+        _this3.is_edit = true;
+      });
+    }
   }
 });
 
@@ -341,7 +390,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12"
+                  staticClass: "col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12"
                 },
                 [
                   _c(
@@ -356,7 +405,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "type", "aria-label": "Wybierz typ" },
+                      attrs: {
+                        disabled: _vm.is_edit === true,
+                        id: "type",
+                        "aria-label": "Wybierz typ"
+                      },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -396,35 +449,112 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12"
+                  staticClass: "col-xl-2 col-lg-2 col-md-2 col-xs-12 col-sm-12"
                 },
                 [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.data.value,
-                        expression: "data.value"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "value",
-                      "aria-label": "Wartość",
-                      placeholder: "Wartość"
-                    },
-                    domProps: { value: _vm.data.value },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.data.resource_type,
+                          expression: "data.resource_type"
                         }
-                        _vm.$set(_vm.data, "value", $event.target.value)
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "selectType", "aria-label": "Wybierz typ" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.data,
+                            "resource_type",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { selected: "", value: "" } }, [
+                        _vm._v("Wybierz rodzaj")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Tekst")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("Plik")])
+                    ]
+                  )
                 ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12"
+                },
+                [
+                  _vm.data.resource_type == 1
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.data.value,
+                            expression: "data.value"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "value",
+                          "aria-label": "Wartość",
+                          placeholder: "Wartość"
+                        },
+                        domProps: { value: _vm.data.value },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.data, "value", $event.target.value)
+                          }
+                        }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.data.resource_type == 2
+                    ? _c(
+                        "b-form-group",
+                        {
+                          attrs: {
+                            label: "Wbierz plik:",
+                            "label-for": "file-default",
+                            "label-cols-sm": "2"
+                          }
+                        },
+                        [
+                          _c("b-form-file", {
+                            ref: "files",
+                            attrs: { id: "file-default" }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ],
+                1
               )
             ]),
             _vm._v(" "),

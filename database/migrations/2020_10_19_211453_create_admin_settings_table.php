@@ -16,6 +16,7 @@ class CreateAdminSettingsTable extends Migration
         Schema::create('admin_settings', function (Blueprint $table) {
             $table->id();
             $table->integer('type_id')->index();
+            $table->integer('resource_type'); // 1-text 2-file //
             $table->string('value');
         });
     }

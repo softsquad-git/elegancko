@@ -7,4 +7,7 @@ Route::group(['prefix' => 'front', 'namespace' => 'Front'], function() {
        Route::get('all', 'ProductController@index');
        Route::get('find/{productId}', 'ProductController@findById');
     });
+    Route::group(['prefix' => 'settings', 'namespace' => 'Settings'], function () {
+        Route::get('find-by-type/{type}', 'PageSettingController@findByType');
+    });
 });

@@ -28,7 +28,7 @@
         <div class="content">
             <admin-data-category
                 v-if="showAdminDataCategory"
-                ref="editCategoryWindow"
+                :category="category"
                 @loadData="closeAdminDataCategory"></admin-data-category>
             <div class="row">
                 <div class="col-12" v-for="category in data">
@@ -68,7 +68,8 @@ export default {
                 is_active: '',
                 locale: ''
             },
-            showAdminDataCategory: false
+            showAdminDataCategory: false,
+            category: null
         }
     },
     methods: {
@@ -92,7 +93,7 @@ export default {
         },
         action(id, type) {
             if (type === 'edit') {
-                this.$refs.editCategoryWindow.edit(id); // id = object category
+                this.category = id; // id = object category
                 this.showAdminDataCategory = true;
             } else if (type === 'remove') {
                 this.$confirm(
