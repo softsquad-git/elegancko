@@ -47,42 +47,39 @@
                 </div>
             </div>
         </form>
-        <div class="content">
-            <div class="row">
-                <div v-for="user in data" class="col-12">
-                    <div class="admin-products-single">
-                        <div class="row">
-                            <div class="col-xl-1 col-lg-1 col-md-3">
-                                <img class="w-100" :src="user.avatar" :alt="user.name.full">
-                            </div>
-                            <div class="col-xl-7 col-lg-7 col-md-5">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="admin-product-content">
-                                            <router-link to="#"><h5>{{ user.name.full }}</h5></router-link>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 info">
-                                        Złożone zamówienia: <span class="text-bold">{{ user.c_orders }}</span>
-                                        Wysłane wiadomości: <span class="text-bold">{{ user.c_messages }}</span>
-                                    </div>
-                                    <div class="col-12 info">
-                                        Data rejestracji: <span
-                                        class="text-bold">{{ user.created_at | moment('calendar') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 text-right p-3">
-                                <router-link :to="{name: 'AdminAccountSetting', params: {id: user.id}}"
-                                             class="btn btn-outline-secondary btn-sm">Edytuj
-                                </router-link>
-                                <b-button @click="remove(user.id)" class="btn-sm" variant="outline-secondary">Usuń
-                                </b-button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="content mt-4">
+            <table v-if="data.data.length > 0" class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">L.p.</th>
+                    <th scope="col">Imię i Nazwisko</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Złożone zamówienia</th>
+                    <th scope="col">Wysłane wiadomości</th>
+                    <th scope="col">Data rejestracji</th>
+                    <th scope="col">Aktywny</th>
+                    <th scope="col">Opcje</th>
+                </tr>
+                </thead>
+                <tr v-for="(user, index) in data.data">
+                    <th scope="row" class="text-center">{{ index + 1 }}</th>
+                    <td>{{ user.name.full }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.c_orders }}</td>
+                    <td>{{ user.c_messages }}</td>
+                    <td>{{ user.created_at | moment('calendar') }}</td>
+                    <td>{{ user.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
+                    <td>
+                        <router-link :to="{name: 'AdminAccountSetting', params: {id: user.id}}"
+                                     class="btn btn-outline-secondary btn-sm">Edytuj
+                        </router-link>
+                        <b-button @click="remove(user.id)" class="btn-sm" variant="outline-secondary">Usuń
+                        </b-button>
+                    </td>
+                </tr>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -108,7 +105,7 @@ export default {
         loadData() {
             this.$axios.get(`admin/users/all?name=${this.params.name}&email=${this.params.email}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
-                    this.data = data.data.data;
+                    this.data = data.data;
                 })
         },
         ordering(ordering) {

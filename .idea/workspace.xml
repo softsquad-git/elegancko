@@ -20,25 +20,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Pages/PageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/Pages/PageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Pages/PageRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Pages/PageResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Pages/PagesResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/Pages/PageRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Categories/CategoryImageService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Pages/PageService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_235459_create_pages_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/8/d41023c20c20423bab19722d10bb5265.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Users/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Users/UserResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Categories/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Categories/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductsResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Categories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Categories/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/11.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/11.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/12.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/12.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/13.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/13.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/14.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/14.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/15.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/15.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/20.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/21.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/21.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/8.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/8.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/9.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/admin.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/admin.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +301,7 @@
       <workItem from="1603123621790" duration="4170000" />
       <workItem from="1603129682551" duration="58225000" />
       <workItem from="1603301310679" duration="14831000" />
-      <workItem from="1603322696234" duration="1730000" />
+      <workItem from="1603322696234" duration="13455000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -346,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603322731445</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="settings">
+      <created>1603324483489</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603324483489</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +398,8 @@
     <MESSAGE value="products" />
     <MESSAGE value="admin setting &amp; products" />
     <MESSAGE value="admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin" />
+    <MESSAGE value="settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="355" width="574" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603212948419">
@@ -386,10 +414,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603228915685" />
-    <state x="499" y="-261" width="912" height="916" key="CommitChangelistDialog2" timestamp="1603322728859">
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1603324483055">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="499" y="-261" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603322728859" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603324483054" />
     <state x="615" y="320" width="682" height="434" key="EditFileWatcherDialog" timestamp="1602532269247">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -415,27 +443,27 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603217144173" />
-    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog" timestamp="1603306159480">
+    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog" timestamp="1603385952867">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="702" y="252" width="456" height="539" key="NewPhpClassDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602534828881" />
-    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603306159480" />
+    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603385952867" />
     <state x="449" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1603298815458">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1603298815458" />
-    <state width="544" height="446" key="SwitcherDM" timestamp="1602695102945">
+    <state width="544" height="446" key="SwitcherDM" timestamp="1603326888979">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1602695102945" />
+    <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1603326888979" />
     <state x="100" y="100" width="1716" height="877" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1602528935502">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="100" y="100" width="1716" height="877" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602528935502" />
-    <state x="100" y="127" width="1720" height="853" key="dock-window-1" timestamp="1603306789707">
+    <state x="100" y="127" width="1720" height="853" key="dock-window-1" timestamp="1603325040505">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="100" y="127" width="1720" height="853" key="dock-window-1/0.27.1920.1053@0.27.1920.1053" timestamp="1603306789707" />
+    <state x="100" y="127" width="1720" height="853" key="dock-window-1/0.27.1920.1053@0.27.1920.1053" timestamp="1603325040505" />
     <state x="100" y="127" width="1720" height="853" key="dock-window-2" timestamp="1603179261272">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -444,10 +472,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="972" y="444" width="618" height="522" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1603311875065" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1603228871208">
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1603384018722">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="621" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602531178906" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1603228871208" />
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1603384018722" />
   </component>
 </project>

@@ -7,6 +7,7 @@
                 <b-nav-item :to="{name: 'IndexPage'}">Panel administracyjny</b-nav-item>
                 <b-nav-item :to="{name: 'AdminProductsList'}">Produkty</b-nav-item>
                 <b-nav-item :to="{name: 'AdminCategoriesList'}">Kategorie</b-nav-item>
+                <b-nav-item :to="{name: 'AdminPagesList'}">Strony</b-nav-item>
                 <b-nav-item :to="{name: 'AdminUsersList'}">Użytkownicy</b-nav-item>
                 <b-nav-item-dropdown text="Ustawienia" right>
                     <b-dropdown-item :to="{name: 'AdminPageSetting'}">Strony</b-dropdown-item>

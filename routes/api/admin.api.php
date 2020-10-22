@@ -40,17 +40,24 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('find/{userId}', 'UserController@findById');
     });
     Route::group(['prefix' => 'settings', 'namespace' => 'Settings'], function () {
-       Route::get('find-by/{type}', 'AdminSettingController@findByType');
-       Route::get('find/{settingId}', 'AdminSettingController@find');
-       Route::get('all', 'AdminSettingController@index');
-       Route::post('create', 'AdminSettingController@create');
-       Route::post('update/{settingId}', 'AdminSettingController@update');
-       Route::delete('remove/{settingId}', 'AdminSettingController@remove');
-       Route::group(['prefix' => 'types'], function () {
-           Route::get('all', 'AdminSettingTypeController@index');
-           Route::post('create', 'AdminSettingTypeController@create');
-           Route::put('update/{typeId}', 'AdminSettingTypeController@update');
-           Route::delete('remove/{typeId}', 'AdminSettingTypeController@remove');
-       });
+        Route::get('find-by/{type}', 'AdminSettingController@findByType');
+        Route::get('find/{settingId}', 'AdminSettingController@find');
+        Route::get('all', 'AdminSettingController@index');
+        Route::post('create', 'AdminSettingController@create');
+        Route::post('update/{settingId}', 'AdminSettingController@update');
+        Route::delete('remove/{settingId}', 'AdminSettingController@remove');
+        Route::group(['prefix' => 'types'], function () {
+            Route::get('all', 'AdminSettingTypeController@index');
+            Route::post('create', 'AdminSettingTypeController@create');
+            Route::put('update/{typeId}', 'AdminSettingTypeController@update');
+            Route::delete('remove/{typeId}', 'AdminSettingTypeController@remove');
+        });
+    });
+    Route::group(['prefix' => 'pages', 'namespace' => 'Pages'], function () {
+        Route::get('all', 'PageController@index');
+        Route::get('find/{pageId}', 'PageController@findById');
+        Route::post('create', 'PageController@create');
+        Route::post('update/{pageId}', 'PageController@update');
+        Route::delete('remove/{pageId}', 'PageController@remove');
     });
 });

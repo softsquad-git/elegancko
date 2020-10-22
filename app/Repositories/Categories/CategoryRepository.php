@@ -27,9 +27,9 @@ class CategoryRepository
             $data->where('alias', $alias);
         if (!empty($parentId))
             $data->where('parent_id', $parentId);
-        if (Auth::user()->role == config('app.users.roles.admin') && !empty($isActive))
+        if (Auth::check() && Auth::user()->role == config('app.users.roles.admin') && !empty($isActive))
             $data->where('is_active', $isActive);
-        if (Auth::user()->role != config('app.users.roles.admin'))
+        if (!Auth::check() || Auth::user()->role != config('app.users.roles.admin'))
             $data->where('is_active', Status::STATUS_ON);
         if (!empty($locale)) {
             $data->where('locale', $locale);

@@ -95,9 +95,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminUsersList",
   data: function data() {
@@ -119,7 +116,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$axios.get("admin/users/all?name=".concat(this.params.name, "&email=").concat(this.params.email, "&is_activated=").concat(this.params.is_activated, "&ordering=").concat(this.params.ordering, "&pagination=").concat(this.params.pagination)).then(function (data) {
-        _this.data = data.data.data;
+        _this.data = data.data;
       });
     },
     ordering: function ordering(_ordering) {
@@ -498,108 +495,112 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "content" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.data, function(user) {
-          return _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "admin-products-single" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-xl-1 col-lg-1 col-md-3" }, [
-                  _c("img", {
-                    staticClass: "w-100",
-                    attrs: { src: user.avatar, alt: user.name.full }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-7 col-lg-7 col-md-5" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        { staticClass: "admin-product-content" },
-                        [
-                          _c("router-link", { attrs: { to: "#" } }, [
-                            _c("h5", [_vm._v(_vm._s(user.name.full))])
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 info" }, [
-                      _vm._v(
-                        "\n                                    Złożone zamówienia: "
-                      ),
-                      _c("span", { staticClass: "text-bold" }, [
-                        _vm._v(_vm._s(user.c_orders))
-                      ]),
-                      _vm._v(
-                        "\n                                    Wysłane wiadomości: "
-                      ),
-                      _c("span", { staticClass: "text-bold" }, [
-                        _vm._v(_vm._s(user.c_messages))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 info" }, [
-                      _vm._v(
-                        "\n                                    Data rejestracji: "
-                      ),
-                      _c("span", { staticClass: "text-bold" }, [
-                        _vm._v(
-                          _vm._s(_vm._f("moment")(user.created_at, "calendar"))
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-xl-4 col-lg-4 col-md-4 text-right p-3" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-outline-secondary btn-sm",
-                        attrs: {
-                          to: {
-                            name: "AdminAccountSetting",
-                            params: { id: user.id }
-                          }
-                        }
-                      },
-                      [_vm._v("Edytuj\n                            ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        staticClass: "btn-sm",
-                        attrs: { variant: "outline-secondary" },
-                        on: {
-                          click: function($event) {
-                            return _vm.remove(user.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Usuń\n                            ")]
+    _c("div", { staticClass: "content mt-4" }, [
+      _vm.data.data.length > 0
+        ? _c(
+            "table",
+            { staticClass: "table" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.data.data, function(user, index) {
+                return _c("tr", [
+                  _c(
+                    "th",
+                    { staticClass: "text-center", attrs: { scope: "row" } },
+                    [_vm._v(_vm._s(index + 1))]
+                  ),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.name.full))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.email))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.c_orders))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.c_messages))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(_vm._f("moment")(user.created_at, "calendar"))
                     )
-                  ],
-                  1
-                )
-              ])
-            ])
-          ])
-        }),
-        0
-      )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(user.is_activated == 1 ? "Tak" : "Nie"))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-outline-secondary btn-sm",
+                          attrs: {
+                            to: {
+                              name: "AdminAccountSetting",
+                              params: { id: user.id }
+                            }
+                          }
+                        },
+                        [_vm._v("Edytuj\n                    ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn-sm",
+                          attrs: { variant: "outline-secondary" },
+                          on: {
+                            click: function($event) {
+                              return _vm.remove(user.id)
+                            }
+                          }
+                        },
+                        [_vm._v("Usuń\n                    ")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              _c("tbody")
+            ],
+            2
+          )
+        : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("L.p.")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Imię i Nazwisko")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("E-mail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Złożone zamówienia")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Wysłane wiadomości")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Data rejestracji")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aktywny")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Opcje")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

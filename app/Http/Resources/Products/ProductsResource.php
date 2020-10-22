@@ -30,6 +30,7 @@ class ProductsResource extends JsonResource
                 'price' => $this->price,
                 'currency' => App::getLocale() == 'pl' ? 'zł' : '$'
             ],
+            'locale' => $this->locale,
             'created_at' => (string)$this->created_at,
             'image' => Images::find($this->id, ProductService::RESOURCE_TYPE)
         ];

@@ -58,6 +58,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminDataCategory",
   data: function data() {
@@ -70,27 +89,44 @@ __webpack_require__.r(__webpack_exports__);
         parent_id: '',
         is_active: '',
         position: '',
-        locale: ''
-      },
-      type: null
+        locale: '',
+        image: null
+      }
     };
-  },
-  props: {
-    category: null
   },
   methods: {
     save: function save() {
+      this.data.image = this.$refs.files.files;
+
+      if (this.data.image !== null) {
+        var formData = new FormData();
+        var image = this.data.image;
+        formData.append('image', image[0], image.name);
+        formData.append('name', this.data.name);
+        formData.append('alias', this.data.alias);
+        formData.append('parent_id', this.data.parent_id);
+        formData.append('is_active', this.data.is_active);
+        formData.append('position', this.data.position);
+        formData.append('locale', this.data.locale);
+        return this.saveData(formData);
+      } else {
+        return this.saveData(this.data);
+      }
+    },
+    saveData: function saveData(data) {
       var _this = this;
 
       var url = 'admin/categories/create';
 
-      if (this.category != null) {
-        url = "admin/categories/update/".concat(this.type);
+      if (this.$route.params.id) {
+        url = "admin/categories/update/".concat(this.$route.params.id);
       }
 
-      this.$axios.post(url, this.data).then(function (data) {
+      this.$axios.post(url, data).then(function (data) {
         if (data.data.success === 1) {
-          _this.$emit('loadData');
+          _this.$router.push({
+            name: 'AdminCategoriesList'
+          });
 
           _this.data.name = '';
           _this.data.alias = '';
@@ -100,15 +136,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (error) {//
       });
-    },
-    edit: function edit(category) {
-      this.type = category.id;
-      this.data.name = category.name;
-      this.data.alias = category.alias;
-      this.data.parent_id = category.parent_id;
-      this.data.is_active = category.is_active;
-      this.data.position = category.position;
-      this.data.locale = category.locale;
     }
   },
   created: function created() {
@@ -118,8 +145,8 @@ __webpack_require__.r(__webpack_exports__);
       _this2.categories = data.data.data;
     });
 
-    if (this.category !== null) {
-      this.$axios.get("admin/categories/find/".concat(this.category.id)).then(function (data) {
+    if (this.$route.params.id) {
+      this.$axios.get("admin/categories/find/".concat(this.$route.params.id)).then(function (data) {
         var category = data.data.data;
         _this2.data.name = category.name;
         _this2.data.parent_id = category.parent_id === 0 ? '' : category.parent_id;
@@ -149,277 +176,340 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      staticClass: "mt-5",
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.save($event)
-        }
-      }
-    },
-    [
-      _c("div", { staticClass: "row form-group" }, [
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.data.name,
-                expression: "data.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              id: "name",
-              type: "text",
-              placeholder: "Nazwa",
-              "aria-label": "Nazwa"
-            },
-            domProps: { value: _vm.data.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.data, "name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.data.alias,
-                expression: "data.alias"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              id: "alias",
-              type: "text",
-              placeholder: "Alias",
-              "aria-label": "Alias"
-            },
-            domProps: { value: _vm.data.alias },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.data, "alias", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data.parent_id,
-                  expression: "data.parent_id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "parent", "aria-label": "Kategoria nadrzędna" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.data,
-                    "parent_id",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Wybierz kategorię nadrzędną")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.categories, function(category) {
-                return _c("option", { domProps: { value: category.id } }, [
-                  _vm._v(_vm._s(category.name))
-                ])
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row form-group" }, [
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data.is_active,
-                  expression: "data.is_active"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "is_active", "aria-label": "Aktywna" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.data,
-                    "is_active",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Aktywna?")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Tak")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "0" } }, [_vm._v("Nie")])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data.position,
-                  expression: "data.position"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "position", "aria-label": "Pozycja" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.data,
-                    "position",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Pozycja")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Ogólna")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "2" } }, [
-                _vm._v("Na stronie głównej")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data.locale,
-                  expression: "data.locale"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { id: "locale", "aria-label": "Język" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.data,
-                    "locale",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Wybierz język")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "pl" } }, [_vm._v("Polski")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "en" } }, [_vm._v("Angielski")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row form-group" }, [
+  return _c("div", { staticClass: "admin-page" }, [
+    _c("h4", { staticClass: "title" }, [
+      _vm._v("\n        " + _vm._s(_vm.title) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "options" },
+      [
         _c(
-          "div",
-          { staticClass: "col-12" },
-          [
-            _c(
-              "b-button",
-              { attrs: { type: "submit", variant: "outline-secondary" } },
-              [_vm._v("Zapisz")]
-            )
-          ],
-          1
+          "b-button",
+          {
+            attrs: {
+              to: { name: "AdminDataCategoriesList" },
+              variant: "outline-danger"
+            }
+          },
+          [_c("span", { staticClass: "fa fa-times" })]
         )
-      ])
-    ]
-  )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "content mt-4" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-5",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.save($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "row form-group" }, [
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.name,
+                    expression: "data.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "name",
+                  type: "text",
+                  placeholder: "Nazwa",
+                  "aria-label": "Nazwa"
+                },
+                domProps: { value: _vm.data.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.alias,
+                    expression: "data.alias"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "alias",
+                  type: "text",
+                  placeholder: "Alias",
+                  "aria-label": "Alias"
+                },
+                domProps: { value: _vm.data.alias },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data, "alias", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.data.parent_id,
+                      expression: "data.parent_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "parent", "aria-label": "Kategoria nadrzędna" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.data,
+                        "parent_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { selected: "", value: "" } }, [
+                    _vm._v("Wybierz kategorię nadrzędną")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.categories, function(category) {
+                    return _c("option", { domProps: { value: category.id } }, [
+                      _vm._v(_vm._s(category.name))
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row form-group" }, [
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.data.is_active,
+                      expression: "data.is_active"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "is_active", "aria-label": "Aktywna" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.data,
+                        "is_active",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { selected: "", value: "" } }, [
+                    _vm._v("Aktywna?")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Tak")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Nie")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.data.position,
+                      expression: "data.position"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "position", "aria-label": "Pozycja" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.data,
+                        "position",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { selected: "", value: "" } }, [
+                    _vm._v("Pozycja")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ogólna")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2" } }, [
+                    _vm._v("Na stronie głównej")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-4 col-lg-4 col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.data.locale,
+                      expression: "data.locale"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "locale", "aria-label": "Język" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.data,
+                        "locale",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { selected: "", value: "" } }, [
+                    _vm._v("Wybierz język")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "pl" } }, [_vm._v("Polski")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "en" } }, [
+                    _vm._v("Angielski")
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row form-group" }, [
+            _c(
+              "div",
+              { staticClass: "col-12" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      label: "Wbierz zdjęcie:",
+                      "label-for": "file-default",
+                      "label-cols-sm": "2"
+                    }
+                  },
+                  [
+                    _c("b-form-file", {
+                      ref: "files",
+                      attrs: { id: "file-default" }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row form-group" }, [
+            _c(
+              "div",
+              { staticClass: "col-12" },
+              [
+                _c(
+                  "b-button",
+                  { attrs: { type: "submit", variant: "outline-secondary" } },
+                  [_vm._v("Zapisz")]
+                )
+              ],
+              1
+            )
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

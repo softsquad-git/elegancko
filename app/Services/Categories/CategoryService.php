@@ -8,6 +8,8 @@ use \Exception;
 
 class CategoryService
 {
+    const RESOURCE_TYPE = 'categories';
+
     /**
      * @var CategoryRepository $categoryRepository
      */
@@ -28,6 +30,8 @@ class CategoryService
      */
     public function create(array $data): ?Category
     {
+        if (empty($data['parent_id']))
+            $data['parent_id'] = 0;
         if ($data['parent_id'] != 0)
             $this->categoryRepository->findById($data['parent_id']);
         $item = Category::create($data);
@@ -39,16 +43,20 @@ class CategoryService
     /**
      * @param array $data
      * @param int $categoryId
-     * @return array
+     * @return Category
      * @throws Exception
      */
     public function update(array $data, int $categoryId)
     {
+        if (empty($data['parent_id']))
+            $data['parent_id'] = 0;
+        if ($data['parent_id'] != 0)
+            $this->categoryRepository->findById($data['parent_id']);
         $item = $this->categoryRepository->findById($categoryId);
         if ($data['parent_id'] && $data['parent_id'] != $item->parent_id)
             $this->categoryRepository->findById($data['parent_id']);
         $item->update($data);
-        return $data;
+        return $item;
     }
 
     /**

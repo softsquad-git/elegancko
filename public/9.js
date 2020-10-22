@@ -33,6 +33,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminLayout"
 });
@@ -134,6 +135,12 @@ var render = function() {
                     "b-nav-item",
                     { attrs: { to: { name: "AdminCategoriesList" } } },
                     [_vm._v("Kategorie")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-nav-item",
+                    { attrs: { to: { name: "AdminPagesList" } } },
+                    [_vm._v("Strony")]
                   ),
                   _vm._v(" "),
                   _c(

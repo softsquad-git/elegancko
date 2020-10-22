@@ -110,8 +110,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminProductsList",
   data: function data() {
@@ -706,117 +704,118 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "content" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.data.data, function(product) {
-          return _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "admin-products-single" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-xl-1 col-lg-1 col-md-3" }, [
-                  _c("img", {
-                    staticClass: "w-100",
-                    attrs: { src: product.image, alt: product.title }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-xl-7 col-lg-7 col-md-5" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        { staticClass: "admin-product-content" },
-                        [
-                          _c("router-link", { attrs: { to: "#" } }, [
-                            _c("h5", [_vm._v(_vm._s(product.title))])
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-12 info" },
-                      [
-                        _vm._v(
-                          "\n                                    Kategoria:\n                                    "
-                        ),
-                        _c("router-link", { attrs: { to: "#" } }, [
-                          _vm._v(_vm._s(product.category.name))
-                        ]),
-                        _vm._v(
-                          "\n                                    Dodano: "
-                        ),
-                        _c("span", { staticClass: "text-bold" }, [
-                          _vm._v(
-                            _vm._s(
-                              _vm._f("moment")(product.created_at, "calendar")
-                            )
-                          )
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12 info" }, [
-                      _vm._v("\n                                    Cena: "),
-                      _c("span", { staticClass: "text-bold" }, [
-                        _vm._v(
-                          _vm._s(product.price.price) +
-                            " " +
-                            _vm._s(product.price.currency)
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-xl-4 col-lg-4 col-md-4 text-right p-3" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-outline-secondary btn-sm",
-                        attrs: {
-                          to: {
-                            name: "AdminDataProduct",
-                            params: { action: "edit", id: product.id }
-                          }
-                        }
-                      },
-                      [_vm._v("Edytuj")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        staticClass: "btn-sm",
-                        attrs: { variant: "outline-secondary" },
-                        on: {
-                          click: function($event) {
-                            return _vm.remove(product.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Usuń")]
+    _c("div", { staticClass: "content mt-4" }, [
+      _vm.data.data.length > 0
+        ? _c("table", { staticClass: "table" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.data.data, function(product, index) {
+                return _c("tr", [
+                  _c(
+                    "th",
+                    { staticClass: "text-center", attrs: { scope: "row" } },
+                    [_vm._v(_vm._s(index + 1))]
+                  ),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("img", {
+                      staticStyle: { width: "100px" },
+                      attrs: { src: product.image, alt: product.title }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.title))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.category.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.price.price))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.locale))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(_vm._f("moment")(product.created_at, "calendar"))
                     )
-                  ],
-                  1
-                )
-              ])
-            ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(product.is_activated == 1 ? "Tak" : "Nie"))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-outline-secondary btn-sm",
+                          attrs: {
+                            to: {
+                              name: "AdminDataProduct",
+                              params: { action: "edit", id: product.id }
+                            }
+                          }
+                        },
+                        [_vm._v("Edytuj")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn-sm",
+                          attrs: { variant: "outline-secondary" },
+                          on: {
+                            click: function($event) {
+                              return _vm.remove(product.id)
+                            }
+                          }
+                        },
+                        [_vm._v("Usuń")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            )
           ])
-        }),
-        0
-      )
+        : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("L.p.")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Zdjęcie")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tytuł")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kategoria")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cena")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Język")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Data dodania")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aktywny")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Opcje")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

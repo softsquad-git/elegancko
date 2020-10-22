@@ -63,40 +63,38 @@
                 </div>
             </div>
         </form>
-        <div class="content">
-            <div class="row">
-                <div v-for="product in data.data" class="col-12">
-                    <div class="admin-products-single">
-                        <div class="row">
-                            <div class="col-xl-1 col-lg-1 col-md-3">
-                                <img class="w-100" :src="product.image" :alt="product.title">
-                            </div>
-                            <div class="col-xl-7 col-lg-7 col-md-5">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="admin-product-content">
-                                            <router-link to="#"><h5>{{ product.title }}</h5></router-link>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 info">
-                                        Kategoria:
-                                        <router-link to="#">{{ product.category.name }}</router-link>
-                                        Dodano: <span
-                                        class="text-bold">{{ product.created_at | moment('calendar') }}</span>
-                                    </div>
-                                    <div class="col-12 info">
-                                        Cena: <span class="text-bold">{{ product.price.price }} {{ product.price.currency }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 text-right p-3">
-                                <router-link :to="{name: 'AdminDataProduct', params: {action: 'edit', id: product.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
-                                <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="content mt-4">
+            <table v-if="data.data.length > 0" class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">L.p.</th>
+                    <th scope="col">Zdjęcie</th>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Kategoria</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Język</th>
+                    <th scope="col">Data dodania</th>
+                    <th scope="col">Aktywny</th>
+                    <th scope="col">Opcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(product, index) in data.data">
+                        <th scope="row" class="text-center">{{ index + 1 }}</th>
+                        <td><img style="width: 100px;" :src="product.image" :alt="product.title"></td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.category.name }}</td>
+                        <td>{{ product.price.price }}</td>
+                        <td>{{ product.locale }}</td>
+                        <td>{{ product.created_at | moment('calendar') }}</td>
+                        <td>{{ product.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
+                        <td>
+                            <router-link :to="{name: 'AdminDataProduct', params: {action: 'edit', id: product.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
+                            <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>

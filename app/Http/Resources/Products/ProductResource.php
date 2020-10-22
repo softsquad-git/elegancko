@@ -19,6 +19,7 @@ class ProductResource extends JsonResource
                 'name' => $this->category->name
             ],
             'content' => $this->content,
+            'locale' => $this->locale,
             'desc' => $this->description,
             'created_at' => (string)$this->created_at,
             'colors' => $this->colors,

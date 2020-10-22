@@ -4,10 +4,11 @@
             {{ title }}
         </h4>
         <div class="options">
-            <b-button @click="showAdminDataCategory ^= true" variant="outline-secondary"><span
+            <b-button :to="{name: 'AdminDataCategory', params: {action: 'create'}}" variant="outline-secondary"><span
                 class="fa fa-plus"></span>
             </b-button>
-            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span></b-button>
+            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span>
+            </b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>
@@ -28,7 +29,8 @@
         <form v-if="showSearch" class="mt-3 mb-3" @submit.prevent="loadData">
             <div class="row pl-3 pr-3">
                 <div class="col-xl-4 p-0 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..." v-model="params.name">
+                    <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..."
+                           v-model="params.name">
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 p-0 col-xs-12">
                     <select id="locale" aria-label="Język" class="form-control" v-model="params.locale">
@@ -51,38 +53,51 @@
                 </div>
             </div>
         </form>
-        <div class="content">
-            <admin-data-category
-                v-if="showAdminDataCategory"
-                :category="category"
-                @loadData="closeAdminDataCategory"></admin-data-category>
-            <div class="row">
-                <div class="col-12" v-for="category in data">
-                    <div class="admin-categories-single">
-                        <h4>{{ category.name }}</h4>
-                        <span class="created">Dodano: {{ category.created_at | moment('calendar') }}</span>
-                        <h5>Alias: {{ category.alias }}</h5>
-                        <div class="info">
-                            <span>Liczba produktów: <b>{{ category.c_products }}</b></span>
-                            <span>Aktywna: <b>{{ category.activated === true ? 'Tak' : 'Nie' }}</b></span>
-                        </div>
-                        <div class="footer">
-                            <b-button variant="outline-secondary"><span class="fa fa-eye"></span></b-button>
-                            <b-button @click="action(category, 'edit')" variant="outline-secondary"><span class="fa fa-pencil"></span></b-button>
-                            <b-button @click="action(category.id, 'remove')" variant="outline-danger"><span class="fa fa-trash"></span></b-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="content mt-4">
+            <table v-if="data.data.length > 0" class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">L.p.</th>
+                    <th scope="col">Zdjęcie</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Alias</th>
+                    <th scope="col">Pozycja</th>
+                    <th scope="col">Język</th>
+                    <th scope="col">Aktywna</th>
+                    <th scope="col">Opcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(category, index) in data.data">
+                    <th scope="row" class="text-center">{{ index + 1 }}</th>
+                    <td><img style="width: 100px;" :src="category.image" :alt="category.name"></td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.alias }}</td>
+                    <td>{{ category.position === 1 ? 'Ogólna' : 'Na stronie głównej' }}</td>
+                    <td>{{ category.locale }}</td>
+                    <td>{{ category.is_active == 1 ? 'Tak' : 'Nie' }}</td>
+                    <td>
+                        <router-link :to="{name: 'AdminDataCategory', params: {action: 'edit', id: category.id}}"
+                                     class="btn btn-outline-secondary btn-sm">Edytuj
+                        </router-link>
+                        <b-button @click="remove(category.id)" class="btn-sm" variant="outline-secondary">Usuń
+                        </b-button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
         </div>
     </div>
 </template>
 
 <script>
 import AdminDataCategory from "./AdminDataCategory";
+import NoDataComponent from "../../NoDataComponent";
+
 export default {
     name: "AdminCategoriesList",
-    components: {AdminDataCategory},
+    components: {NoDataComponent, AdminDataCategory},
     data() {
         return {
             title: 'Lista kategorii',
@@ -94,8 +109,6 @@ export default {
                 is_active: '',
                 locale: ''
             },
-            showAdminDataCategory: false,
-            category: null,
             showSearch: false
         }
     },
@@ -103,7 +116,7 @@ export default {
         loadData() {
             this.$axios.get(`admin/categories/all?name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&is_active=${this.params.is_active}&locale=${this.params.locale}`)
                 .then((data) => {
-                    this.data = data.data.data;
+                    this.data = data.data;
                 })
         },
         ordering(ordering) {
@@ -118,31 +131,26 @@ export default {
             this.showAdminDataCategory = false;
             this.loadData();
         },
-        action(id, type) {
-            if (type === 'edit') {
-                this.category = id; // id = object category
-                this.showAdminDataCategory = true;
-            } else if (type === 'remove') {
-                this.$confirm(
-                    {
-                        message: `Na pewno chcesz usunąć kategorię? Wraz z nią zostaną usunięte powiązane produkty`,
-                        button: {
-                            no: 'Nie',
-                            yes: 'Tak'
-                        },
-                        callback: confirm => {
-                            if (confirm) {
-                                this.$axios.delete(`admin/categories/remove/${id}`) // id = id category
-                                    .then((data) => {
-                                        if (data.data.success === 1) {
-                                            this.loadData()
-                                        }
-                                    })
-                            }
+        remove(id) {
+            this.$confirm(
+                {
+                    message: `Na pewno chcesz usunąć kategorię? Wraz z nią zostaną usunięte powiązane produkty`,
+                    button: {
+                        no: 'Nie',
+                        yes: 'Tak'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            this.$axios.delete(`admin/categories/remove/${id}`) // id = id category
+                                .then((data) => {
+                                    if (data.data.success === 1) {
+                                        this.loadData()
+                                    }
+                                })
                         }
                     }
-                )
-            }
+                }
+            )
         }
     },
     created() {

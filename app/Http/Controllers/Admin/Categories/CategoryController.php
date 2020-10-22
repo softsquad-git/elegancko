@@ -7,6 +7,7 @@ use App\Http\Requests\Categories\CategoryRequest;
 use App\Http\Resources\Categories\CategoriesResource;
 use App\Http\Resources\Categories\CategoryResource;
 use App\Repositories\Categories\CategoryRepository;
+use App\Services\Categories\CategoryImageService;
 use App\Services\Categories\CategoryService;
 use Illuminate\Http\Request;
 use \Exception;
@@ -26,13 +27,23 @@ class CategoryController extends Controller
     private $categoryRepository;
 
     /**
+     * @var CategoryImageService
+     */
+    private $categoryImageService;
+
+    /**
      * @param CategoryRepository $categoryRepository
      * @param CategoryService $categoryService
+     * @param CategoryImageService $categoryImageService
      */
-    public function __construct(CategoryRepository $categoryRepository, CategoryService $categoryService)
+    public function __construct(
+        CategoryRepository $categoryRepository,
+        CategoryService $categoryService,
+        CategoryImageService $categoryImageService)
     {
         $this->categoryRepository = $categoryRepository;
         $this->categoryService = $categoryService;
+        $this->categoryImageService = $categoryImageService;
     }
 
     /**
@@ -79,7 +90,9 @@ class CategoryController extends Controller
     public function create(CategoryRequest $request): JsonResponse
     {
         try {
-            $this->categoryService->create($request->all());
+            $item = $this->categoryService->create($request->all());
+            if ($request->hasFile('image'))
+                $this->categoryImageService->upload($request->file('image'), $item);
             return $this->successResponse(trans('messages.created'));
         } catch (Exception $e) {
             return $this->errorResponse($e);
@@ -94,7 +107,9 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, int $categoryId): JsonResponse
     {
         try {
-            $this->categoryService->update($request->all(), $categoryId);
+            $item = $this->categoryService->update($request->all(), $categoryId);
+            if ($request->hasFile('image'))
+                $this->categoryImageService->upload($request->file('image'), $item);
             return $this->successResponse(trans('messages.updated'));
         } catch (Exception $e) {
             return $this->errorResponse($e);

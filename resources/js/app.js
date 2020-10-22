@@ -101,6 +101,24 @@ const router = new VueRouter({
                     }
                 },
                 {
+                    path: 'pages',
+                    component: () => import('./components/admin/pages/AdminPagesList'),
+                    name: 'AdminPagesList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'page/:action/:id?',
+                    component: () => import('./components/admin/pages/AdminDataPage'),
+                    name: 'AdminDataPage',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
                     path: 'categories',
                     component: () => import('./components/admin/categories/AdminCategoriesList'),
                     name: 'AdminCategoriesList',
