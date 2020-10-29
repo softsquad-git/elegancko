@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[20],{145:function(e,n,t){"use strict";t.r(n);var a={name:"AdminPageIndex"},c=t(1),i=Object(c.a)(a,(function(){var e=this.$createElement;return(this._self._c||e)("div")}),[],!1,null,"3f4f8ebc",null);n.default=i.exports}}]);
