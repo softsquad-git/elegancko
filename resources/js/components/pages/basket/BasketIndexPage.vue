@@ -42,7 +42,7 @@
                 <th scope="row" class="text-center">
                     {{ index + 1 }}
                 </th>
-                <td><img class="width-basket-product" :src="basket.product.images[0]" :alt="basket.product.title"></td>
+                <td><img class="width-basket-product" :src="basket.product.images[0].src" :alt="basket.product.title"></td>
                 <td>{{ basket.product.title }}</td>
                 <td>
                     <div :style="'background:' + basket.color.hex" class="sample"></div>
@@ -65,9 +65,9 @@
             </tr>
             </tbody>
         </table>
-        <div class="row mt-2">
+        <div v-if="$store.getters.StoreCart.length > 0" class="row mt-2">
             <div class="col-12">
-                <b-button @click="showOrder ^= true" type="button" variant="outline-secondary" class="float-right">Złóż zamówieni</b-button>
+                <b-button @click="showOrder ^= true" type="button" variant="outline-secondary" class="float-right">Złóż zamówienie</b-button>
             </div>
         </div>
         <order-page class="mt-3" v-if="showOrder"/>

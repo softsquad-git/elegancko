@@ -193,7 +193,7 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path: 'orders',
+                    path: 'orders/:email?',
                     component: () => import('./components/admin/orders/AdminOrdersList'),
                     name: 'AdminOrdersList',
                     meta: {

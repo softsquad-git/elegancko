@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('create', 'ProductController@create');
         Route::post('update/{productId}', 'ProductController@update');
         Route::delete('remove/{productId}', 'ProductController@remove');
+        Route::post('remove-images/{productId}', 'ProductController@removeProductImages');
         Route::group(['prefix' => 'colors'], function () {
             Route::get('all', 'ProductColorController@index');
             Route::post('create', 'ProductColorController@create');

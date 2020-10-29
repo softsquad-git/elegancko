@@ -31,7 +31,7 @@
                     <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..." v-model="params.title">
                 </div>
                 <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category_id">
+                    <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category">
                         <option selected value="">Wybierz kategorię</option>
                         <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
                     </select>
@@ -110,7 +110,7 @@ export default {
             data: [],
             params: {
                 title: '',
-                category_id: '',
+                category: '',
                 is_activated: '',
                 ordering: '',
                 pagination: '',
@@ -136,9 +136,10 @@ export default {
             this.loadData();
         },
         loadData() {
-            this.$axios.get(`admin/products/all?title=${this.params.title}&category_id=${this.params.category_id}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
+            this.$axios.get(`admin/products/all?title=${this.params.title}&category=${this.params.category}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
                 .then((data) => {
                     this.data = data.data;
+                    console.log(data.data.data)
                     this.loadCategories();
                 })
                 .catch(() => {

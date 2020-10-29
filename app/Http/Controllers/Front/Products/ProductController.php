@@ -36,7 +36,7 @@ class ProductController extends Controller
     {
         $params = [
             'title' => $request->get('title'),
-            'category_id' => $request->get('category_id'),
+            'category' => $request->get('category'),
             'is_activated' => $request->get('is_activated'),
             'ordering' => $request->get('ordering'),
             'pagination' => $request->get('pagination'),

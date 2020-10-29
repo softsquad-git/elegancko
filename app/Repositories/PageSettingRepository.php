@@ -23,4 +23,15 @@ class PageSettingRepository
             return '';
         return $item;
     }
+
+    public function findByTypes(array $params)
+    {
+        $types = AdminSettingType::whereIn('_key', $params)->get();
+        $settingsIds = [];
+        foreach ($types as $type) {
+            $settingsIds[] = $type->id;
+        }
+        return AdminSetting::whereIn('type_id', $settingsIds)
+            ->get();
+    }
 }

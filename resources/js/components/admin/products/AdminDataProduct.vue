@@ -56,7 +56,8 @@
                         </select>
                     </div>
                     <div v-if="data.type == 2 || data.type == 4" class="col-xl-2 col-lg-2 col-md-2 pl-0 pr-0">
-                        <input id="old_price" type="text" @input="handleInput" aria-label="Poprzzednia cena" v-model="data.old_price"
+                        <input id="old_price" type="text" @input="handleInput" aria-label="Poprzzednia cena"
+                               v-model="data.old_price"
                                placeholder="Poprzednia cena" class="form-control">
                     </div>
                     <div class="pr-0" :class="priceCssClass">
@@ -112,7 +113,8 @@
                 <div class="form-group row">
                     <div class="col-12">
                         <b-form-group label="Dodaj zdjęcia:" label-for="file-default" label-cols-sm="2">
-                            <b-form-file ref="file" multiple v-on:change="handleFileUpload()" id="file-default"></b-form-file>
+                            <b-form-file ref="file" multiple v-on:change="handleFileUpload()"
+                                         id="file-default"></b-form-file>
                         </b-form-group>
 
                     </div>
@@ -123,6 +125,22 @@
                     </div>
                 </div>
             </form>
+            <div class="admin-product-images">
+                <div v-if="productImages.length > 0" class="row">
+                    <div class="col-12">
+                        <b-button variant="outline-danger" class="btn-sm mb-2" @click="remove"
+                                  v-if="productsIds.length > 0">
+                            Usuń
+                        </b-button>
+                    </div>
+                    <div v-for="image in productImages" class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <div class="admin-product-image-bg" :style="'background: url('+image.src+')'">
+                            <b-form-checkbox size="lg" v-model="productsIds" :value="image.id"></b-form-checkbox>
+                        </div>
+                    </div>
+                </div>
+                <no-data-component v-if="productImages.length < 1" :msg="'Brak dodanych zdjęć dla tego produktu'"/>
+            </div>
         </div>
         <admin-size-create ref="createSize" @loadData="loadDataSizes"></admin-size-create>
         <admin-create-color ref="createColor" @loadData="loadDataColors"></admin-create-color>
@@ -141,10 +159,12 @@ import AdminSizeCreate from "./sizes/AdminSizeCreate";
 import AdminCreateColor from "./colors/AdminCreateColor";
 import Multiselect from 'vue-multiselect'
 import AdminShipmentCreate from "../shipments/AdminShipmentCreate";
+import NoDataComponent from "../../NoDataComponent";
 
 export default {
     name: "AdminDataProduct",
     components: {
+        NoDataComponent,
         AdminShipmentCreate,
         AdminCreateColor,
         AdminSizeCreate,
@@ -173,11 +193,16 @@ export default {
             sizes: [],
             colors: [],
             shipments: [],
-            previousPrice: null
+            previousPrice: null,
+            productImages: [],
+            productsIds: []
         }
     },
     methods: {
         save() {
+            this.data.sizes = JSON.stringify(this.data.sizes);
+            this.data.shipments = JSON.stringify(this.data.shipments);
+            this.data.colors = JSON.stringify(this.data.colors);
             this.data.images = this.$refs.file.files;
             if (this.data.images.length > 0) {
                 let formData = new FormData();
@@ -189,23 +214,30 @@ export default {
                     formData.append('content', this.data.content);
                     formData.append('description', this.data.description);
                     formData.append('locale', this.data.locale);
-                    formData.append('sizes', JSON.stringify(this.data.sizes));
-                    formData.append('shipments', JSON.stringify(this.data.shipments));
+                    formData.append('sizes', this.data.sizes);
+                    formData.append('shipments', this.data.shipments);
                     formData.append('price', this.data.price);
                     formData.append('old_price', this.data.old_price);
                     formData.append('currency', this.data.currency);
                     formData.append('type', this.data.type);
-                    formData.append('colors', JSON.stringify(this.data.colors));
+                    formData.append('colors', this.data.colors);
                 }
+
                 return this.saveData(formData)
             }
             return this.saveData(this.data)
         },
         saveData(data) {
-            this.$axios.post(this.$route.params.id ? `admin/products/update/${this.$route.params.id}` : 'admin/products/create', data)
+            this.$axios.post(this.$route.params.id
+                ? `admin/products/update/${this.$route.params.id}`
+                : 'admin/products/create', data)
                 .then((data) => {
                     if (data.data.success === 1) {
-                        this.$router.push({name: 'AdminProductsList'})
+                        if (this.$route.params.action == 'edit') {
+                            window.location.reload();
+                        } else {
+                            this.$router.push({name: 'AdminProductsList'})
+                        }
                     }
                 })
                 .catch((error) => {
@@ -259,22 +291,51 @@ export default {
             }
             this.previousPrice = this.data.price
         },
+        remove() {
+            this.$confirm(
+                {
+                    message: `Na pewno chcesz usunąć zdjęcia?`,
+                    button: {
+                        no: 'Nie',
+                        yes: 'Tak'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            this.$axios.post(`admin/products/remove-images/${this.$route.params.id}`, this.productsIds)
+                                .then((data) => {
+                                    if (data.data.success === 1) {
+                                        this.checkAction();
+                                        this.$notify({
+                                            group: 'notification-success',
+                                            title: 'Udało się',
+                                            text: data.data.msg
+                                        });
+                                    }
+                                })
+                        }
+                    }
+                }
+            )
+        },
         checkAction() {
             if (this.$route.params.id !== null) {
                 this.$axios.get(`admin/products/find/${this.$route.params.id}`)
                     .then((data) => {
                         const product = data.data.data;
-                        console.log(product)
+                        this.productImages = data.data.data.images;
                         this.data.title = product.title;
                         this.data.category_id = product.category.id;
-                        this.data.description = product.description;
+                        this.data.description = product.desc;
                         this.data.content = product.content;
                         this.data.price = product.price.price;
                         this.data.old_price = product.price.old;
                         this.data.type = product.type;
                         this.data.currency = product.price.currency;
                         this.data.locale = product.locale;
-                        this.data.type = product.type.id
+                        this.data.type = product.type.id;
+                        this.data.sizes = product.sizes;
+                        this.data.colors = product.colors;
+                        this.data.shipments = product.shipments;
                     })
             }
         }
@@ -299,5 +360,10 @@ export default {
 </script>
 
 <style scoped>
-
+.admin-product-image-bg {
+    min-height: 400px;
+    background-size: cover !important;
+    padding: 5px 9px;
+    margin-bottom: 25px;
+}
 </style>

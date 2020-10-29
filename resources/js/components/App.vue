@@ -4,9 +4,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-4">
-                        <div class="logo-text">
-                            <img v-if="logo !== ''" :src="logo" :alt="service_name">
-                            <span v-if="logo === ''" v-html="service_name">{{ service_name }}</span>
+                        <div class="logo-text" v-html="settings[0].value">
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-8">
@@ -16,22 +14,17 @@
                                 <b-navbar-nav>
                                     <b-nav-item :to="{name: 'IndexPage'}">Strona główna</b-nav-item>
                                     <b-nav-item :to="{name: 'ProductsIndex'}">Sklep</b-nav-item>
-                                </b-navbar-nav>
+                                    <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ProductsIndex'}">{{ page.title }}</b-nav-item>
+                                    <b-nav-item-dropdown v-if="pagesTop.length > 5" right>
+                                        <b-dropdown-item v-for="page in pagesTop.slice(5, 120)" href="#">{{page.title}}</b-dropdown-item>
+                                    </b-nav-item-dropdown>
 
-                                <!-- Right aligned nav items -->
+                                </b-navbar-nav>
                                 <b-navbar-nav class="ml-auto">
-                                    <b-nav-form v-if="isSearchTopForm" @submit.prevent="search">
-                                        <b-form-input v-model="params.title" size="sm" class="mr-sm-2"
-                                                      placeholder="Search"></b-form-input>
-                                        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-                                    </b-nav-form>
-                                    <b-nav-item @click="isSearchTopForm ^= true" :to="{name: 'IndexPage'}"><span
-                                        class="fa fa-search"></span></b-nav-item>
                                     <b-nav-item :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
                                     <b-nav-item :to="{name: 'BasketIndexPage'}"><span
                                         class="fa fa-shopping-basket"></span>
                                     </b-nav-item>
-
                                 </b-navbar-nav>
                             </b-collapse>
                         </b-navbar>
@@ -44,16 +37,19 @@
         </section>
         <footer>
             <div class="container">
-               <div class="footer">
-                   <h1><router-link class="mb-4" :to="{name: 'IndexPage'}"><span v-html="service_name"></span> </router-link></h1>
-                   <div style="height: 40px"></div>
-                   <router-link class="link" :to="'#'">Kontakt</router-link>
-                   <a href="" class="link fb" target="_blank"><span class="fa fa-facebook"></span></a>
-                   <router-link class="link" :to="'#'">Pomoc</router-link>
-                   <div class="footer-info">
-                       Copyright &copy 2020 | Created by: <a href="http://softsquad.pl/" target="_blank">SoftSquad</a>
-                   </div>
-               </div>
+                <div class="footer">
+                    <div class="c">
+                        <a class="mr-2" :href="'tel:'+settings[1].value"><span class="fc fa fa-phone"></span> {{ settings[1].value }}</a>
+                        <a class="mr-2" :href="'mailto:'+settings[3].value"><span class="fc fa fa-envelope"></span> {{ settings[3].value }}</a>
+                        <span class="fc fa fa-map-marker-alt"></span> {{ settings[2].value }}
+                    </div>
+                    <div class="links">
+                        <router-link v-for="page in pagesBottom" :to="''">{{ page.title }}</router-link>
+                    </div>
+                    <div class="footer-info">
+                        Copyright &copy 2020 | Created by: <a href="http://softsquad.pl/" target="_blank">SoftSquad</a>
+                    </div>
+                </div>
             </div>
         </footer>
         <vue-confirm-dialog></vue-confirm-dialog>
@@ -67,28 +63,32 @@ export default {
     name: "App",
     data() {
         return {
-            isSearchTopForm: false,
             params: {
                 title: ''
             },
-            service_name: '',
-            logo: ''
-        }
-    },
-    methods: {
-        search() {
-
+            data: [
+                'service_name',
+                'shop_address',
+                'email_contact',
+                'phone_contact'
+            ],
+            settings: [],
+            pagesTop: [],
+            pagesBottom: []
         }
     },
     created() {
-        this.$axios.get('front/settings/find-by-type/service_name')
+        this.$axios.post('front/settings/find-by-types', this.data)
+            .then((data) => {
+                this.settings = data.data.data;
+            })
+        this.$axios.get(`front/pages/all?position=bottom&pagination=8`)
         .then((data) => {
-            this.service_name = data.data.data.value;
-            localStorage.setItem('service_name', this.service_name);
+            this.pagesBottom = data.data.data
         })
-        this.$axios.get('front/settings/find-by-type/logo')
+        this.$axios.get(`front/pages/all?position=top&pagination=20`)
         .then((data) => {
-            this.logo = data.data.data.value
+            this.pagesTop = data.data.data;
         })
     }
 }
@@ -112,7 +112,24 @@ section.header {
     border-bottom: 1px solid #000;
     font-weight: 500;
 }
-sub{
-     font-size: 15px;
+
+footer {
+    text-align: center;
+    margin-top: 80px;
 }
+.footer a, .footer .c {
+    color: gray;
+}
+
+sub {
+    font-size: 15px;
+}
+.footer .links {
+    margin-top: 40px;
+}.footer .links a {
+     font-weight: bold;
+     text-transform: uppercase;
+     font-size: 13px;
+    padding: 10px;
+ }
 </style>

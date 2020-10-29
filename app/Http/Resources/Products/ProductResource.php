@@ -16,7 +16,8 @@ class ProductResource extends JsonResource
             'title' => $this->title,
             'category' => [
                 'id' => $this->category_id,
-                'name' => $this->category->name
+                'name' => $this->category->name,
+                'alias' => $this->category->alias
             ],
             'content' => $this->content,
             'locale' => $this->locale,
@@ -33,7 +34,8 @@ class ProductResource extends JsonResource
             'type' => [
                 'name' => Status::checkTypeProduct($this->type),
                 'id' => $this->type
-            ]
+            ],
+            'shipments' => $this->shipments
         ];
     }
 }

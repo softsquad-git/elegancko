@@ -40,6 +40,7 @@ class Configuration extends Command
             'AdminSetting',
             'AdminSettingType'
         ];
+        Artisan::call('migrate:fresh');
         foreach ($seedersClass as $seedClass) {
             Artisan::call('db:seed --class='.$seedClass.'Seeder');
         }

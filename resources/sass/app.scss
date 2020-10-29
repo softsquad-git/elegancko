@@ -239,34 +239,15 @@ a, a:hover {
     color: #fff;
 }
 
-footer .footer {
-    text-align: center;
-    margin-top: 100px;
-}
-
-footer .footer a {
-    color: #000;
-    font-weight: bold;
-}
-
 .footer .footer-info {
     margin-top: 30px;
     padding: 10px;
 }
 
-footer .footer a.link {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: bold;
-    display: inline-block;
-    padding: 0 10px;
-}
-
-footer .footer a.fb {
-    color: #757373;
-    font-size: 22px;
-}
-
 .min-select {
     border-bottom: 0!important;
+}
+
+.br-0 {
+    border-radius: 0!important;
 }

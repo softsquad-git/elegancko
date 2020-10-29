@@ -50,49 +50,12 @@ class ProductService
         else
             $this->categoryRepository->findById($data['category_id']);
 
-        $sizeIds = [];
-        $colorIds = [];
-        $shipmentIds = [];
-        if (isset($data['sizes'])) {
-            foreach (json_decode($data['sizes']) as $size) {
-                $sizeIds[] = $size->id;
-            }
-        }
-        if (isset($data['colors'])) {
-            foreach (json_decode($data['colors']) as $color) {
-                $colorIds[] = $color->id;
-            }
-        }
-        if (isset($data['shipments'])) {
-            foreach (json_decode($data['shipments']) as $shipment) {
-                $shipmentIds[] = $shipment->id;
-            }
-        }
         DB::beginTransaction();
         $item = new \stdClass();
         try {
             $item = Product::create($data);
-            if (count($sizeIds) > 0) {
-                $syncSizes = [];
-                foreach ($sizeIds as $id) {
-                    $syncSizes[$id] = ['product_id' => $item->id];
-                }
-                $item->sizes()->sync($syncSizes);
-            }
-            if (count($colorIds) > 0) {
-                $syncColors = [];
-                foreach ($colorIds as $id) {
-                    $syncColors[$id] = ['product_id' => $item->id];
-                }
-                $item->colors()->sync($syncColors);
-            }
-            if (count($shipmentIds)) {
-                $syncShipments = [];
-                foreach ($shipmentIds as $id) {
-                    $syncShipments[$id] = ['product_id' => $item->id];
-                }
-                $item->shipments()->sync($syncShipments);
-            }
+
+            $this->saveParametersProduct($item, $data);
 
             $data['product_id'] = $item->id;
             ProductPrice::create($data);
@@ -112,16 +75,18 @@ class ProductService
     public function update(array $data, int $productId)
     {
         $item = $this->productRepository->findById($productId);
-        if (!empty($data['colors_ids']))
-            $data['colors_ids'] = json_encode($data['colors_ids'], true);
-        if (!empty($data['sizes_ids']))
-            $data['sizes_ids'] = json_encode($data['sizes_ids'], true);
+        if ($data['category_id'] != $item->category_id)
+            $this->categoryRepository->findById($data['category_id']);
+
         $item->update($data);
         $item->price()->update([
             'old_price' => $data['old_price'],
             'price' => $data['price'],
             'currency' => $data['currency']
         ]);
+
+        $this->saveParametersProduct($item, $data);
+
         return $item;
     }
 
@@ -133,5 +98,70 @@ class ProductService
     public function remove(int $productId)
     {
         return $this->productRepository->findById($productId)->delete();
+    }
+
+    /**
+     * @param array $data
+     * @return array[]
+     */
+    private function prepareData(array $data)
+    {
+        $sizeIds = [];
+        $colorIds = [];
+        $shipmentIds = [];
+        if (isset($data['sizes'])) {
+            foreach (json_decode($data['sizes']) as $size) {
+                $sizeIds[] = $size->id;
+            }
+        }
+        if (isset($data['colors'])) {
+            foreach (json_decode($data['colors']) as $color) {
+                $colorIds[] = $color->id;
+            }
+        }
+        if (isset($data['shipments'])) {
+            foreach (json_decode($data['shipments']) as $shipment) {
+                $shipmentIds[] = $shipment->id;
+            }
+        }
+
+        return [
+            'size_ids' => $sizeIds,
+            'color_ids' => $colorIds,
+            'shipment_ids' => $shipmentIds
+        ];
+    }
+
+    /**
+     * @param Product $item
+     * @param array $data
+     * @return bool
+     */
+    private function saveParametersProduct(Product $item, array $data)
+    {
+        $prepareData = $this->prepareData($data);
+        if (count($sizeIds = $prepareData['size_ids']) > 0) {
+            $syncSizes = [];
+            foreach ($sizeIds as $id) {
+                $syncSizes[$id] = ['product_id' => $item->id];
+            }
+            $item->sizes()->sync($syncSizes);
+        }
+        if (count($colorIds = $prepareData['color_ids']) > 0) {
+            $syncColors = [];
+            foreach ($colorIds as $id) {
+                $syncColors[$id] = ['product_id' => $item->id];
+            }
+            $item->colors()->sync($syncColors);
+        }
+        if (count($shipmentIds = $prepareData['shipment_ids'])) {
+            $syncShipments = [];
+            foreach ($shipmentIds as $id) {
+                $syncShipments[$id] = ['product_id' => $item->id];
+            }
+            $item->shipments()->sync($syncShipments);
+        }
+
+        return true;
     }
 }

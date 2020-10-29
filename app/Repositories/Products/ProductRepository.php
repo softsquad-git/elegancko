@@ -16,7 +16,7 @@ class ProductRepository
     public function findAll(array $params)
     {
         $title = $params['title'];
-        $category = $params['category_id'];
+        $category = $params['category'];
         $activated = $params['is_activated'];
         $locale = $params['locale'];
         $type = $params['type'];
@@ -49,8 +49,14 @@ class ProductRepository
         $data = Product::orderBy($orderBy['file'], $orderBy['sort']);
         if (!empty($title))
             $data->where('title', 'like' . '%' . $title . '%');
-        if (!empty($category))
-            $data->where('category_id', $category);
+        if (!empty($category)) {
+            if (is_numeric($category))
+                $data->where('category_id', $category);
+            else
+                $data->whereHas('category', function ($q) use ($category) {
+                   $q->where('alias', $category);
+                });
+        }
         if (!empty($activated))
             $data->where('is_activated', $activated);
         if (!empty($locale))

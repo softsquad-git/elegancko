@@ -49,16 +49,20 @@
                     </div>
                 </div>
             </div>
+            <home-info/>
+            <home-products/>
         </div>
     </div>
 </template>
 
 <script>
 import HomeCategories from "./HomeCategories";
+import HomeInfo from "./HomeInfo";
+import HomeProducts from "./HomeProducts";
 
 export default {
     name: "IndexPage",
-    components: {HomeCategories},
+    components: {HomeProducts, HomeInfo, HomeCategories},
     data() {
         return {
             top_banner: '',

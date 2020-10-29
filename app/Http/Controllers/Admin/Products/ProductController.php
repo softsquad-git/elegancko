@@ -55,7 +55,7 @@ class ProductController extends Controller
     {
         $params = [
             'title' => $request->get('title'),
-            'category_id' => $request->get('category_id'),
+            'category' => $request->get('category'),
             'is_activated' => $request->get('is_activated'),
             'ordering' => $request->get('ordering'),
             'pagination' => $request->get('pagination'),
@@ -130,4 +130,24 @@ class ProductController extends Controller
             return $this->errorResponse($e);
         }
     }
+
+    /**
+     * @param Request $request
+     * @param int $productId
+     * @return JsonResponse
+     */
+    public function removeProductImages(Request $request, int $productId)
+    {
+        try {
+            $item = $this->productRepository->findById($productId);
+            $this->productImageService->remove($item, $request->all());
+            return $this->successResponse(trans('messages.removed'));
+        } catch (Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    /**TODO
+     * -oagarnąć edycje - przysłanie zdjęć
+     * -podczas usuwania usuwać pliki z serwera
+     */
 }

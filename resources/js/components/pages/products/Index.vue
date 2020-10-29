@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="top-banner-products" :style="'background: url('+banner+')'">
-            <h1 class="title title-top-banner">{{title}}</h1>
+            <div class="bg">
+                <h1 class="title title-top-banner">{{title}}</h1>
+            </div>
         </div>
         <div class="container">
             <form class="mt-3 mb-3" @submit.prevent="loadData">
@@ -10,9 +12,9 @@
                         <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..." v-model="params.title">
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category_id">
+                        <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category">
                             <option selected value="">Wybierz kategorię</option>
-                            <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                            <option v-for="category in categories" :value="category.alias">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -78,7 +80,7 @@ export default {
             title: 'Produkty',
             params: {
                 title: '',
-                category_id: '',
+                category: '',
                 ordering: '',
                 pagination: '',
                 type: ''
@@ -95,7 +97,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.$axios.get(`front/products/all?title=${this.params.title}&category_id=${this.params.category_id}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
+            this.$axios.get(`front/products/all?title=${this.params.title}&category=${this.params.category}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
                 .then((data) => {
                     this.data = data.data;
                 })
@@ -113,36 +115,56 @@ export default {
                 .then((data) => {
                     this.categories = data.data.data;
                 })
+        },
+        checkCategory() {
+            if (this.$route.params.category) {
+                this.params.category = this.$route.params.category;
+                this.$axios.get(`categories/find/${this.$route.params.category}`)
+                .then((data) => {
+                    let category = data.data.data;
+                    this.title = category.name
+                    this.banner = category.image;
+                })
+            } else {
+                this.params.category = '';
+                this.title = 'Produkty';
+                this.$axios.get('front/settings/find-by-type/products_top_banner')
+                    .then((data) => {
+                        this.banner = data.data.data.value
+                    });
+            }
+            this.loadData();
         }
     },
     watch: {
         'params.ordering' () {
             this.loadData();
+        },
+        'params.category' () {
+            this.checkCategory();
+        },
+        '$route.params.category' () {
+            this.checkCategory();
         }
     },
     created() {
-        const category = this.$route.params.category;
-        if (category) {
-            this.params.category = category;
-        }
-        this.loadData();
+        this.checkCategory();
         this.loadCategories();
-        this.$axios.get('front/settings/find-by-type/products_top_banner')
-            .then((data) => {
-                this.banner = data.data.data.value
-            });
         document.title = this.title;
     }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .top-banner-products {
-    height: 600px;
-    background-position: top center;
-    background-size: cover;
+    height: 700px;
+    background-position: center center!important;
+    background-size: cover!important;
     text-align: center;
-    line-height: 600px;
+    line-height: 700px;
+    .bg {
+        background: #00000021;
+    }
 }
 .search-btn {
     border-radius: 0;

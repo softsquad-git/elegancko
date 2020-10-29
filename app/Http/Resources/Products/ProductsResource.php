@@ -33,7 +33,8 @@ class ProductsResource extends JsonResource
             ],
             'locale' => $this->locale,
             'created_at' => (string)$this->created_at,
-            'image' => Images::find($this->id, ProductService::RESOURCE_TYPE)
+            'image' => Images::find($this->id, ProductService::RESOURCE_TYPE),
+            'is_activated' => $this->is_activated
         ];
     }
 }

@@ -21,6 +21,7 @@ class AdminSettingResource extends JsonResource
             'id' => $this->id,
             'type' => [
                 'id' => $this->type_id,
+                'key' => $this->type->_key,
                 'name' => $this->type->name
             ],
             'resource_type' => $this->resource_type,

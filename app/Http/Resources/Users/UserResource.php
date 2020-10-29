@@ -24,6 +24,7 @@ class UserResource extends JsonResource
                 'last' => $this->last_name,
                 'full' => $this->getFullName()
             ],
+            'email' => $this->email,
             'avatar' => Images::find($this->id, UserService::RESOURCE_TYPE),
             'created_at' => (string)$this->created_at,
             'is_activated' => $this->is_activated == Status::STATUS_ON ? true : false,

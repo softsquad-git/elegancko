@@ -1,7 +1,7 @@
 <template>
 <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-4 p-0" v-for="category in categories.slice(0, 3)">
-        <router-link to="#" class="category-bg-3 _category-bg" :style="'background: url('+category.image+')'">
+    <div class="col-xl-4 col-lg-4 col-md-4 p-0" v-for="category in categories">
+        <router-link :to="{name: 'ProductsIndex', params: {category: category.alias }}" class="category-bg-3 _category-bg" :style="'background: url('+category.image+')'">
             <div class="category-bg vertical-center">
                 <div class="category-name">
                     {{ category.name }}
@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         loadCategories() {
-            this.$axios.get(`categories/all?position=2&pagination=10`)
+            this.$axios.get(`categories/all?position=2&pagination=3`)
             .then((data) => {
                 this.categories = data.data.data;
             })

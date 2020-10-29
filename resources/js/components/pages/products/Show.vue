@@ -2,8 +2,10 @@
 <div class="container single-product-page">
     <div class="row mb-2">
         <div class="col-xl-6 col-lg-6 col-md-6">
-            <div class="single-product-images" v-viewer>
-                <img class="w-100" v-for="image in product.images" :src="image" alt="'sd">
+            <div v-viewer>
+                <div class="row p-2">
+                    <img class="w-100 col-xl-4 col-lg-4 col-md-4 col-sm-2 col-xs-2 p-0" v-for="image in product.images" :src="image.src" alt="'sd">
+                </div>
             </div>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6">
@@ -39,10 +41,10 @@
             </div>
             <div class="row mt-4">
                 <div class="col-xl-6 col-lg-6 col-md-6">
-                    <button @click="addBasket" class="btn btn-outline-success w-100">Dodaj do koszyka</button>
+                    <b-button variant="outline-secondary" @click="addBasket" class="w-100 br-0">Dodaj do koszyka</b-button>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6">
-                    <button @click="finalize" class="btn btn-outline-success w-100">Kup teraz</button>
+                    <b-button variant="outline-secondary" @click="finalize" class="w-100 br-0">Kup teraz</b-button>
                 </div>
             </div>
             <div class="row">
@@ -125,7 +127,6 @@ export default {
             this.$axios.get(`front/products/all?category_id=${1}&pagination=4`)
             .then((data) => {
                 this.relatedProducts = data.data.data;
-                console.log(data.data.data)
             })
         }
     },

@@ -153,10 +153,18 @@ export default {
                     }
                 }
             )
+        },
+        redirect() {
+            if (this.$route.params.email) {
+                this.params.email = this.$route.params.email;
+            } else  {
+                this.params.email = '';
+            }
+            this.loadData();
         }
     },
     created() {
-        this.loadData();
+        this.redirect();
         document.title = this.title;
     }
 }

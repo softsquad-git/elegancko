@@ -65,7 +65,7 @@
                     <th scope="row" class="text-center">{{ index + 1 }}</th>
                     <td>{{ user.name.full }}</td>
                     <td>{{ user.email }}</td>
-                    <td>{{ user.c_orders }}</td>
+                    <td><router-link :to="{name: 'AdminOrdersList', params: {email: user.email}}">{{ user.c_orders }}</router-link></td>
                     <td>{{ user.c_messages }}</td>
                     <td>{{ user.created_at | moment('calendar') }}</td>
                     <td>{{ user.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
@@ -106,6 +106,7 @@ export default {
             this.$axios.get(`admin/users/all?name=${this.params.name}&email=${this.params.email}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
                     this.data = data.data;
+                    console.log(data.data.data);
                 })
         },
         ordering(ordering) {

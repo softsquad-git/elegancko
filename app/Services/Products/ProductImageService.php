@@ -4,6 +4,7 @@ namespace App\Services\Products;
 
 use App\Models\Products\Product;
 use Illuminate\Support\Str;
+use \Exception;
 
 class ProductImageService
 {
@@ -32,13 +33,15 @@ class ProductImageService
 
     /**
      * @param Product $product
+     * @param array $imagesIds
      * @return bool
+     * @throws Exception
      */
-    public function remove(Product $product): bool
+    public function remove(Product $product, array $imagesIds): bool
     {
-        if (!empty($product->images()) && count($product->images()) > 0) {
-            $product->images()->delete();
-        }
+        $product->images()->whereIn('id', $imagesIds)->each(function ($image) {
+            $image->delete();
+        });
         return true;
     }
 }

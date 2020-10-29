@@ -16,7 +16,8 @@ class ProductImagesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            Images::getPath($this->resource_id, $this->resource_type, $this->src)
+            'id' => $this->id,
+            'src' => Images::getPath($this->resource_id, $this->resource_type, $this->src)
         ];
     }
 }
