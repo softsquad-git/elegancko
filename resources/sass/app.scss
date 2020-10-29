@@ -1,0 +1,272 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Sansita+Swashed:wght@300&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Main
+@import "main";
+body {
+    font-family: "Lato", cursive!important;
+}
+
+.logo-text {
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 35px;
+    font-weight: 100;
+}
+.title {
+    display: block;
+    width: 100%;
+    font-size: 39px;
+    font-family: "Lato", cursive;
+    color: #333333;
+    line-height: 1.2;
+    text-align: left;
+}
+.auth {
+    height: 100vh;
+    width: 99.2%;
+}
+.auth-bg {
+    background: url("https://previews.123rf.com/images/artmim/artmim1903/artmim190300506/120077688-beautiful-pretty-model-woman-in-red-dress-and-high-heels-shoes-standing-on-white-banner-background-w.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+.form-group {
+    margin-bottom: 2rem!important;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    font-family: 'Lato', sans-serif!important;
+    font-size: 20px!important;
+    color: #555555!important;
+    line-height: 1.2;
+    padding: 0 2px;
+    border: 0!important;
+    border-bottom: 1px dotted gray!important;
+    border-radius: 0!important;
+}
+.main-btn {
+    display: -webkit-box!important;
+    display: -webkit-flex!important;
+    display: -moz-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    padding: 0 20px!important;
+    min-width: auto!important;
+    height: 50px!important;
+    font-family: 'Lato', sans-serif!important;
+    font-size: 16px!important;
+    color: #fff!important;
+    line-height: 1.2!important;
+    background: #febccb!important;
+}
+.auth-action {
+    padding: 15px!important;
+}
+
+a, a:hover {
+    text-decoration: none!important;
+}
+
+.link-register {
+    line-height: 50px;
+    padding: 0 20px;
+    font-weight: bold;
+    color: #dabbc2;
+}
+
+.pointer:hover{
+    cursor: pointer;
+}
+
+.title {
+    font-family: 'Lato', cursive;
+    display: inline;
+}
+
+.options {
+    float: right;
+    margin-top: 5px;
+}
+
+.admin-products-single {
+    border: 1px solid #dcdada;
+    border-radius: 3px;
+    height: auto;
+    margin: 10px auto;
+}
+
+.admin-product-content {
+    padding: 10px 0;
+}
+
+.admin-product-content a {
+    color: #464545;
+}
+
+.admin-products-single .info {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.admin-products-single .info a, .admin-products-single .info .text-bold {
+    font-weight: bold;
+}
+
+.admin-categories-single {
+    border: 1px solid #d4d4d4;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.admin-categories-single h4 {
+    font-size: 25px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.admin-categories-single .created {
+    float: right;
+}
+
+.admin-categories-single h5 {
+    font-size: 15px;
+}
+
+.admin-categories-single .info span {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.admin-categories-single .footer {
+    margin-top: 10px;
+}
+
+.product-image-photo {
+    height: 490px;
+    background-position: top center!important;
+    background-size: cover!important;
+}
+
+.single-product {
+    position: relative;
+    margin-top: 15px;
+}
+
+.single-product a {
+    text-align: center;
+    display: block;
+    font-size: 17px;
+    padding: 5px 0;
+    color: #000;
+}
+
+.single-product .footer {
+    text-align: center;
+    font-size: 14px;
+}
+
+.single-product .footer span {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn-product {
+    border: 1px solid #484848;
+    color: red;
+}
+
+.btn-product:hover {
+    background: #484848;
+    color: #fff;
+}
+.single-product-page {
+    margin-top: 60px;
+}
+
+.multiselect__tags {
+    min-height: 40px!important;
+    display: block!important;
+    padding: 8px 40px 0 8px!important;
+    border-radius: 0!important;
+    border: 0!important;
+    background: #fff!important;
+    font-size: 14px!important;
+}
+
+.btn-outline-success {
+    color: #151915!important;
+    border-color: #151915!important;
+    border-radius: 0!important;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background: #151915!important;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #937c6f;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.title-top-banner {
+    font-size: 5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+footer .footer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+footer .footer a {
+    color: #000;
+    font-weight: bold;
+}
+
+.footer .footer-info {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+footer .footer a.link {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+footer .footer a.fb {
+    color: #757373;
+    font-size: 22px;
+}
+
+.min-select {
+    border-bottom: 0!important;
+}

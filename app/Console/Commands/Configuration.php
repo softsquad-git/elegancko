@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Database\Seeders\AdminSettingTypeSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -33,11 +34,12 @@ class Configuration extends Command
 
     public function handle()
     {
+        $settingType = new AdminSettingTypeSeeder();
+        $settingType->run();
         $seedersClass = [
             'AdminAccount',
             'Category',
             'AdminSetting',
-            'AdminSettingType',
         ];
         foreach ($seedersClass as $seedClass) {
             Artisan::call('db:seed --class='.$seedClass.'Seeder');

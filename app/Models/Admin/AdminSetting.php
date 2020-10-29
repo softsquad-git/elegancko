@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Models\Admin;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class AdminSetting extends Model
+{
+    use HasFactory;
+
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    protected $table = 'admin_settings';
+
+    protected $fillable = [
+        'type_id',
+        'resource_type',
+        'value'
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function type()
+    {
+        return $this->belongsTo(AdminSettingType::class);
+    }
+}
