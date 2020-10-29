@@ -19,7 +19,9 @@ class AdminSettingSeeder extends Seeder
     {
         $types = AdminSettingType::all();
         foreach ($types as $type) {
-            if ($type->_key == 'products_top_banner' || $type->_key == 'home_top_banner')
+            if ($type->_key == 'products_top_banner'
+                || $type->_key == 'home_top_banner'
+                || $type->_key == 'auth_left_banner')
                 $resourceType = self::TYPE_FILE;
             else
                 $resourceType = self::TYPE_TEXT;

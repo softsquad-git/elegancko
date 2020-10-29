@@ -22,7 +22,8 @@ class AdminSettingTypeSeeder extends Seeder
             ['_key' => 'phone_contact', 'name' => 'Telefon kontaktowy'],
             ['_key' => 'email_contact', 'name' => 'E-mail'],
             ['_key' => 'number_account_pay', 'name', 'Numer konta bankowego'],
-            ['_key' => 'shop_address', 'name' => 'Adres sklepu']
+            ['_key' => 'shop_address', 'name' => 'Adres sklepu'],
+            ['_key' => 'auth_left_banner', 'name' => 'Banner na stronie logowanie']
         ];
         foreach ($data as $datum) {
             AdminSettingType::create($datum);
