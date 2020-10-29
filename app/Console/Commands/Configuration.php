@@ -34,12 +34,11 @@ class Configuration extends Command
 
     public function handle()
     {
-        $settingType = new AdminSettingTypeSeeder();
-        $settingType->run();
         $seedersClass = [
             'AdminAccount',
             'Category',
             'AdminSetting',
+            'AdminSettingType'
         ];
         foreach ($seedersClass as $seedClass) {
             Artisan::call('db:seed --class='.$seedClass.'Seeder');
