@@ -16,7 +16,7 @@ Vue.use(VueNotification);
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(require('vue-moment'));
 
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+axios.defaults.baseURL = process.env.MIX_APP_URL+'api/';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
