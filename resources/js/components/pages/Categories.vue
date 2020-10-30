@@ -14,15 +14,21 @@
 
 <script>
 export default {
-    name: "HomeCategories",
+    name: "Categories",
     data() {
         return {
             categories: []
         }
     },
+    props: {
+        limit: null,
+        position: null,
+        name: null,
+        ordering: null
+    },
     methods: {
-        loadCategories() {
-            this.$axios.get(`categories/all?position=2&pagination=3`)
+        loadCategories(page = 1) {
+            this.$axios.get(`categories/all?page=${page}&position=${this.position}&pagination=${this.limit}&name=${this.name}&ordering=${this.ordering}`)
             .then((data) => {
                 this.categories = data.data.data;
             })

@@ -86,6 +86,7 @@
                 <tbody>
                 </tbody>
             </table>
+            <pagination :data="data" @pagination-change-page="loadData"></pagination>
             <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
         </div>
     </div>
@@ -111,8 +112,8 @@ export default {
         }
     },
     methods: {
-        loadData() {
-            this.$axios.get(`admin/orders/all?email=${this.params.email}&status=${this.params.status}&payment_status=${this.params.payment_status}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
+        loadData(page = 1) {
+            this.$axios.get(`admin/orders/all?page=${page}&email=${this.params.email}&status=${this.params.status}&payment_status=${this.params.payment_status}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
                     this.data = data.data;
                 })

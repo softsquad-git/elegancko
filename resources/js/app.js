@@ -9,11 +9,16 @@ import store from './store';
 import auth from './middleware/auth';
 import guest from './middleware/guest';
 import createPersistedState from "vuex-persistedstate";
+import i18n from 'vue-i18n'
+
+import {defaultLocale} from "./i18n.config";
+
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueRouter);
-require('./bootstrap');
+Vue.use(i18n);
 
+require('./bootstrap');
 
 const router = new VueRouter({
     mode: 'history',
@@ -47,6 +52,11 @@ const router = new VueRouter({
             path: '/thank-you',
             component: () => import('./components/orders/OrderThx'),
             name: 'OrderThx'
+        },
+        {
+            path: '/categories',
+            component: () => import('./components/pages/categories/CategoriesIndex'),
+            name: 'CategoriesIndex'
         },
         {
             path: '/auth',
@@ -209,6 +219,24 @@ const router = new VueRouter({
                         auth: true,
                         middleware: [auth]
                     }
+                },
+                {
+                    path: 'messages',
+                    component: () => import('./components/admin/messages/AdminMessagesLIst'),
+                    name: 'AdminMessagesList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'message/{id}',
+                    component: () => import('./components/admin/messages/AdminMessageFind'),
+                    name: 'AdminMessageFind',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
                 }
             ]
         }
@@ -241,5 +269,6 @@ const app = new Vue({
         plugins: [createPersistedState({
 
         })]
-    })
+    }),
+    i18n
 });

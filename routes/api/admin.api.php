@@ -69,4 +69,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::delete('remove/{orderId}', 'OrderController@remove');
         Route::get('all-products/{orderId}', 'OrderController@findAllOrderProducts');
     });
+    Route::group(['prefix' => 'reports', 'namespace' => 'Reports'], function () {
+        Route::get('users', 'ReportController@reportUsers');
+        Route::get('orders', 'ReportController@reportOrders');
+        Route::get('messages', 'ReportController@reportMessages');
+    });
+    Route::group(['prefix' => 'messages', 'namespace' => 'Messages'], function () {
+       Route::get('all', 'MessageController@index');
+       Route::get('find/{messageId}', 'MessageController@findById');
+       Route::post('create', 'MessageController@create');
+       Route::post('is-reading/{messageId}', 'MessageController@isReading');
+       Route::delete('remove/{messageId}', 'MessageController@remove');
+    });
 });

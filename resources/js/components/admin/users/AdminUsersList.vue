@@ -65,7 +65,12 @@
                     <th scope="row" class="text-center">{{ index + 1 }}</th>
                     <td>{{ user.name.full }}</td>
                     <td>{{ user.email }}</td>
-                    <td><router-link :to="{name: 'AdminOrdersList', params: {email: user.email}}">{{ user.c_orders }}</router-link></td>
+                    <td>
+                        <router-link :to="{name: 'AdminOrdersList', params: {email: user.email}}">{{
+                                user.c_orders
+                            }}
+                        </router-link>
+                    </td>
                     <td>{{ user.c_messages }}</td>
                     <td>{{ user.created_at | moment('calendar') }}</td>
                     <td>{{ user.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
@@ -80,16 +85,21 @@
                 <tbody>
                 </tbody>
             </table>
+            <pagination :data="data" @pagination-change-page="loadData"></pagination>
+            <no-data-component v-if="data.data.length < 1"
+                               :msg="'Brak danych do wyświetlenia'"/>
         </div>
     </div>
 </template>
 
 <script>
+import NoDataComponent from "../../NoDataComponent";
 export default {
     name: "AdminUsersList",
+    components: {NoDataComponent},
     data() {
         return {
-            title: 'Lista użytkowników',
+            title: 'Użytkownicy',
             params: {
                 name: '',
                 email: '',
@@ -102,8 +112,8 @@ export default {
         }
     },
     methods: {
-        loadData() {
-            this.$axios.get(`admin/users/all?name=${this.params.name}&email=${this.params.email}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
+        loadData(page = 1) {
+            this.$axios.get(`admin/users/all?page=${page}&name=${this.params.name}&email=${this.params.email}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
                     this.data = data.data;
                     console.log(data.data.data);
@@ -123,6 +133,7 @@ export default {
     },
     created() {
         this.loadData();
+        document.title = this.title;
     }
 }
 </script>

@@ -97,16 +97,20 @@
                     </tr>
                 </tbody>
             </table>
+            <pagination :data="data" @pagination-change-page="loadData"></pagination>
+            <no-data-component v-if="data.data.length < 1" :msg="'Brak dodanych produktów'"/>
         </div>
     </div>
 </template>
 
 <script>
+import NoDataComponent from "../../NoDataComponent";
 export default {
     name: "AdminProductsList",
+    components: {NoDataComponent},
     data() {
         return {
-            title: 'Lista produktów',
+            title: 'Produkty',
             data: [],
             params: {
                 title: '',
@@ -135,11 +139,10 @@ export default {
             this.params.pagination = count;
             this.loadData();
         },
-        loadData() {
-            this.$axios.get(`admin/products/all?title=${this.params.title}&category=${this.params.category}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
+        loadData(page = 1) {
+            this.$axios.get(`admin/products/all?page=${page}&title=${this.params.title}&category=${this.params.category}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
                 .then((data) => {
                     this.data = data.data;
-                    console.log(data.data.data)
                     this.loadCategories();
                 })
                 .catch(() => {

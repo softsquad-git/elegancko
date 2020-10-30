@@ -250,5 +250,8 @@ return [
         'last_name' => env('ADMIN_LAST_NAME', 'Squad'),
         'email' => env('ADMIN_EMAIL', 'biuro@softsquad.pl'),
         'password' => env('ADMIN_DF_PASSWORD', 'start123')
+    ],
+    'emails' => [
+        'email' => 'michallosak@gmail.com'
     ]
 ];

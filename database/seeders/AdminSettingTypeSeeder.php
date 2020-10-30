@@ -25,7 +25,8 @@ class AdminSettingTypeSeeder extends Seeder
             ['_key' => 'shop_address', 'name' => 'Adres sklepu'],
             ['_key' => 'auth_left_banner', 'name' => 'Banner na stronie logowanie'],
             ['_key' => 'home_top_banner_text', 'name' => 'Napis na stronie głównej'],
-            ['_key' => 'home_top_banner_desc', 'name' => 'Opis na stronie głównej']
+            ['_key' => 'home_top_banner_desc', 'name' => 'Opis na stronie głównej'],
+            ['_key' => 'categories_top_banner', 'name' => 'Banner na stronie kategorii']
         ];
         foreach ($data as $datum) {
             AdminSettingType::create($datum);

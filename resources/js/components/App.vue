@@ -1,36 +1,28 @@
 <template>
     <div class="page">
         <section class="header sticky-top">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-4">
-                        <div class="logo-text" v-html="settings[0].value">
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-8">
-                        <b-navbar toggleable="lg" type="light">
-                            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-                            <b-collapse id="nav-collapse" is-nav>
-                                <b-navbar-nav>
-                                    <b-nav-item :to="{name: 'IndexPage'}">Strona główna</b-nav-item>
-                                    <b-nav-item :to="{name: 'ProductsIndex'}">Sklep</b-nav-item>
-                                    <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ProductsIndex'}">{{ page.title }}</b-nav-item>
-                                    <b-nav-item-dropdown v-if="pagesTop.length > 5" right>
-                                        <b-dropdown-item v-for="page in pagesTop.slice(5, 120)" href="#">{{page.title}}</b-dropdown-item>
-                                    </b-nav-item-dropdown>
+            <b-navbar toggleable="lg" type="light">
+                <b-navbar-brand :to="{name: 'IndexPage'}" class="logo-text">{{ settings[0].value }}</b-navbar-brand>
+                <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+                <b-collapse id="nav-collapse" is-nav>
+                    <b-navbar-nav>
+                        <b-nav-item :to="{name: 'IndexPage'}">Strona główna</b-nav-item>
+                        <b-nav-item :to="{name: 'ProductsIndex'}">Sklep</b-nav-item>
+                        <b-nav-item :to="{name: 'CategoriesIndex'}">Kategorie</b-nav-item>
+                        <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ProductsIndex'}">{{ page.title }}</b-nav-item>
+                        <b-nav-item-dropdown v-if="pagesTop.length > 5" right>
+                            <b-dropdown-item v-for="page in pagesTop.slice(5, 100)" href="#">{{page.title}}</b-dropdown-item>
+                        </b-nav-item-dropdown>
 
-                                </b-navbar-nav>
-                                <b-navbar-nav class="ml-auto">
-                                    <b-nav-item :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
-                                    <b-nav-item :to="{name: 'BasketIndexPage'}"><span
-                                        class="fa fa-shopping-basket"></span>
-                                    </b-nav-item>
-                                </b-navbar-nav>
-                            </b-collapse>
-                        </b-navbar>
-                    </div>
-                </div>
-            </div>
+                    </b-navbar-nav>
+                    <b-navbar-nav class="ml-auto">
+                        <b-nav-item :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
+                        <b-nav-item :to="{name: 'BasketIndexPage'}"><span
+                            class="fa fa-shopping-basket"></span>
+                        </b-nav-item>
+                    </b-navbar-nav>
+                </b-collapse>
+            </b-navbar>
         </section>
         <section class="body">
             <router-view/>

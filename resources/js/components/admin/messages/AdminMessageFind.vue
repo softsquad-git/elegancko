@@ -3,9 +3,9 @@
 </template>
 
 <script>
-    export default {
-        name: "SearchProductsList"
-    }
+export default {
+    name: "AdminMessageFind"
+}
 </script>
 
 <style scoped>

@@ -81,6 +81,7 @@
                 </tr>
                 </tbody>
             </table>
+            <pagination :data="data" @pagination-change-page="loadData"></pagination>
             <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
         </div>
     </div>
@@ -93,7 +94,7 @@ export default {
     components: {NoDataComponent},
     data() {
         return {
-            data: [],
+            data: {},
             title: 'Strony',
             params: {
                 title: '',
@@ -106,8 +107,8 @@ export default {
         }
     },
     methods: {
-        loadData() {
-            this.$axios.get(`admin/pages/all?title=${this.params.title}&is_active=${this.params.is_active}&position=${this.params.position}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
+        loadData(page = 1) {
+            this.$axios.get(`admin/pages/all?page=${page}&title=${this.params.title}&is_active=${this.params.is_active}&position=${this.params.position}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
             .then((data) => {
                 this.data = data.data
             })
@@ -123,6 +124,7 @@ export default {
     },
     created() {
         this.loadData();
+        document.title = this.title;
     }
 }
 </script>

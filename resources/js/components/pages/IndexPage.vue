@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <home-categories/>
+            <categories :limit="3" :position="2" :name="''" :ordering="''"/>
         </div>
         <div class="container text-center mt-5">
             <div class="subtitle">najlepsze</div>
@@ -56,18 +56,19 @@
 </template>
 
 <script>
-import HomeCategories from "./HomeCategories";
+import Categories from "./Categories";
 import HomeInfo from "./HomeInfo";
 import HomeProducts from "./HomeProducts";
 
 export default {
     name: "IndexPage",
-    components: {HomeProducts, HomeInfo, HomeCategories},
+    components: {HomeProducts, HomeInfo, Categories},
     data() {
         return {
             top_banner: '',
             products_promo: [],
-            products_news: []
+            products_news: [],
+            categories: []
         }
     },
     methods: {

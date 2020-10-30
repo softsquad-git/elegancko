@@ -1,14 +1,14 @@
 <template>
 <div class="container single-product-page">
     <div class="row mb-2">
-        <div class="col-xl-6 col-lg-6 col-md-6">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div v-viewer>
                 <div class="row p-2">
                     <img class="w-100 col-xl-4 col-lg-4 col-md-4 col-sm-2 col-xs-2 p-0" v-for="image in product.images" :src="image.src" alt="'sd">
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-6 col-md-6">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h4 class="title">{{ product.title }}</h4>
             <div><span class="text-bold">Kategoria: </span><router-link :to="{name: 'ProductsIndex', params: {category: product.category.alias }}">{{ product.category.name }}</router-link></div>
             <p class="desc">
@@ -40,10 +40,10 @@
                 ></multiselect>
             </div>
             <div class="row mt-4">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <b-button variant="outline-secondary" @click="addBasket" class="w-100 br-0">Dodaj do koszyka</b-button>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <b-button variant="outline-secondary" @click="addBasket" class="w-100 br-0 margin-bottom-15">Dodaj do koszyka</b-button>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <b-button variant="outline-secondary" @click="finalize" class="w-100 br-0">Kup teraz</b-button>
                 </div>
             </div>

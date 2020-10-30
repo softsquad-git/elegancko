@@ -7,6 +7,7 @@ import VueNotification from "vue-notification";
 window.Vuex = Vuex;
 
 Vue.use(Vuex);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 window.axios = require('axios');
 Vue.prototype.$axios = axios;

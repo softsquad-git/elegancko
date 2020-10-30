@@ -86,6 +86,7 @@
                 </tr>
                 </tbody>
             </table>
+            <pagination :data="data" @pagination-change-page="loadData"></pagination>
             <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
         </div>
     </div>
@@ -100,7 +101,7 @@ export default {
     components: {NoDataComponent, AdminDataCategory},
     data() {
         return {
-            title: 'Lista kategorii',
+            title: 'Kategorie',
             data: [],
             params: {
                 name: '',
@@ -113,8 +114,8 @@ export default {
         }
     },
     methods: {
-        loadData() {
-            this.$axios.get(`admin/categories/all?name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&is_active=${this.params.is_active}&locale=${this.params.locale}`)
+        loadData(page = 1) {
+            this.$axios.get(`admin/categories/all?page=${page}&name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&is_active=${this.params.is_active}&locale=${this.params.locale}`)
                 .then((data) => {
                     this.data = data.data;
                 })

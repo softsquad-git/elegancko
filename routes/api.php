@@ -18,4 +18,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
    Route::group(['prefix' => 'payments', 'namespace' => 'Payments'], function () {
        Route::post('pay', 'PaymentController@pay');
    });
+   Route::group(['prefix' => 'messages', 'namespace' => 'Messages'], function () {
+       Route::post('create', 'MessageController@create');
+   });
 });

@@ -10,6 +10,7 @@
                 <b-nav-item :to="{name: 'AdminPagesList'}">Strony</b-nav-item>
                 <b-nav-item :to="{name: 'AdminUsersList'}">Użytkownicy</b-nav-item>
                 <b-nav-item :to="{name: 'AdminOrdersList'}">Zamówienia</b-nav-item>
+                <b-nav-item :to="{name: 'AdminMessagesList'}">Wiadomości</b-nav-item>
                 <b-nav-item-dropdown text="Ustawienia" right>
                     <b-dropdown-item :to="{name: 'AdminPageSetting'}">Strony</b-dropdown-item>
                     <b-dropdown-item :to="{name: 'AdminAccountSetting'}">Dane podstawowe</b-dropdown-item>

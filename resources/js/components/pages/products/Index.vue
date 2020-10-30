@@ -65,6 +65,9 @@
                         <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
                     </div>
                 </div>
+                <div class="col-12 mt-4">
+                    <pagination :data="data" @pagination-change-page="loadData"></pagination>
+                </div>
             </div>
         </div>
     </div>
@@ -96,8 +99,8 @@ export default {
         }
     },
     methods: {
-        loadData() {
-            this.$axios.get(`front/products/all?title=${this.params.title}&category=${this.params.category}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
+        loadData(page = 1) {
+            this.$axios.get(`front/products/all?page=${page}&title=${this.params.title}&category=${this.params.category}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
                 .then((data) => {
                     this.data = data.data;
                 })
