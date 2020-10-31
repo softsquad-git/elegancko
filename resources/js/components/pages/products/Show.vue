@@ -76,6 +76,7 @@
             </div>
         </div>
     </div>
+    <_-meta-component/>
 </div>
 </template>
 
@@ -85,11 +86,13 @@ import 'viewerjs/dist/viewer.css'
 import Multiselect from 'vue-multiselect'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
+import _MetaComponent from "../_MetaComponent";
 Vue.use(Viewer)
 
 export default {
     name: "Show",
     components: {
+        _MetaComponent,
         Multiselect
     },
     data() {

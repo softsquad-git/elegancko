@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Categories;
 
 use App\Helpers\Images;
+use App\Http\Resources\Meta\MetaResource;
 use App\Services\Categories\CategoryService;
 use App\Services\Products\ProductService;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -23,6 +24,7 @@ class CategoryResource extends JsonResource
             $image = Images::find($this->products()->first()->id, ProductService::RESOURCE_TYPE);
         $data = parent::toArray($request);
         $data['image'] = $image;
+        $data['meta'] = new MetaResource($this->meta);
         return $data;
     }
 }

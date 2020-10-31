@@ -77,6 +77,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminDataCategory",
   data: function data() {
@@ -90,7 +95,12 @@ __webpack_require__.r(__webpack_exports__);
         is_active: '',
         position: '',
         locale: '',
-        image: null
+        image: null,
+        meta: {
+          title: '',
+          description: '',
+          keywords: ''
+        }
       }
     };
   },
@@ -490,6 +500,36 @@ var render = function() {
               ],
               1
             )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row form-group" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.meta.title,
+                    expression: "data.meta.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "meta-title",
+                  "aria-label": "Meta title",
+                  placeholder: "Meta tytuł"
+                },
+                domProps: { value: _vm.data.meta.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data.meta, "title", $event.target.value)
+                  }
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row form-group" }, [

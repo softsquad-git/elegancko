@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Products;
 
 use App\Helpers\Status;
+use App\Http\Resources\Meta\MetaResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\App;
 
@@ -35,7 +36,8 @@ class ProductResource extends JsonResource
                 'name' => Status::checkTypeProduct($this->type),
                 'id' => $this->type
             ],
-            'shipments' => $this->shipments
+            'shipments' => $this->shipments,
+            'meta' => new MetaResource($this->meta)
         ];
     }
 }

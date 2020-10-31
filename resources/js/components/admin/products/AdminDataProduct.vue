@@ -119,6 +119,21 @@
 
                     </div>
                 </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <input id="meta-title" class="form-control" v-model="data.meta.title" aria-label="Meta title" placeholder="Meta tytuł">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-12">
                         <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
@@ -187,7 +202,12 @@ export default {
                 price: '',
                 old_price: '',
                 currency: '',
-                type: ''
+                type: '',
+                meta: {
+                    title: '',
+                    description: '',
+                    keywords: ''
+                }
             },
             categories: [],
             sizes: [],
@@ -221,6 +241,7 @@ export default {
                     formData.append('currency', this.data.currency);
                     formData.append('type', this.data.type);
                     formData.append('colors', this.data.colors);
+                    formData.append('meta', this.data.meta);
                 }
 
                 return this.saveData(formData)
@@ -336,6 +357,9 @@ export default {
                         this.data.sizes = product.sizes;
                         this.data.colors = product.colors;
                         this.data.shipments = product.shipments;
+                        this.data.meta.title = product.meta.title;
+                        this.data.meta.description = product.meta.description;
+                        this.data.meta.keywords = product.meta.keywords;
                     })
             }
         }

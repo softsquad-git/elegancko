@@ -38,6 +38,7 @@ class Configuration extends Command
             'AdminAccount',
             'Category',
             'AdminSetting',
+            'Meta',
             'AdminSettingType'
         ];
         Artisan::call('migrate:fresh');

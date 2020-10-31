@@ -253,5 +253,29 @@ return [
     ],
     'emails' => [
         'email' => 'michallosak@gmail.com'
+    ],
+    'meta' => [
+        'pl' => [
+            'service' => 'Elegancko',
+            'categories' => 'Kategorie',
+            'products' => 'Produkty',
+            'contact' => 'Kontakt',
+            'login' => 'Zaloguj się',
+            'register' => 'Zarejestruj się',
+            'terms' => 'Regulamin',
+            'pp' => 'Polityka prywatności',
+            'forgotPassword' => 'Przypomnij hasło'
+        ],
+        'en' => [
+            'service' => 'Elegancko',
+            'categories' => 'Categories',
+            'products' => 'Products',
+            'contact' => 'Contact',
+            'login' => 'Login',
+            'register' => 'Register',
+            'terms' => 'Terms',
+            'pp' => 'Privacy Policy',
+            'forgotPassword' => 'Forgot Password'
+        ]
     ]
 ];

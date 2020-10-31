@@ -4,7 +4,9 @@ namespace App\Models\Products;
 
 use App\Models\Category;
 use App\Models\Images\Image;
+use App\Models\Meta;
 use App\Models\Shipment;
+use App\Services\Meta\MetaService;
 use App\Services\Products\ProductService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -79,5 +81,14 @@ class Product extends Model
     public function price()
     {
         return $this->hasOne(ProductPrice::class, 'product_id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function meta()
+    {
+        return $this->hasOne(Meta::class, 'resource_id', 'id')
+            ->where('resource_type', MetaService::RESOURCE_PRODUCT);
     }
 }

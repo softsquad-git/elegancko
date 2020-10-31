@@ -41,6 +41,21 @@
                         <quill-editor v-model="data.content"></quill-editor>
                     </div>
                 </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <input id="meta-title" class="form-control" v-model="data.meta.title" aria-label="Meta title" placeholder="Meta tytuł">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-12">
                         <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
@@ -71,7 +86,12 @@ export default {
                 content: '',
                 locale: '',
                 is_active: '',
-                position: ''
+                position: '',
+                meta: {
+                    title: '',
+                    description: '',
+                    keywords: ''
+                }
             }
         }
     },
@@ -107,6 +127,9 @@ export default {
                     this.data.locale = page.locale;
                     this.data.position = page.position
                     this.data.is_active = page.is_active;
+                    this.data.meta.title = page.meta.title;
+                    this.data.meta.description = page.meta.description;
+                    this.data.meta.keywords = page.meta.keywords;
                 })
         }
     }

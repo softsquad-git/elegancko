@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Pages;
 
+use App\Http\Resources\Meta\MetaResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PageResource extends JsonResource
@@ -14,6 +15,8 @@ class PageResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $data = parent::toArray($request);
+        $data['meta'] = new MetaResource($this->meta);
+        return $data;
     }
 }

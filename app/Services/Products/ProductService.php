@@ -2,10 +2,12 @@
 
 namespace App\Services\Products;
 
+use App\Interfaces\MetaInterface;
 use App\Models\Products\Product;
 use App\Models\Products\ProductPrice;
 use App\Repositories\Categories\CategoryRepository;
 use App\Repositories\Products\ProductRepository;
+use App\Services\Meta\MetaService;
 use \Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -25,13 +27,24 @@ class ProductService
     private $categoryRepository;
 
     /**
+     * @var MetaInterface
+     */
+    private $metaInterface;
+
+    /**
      * @param ProductRepository $productRepository
      * @param CategoryRepository $categoryRepository
+     * @param MetaInterface $metaInterface
      */
-    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
+    public function __construct(
+        ProductRepository $productRepository,
+        CategoryRepository $categoryRepository,
+        MetaInterface $metaInterface
+    )
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->metaInterface = $metaInterface;
     }
 
     /**
@@ -54,9 +67,8 @@ class ProductService
         $item = new \stdClass();
         try {
             $item = Product::create($data);
-
             $this->saveParametersProduct($item, $data);
-
+            $this->saveMeta($item->id, $data['meta'], $item->locale);
             $data['product_id'] = $item->id;
             ProductPrice::create($data);
         } catch (Exception $e) {
@@ -77,14 +89,20 @@ class ProductService
         $item = $this->productRepository->findById($productId);
         if ($data['category_id'] != $item->category_id)
             $this->categoryRepository->findById($data['category_id']);
-
-        $item->update($data);
+        if ($item->meta) {
+            $this->metaInterface->setTitle($data['meta']['title'])
+                ->setDesc($data['meta']['description'])
+                ->setKeywords($data['meta']['keywords'])
+                ->updateMeta($item->meta);
+        } else {
+            $this->saveMeta($item->id, $data['meta'], $item->locale);
+        }
         $item->price()->update([
             'old_price' => $data['old_price'],
             'price' => $data['price'],
             'currency' => $data['currency']
         ]);
-
+        $item->update($data);
         $this->saveParametersProduct($item, $data);
 
         return $item;
@@ -164,4 +182,22 @@ class ProductService
 
         return true;
     }
+
+    /**
+    * @param int $id
+    * @param array $meta
+    * @param string $locale
+    */
+    private function saveMeta(int $id, array $meta, string $locale)
+    {
+        $this->metaInterface
+            ->setResourceId($id)
+            ->setResourceType(MetaService::RESOURCE_PRODUCT)
+            ->setTitle($meta['title'])
+            ->setDesc($meta['description'])
+            ->setKeywords($meta['keywords'])
+            ->setLocale($locale)
+            ->saveMeta();
+    }
+
 }
