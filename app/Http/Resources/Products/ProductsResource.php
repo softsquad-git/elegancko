@@ -31,7 +31,7 @@ class ProductsResource extends JsonResource
                 'old' => $this->price->old_price,
                 'currency' => $this->price->currency
             ],
-            'locale' => $this->locale,
+            'locale' => Images::getLocaleFlag($this->locale),
             'created_at' => (string)$this->created_at,
             'image' => Images::find($this->id, ProductService::RESOURCE_TYPE),
             'is_activated' => $this->is_activated

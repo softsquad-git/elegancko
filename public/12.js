@@ -857,7 +857,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.locale))]),
+                    _c("td", {
+                      domProps: { innerHTML: _vm._s(product.locale) }
+                    }),
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(

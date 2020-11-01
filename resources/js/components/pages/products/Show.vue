@@ -76,7 +76,12 @@
             </div>
         </div>
     </div>
-    <_-meta-component/>
+    <meta-component
+        :title="product.meta.title"
+        :description="product.meta.description"
+        :keywords="product.meta.keywords"
+        type="ITEM"
+    />
 </div>
 </template>
 
@@ -86,13 +91,13 @@ import 'viewerjs/dist/viewer.css'
 import Multiselect from 'vue-multiselect'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
-import _MetaComponent from "../_MetaComponent";
+import MetaComponent from "../MetaComponent";
 Vue.use(Viewer)
 
 export default {
     name: "Show",
     components: {
-        _MetaComponent,
+        MetaComponent,
         Multiselect
     },
     data() {

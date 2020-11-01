@@ -605,7 +605,9 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(category.locale))]),
+                    _c("td", {
+                      domProps: { innerHTML: _vm._s(category.locale) }
+                    }),
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(_vm._s(category.is_active == 1 ? "Tak" : "Nie"))

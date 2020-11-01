@@ -125,8 +125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminPagesList",
@@ -671,13 +669,7 @@ var render = function() {
                       _vm._v(_vm._s(page.is_active == 1 ? "Tak" : "Nie"))
                     ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(page.locale) +
-                          "\n                "
-                      )
-                    ]),
+                    _c("td", { domProps: { innerHTML: _vm._s(page.locale) } }),
                     _vm._v(" "),
                     _c(
                       "td",

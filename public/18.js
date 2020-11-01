@@ -36,6 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminLayout"
 });
@@ -123,9 +124,11 @@ var render = function() {
               _c(
                 "b-navbar-nav",
                 [
-                  _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
-                    _vm._v("Panel administracyjny")
-                  ]),
+                  _c(
+                    "b-nav-item",
+                    { attrs: { to: { name: "AdminPageIndex" } } },
+                    [_vm._v("Panel administracyjny")]
+                  ),
                   _vm._v(" "),
                   _c(
                     "b-nav-item",
@@ -164,6 +167,12 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
+                    "b-nav-item",
+                    { attrs: { to: { name: "AdminMetaList" } } },
+                    [_vm._v("SEO")]
+                  ),
+                  _vm._v(" "),
+                  _c(
                     "b-nav-item-dropdown",
                     { attrs: { text: "Ustawienia", right: "" } },
                     [
@@ -189,7 +198,7 @@ var render = function() {
                 "b-navbar-nav",
                 { staticClass: "ml-auto" },
                 [
-                  _c("b-nav-item", { attrs: { to: { name: "IndexPage" } } }, [
+                  _c("b-nav-item", { attrs: { to: { name: "Logout" } } }, [
                     _vm._v("Wyloguj się")
                   ])
                 ],

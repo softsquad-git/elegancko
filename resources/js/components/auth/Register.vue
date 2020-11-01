@@ -45,20 +45,23 @@
                 </div>
             </div>
             <div class="form-group row mr-0 ml-0">
-                <button type="submit" class="btn main-btn">{{title}}</button>
+                <b-button type="submit" variant="outline-secondary">{{title}}</b-button>
                 <router-link :to="{name: 'Login'}" class="link-register" title="Zarejestruj się">Zaloguj się
                 </router-link>
             </div>
         </form>
+        <meta-component
+            type="REGISTER"/>
     </div>
 </template>
 
 <script>
     import Index from "../pages/products/Index";
+    import MetaComponent from "../pages/MetaComponent";
 
     export default {
         name: "Register",
-        components: {Index},
+        components: {MetaComponent, Index},
         data() {
             return {
                 title: 'Zarejestruj się',
@@ -88,9 +91,6 @@
                         //
                     })
             }
-        },
-        created() {
-            document.title = this.title;
         }
     }
 </script>

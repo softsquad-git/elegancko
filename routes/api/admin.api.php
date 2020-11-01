@@ -81,4 +81,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
        Route::post('is-reading/{messageId}', 'MessageController@isReading');
        Route::delete('remove/{messageId}', 'MessageController@remove');
     });
+    Route::group(['prefix' => 'meta', 'namespace' => 'Meta'], function () {
+        Route::get('all', 'MetaController@index');
+    });
 });

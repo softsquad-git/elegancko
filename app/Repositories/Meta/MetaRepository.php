@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Meta;
 
+use App\Services\Meta\MetaService;
 use \Exception;
 use App\Models\Meta;
 use Illuminate\Support\Facades\App;
@@ -9,13 +10,23 @@ use Illuminate\Support\Facades\App;
 class MetaRepository
 {
     /**
-     * @param array $params
      * @return mixed
      */
-    public function findAll(array $params)
+    public function findAll()
     {
-        return Meta::orderBy('id', $params['ordering'] ?? config('app.df.ordering'))
-            ->paginate($params['pagination'] ?? config('app.df.pagination'));
+        $params = [
+            MetaService::RESOURCE_BASKET,
+            MetaService::RESOURCE_FORGOT_PASSWORD,
+            MetaService::RESOURCE_REGISTER,
+            MetaService::RESOURCE_LOGIN,
+            MetaService::RESOURCE_CONTACT,
+            MetaService::RESOURCE_PRODUCTS,
+            MetaService::RESOURCE_CATEGORIES,
+            MetaService::RESOURCE_HOME
+        ];
+        return Meta::whereIn('resource_type', $params)
+            ->orderBy('id', config('app.df.ordering'))
+            ->get();
     }
 
     /**

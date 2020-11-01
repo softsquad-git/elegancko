@@ -82,28 +82,6 @@ class MetaSeeder extends Seeder
             'title' => config('app.meta.en.auth.register'),
             'locale' => 'en'
         ]);
-        $terms = MetaService::RESOURCE_TERMS;
-        $meta->create([
-            'resource_type' => $terms,
-            'title' => config('app.meta.pl.terms'),
-            'locale' => 'pl'
-        ]);
-        $meta->create([
-            'resource_type' => $terms,
-            'title' => config('app.meta.en.terms'),
-            'locale' => 'en'
-        ]);
-        $pp = MetaService::RESOURCE_PP;
-        $meta->create([
-            'resource_type' => $pp,
-            'title' => config('app.meta.pl.pp'),
-            'locale' => 'pl'
-        ]);
-        $meta->create([
-            'resource_type' => $pp,
-            'title' => config('app.meta.en.pp'),
-            'locale' => 'en'
-        ]);
         $forgotPassword = MetaService::RESOURCE_FORGOT_PASSWORD;
         $meta->create([
             'resource_type' => $forgotPassword,
@@ -113,6 +91,17 @@ class MetaSeeder extends Seeder
         $meta->create([
             'resource_type' => $forgotPassword,
             'title' => config('app.meta.en.forgotPassword'),
+            'locale' => 'en'
+        ]);
+        $basket = MetaService::RESOURCE_BASKET;
+        $meta->create([
+            'resource_type' => $basket,
+            'title' => 'Koszyk',
+            'locale' => 'pl'
+        ]);
+        $meta->create([
+            'resource_type' => $basket,
+            'title' => 'Basket',
             'locale' => 'en'
         ]);
     }

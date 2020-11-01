@@ -70,14 +70,17 @@
                 </div>
             </div>
         </div>
+        <meta-component
+            type="PRODUCTS"/>
     </div>
 </template>
 
 <script>
 import NoDataComponent from "../../NoDataComponent";
+import MetaComponent from "../MetaComponent";
 export default {
     name: "Index",
-    components: {NoDataComponent},
+    components: {MetaComponent, NoDataComponent},
     data() {
         return {
             title: 'Produkty',
@@ -153,7 +156,6 @@ export default {
     created() {
         this.checkCategory();
         this.loadCategories();
-        document.title = this.title;
     }
 }
 </script>

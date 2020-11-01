@@ -1,6 +1,19 @@
 <template>
     <div class="home">
-        <div class="top-banner" :style="'background: url('+top_banner+')'">er</div>
+        <div class="top-banner" :style="'background: url('+settings[0].value+')'">
+           <div class="container-fluid">
+               <div class="row">
+                   <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                       <div class="top-banner-txt">
+                           <h1 class="big">
+                               {{ settings[1].value }}
+                           </h1>
+                           <p>{{ settings[2].value }}</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
         <div class="container text-center mt-5">
             <div class="subtitle">najlepsze</div>
             <div class="title text-uppercase">Promocje</div>
@@ -52,6 +65,8 @@
             <home-info/>
             <home-products/>
         </div>
+        <meta-component
+            type="HOME"/>
     </div>
 </template>
 
@@ -59,16 +74,23 @@
 import Categories from "./Categories";
 import HomeInfo from "./HomeInfo";
 import HomeProducts from "./HomeProducts";
+import MetaComponent from "./MetaComponent";
 
 export default {
     name: "IndexPage",
-    components: {HomeProducts, HomeInfo, Categories},
+    components: {MetaComponent, HomeProducts, HomeInfo, Categories},
     data() {
         return {
             top_banner: '',
             products_promo: [],
             products_news: [],
-            categories: []
+            categories: [],
+            data: [
+                'home_top_banner',
+                'home_top_banner_title',
+                'home_top_banner_desc'
+            ],
+            settings: []
         }
     },
     methods: {
@@ -86,10 +108,10 @@ export default {
         }
     },
     created() {
-        this.$axios.get('front/settings/find-by-type/home_top_banner')
+        this.$axios.post('front/settings/find-by-types', this.data)
             .then((data) => {
-                this.top_banner = data.data.data.value
-            });
+                this.settings = data.data.data;
+            })
         this.loadProductsPromo();
         this.loadProductsNews();
     }
@@ -102,4 +124,36 @@ export default {
     background-position: center center;
     background-size: cover;
 }
+.top-banner-txt h1.big {
+    font-weight: bold;
+    font-size: 7em;
+}
+.top-banner-txt p {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-left: 10px;
+}
+.top-banner-txt {
+    padding: 7em;
+}
+
+@media only screen and (max-width: 650px) {
+    .top-banner-txt {
+        padding: 6em 2em;
+    }
+    .top-banner-txt h1.big {
+        font-size: 5em;
+    }
+    .top-banner-txt p {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .top-banner-txt {
+        padding: 6em 2em;
+        text-align: center!important;
+    }
+}
+
 </style>

@@ -10,6 +10,9 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Categories__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Categories */ "./resources/js/components/pages/Categories.vue");
+/* harmony import */ var _MetaComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MetaComponent */ "./resources/js/components/pages/MetaComponent.vue");
+//
+//
 //
 //
 //
@@ -58,9 +61,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CategoriesIndex",
   components: {
+    MetaComponent: _MetaComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     Categories: _Categories__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -169,226 +174,236 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "top-banner-products",
-        style: "background: url(" + _vm.banner + ")"
-      },
-      [
-        _c("div", { staticClass: "bg" }, [
-          _c("h1", { staticClass: "title title-top-banner" }, [
-            _vm._v(_vm._s(_vm.title))
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container-fluid" },
-      [
-        _c(
-          "form",
-          {
-            staticClass: "mt-5 mb-5",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.loadData($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "row pl-1 pr-1" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.params.name,
-                        expression: "params.name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "name",
-                      "aria-label": "Nazwa",
-                      placeholder: "Nazwa ..."
-                    },
-                    domProps: { value: _vm.params.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.params, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.params.ordering,
-                          expression: "params.ordering"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "category", "aria-label": "Sortuj" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.params,
-                            "ordering",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { selected: "", value: "" } }, [
-                        _vm._v("Sortuj od")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ASC" } }, [
-                        _vm._v("Najstarsze")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "DESC" } }, [
-                        _vm._v("Najnowsze")
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.params.pagination,
-                          expression: "params.pagination"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "type", "aria-label": "Na strone" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.params,
-                            "pagination",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { selected: "", value: "" } }, [
-                        _vm._v("Rekordów na stronę")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "6" } }, [_vm._v("6")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "9" } }, [_vm._v("9")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "12" } }, [_vm._v("12")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "18" } }, [_vm._v("18")])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-xl-1 p-0 col-lg-1 col-md-1 col-sm-12 col-xs-12"
-                },
-                [
-                  _c(
-                    "b-button",
-                    {
-                      staticClass: "search-btn w-100",
-                      attrs: { type: "submit", variant: "outline-secondary" }
-                    },
-                    [_c("span", { staticClass: "fa fa-search" })]
-                  )
-                ],
-                1
-              )
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "top-banner-products",
+          style: "background: url(" + _vm.banner + ")"
+        },
+        [
+          _c("div", { staticClass: "bg" }, [
+            _c("h1", { staticClass: "title title-top-banner" }, [
+              _vm._v(_vm._s(_vm.title))
             ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("categories", {
-          attrs: {
-            limit: this.params.pagination,
-            name: this.params.name,
-            position: "",
-            ordering: this.params.ordering
-          }
-        })
-      ],
-      1
-    )
-  ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [
+          _c(
+            "form",
+            {
+              staticClass: "mt-5 mb-5",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.loadData($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row pl-1 pr-1" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.params.name,
+                          expression: "params.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "name",
+                        "aria-label": "Nazwa",
+                        placeholder: "Nazwa ..."
+                      },
+                      domProps: { value: _vm.params.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.params, "name", $event.target.value)
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.ordering,
+                            expression: "params.ordering"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "category", "aria-label": "Sortuj" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.params,
+                              "ordering",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "", value: "" } }, [
+                          _vm._v("Sortuj od")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ASC" } }, [
+                          _vm._v("Najstarsze")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "DESC" } }, [
+                          _vm._v("Najnowsze")
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.pagination,
+                            expression: "params.pagination"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "type", "aria-label": "Na strone" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.params,
+                              "pagination",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "", value: "" } }, [
+                          _vm._v("Rekordów na stronę")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "6" } }, [_vm._v("6")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "9" } }, [_vm._v("9")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "12" } }, [
+                          _vm._v("12")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "15" } }, [
+                          _vm._v("15")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "18" } }, [_vm._v("18")])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-xl-1 p-0 col-lg-1 col-md-1 col-sm-12 col-xs-12"
+                  },
+                  [
+                    _c(
+                      "b-button",
+                      {
+                        staticClass: "search-btn w-100",
+                        attrs: { type: "submit", variant: "outline-secondary" }
+                      },
+                      [_c("span", { staticClass: "fa fa-search" })]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("categories", {
+            attrs: {
+              limit: this.params.pagination,
+              name: this.params.name,
+              position: "",
+              ordering: this.params.ordering
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("meta-component", { attrs: { type: "CATEGORIES" } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

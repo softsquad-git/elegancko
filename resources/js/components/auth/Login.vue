@@ -13,20 +13,23 @@
                        v-model="data.password">
             </div>
             <div class="form-group row mr-0 ml-0">
-                <button type="submit" class="btn main-btn">{{ title }}</button>
+                <b-button type="submit" variant="outline-secondary">{{ title }}</b-button>
                 <router-link :to="{name: 'Register'}" class="link-register" title="Zarejestruj się">Zarejestruj się
                 </router-link>
             </div>
         </form>
+        <meta-component
+            type="LOGIN"/>
     </div>
 </template>
 
 <script>
 import Index from "../pages/products/Index";
+import MetaComponent from "../pages/MetaComponent";
 
 export default {
     name: "Login",
-    components: {Index},
+    components: {MetaComponent, Index},
     data() {
         return {
             title: 'Zaloguj się',
@@ -51,9 +54,6 @@ export default {
 
                 })
         }
-    },
-    created() {
-        document.title = this.title;
     }
 }
 </script>

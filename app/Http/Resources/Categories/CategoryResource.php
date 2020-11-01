@@ -24,7 +24,9 @@ class CategoryResource extends JsonResource
             $image = Images::find($this->products()->first()->id, ProductService::RESOURCE_TYPE);
         $data = parent::toArray($request);
         $data['image'] = $image;
-        $data['meta'] = new MetaResource($this->meta);
+        $data['meta'] = $this->meta
+            ? new MetaResource($this->meta)
+            : config('app.df.meta');
         return $data;
     }
 }

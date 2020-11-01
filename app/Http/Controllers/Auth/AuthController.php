@@ -68,4 +68,17 @@ class AuthController extends Controller
             'role' => Auth::user()->role
         ]);
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        try {
+            Auth::guard('api')->logout();
+            return $this->successResponse(trans('messages.logout'));
+        }catch (Exception $e){
+            return $this->errorResponse($e);
+        }
+    }
 }

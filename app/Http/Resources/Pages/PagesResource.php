@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Pages;
 
+use App\Helpers\Images;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PagesResource extends JsonResource
@@ -19,7 +20,7 @@ class PagesResource extends JsonResource
             'title' => $this->title,
             'position' => $this->position,
             'is_active' => $this->is_active,
-            'locale' => $this->locale,
+            'locale' => Images::getLocaleFlag($this->locale),
             'created_at' => (string)$this->created_at
         ];
     }

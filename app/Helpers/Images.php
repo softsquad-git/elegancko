@@ -32,6 +32,15 @@ class Images
      */
     public static function getPath(int $resourceId, string $resourceType, string $path): string
     {
-        return asset(config('app.df.assets').'/'.$resourceType.'/'.$resourceId.'/'.$path);
+        return asset(config('app.df.assets') . '/' . $resourceType . '/' . $resourceId . '/' . $path);
+    }
+
+    /**
+     * @param string $locale
+     * @return string
+     */
+    public static function getLocaleFlag(string $locale): string
+    {
+        return '<img src="'.asset('images/flags/'.$locale.'.svg').'" width="20" alt="'.$locale.'"/>';
     }
 }

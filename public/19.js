@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MetaComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../MetaComponent */ "./resources/js/components/pages/MetaComponent.vue");
 //
 //
 //
@@ -86,9 +87,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BasketIndexPage",
   components: {
+    MetaComponent: _MetaComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
     OrderPage: function OrderPage() {
       return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ../../orders/OrderPage */ "./resources/js/components/orders/OrderPage.vue"));
     },
@@ -143,7 +147,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.loadData();
-    document.title = this.title;
   }
 });
 
@@ -533,7 +536,9 @@ var render = function() {
         ? _c("no-data-component", {
             attrs: { msg: "Brak produktów w koszyku" }
           })
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("meta-component", { attrs: { type: "BASKET" } })
     ],
     1
   )

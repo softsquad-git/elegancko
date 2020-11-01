@@ -3,6 +3,7 @@
 namespace App\Services\Products;
 
 use App\Models\Products\Product;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use \Exception;
 
@@ -39,6 +40,11 @@ class ProductImageService
      */
     public function remove(Product $product, array $imagesIds): bool
     {
+        foreach ($product->images() as $image) {
+            $file = app_path(config('app.df.assets') . '/' . ProductService::RESOURCE_TYPE . '/' . $product->id . '/' . $image->src);
+            if (File::exists($file))
+                File::delete($file);
+        }
         $product->images()->whereIn('id', $imagesIds)->each(function ($image) {
             $image->delete();
         });

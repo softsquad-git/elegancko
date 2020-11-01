@@ -72,14 +72,17 @@
         </div>
         <order-page class="mt-3" v-if="showOrder"/>
         <no-data-component v-if="$store.getters.StoreCart.length < 1" :msg="'Brak produktów w koszyku'"/>
+        <meta-component type="BASKET"/>
     </div>
 </template>
 
 <script>
 
+import MetaComponent from "../MetaComponent";
 export default {
     name: "BasketIndexPage",
     components: {
+        MetaComponent,
         OrderPage: () => import('../../orders/OrderPage'),
         NoDataComponent: () => import('../../NoDataComponent')
     },
@@ -129,7 +132,6 @@ export default {
     },
     created() {
         this.loadData();
-        document.title = this.title;
     }
 }
 </script>

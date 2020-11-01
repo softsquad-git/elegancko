@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex';
 import VueConfirmDialog from 'vue-confirm-dialog'
 import VueNotification from "vue-notification";
+import VueMeta from 'vue-meta';
 
 window.Vuex = Vuex;
 
@@ -12,7 +13,8 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 window.axios = require('axios');
 Vue.prototype.$axios = axios;
 
-Vue.use(VueConfirmDialog)
+Vue.use(VueMeta);
+Vue.use(VueConfirmDialog);
 Vue.use(VueNotification);
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(require('vue-moment'));

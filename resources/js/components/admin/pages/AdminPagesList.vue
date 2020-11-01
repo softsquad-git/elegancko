@@ -71,9 +71,7 @@
                     <td>{{ page.title }}</td>
                     <td>{{ page.position === 'top' ? 'Góra' : 'Stopka' }}</td>
                     <td>{{ page.is_active == 1 ? 'Tak' : 'Nie' }}</td>
-                    <td>
-                        {{ page.locale }}
-                    </td>
+                    <td v-html="page.locale"></td>
                     <td>
                         <router-link :to="{name: 'AdminDataPage', params: {action: 'edit', id: page.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
                         <b-button @click="remove(page.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>

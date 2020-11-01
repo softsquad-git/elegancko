@@ -56,6 +56,15 @@ const router = new VueRouter({
             name: 'CategoriesIndex'
         },
         {
+            path: '/logout',
+            component: () => import('./components/auth/Logout'),
+            name: 'Logout',
+            meta: {
+                auth: true,
+                middleware: [auth]
+            }
+        },
+        {
             path: '/auth',
             component: () => import('./components/auth/AuthLayout'),
             meta: {
@@ -230,6 +239,24 @@ const router = new VueRouter({
                     path: 'message/{id}',
                     component: () => import('./components/admin/messages/AdminMessageFind'),
                     name: 'AdminMessageFind',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'meta-list',
+                    component: () => import('./components/admin/meta/AdminMetaList'),
+                    name: 'AdminMetaList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'meta/:action/:id?',
+                    component: () => import('./components/admin/meta/AdminMetaData'),
+                    name: 'AdminMetaData',
                     meta: {
                         auth: true,
                         middleware: [auth]

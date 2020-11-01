@@ -21,4 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
    Route::group(['prefix' => 'messages', 'namespace' => 'Messages'], function () {
        Route::post('create', 'MessageController@create');
    });
+   Route::group(['prefix' => 'meta', 'namespace' => 'Meta'], function () {
+       Route::get('find', 'MetaController@findByType');
+   });
 });

@@ -5,22 +5,22 @@ namespace App\Services\Meta;
 use App\Interfaces\MetaInterface;
 use App\Models\Meta;
 use \Exception;
-use Illuminate\Support\Facades\DB;
 
 class MetaService implements MetaInterface
 {
+    //dynamic resource type
     const RESOURCE_PAGE = 'PAGE';
     const RESOURCE_PRODUCT = 'PRODUCT';
-    const RESOURCE_PRODUCTS = 'PRODUCTS';
     const RESOURCE_CATEGORY = 'CATEGORY';
+    //static resource type
+    const RESOURCE_PRODUCTS = 'PRODUCTS';
     const RESOURCE_CATEGORIES = 'CATEGORIES';
     const RESOURCE_CONTACT = 'CONTACT';
-    const RESOURCE_TERMS = 'TERMS';
-    const RESOURCE_PP = 'PP'; #polityka prywatności
     const RESOURCE_HOME = 'HOME';
     const RESOURCE_REGISTER = 'REGISTER';
     const RESOURCE_LOGIN = 'LOGIN';
     const RESOURCE_FORGOT_PASSWORD = 'FORGOT_PASSWORD';
+    const RESOURCE_BASKET = 'BASKET';
 
     /**
      * @var string

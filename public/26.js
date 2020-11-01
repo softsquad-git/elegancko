@@ -10,6 +10,9 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_products_Index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/products/Index */ "./resources/js/components/pages/products/Index.vue");
+/* harmony import */ var _pages_MetaComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/MetaComponent */ "./resources/js/components/pages/MetaComponent.vue");
+//
+//
 //
 //
 //
@@ -34,9 +37,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   components: {
+    MetaComponent: _pages_MetaComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     Index: _pages_products_Index__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -65,9 +70,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (error) {});
     }
-  },
-  created: function created() {
-    document.title = this.title;
   }
 });
 
@@ -88,105 +90,112 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "auth-action" }, [
-    _c("h2", { staticClass: "title mb-4" }, [
-      _vm._v("\n        " + _vm._s(_vm.title) + "\n    ")
-    ]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "mt-4",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.save($event)
+  return _c(
+    "div",
+    { staticClass: "auth-action" },
+    [
+      _c("h2", { staticClass: "title mb-4" }, [
+        _vm._v("\n        " + _vm._s(_vm.title) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "mt-4",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.save($event)
+            }
           }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.data.email,
-                expression: "data.email"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              id: "email",
-              "aria-label": "E-mail",
-              type: "email",
-              placeholder: "E-mail"
-            },
-            domProps: { value: _vm.data.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.data.email,
+                  expression: "data.email"
                 }
-                _vm.$set(_vm.data, "email", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.data.password,
-                expression: "data.password"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              id: "password",
-              "aria-label": "Hasło",
-              type: "password",
-              placeholder: "Hasło"
-            },
-            domProps: { value: _vm.data.password },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.data, "password", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-group row mr-0 ml-0" },
-          [
-            _c(
-              "button",
-              { staticClass: "btn main-btn", attrs: { type: "submit" } },
-              [_vm._v(_vm._s(_vm.title))]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass: "link-register",
-                attrs: { to: { name: "Register" }, title: "Zarejestruj się" }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "email",
+                "aria-label": "E-mail",
+                type: "email",
+                placeholder: "E-mail"
               },
-              [_vm._v("Zarejestruj się\n            ")]
-            )
-          ],
-          1
-        )
-      ]
-    )
-  ])
+              domProps: { value: _vm.data.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.data, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.data.password,
+                  expression: "data.password"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "password",
+                "aria-label": "Hasło",
+                type: "password",
+                placeholder: "Hasło"
+              },
+              domProps: { value: _vm.data.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.data, "password", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group row mr-0 ml-0" },
+            [
+              _c(
+                "b-button",
+                { attrs: { type: "submit", variant: "outline-secondary" } },
+                [_vm._v(_vm._s(_vm.title))]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "link-register",
+                  attrs: { to: { name: "Register" }, title: "Zarejestruj się" }
+                },
+                [_vm._v("Zarejestruj się\n            ")]
+              )
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("meta-component", { attrs: { type: "LOGIN" } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

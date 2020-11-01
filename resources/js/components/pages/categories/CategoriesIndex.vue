@@ -42,15 +42,18 @@
                         :position="''"
                         :ordering="this.params.ordering"></categories>
         </div>
+        <meta-component
+            type="CATEGORIES"/>
     </div>
 </template>
 
 <script>
 import Categories from "../Categories";
+import MetaComponent from "../MetaComponent";
 
 export default {
     name: "CategoriesIndex",
-    components: {Categories},
+    components: {MetaComponent, Categories},
     data() {
         return {
             title: 'Kategorie',

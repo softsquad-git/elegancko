@@ -243,7 +243,12 @@ return [
     'df' => [
         'ordering' => 'DESC',
         'pagination' => 20,
-        'assets' => 'assets/data'
+        'assets' => 'assets/data',
+        'meta' => [
+            'title' => env('APP_NAME', 'Elegancko'),
+            'description' => 'Sukienki i inne',
+            'keywords' => 'sukienki, inne, elegancko'
+        ]
     ],
     'admin' => [
         'name' => env('ADMIN_NAME', 'Soft'),

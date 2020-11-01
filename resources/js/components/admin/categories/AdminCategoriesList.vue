@@ -74,7 +74,7 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.alias }}</td>
                     <td>{{ category.position === 1 ? 'Ogólna' : 'Na stronie głównej' }}</td>
-                    <td>{{ category.locale }}</td>
+                    <td v-html="category.locale"></td>
                     <td>{{ category.is_active == 1 ? 'Tak' : 'Nie' }}</td>
                     <td>
                         <router-link :to="{name: 'AdminDataCategory', params: {action: 'edit', id: category.id}}"

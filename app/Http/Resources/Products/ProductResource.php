@@ -37,7 +37,9 @@ class ProductResource extends JsonResource
                 'id' => $this->type
             ],
             'shipments' => $this->shipments,
-            'meta' => new MetaResource($this->meta)
+            'meta' => $this->meta
+                ? new MetaResource($this->meta)
+                : config('app.df.meta')
         ];
     }
 }

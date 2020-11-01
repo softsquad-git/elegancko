@@ -87,7 +87,7 @@
                         <td>
                             <del v-if="product.price.old">{{ product.price.old }}</del> {{ product.price.price }}
                         </td>
-                        <td>{{ product.locale }}</td>
+                        <td v-html="product.locale"></td>
                         <td>{{ product.created_at | moment('calendar') }}</td>
                         <td>{{ product.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
                         <td>
