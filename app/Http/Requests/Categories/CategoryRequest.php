@@ -24,7 +24,12 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|min:3',
+            'alias' => 'required|string|unique:categories',
+            'parent_id' => 'nullable|integer',
+            'position' => 'required|integer',
+            'is_active' => 'required|integer',
+            'locale' => 'required|string|min:2'
         ];
     }
 }

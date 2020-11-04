@@ -30,7 +30,8 @@ class Order extends Model
         'nip',
         'number_phone',
         'comments',
-        'status'
+        'status',
+        'token'
     ];
 
     /**
@@ -55,5 +56,21 @@ class Order extends Model
     public function payment()
     {
         return $this->hasOne(OrderPayment::class, 'order_id');
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->name . ' ' . $this->last_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress(): string
+    {
+        return $this->post_code . ' ' . $this->city . ', ' . trans('lang.address.street') . '. ' . $this->address . ', ' . $this->country;
     }
 }

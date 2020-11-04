@@ -19,6 +19,11 @@ class PaymentPayUService extends PayUService
     private $currency;
 
     /**
+     * @var string
+     */
+    private $orderToken;
+
+    /**
      * @var int
      */
     private $totalAmount;
@@ -197,44 +202,76 @@ class PaymentPayUService extends PayUService
         $this->products = $products;
     }
 
+    /**
+     * @return string
+     */
+    public function getOrderToken(): string
+    {
+        return $this->orderToken;
+    }
+
+    /**
+     * @param string $orderToken
+     * @return $this
+     */
+    public function setOrderToken(string $orderToken)
+    {
+        $this->orderToken = $orderToken;
+
+        return $this;
+    }
+
+
+
+    /**
+     * @return bool|string
+     */
     public function pay()
     {
-        $totalAmount = $this->getTotalAmount() * 100;
-        $this->setCurrency($this->checkCurrent());
-        $token = 'd9a4536e-62ba-4f60-8017-6053211d3f47';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->sandboxUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-        \"notifyUrl\": \"https://your.eshop.com/notify\",
-        \"customerIp\": \"127.0.0.1\",
-        \"merchantPosId\": \"300746\",
-        \"description\": \"$this->description\",
-        \"currencyCode\": \"$this->currency\",
-        \"totalAmount\": \"$totalAmount\",
-        \"products\": [
-    {
-      \"name\": \"Wireless mouse\",
-      \"unitPrice\": \"15000\",
-      \"quantity\": \"1\"
-    },
-    {
-      \"name\": \"HDMI cable\",
-      \"unitPrice\": \"6000\",
-      \"quantity\": \"1\"
+
+            $token = 'd9a4536e-62ba-4f60-8017-6053211d3f47';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->sandboxUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_HEADER, FALSE);
+            curl_setopt($ch, CURLOPT_POST, TRUE);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->prepareData()));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                "Content-Type: application/json",
+                "Authorization: Bearer $token"
+            ));
+
+            $response = curl_exec($ch);
+            curl_close($ch);
+            return $response;
     }
-  ]
-}");
 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "Content-Type: application/json",
-            "Authorization: Bearer $token"
-        ));
-
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return $response;
+    /**
+     * @return array
+     */
+    private function prepareData(): array
+    {
+        $notifyUrl = route('payu_notify', ['token' => $this->getOrderToken()]);
+        $this->setCurrency($this->checkCurrent());
+        return [
+            'notifyUrl' => $notifyUrl,
+            'customerIp' => '127.0.0.1',
+            'merchantPosId' => '300746',
+            'description' => $this->getDescription(),
+            'currencyCode' => $this->getCurrency(),
+            'totalAmount' => $this->getTotalAmount() * 100,
+            'products' => [
+                [
+                    'name' => 'Wireless mouse',
+                    'unitPrice' => 15000,
+                    'quantity' => 1,
+                ],
+                [
+                    'name' => 'HDMI cable',
+                    'unitPrice' => 6000,
+                    'quantity' => 1,
+                ],
+            ]
+        ];
     }
 }

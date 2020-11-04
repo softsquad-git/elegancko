@@ -21,10 +21,16 @@ class ProductRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|min:3',
+            'category_id' => 'required|integer',
+            'locale' => 'required|string|min:2',
+            'type' => 'required|integer',
+            'description' => 'nullable|string',
+            'content' => 'nullable|string',
+            'is_activated' => 'nullable'
         ];
     }
 }

@@ -20,6 +20,8 @@ Route::group(['prefix' => 'front', 'namespace' => 'Front'], function () {
         Route::group(['prefix' => 'payments'], function () {
             Route::post('create', 'OrderPaymentController@create');
         });
+        Route::get('update-status/{token}', 'OrderController@updateStatus')
+            ->name('payu_notify');
     });
     Route::group(['prefix' => 'pages', 'namespace' => 'Pages'], function () {
         Route::get('all', 'PageController@index');

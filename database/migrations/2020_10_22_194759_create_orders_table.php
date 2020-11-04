@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->string('number_phone');
             $table->text('comments')->nullable();
             $table->integer('status')->default(\App\Services\Orders\OrderService::ORDER_STATUS['ORDER_PLACED']);
+            $table->string('token', 64);
             $table->timestamps();
         });
     }

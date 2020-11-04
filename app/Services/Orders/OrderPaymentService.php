@@ -47,14 +47,20 @@ class OrderPaymentService
     {
         $itemByOrder = $this->orderPaymentRepository->findByOrderPayment($data['order_id']);
         if (!empty($itemByOrder))
-            throw new Exception(trans('exceptions.order.no_empty'));
+            $itemByOrder->delete(); #dev
+            //throw new Exception(trans('exceptions.order.no_empty'));
+
         if ($data['payment_type'] == self::PAYMENT_TYPE_HOME)
             $data['status'] = self::PAYMENT_STATUS['FINISHED'];
+
         elseif ($data['payment_type'] == self::PAYMENT_TYPE_PAYU)
             $data['status'] = self::PAYMENT_STATUS['STARTED'];
+
         $item = OrderPayment::create($data);
+
         if ($item->payment_type == self::PAYMENT_TYPE_HOME)
             $item->order()->update(['status' => OrderService::ORDER_STATUS['ACCEPTED']]);
+
         if (empty($item))
             throw new Exception(trans('exceptions.no_created'));
         return $item;

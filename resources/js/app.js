@@ -41,7 +41,7 @@ const router = new VueRouter({
             component: () => import('./components/pages/basket/BasketIndexPage')
         },
         {
-            path: '/order/pay/:orderId',
+            path: '/order/pay/:orderToken',
             component: () => import('./components/orders/OrderPay'),
             name: 'OrderPay'
         },
@@ -63,6 +63,52 @@ const router = new VueRouter({
                 auth: true,
                 middleware: [auth]
             }
+        },
+        {
+          path: '/account',
+          component: () => import('./components/account/AccountLayout'),
+          meta: {
+              auth: true,
+              middleware: [auth]
+          },
+            children: [
+                {
+                    path: '',
+                    component: () => import('./components/account/AccountPageIndex'),
+                    name: 'AccountPageIndex',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    },
+                },
+                {
+                    path: 'orders',
+                    component: () => import('./components/account/orders/AccountOrdersList'),
+                    name: 'AccountOrdersList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'order/:id',
+                    component: () => import('./components/account/orders/AccountOrderFind'),
+                    name: 'AccountOrderFind',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'settings',
+                    component: () => import('./components/account/settings/AccountSetting'),
+                    name: 'AccountSetting',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                }
+            ]
         },
         {
             path: '/auth',

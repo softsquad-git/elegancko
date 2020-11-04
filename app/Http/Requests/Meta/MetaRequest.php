@@ -13,7 +13,7 @@ class MetaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class MetaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'resource_id' => 'nullable|integer',
+            'resource_type' => 'nullable|string',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:160',
+            'keywords' => 'nullable|string|max:255',
+            'locale' => 'required|string|min:2'
         ];
     }
 }

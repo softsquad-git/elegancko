@@ -64,6 +64,23 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <b-form-checkbox
+                            id="createAccount"
+                            v-model="createAccount"
+                            name="createAccount"
+                            value="1"
+                            unchecked-value="0"
+                        >
+                            załóż konto <router-link to="#">poznaj korzyści z posiadania konta</router-link>
+                        </b-form-checkbox>
+                    </div>
+                    <div v-if="createAccount == 1" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <input id="password" type="password" class="form-control" placeholder="Hasło do konta"
+                        v-model="password" aria-label="Hasło do konta">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <div class="col-12">
                         <b-button type="submit" variant="outline-secondary">Dalej</b-button>
                     </div>
@@ -96,7 +113,9 @@ export default {
                 comments: '',
                 products: []
             },
-            shipments: []
+            createAccount: 0,
+            shipments: [],
+            password: ''
         }
     },
     methods: {
@@ -112,27 +131,51 @@ export default {
                 });
             });
             this.data.products = products;
+            if (this.createAccount == 1) {
+                let dataRegister = {
+                    name: this.data.name,
+                    last_name: this.data.last_name,
+                    email: this.data.email,
+                    password: this.password,
+                    terms: true,
+                    city: this.data.city,
+                    address: this.data.address,
+                    post_code: this.data.post_code,
+                    phone: this.data.number_phone,
+                    country: this.data.country
+                }
+                this.$axios.post('auth/register', dataRegister)
+                    .then((data) => {
+                        this.$notify({
+                            group: 'foo',
+                            title: 'Udało się',
+                            text: data.data.msg
+                        });
+                    })
+            }
             this.$axios.post('front/orders/create', this.data)
             .then((data) => {
                 const orderId = data.data.order_id;
-                this.data.name = '';
-                this.data.last_name = '';
-                this.data.email = '';
-                this.data.shipment_id = ''; this.data.post_code = '';
-                this.data.city = '';
-                this.data.address = '';
-                this.data.country = '';
-                this.data.type = 1;
-                this.data.company_name = '';
-                this.data.number_phone = '';
-                this.data.products = [];
-                this.data.comments = '';
-                this.$notify({
-                    group: 'foo',
-                    title: 'Udało się',
-                    text: 'Zamówienie zostało złożone i oczekuje na realizację'
-                });
-                this.$router.push({name: 'OrderPay', params: {orderId: orderId}});
+                if (data.data.success === 1) {
+                    this.data.name = '';
+                    this.data.last_name = '';
+                    this.data.email = '';
+                    this.data.shipment_id = ''; this.data.post_code = '';
+                    this.data.city = '';
+                    this.data.address = '';
+                    this.data.country = '';
+                    this.data.type = 1;
+                    this.data.company_name = '';
+                    this.data.number_phone = '';
+                    this.data.products = [];
+                    this.data.comments = '';
+                    this.$notify({
+                        group: 'foo',
+                        title: 'Udało się',
+                        text: 'Zamówienie zostało złożone i oczekuje na realizację'
+                    });
+                    this.$router.push({name: 'OrderPay', params: {orderId: orderId}});
+                }
             })
         },
         buyCompany(type) {
@@ -141,6 +184,11 @@ export default {
         findProduct()
         {
 
+        }
+    },
+    watch: {
+        'createAccount' () {
+            console.log(this.createAccount)
         }
     },
     created() {

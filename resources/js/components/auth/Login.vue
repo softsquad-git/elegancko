@@ -46,14 +46,30 @@ export default {
                     if (data.data.success === 1) {
                         localStorage.setItem('token', data.data.access_token);
                         localStorage.setItem('userId', data.data.user_id);
-                        this.$router.push({name: 'IndexPage'});
-                        window.location.reload();
+                        this.redirect();
                     }
                 })
                 .catch((error) => {
 
                 })
+        },
+        redirect() {
+            if (localStorage.getItem('token')) {
+                this.$axios.get('user/logged')
+                .then((data) => {
+                    let role = data.data.role;
+                    if (role === 2) {
+                        this.$router.push({name: 'AdminPageIndex'})
+                    } else {
+                        this.$router.push({name: 'AccountPageIndex'})
+                    }
+                })
+            }
+            return this;
         }
+    },
+    created() {
+        this.redirect();
     }
 }
 </script>

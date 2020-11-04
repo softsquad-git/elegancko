@@ -10,6 +10,7 @@ use App\Repositories\Orders\OrderRepository;
 use App\Services\Orders\OrderService;
 use \Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -60,6 +61,16 @@ class OrderController extends Controller
                 'msg' => trans('messages.created_order'),
                 'order_id' => $item->id
             ]);
+        } catch (Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+
+    public function updateStatus(string $token): JsonResponse
+    {
+        try {
+            $this->orderService->updateStatus($token);
+            return response()->json('');
         } catch (Exception $e) {
             return $this->errorResponse($e);
         }

@@ -40,4 +40,17 @@ class OrderRepository
             });
         return $data->paginate($params['pagination'] ?? config('app.df.pagination'));
     }
+
+    /**
+     * @param string $token
+     * @return mixed
+     * @throws Exception
+     */
+    public function findOrderByToken(string $token)
+    {
+        $item = Order::where('token', $token)->first();
+        if (!empty($item))
+            return $item;
+        throw new Exception(trans('exceptions.no_found'));
+    }
 }

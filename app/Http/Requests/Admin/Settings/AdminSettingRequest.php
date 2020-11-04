@@ -24,7 +24,9 @@ class AdminSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type_id' => 'required|integer',
+            'resource_type' => 'required|string',
+            'value' => 'required|string|min:3'
         ];
     }
 }

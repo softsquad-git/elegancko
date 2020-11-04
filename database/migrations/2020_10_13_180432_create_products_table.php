@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->integer('category_id')->default(1);
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->boolean('is_activated')->default(1);
             $table->string('locale')->default('pl');
             $table->integer('type');

@@ -49,13 +49,13 @@ export default {
             title: 'Dziękujemy za złożenie zamówienia',
             data: {
                 payment_type: 1,
-                order_id: ''
+                order_token: ''
             }
         }
     },
     methods: {
         pay() {
-            this.data.order_id = this.$route.params.id;
+            this.data.order_token = this.$route.params.orderToken;
             this.$axios.post('front/orders/payments/create', this.data)
             .then((data) => {
                 if (data.data.success === 1) {

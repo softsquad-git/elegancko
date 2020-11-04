@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Orders;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderPaymentRequest;
 use App\Repositories\Orders\OrderPaymentRepository;
+use App\Repositories\Orders\OrderRepository;
 use App\Services\Orders\OrderPaymentService;
 use App\Services\Payments\PaymentService;
 use \Exception;
@@ -28,19 +29,27 @@ class OrderPaymentController extends Controller
     protected $paymentService;
 
     /**
+     * @var OrderRepository
+     */
+    private $orderRepository;
+
+    /**
      * @param OrderPaymentService $orderPaymentService
      * @param OrderPaymentRepository $orderPaymentRepository
      * @param PaymentService $paymentService
+     * @param OrderRepository $orderRepository
      */
     public function __construct(
         OrderPaymentService $orderPaymentService,
         OrderPaymentRepository $orderPaymentRepository,
-        PaymentService $paymentService
+        PaymentService $paymentService,
+        OrderRepository $orderRepository
     )
     {
         $this->orderPaymentRepository = $orderPaymentRepository;
         $this->orderPaymentService = $orderPaymentService;
         $this->paymentService = $paymentService;
+        $this->orderRepository = $orderRepository;
     }
 
     /**
@@ -51,7 +60,8 @@ class OrderPaymentController extends Controller
     {
         try {
             $data = $request->all();
-            $data['order_id'] = 8;
+            $order = $this->orderRepository->findOrderByToken($data['order_token']);
+            $data['order_id'] = $order->id;
             $item = $this->orderPaymentService->create($data);
             if ($item->payment_type == $this->orderPaymentService::PAYMENT_TYPE_HOME) {
                 return response()->json([

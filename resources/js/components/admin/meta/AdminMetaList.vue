@@ -5,7 +5,7 @@
         </h5>
         <div class="options">
             <b-button :to="{name: 'AdminMetaData', params: {action: 'create'}}" variant="outline-secondary"><span
-                class="fa fa-add"></span>
+                class="fa fa-plus"></span>
             </b-button>
         </div>
         <div class="content mt-4">

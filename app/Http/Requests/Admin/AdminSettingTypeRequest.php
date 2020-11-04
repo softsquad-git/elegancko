@@ -23,8 +23,10 @@ class AdminSettingTypeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $data = [];
+        $data['name'] = 'required|string|min:3';
+        $data['_key'] = 'required|string|unique:admin_setting_type';
+
+        return $data;
     }
 }

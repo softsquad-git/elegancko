@@ -17,6 +17,7 @@ class AdminMetaResource extends JsonResource
     {
         $data = parent::toArray($request);
         $data['locale'] = Images::getLocaleFlag($this->locale);
+        $data['locale_key'] = $this->locale;
         $data['resource'] = [
             'key' => $this->resource_type,
             'name' => $this->checkResource($this->resource_type)

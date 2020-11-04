@@ -83,5 +83,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     });
     Route::group(['prefix' => 'meta', 'namespace' => 'Meta'], function () {
         Route::get('all', 'MetaController@index');
+        Route::get('find/{metaId}', 'MetaController@findById');
+        Route::post('create', 'MetaController@create');
+        Route::post('update/{metaId}', 'MetaController@update');
+        Route::delete('remove/{metaId}', 'MetaController@remove');
     });
 });

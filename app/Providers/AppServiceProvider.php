@@ -12,6 +12,7 @@ use App\Observers\Pages\PageObserver;
 use App\Observers\Products\ProductObserver;
 use App\Services\Mail\MailService;
 use App\Services\Meta\MetaService;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 

@@ -2,6 +2,7 @@
 
 namespace App\Services\Orders;
 
+use App\Interfaces\MailInterface;
 use App\Models\Orders\Order;
 use App\Models\Orders\OrderProduct;
 use App\Repositories\Orders\OrderRepository;
@@ -9,6 +10,7 @@ use App\Repositories\Products\ProductRepository;
 use App\Repositories\Shipments\ShipmentRepository;
 use Illuminate\Support\Facades\DB;
 use \Exception;
+use Illuminate\Support\Str;
 
 class OrderService
 {
@@ -32,6 +34,11 @@ class OrderService
     private $orderRepository;
 
     /**
+     * @var MailInterface
+     */
+    private $mailInterface;
+
+    /**
      * @var ShipmentRepository
      */
     private $shipmentRepository;
@@ -44,12 +51,14 @@ class OrderService
     public function __construct(
         OrderRepository $orderRepository,
         ShipmentRepository $shipmentRepository,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        MailInterface $mailInterface
     )
     {
         $this->orderRepository = $orderRepository;
         $this->shipmentRepository = $shipmentRepository;
         $this->productRepository = $productRepository;
+        $this->mailInterface = $mailInterface;
     }
 
     /**
@@ -64,6 +73,7 @@ class OrderService
             $shipment = $this->shipmentRepository->findById($data['shipment_id']);
 
             $data['total_price'] = 0;
+            $data['token'] = Str::random(64);
 
             $order = Order::create($data);
             $totalPriceProduct = null;
@@ -83,9 +93,15 @@ class OrderService
             $order->update([
                 'total_price' => $totalPrice
             ]);
-
+            $this->mailInterface
+                ->setSubject(trans('mail.orders.created'))
+                ->setTemplate('orders.created')
+                ->setToEmail($order->email)
+                ->setBody([
+                    'order' => $order
+                ])
+                ->send();
             DB::commit();
-
             return $order;
         } catch (Exception $e) {
             DB::rollBack();
@@ -116,5 +132,21 @@ class OrderService
     public function remove(int $orderId): ?bool
     {
         return $this->orderRepository->findOrder($orderId)->delete();
+    }
+
+    /**
+     * TODO
+     * sprawdzić działanie na serwerze klienta
+     * status ma się aktualizować po udanej płatności
+     * @param string $token
+     * @return mixed
+     * @throws Exception
+     */
+    public function updateStatus(string $token)
+    {
+        $item = $this->orderRepository->findOrderByToken($token);
+        $item->update(['status' => self::ORDER_STATUS['ACCEPTED']]);
+        $item->payment()->update(['status' => OrderPaymentService::PAYMENT_STATUS['FINISHED']]);
+        return $item;
     }
 }
