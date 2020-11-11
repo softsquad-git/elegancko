@@ -19,142 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="configuration command">
-      <change afterPath="$PROJECT_DIR$/public/43.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/44.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/13/3c92a933755a2061167ba30bc4f117c6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/14/4f83d020517558d17b5e690fbd889667.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/15/f955f72e30a837e795d55382499250d1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/4/88f56364053b2405cc4cc71c73bcc4ab.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/7/60e94fc0fdd3c09c315e578f132d72fc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/10/5f49ffc3437473d466407402a5e32b9d.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/10/d2854c4b7e22ce105d2d04124f325e9a.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/3/db3328c0de1ae9b92e278bfb596e76b7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/4/86e00a12a148d25c8685959fe396f612.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/4/dfe12daa50457de8c9816affdfbc30fb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/5/38bcae082cc4012370e8f1108ea12dc1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/5/5c5ce760cfa57e8602e3f8f5d4de3480.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/6/ac7b5dc982d6fbe7f672a39dc6b8d3ab.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/6/d20e5a3b0e0f2d2cf9529932b1fccb32.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/93bba14521fcef94471d3d5f00c10c97.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/e0edc59c15fbd1a6ab306c2ff628fb15.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/8/cf40663ed4fa2a9bc52c3ffaccfcce55.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/9/89c82155f284e24649358e23dd3641ae.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/11/df948462705deb653cbf98a471ed661d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/4/db2145309cdd60160162151dc0f779b0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/mixins/error-handling.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Settings/AdminSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Settings/AdminSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Categories/CategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Categories/CategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Settings/BasicSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Settings/BasicSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Settings/PasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Settings/PasswordRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductColorsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductColorsResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductSizesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductSizesResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Shipments/ShipmentResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Shipments/ShipmentResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Products/ProductColor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/ProductColor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Products/ProductSize.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/ProductSize.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Shipments/ShipmentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Shipments/ShipmentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Pages/PageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Pages/PageService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Products/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Products/ProductService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Shipments/ShipmentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Shipments/ShipmentService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_13_181935_create_colors_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_13_181935_create_colors_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_13_181947_create_sizes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_13_181947_create_sizes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/AdminSettingSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AdminSettingSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/11.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/11.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/12.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/12.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/13.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/13.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/14.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/14.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/15.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/15.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/16.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/16.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/17.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/17.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/18.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/19.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/19.js" afterDir="false" />
+    <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/20.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/21.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/21.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/22.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/22.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/23.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/23.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/24.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/24.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/25.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/25.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/26.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/26.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/27.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/27.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/28.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/28.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/29.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/29.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/30.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/30.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/31.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/31.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/32.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/32.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/33.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/33.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/34.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/34.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/35.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/35.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/36.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/36.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/37.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/37.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/38.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/38.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/39.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/39.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/40.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/40.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/8.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/8.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/9.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ErrorDataComonent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/pages/ShowPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/account/orders/AccountOrdersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/account/orders/AccountOrdersList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/account/settings/AccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/account/settings/AccountSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminColorsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminColorsList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizesList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/AuthLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/AuthLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/41.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/41.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/44.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/44.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/orders/OrderPay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/orders/OrderPay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,6 +288,7 @@
       <workItem from="1604958950618" duration="20000" />
       <workItem from="1604962396982" duration="10078000" />
       <workItem from="1605106790684" duration="471000" />
+      <workItem from="1605131656838" duration="5083000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -628,7 +500,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604525393649</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="configuration command">
+      <created>1605131835791</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1605131835791</updated>
+    </task>
+    <task id="LOCAL-00032" summary="configuration command">
+      <created>1605131952236</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1605131952236</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,12 +546,12 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/softsquad-git/elegancko&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/Helpers/Status.php&#10;#&#9;app/Http/Controllers/Controller.php&#10;#&#9;app/Http/Controllers/Front/IndexController.php&#10;#&#9;app/Models/User.php&#10;#&#9;app/Providers/AppServiceProvider.php&#10;#&#9;app/Repositories/SoftSquadRepository.php&#10;#&#9;artisan&#10;#&#9;composer.json&#10;#&#9;composer.lock&#10;#&#9;config/app.php&#10;#&#9;config/auth.php&#10;#&#9;database/migrations/2014_10_12_000000_create_users_table.php&#10;#&#9;database/migrations/2020_10_11_200636_create_user_verify_key_table.php&#10;#&#9;package.json&#10;#&#9;public/0.js&#10;#&#9;public/1.js&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js&#10;#&#9;resources/js/bootstrap.js&#10;#&#9;resources/js/components/App.vue&#10;#&#9;resources/js/components/pages/IndexPage.vue&#10;#&#9;resources/js/components/pages/products/Index.vue&#10;#&#9;resources/js/components/pages/products/Show.vue&#10;#&#9;resources/sass/app.scss&#10;#&#9;resources/views/index.blade.php&#10;#&#9;routes/api.php&#10;#&#9;yarn.lock" />
     <MESSAGE value="redirect" />
     <MESSAGE value="configuration" />
-    <MESSAGE value="configuration command" />
     <MESSAGE value="meta" />
     <MESSAGE value="Configuration i18n" />
     <MESSAGE value="prod" />
     <MESSAGE value="front" />
-    <option name="LAST_COMMIT_MESSAGE" value="front" />
+    <MESSAGE value="configuration command" />
+    <option name="LAST_COMMIT_MESSAGE" value="configuration command" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="355" width="574" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603212948419">
@@ -684,10 +570,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604966388820" />
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1604525393484">
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1605131951846">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1604525393484" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1605131951846" />
     <state x="693" y="468" width="523" height="178" key="ComposerInitDialogKey" timestamp="1604100367923">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -734,10 +620,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1603398243136" />
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603974471899">
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605131984776">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1603974471899" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605131984776" />
     <state x="100" y="125" width="1716" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603933334533">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -747,6 +633,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604527302227" />
+    <state x="483" y="145" width="944" height="823" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605135610570">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="483" y="145" width="944" height="823" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1605135610570" />
     <state x="100" y="127" width="1720" height="853" key="dock-window-1" timestamp="1603325040505">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

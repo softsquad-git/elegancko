@@ -118,6 +118,9 @@ export default {
             password: ''
         }
     },
+    props: {
+        shipment: ''
+    },
     methods: {
         save() {
             let productsBasket = this.$store.getters.StoreCart
@@ -189,13 +192,21 @@ export default {
     watch: {
         'createAccount' () {
             console.log(this.createAccount)
+        },
+        'shipment' () {
+            if (this.shipment.id) {
+                this.data.shipment_id = this.shipment.id;
+            }
         }
     },
     created() {
         this.$axios.get('front/shipments/all')
         .then((data) => {
             this.shipments = data.data.data
-        })
+        });
+        if (this.shipment.id) {
+            this.data.shipment_id = this.shipment.id;
+        }
     }
 }
 </script>
