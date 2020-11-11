@@ -22,7 +22,7 @@ Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(require('vue-moment'));
 const DEV_URL = 'http://localhost:8000';
 const PROD_URL = 'https://elegancko.store';
-axios.defaults.baseURL = DEV_URL+'/api/';
+axios.defaults.baseURL = PROD_URL+'/api/';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
