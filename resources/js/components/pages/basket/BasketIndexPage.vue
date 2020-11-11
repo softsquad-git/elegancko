@@ -1,6 +1,6 @@
 <template>
    <div class="container">
-       <section>
+       <section v-if="$store.getters.StoreCart.length > 0">
            <div class="row">
                <div class="col-lg-8">
                    <div class="mb-3">
@@ -82,6 +82,7 @@
                <order-page :shipment="shipment" class="mt-3" v-if="showOrder"/>
            </div>
        </section>
+       <no-data-component v-if="$store.getters.StoreCart.length < 1" :msg="'Brak produktów w koszyku'"/>
    </div>
 </template>
 
