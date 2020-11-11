@@ -65,7 +65,7 @@ export default {
             this.$axios.get('admin/settings/types/all')
                 .then((data) => {
                     this.types = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         addType() {
             this.$refs.adminCreateSettingType.openModal();
@@ -99,8 +99,9 @@ export default {
                             title: 'Udało się',
                             text: 'Dane zostały zapisane'
                         })
+                        this.$router.push({name: 'AdminPageSetting'})
                     }
-                })
+                }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {
@@ -113,7 +114,7 @@ export default {
                 this.data.resource_type = item.resource_type;
                 this.data.value = item.value;
                 this.is_edit = true;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     }
 }

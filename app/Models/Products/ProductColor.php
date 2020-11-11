@@ -13,6 +13,7 @@ class ProductColor extends Model
 
     protected $fillable = [
         'hex',
-        'name'
+        'name',
+        'locale'
     ];
 }

@@ -11,22 +11,26 @@
             <form @submit.prevent="save" class="mt-5">
                 <div class="form-group row">
                     <div class="col-12">
-                        <input id="resourceType" :disabled="$route.params.id ? true : false" class="form-control" v-model="data.resource_type" aria-label="Typ" placeholder="Typ">
+                        <input id="resourceType" :disabled="$route.params.id ? true : false" class="form-control"
+                               v-model="data.resource_type" aria-label="Typ" placeholder="Typ">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-title" class="form-control" v-model="data.title" aria-label="Meta title" placeholder="Meta tytuł">
+                        <input id="meta-title" class="form-control" v-model="data.title" aria-label="Meta title"
+                               placeholder="Meta tytuł">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <textarea id="meta-desc" class="form-control" v-model="data.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                        <textarea id="meta-desc" class="form-control" v-model="data.description" aria-label="Meta opis"
+                                  placeholder="Meta opis"></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-keywords" class="form-control" v-model="data.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                        <input id="meta-keywords" class="form-control" v-model="data.keywords"
+                               aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -68,14 +72,16 @@ export default {
             if (this.$route.params.id) {
                 this.title = 'SEO - Edytuj wpis';
                 this.$axios.get(`admin/meta/find/${this.$route.params.id}`)
-                .then((data) => {
-                    let meta = data.data.data;
-                    console.log(meta)
-                    this.data.resource_type = meta.resource_type;
-                    this.data.title = meta.title;
-                    this.data.description = meta.description;
-                    this.data.keywords = meta.keywords;
-                    this.data.locale = meta.locale_key;
+                    .then((data) => {
+                        let meta = data.data.data;
+                        console.log(meta)
+                        this.data.resource_type = meta.resource_type;
+                        this.data.title = meta.title;
+                        this.data.description = meta.description;
+                        this.data.keywords = meta.keywords;
+                        this.data.locale = meta.locale_key;
+                    }).catch((error) => {
+                    this.handleAjaxError(error);
                 })
             } else {
                 this.title = 'SEO - Dodaj nowy wpis'
@@ -87,18 +93,21 @@ export default {
                 url = `admin/meta/update/${this.$route.params.id}`;
             }
             this.$axios.post(url, this.data)
-            .then((data) => {
-                if (data.data.success === 1) {
-                    this.$router.push({
-                        name: 'AdminMetaList'
-                    });
-                    this.$notify({
-                        group: 'foo',
-                        title: 'Udało się',
-                        text: 'Zamówienie zostało złożone i oczekuje na realizację'
-                    });
-                }
-            })
+                .then((data) => {
+                    if (data.data.success === 1) {
+                        this.$router.push({
+                            name: 'AdminMetaList'
+                        });
+                        this.$notify({
+                            group: 'foo',
+                            title: 'Udało się',
+                            text: 'Zamówienie zostało złożone i oczekuje na realizację'
+                        });
+                    }
+                })
+                .catch((error) => {
+                    this.handleAjaxError(error);
+                })
         }
     },
     created() {

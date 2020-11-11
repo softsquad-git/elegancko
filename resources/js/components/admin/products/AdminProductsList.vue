@@ -145,8 +145,8 @@ export default {
                     this.data = data.data;
                     this.loadCategories();
                 })
-                .catch(() => {
-                    //
+                .catch((error) => {
+                    this.handleAjaxError(error)
                 })
         },
         remove(id) {
@@ -169,7 +169,7 @@ export default {
                                             text: 'Produkt został usunięty ze sklepu'
                                         })
                                     }
-                                })
+                                }).catch((error) => this.handleAjaxError(error))
                         }
                     }
                 }
@@ -179,7 +179,7 @@ export default {
             this.$axios.get('categories/all')
                 .then((data) => {
                     this.categories = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

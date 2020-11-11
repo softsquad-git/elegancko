@@ -36,7 +36,9 @@ export default {
             data: {
                 email: '',
                 password: ''
-            }
+            },
+            errors: [],
+            msg: ''
         }
     },
     methods: {
@@ -50,20 +52,20 @@ export default {
                     }
                 })
                 .catch((error) => {
-
+                    this.handleAjaxError(error);
                 })
         },
         redirect() {
             if (localStorage.getItem('token')) {
                 this.$axios.get('user/logged')
-                .then((data) => {
-                    let role = data.data.role;
-                    if (role === 2) {
-                        this.$router.push({name: 'AdminPageIndex'})
-                    } else {
-                        this.$router.push({name: 'AccountPageIndex'})
-                    }
-                })
+                    .then((data) => {
+                        let role = data.data.role;
+                        if (role === 2) {
+                            this.$router.push({name: 'AdminPageIndex'})
+                        } else {
+                            this.$router.push({name: 'AccountPageIndex'})
+                        }
+                    })
             }
             return this;
         }

@@ -37,9 +37,9 @@ class Configuration extends Command
         $seedersClass = [
             'AdminAccount',
             'Category',
+            'AdminSettingType',
             'AdminSetting',
-            'Meta',
-            'AdminSettingType'
+            'Meta'
         ];
         Artisan::call('migrate:fresh');
         foreach ($seedersClass as $seedClass) {

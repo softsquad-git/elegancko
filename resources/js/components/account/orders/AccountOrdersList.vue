@@ -113,7 +113,7 @@ export default {
                 this.data = data.data;
             })
             .catch((error) => {
-                //
+                this.handleAjaxError(error)
             })
         }
     },

@@ -144,6 +144,9 @@ export default {
                         });
                     }
                 })
+            .catch((error) => {
+                this.handleAjaxError(error);
+            })
         },
 
         showEdit() {
@@ -185,7 +188,7 @@ export default {
                 this.data.comments = order.comments;
                 this.data.status = order.status.key;
                 this.data.payment_status = order.status.payment.status.key;
-            })
+            }).catch((error) => this.handleAjaxError(error));
         }
     },
     watch: {

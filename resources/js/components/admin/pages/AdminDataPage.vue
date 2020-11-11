@@ -43,17 +43,20 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-title" class="form-control" v-model="data.meta.title" aria-label="Meta title" placeholder="Meta tytuł">
+                        <input id="meta-title" class="form-control" v-model="data.meta_title" aria-label="Meta title"
+                               placeholder="Meta tytuł">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <textarea id="meta-desc" class="form-control" v-model="data.meta.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta_desc"
+                                  aria-label="Meta opis" placeholder="Meta opis"></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-keywords" class="form-control" v-model="data.meta.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta_keywords"
+                               aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -87,11 +90,9 @@ export default {
                 locale: '',
                 is_active: '',
                 position: '',
-                meta: {
-                    title: '',
-                    description: '',
-                    keywords: ''
-                }
+                meta_title: '',
+                meta_desc: '',
+                meta_keywords: ''
             }
         }
     },
@@ -113,7 +114,7 @@ export default {
                     }
                 })
                 .catch((error) => {
-                    //
+                    this.handleAjaxError(error)
                 })
         }
     },
@@ -127,9 +128,12 @@ export default {
                     this.data.locale = page.locale;
                     this.data.position = page.position
                     this.data.is_active = page.is_active;
-                    this.data.meta.title = page.meta.title;
-                    this.data.meta.description = page.meta.description;
-                    this.data.meta.keywords = page.meta.keywords;
+                    this.data.meta_title = page.meta.title;
+                    this.data.meta_desc = page.meta.description;
+                    this.data.meta_keywords = page.meta.keywords;
+                })
+                .catch((error) => {
+                    this.handleAjaxError(error);
                 })
         }
     }

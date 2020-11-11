@@ -40,7 +40,8 @@
                     </select>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 p-0 col-sm-12 col-xs-12">
-                    <select id="status_payment" aria-label="Status zamówienia" class="form-control" v-model="params.payment_status">
+                    <select id="status_payment" aria-label="Status zamówienia" class="form-control"
+                            v-model="params.payment_status">
                         <option selected value="">Status płatności</option>
                         <option value="1">Rozpoczęta</option>
                         <option value="2">Zakończona</option>
@@ -69,14 +70,15 @@
                 </thead>
                 <tr v-for="(order, index) in data.data">
                     <th scope="row" class="text-center">{{ index + 1 }}</th>
-                    <td>{{order.name.full}}</td>
-                    <td>{{order.contact.email}}</td>
-                    <td>{{order.created_at | moment('calendar')}}</td>
-                    <td>{{order.status.name}}</td>
-                    <td>{{order.status.payment.status.name}}</td>
-                    <td>{{order.price}}</td>
+                    <td>{{ order.name.full }}</td>
+                    <td>{{ order.contact.email }}</td>
+                    <td>{{ order.created_at | moment('calendar') }}</td>
+                    <td>{{ order.status.name }}</td>
+                    <td>{{ order.status.payment.status.name }}</td>
+                    <td>{{ order.price }}</td>
                     <td>
-                        <b-button variant="outline-secondary" class="btn-sm" :to="{name: 'AdminOrderFind', params: {id: order.id, action: 'show'}}">
+                        <b-button variant="outline-secondary" class="btn-sm"
+                                  :to="{name: 'AdminOrderFind', params: {id: order.id, action: 'show'}}">
                             Szczegóły
                         </b-button>
                         <b-button @click="remove(order.id)" class="btn-sm" variant="outline-secondary">Usuń
@@ -94,6 +96,7 @@
 
 <script>
 import NoDataComponent from "../../NoDataComponent";
+
 export default {
     name: "AdminOrdersList",
     components: {NoDataComponent},
@@ -118,7 +121,7 @@ export default {
                     this.data = data.data;
                 })
                 .catch((error) => {
-                    //
+                    this.handleAjaxError(error);
                 })
         },
         ordering(ordering) {
@@ -149,7 +152,7 @@ export default {
                                             text: data.data.msg
                                         })
                                     }
-                                })
+                                }).catch((error) => this.handleAjaxError(error))
                         }
                     }
                 }
@@ -158,7 +161,7 @@ export default {
         redirect() {
             if (this.$route.params.email) {
                 this.params.email = this.$route.params.email;
-            } else  {
+            } else {
                 this.params.email = '';
             }
             this.loadData();

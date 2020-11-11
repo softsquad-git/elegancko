@@ -4,11 +4,13 @@ import Vuex from 'vuex';
 import VueConfirmDialog from 'vue-confirm-dialog'
 import VueNotification from "vue-notification";
 import VueMeta from 'vue-meta';
+import ErrorHandling from './mixins/error-handling'
 
 window.Vuex = Vuex;
 
 Vue.use(Vuex);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.mixin(ErrorHandling);
 
 window.axios = require('axios');
 Vue.prototype.$axios = axios;
@@ -20,7 +22,7 @@ Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(require('vue-moment'));
 const DEV_URL = 'http://localhost:8000';
 const PROD_URL = 'https://elegancko.store';
-axios.defaults.baseURL = PROD_URL+'/api/';
+axios.defaults.baseURL = DEV_URL+'/api/';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

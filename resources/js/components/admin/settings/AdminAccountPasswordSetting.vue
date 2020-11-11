@@ -41,7 +41,7 @@ export default {
                         text: 'Hasło zostało zmienione. Wyloguj się i zaloguj używając nowego hasła'
                     })
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

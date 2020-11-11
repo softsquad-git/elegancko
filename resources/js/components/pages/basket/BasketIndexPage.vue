@@ -42,7 +42,10 @@
                 <th scope="row" class="text-center">
                     {{ index + 1 }}
                 </th>
-                <td><img class="width-basket-product" :src="basket.product.images[0].src" :alt="basket.product.title"></td>
+                <td>
+                    <img v-if="basket.product.images > 0" class="width-basket-product" :src="basket.product.images[0].src" :alt="basket.product.title">
+                    <img class="width-basket-product" :src="basket.product.image" :alt="basket.product.title">
+                </td>
                 <td>{{ basket.product.title }}</td>
                 <td>
                     <div :style="'background:' + basket.color.hex" class="sample"></div>
@@ -104,7 +107,7 @@ export default {
                 this.$axios.get(`basket/all?ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                     .then((data) => {
                         this.data = data.data.data;
-                    })
+                    }).catch((error) => this.handleAjaxError(error))
             }
         },
         ordering(ordering) {
@@ -132,6 +135,7 @@ export default {
     },
     created() {
         this.loadData();
+        console.log(this.$store.getters.StoreCart)
     }
 }
 </script>

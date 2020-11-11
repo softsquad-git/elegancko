@@ -24,7 +24,12 @@ class BasicSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3|string',
+            'last_name' => 'required|min:3|string',
+            'phone' => 'nullable|string',
+            'city' => 'nullable|string',
+            'address' => 'nullable|string',
+            'post_code' => 'nullable|string'
         ];
     }
 }

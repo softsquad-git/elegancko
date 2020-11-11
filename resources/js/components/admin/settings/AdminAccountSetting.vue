@@ -83,7 +83,7 @@ export default {
                             text: 'Dane zostały zapisane'
                         })
                     }
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         loadData() {
             let url = 'user/logged';
@@ -105,7 +105,7 @@ export default {
                     this.data.city = user.city;
                     this.data.post_code = user.post_code;
                     this.data.address = user.address;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
     },
     watch: {

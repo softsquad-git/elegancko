@@ -36,6 +36,11 @@ const router = new VueRouter({
             component: () => import('./components/pages/products/Show')
         },
         {
+            path: '/page/:title/:id',
+            name: 'ShowPage',
+            component: () => import('./components/pages/pages/ShowPage')
+        },
+        {
             path: '/basket',
             name: 'BasketIndexPage',
             component: () => import('./components/pages/basket/BasketIndexPage')
@@ -307,10 +312,40 @@ const router = new VueRouter({
                         auth: true,
                         middleware: [auth]
                     }
+                },
+                {
+                    path: 'sizes',
+                    component: () => import('./components/admin/products/sizes/AdminSizesList'),
+                    name: 'AdminSizesList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'colors',
+                    component: () => import('./components/admin/products/colors/AdminColorsList'),
+                    name: 'AdminColorsList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
+                },
+                {
+                    path: 'shipments',
+                    component: () => import('./components/admin/shipments/AdminShipmentsList'),
+                    name: 'AdminShipmentsList',
+                    meta: {
+                        auth: true,
+                        middleware: [auth]
+                    }
                 }
             ]
         }
-    ]
+    ],
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 });
 
 router.beforeEach((to, from, next) => {

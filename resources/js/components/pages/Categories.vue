@@ -31,7 +31,7 @@ export default {
             this.$axios.get(`categories/all?page=${page}&position=${this.position}&pagination=${this.limit}&name=${this.name}&ordering=${this.ordering}`)
             .then((data) => {
                 this.categories = data.data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {
@@ -72,5 +72,10 @@ export default {
 .vertical-center {
     display: flex;
     align-items: center;
+}
+@media only screen and (max-width: 420px) {
+    .category-bg-3 {
+        height: 550px!important;
+    }
 }
 </style>

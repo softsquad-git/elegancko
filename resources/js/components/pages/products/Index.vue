@@ -106,7 +106,7 @@ export default {
             this.$axios.get(`front/products/all?page=${page}&title=${this.params.title}&category=${this.params.category}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
                 .then((data) => {
                     this.data = data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         ordering(ordering) {
             this.params.ordering = ordering;
@@ -120,7 +120,7 @@ export default {
             this.$axios.get('categories/all')
                 .then((data) => {
                     this.categories = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         checkCategory() {
             if (this.$route.params.category) {
@@ -130,14 +130,14 @@ export default {
                     let category = data.data.data;
                     this.title = category.name
                     this.banner = category.image;
-                })
+                }).catch((error) => this.handleAjaxError(error))
             } else {
                 this.params.category = '';
                 this.title = 'Produkty';
                 this.$axios.get('front/settings/find-by-type/products_top_banner')
                     .then((data) => {
                         this.banner = data.data.data.value
-                    });
+                    }).catch((error) => this.handleAjaxError(error))
             }
             this.loadData();
         }

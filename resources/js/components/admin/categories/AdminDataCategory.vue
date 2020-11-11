@@ -58,17 +58,20 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-title" class="form-control" v-model="data.meta.title" aria-label="Meta title" placeholder="Meta tytuł">
+                        <input id="meta-title" class="form-control" v-model="data.meta_title" aria-label="Meta title"
+                               placeholder="Meta tytuł">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <textarea id="meta-desc" class="form-control" v-model="data.meta.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta_desc"
+                                  aria-label="Meta opis" placeholder="Meta opis"></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-keywords" class="form-control" v-model="data.meta.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta_keywords"
+                               aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -83,6 +86,7 @@
 
 <script>
 import Index from "../../pages/products/Index";
+
 export default {
     name: "AdminDataCategory",
     components: {Index},
@@ -98,11 +102,9 @@ export default {
                 position: '',
                 locale: '',
                 image: null,
-                meta: {
-                    title: '',
-                    description: '',
-                    keywords: ''
-                }
+                meta_title: '',
+                meta_desc: '',
+                meta_keywords: ''
             }
         }
     },
@@ -119,7 +121,9 @@ export default {
                 formData.append('is_active', this.data.is_active);
                 formData.append('position', this.data.position);
                 formData.append('locale', this.data.locale);
-                formData.append('meta', this.data.meta)
+                formData.append('meta_title', this.data.meta_title);
+                formData.append('meta_desc', this.data.meta_desc);
+                formData.append('meta_keywords', this.data.meta_keywords);
                 return this.saveData(formData);
             } else {
                 return this.saveData(this.data);
@@ -139,10 +143,11 @@ export default {
                         this.data.is_active = '';
                         this.data.position = '';
                         this.data.locale = '';
+                        this.data.meta = {}
                     }
                 })
                 .catch((error) => {
-                    //
+                    this.handleAjaxError(error)
                 })
         }
     },
@@ -150,7 +155,10 @@ export default {
         this.$axios.get(`admin/categories/all?parent_id=0`)
             .then((data) => {
                 this.categories = data.data.data;
-            });
+            })
+            .catch((error) => {
+                this.handleAjaxError(error);
+            })
         if (this.$route.params.id) {
             this.$axios.get(`admin/categories/find/${this.$route.params.id}`)
                 .then((data) => {
@@ -161,10 +169,11 @@ export default {
                     this.data.locale = category.locale;
                     this.data.is_active = category.is_active;
                     this.data.position = category.position === null ? '' : category.position;
-                    this.data.meta.title = category.meta.title;
-                    this.data.meta.description = category.meta.description;
-                    this.data.meta.keywords = category.meta.keywords;
+                    this.data.meta_title = category.meta.title;
+                    this.data.meta_desc = category.meta.description;
+                    this.data.meta_keywords = category.meta.keywords;
                 })
+                .catch((error) => this.handleAjaxError(error))
         }
     }
 }

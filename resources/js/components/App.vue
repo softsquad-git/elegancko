@@ -9,9 +9,9 @@
                         <b-nav-item :to="{name: 'IndexPage'}">Strona główna</b-nav-item>
                         <b-nav-item :to="{name: 'ProductsIndex'}">Sklep</b-nav-item>
                         <b-nav-item :to="{name: 'CategoriesIndex'}">Kategorie</b-nav-item>
-                        <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ProductsIndex'}">{{ page.title }}</b-nav-item>
+                        <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{ page.title }}</b-nav-item>
                         <b-nav-item-dropdown v-if="pagesTop.length > 5" right>
-                            <b-dropdown-item v-for="page in pagesTop.slice(5, 100)" href="#">{{page.title}}</b-dropdown-item>
+                            <b-dropdown-item v-for="page in pagesTop.slice(5, 100)" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{page.title}}</b-dropdown-item>
                         </b-nav-item-dropdown>
 
                     </b-navbar-nav>
@@ -36,7 +36,7 @@
                         <span class="fc fa fa-map-marker-alt"></span> {{ settings[2].value }}
                     </div>
                     <div class="links">
-                        <router-link v-for="page in pagesBottom" :to="''">{{ page.title }}</router-link>
+                        <router-link v-if="pagesBottom.length > 0" v-for="page in pagesBottom" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{ page.title }}</router-link>
                     </div>
                     <div class="footer-info">
                         Copyright &copy 2020 | Created by: <a href="http://softsquad.pl/" target="_blank">SoftSquad</a>
@@ -46,7 +46,7 @@
         </footer>
         <vue-confirm-dialog></vue-confirm-dialog>
         <notifications group="notification-success" position="bottom left" type="success"/>
-        <notifications group="notification-danger" position="bottom left" type="error"/>
+        <notifications group="notification-error" position="bottom left" type="error"/>
     </div>
 </template>
 
@@ -73,15 +73,15 @@ export default {
         this.$axios.post('front/settings/find-by-types', this.data)
             .then((data) => {
                 this.settings = data.data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         this.$axios.get(`front/pages/all?position=bottom&pagination=8`)
         .then((data) => {
             this.pagesBottom = data.data.data
-        })
+        }).catch((error) => this.handleAjaxError(error))
         this.$axios.get(`front/pages/all?position=top&pagination=20`)
         .then((data) => {
             this.pagesTop = data.data.data;
-        })
+        }).catch((error) => this.handleAjaxError(error))
     }
 }
 </script>

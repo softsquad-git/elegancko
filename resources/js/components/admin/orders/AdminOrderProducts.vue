@@ -43,6 +43,8 @@ export default {
             this.$axios.get(`admin/orders/all-products/${this.id}`)
             .then((data) => {
                 this.data = data.data
+            }).catch((error) => {
+                this.handleAjaxError(error)
             })
         }
     },

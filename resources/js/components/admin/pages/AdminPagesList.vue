@@ -109,7 +109,7 @@ export default {
             this.$axios.get(`admin/pages/all?page=${page}&title=${this.params.title}&is_active=${this.params.is_active}&position=${this.params.position}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
             .then((data) => {
                 this.data = data.data
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         remove(id) {
             this.$axios.delete(`admin/pages/remove/${id}`)
@@ -117,7 +117,7 @@ export default {
                 if (data.data.success === 1) {
                     this.loadData();
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

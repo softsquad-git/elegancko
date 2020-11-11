@@ -66,7 +66,7 @@ export default {
                         name: 'OrderThx'
                     })
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

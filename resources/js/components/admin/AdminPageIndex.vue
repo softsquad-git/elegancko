@@ -55,7 +55,7 @@
                 .then((data) => {
                     this.adminData.data = data.data;
                     console.log(data.data)
-                })
+                }).catch((error) => this.handleAjaxError(error))
             }
         },
         created() {

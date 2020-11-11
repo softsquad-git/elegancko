@@ -23,7 +23,7 @@
                         <select id="category" aria-label="Kategoria" v-model="data.category_id"
                                 class="form-control input-admin">
                             <option selected value="">Wybierz kategorię</option>
-                            <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                            <option v-for="category in categories" v-if="category.parent_id === 0" :value="category.id">{{ category.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -121,17 +121,17 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-title" class="form-control" v-model="data.meta.title" aria-label="Meta title" placeholder="Meta tytuł">
+                        <input id="meta-title" class="form-control" v-model="data.meta_title" aria-label="Meta title" placeholder="Meta tytuł">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <textarea id="meta-desc" class="form-control" v-model="data.meta.description" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta_desc" aria-label="Meta opis" placeholder="Meta opis"></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-keywords" class="form-control" v-model="data.meta.keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta_keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -203,11 +203,9 @@ export default {
                 old_price: '',
                 currency: '',
                 type: '',
-                meta: {
-                    title: '',
-                    description: '',
-                    keywords: ''
-                }
+                meta_title: '',
+                meta_desc: '',
+                meta_keywords: ''
             },
             categories: [],
             sizes: [],
@@ -229,26 +227,29 @@ export default {
                 for (let i = 0; i < this.data.images.length; i++) {
                     let image = this.data.images[i];
                     formData.append('images[' + i + ']', image, image.name);
-                    formData.append('title', this.data.title);
-                    formData.append('category_id', this.data.category_id);
-                    formData.append('content', this.data.content);
-                    formData.append('description', this.data.description);
-                    formData.append('locale', this.data.locale);
-                    formData.append('sizes', this.data.sizes);
-                    formData.append('shipments', this.data.shipments);
-                    formData.append('price', this.data.price);
-                    formData.append('old_price', this.data.old_price);
-                    formData.append('currency', this.data.currency);
-                    formData.append('type', this.data.type);
-                    formData.append('colors', this.data.colors);
-                    formData.append('meta', this.data.meta);
                 }
+                formData.append('title', this.data.title);
+                formData.append('category_id', this.data.category_id);
+                formData.append('content', this.data.content);
+                formData.append('description', this.data.description);
+                formData.append('locale', this.data.locale);
+                formData.append('sizes', this.data.sizes);
+                formData.append('shipments', this.data.shipments);
+                formData.append('price', this.data.price);
+                formData.append('old_price', this.data.old_price);
+                formData.append('currency', this.data.currency);
+                formData.append('type', this.data.type);
+                formData.append('colors', this.data.colors);
+                formData.append('meta_title', this.data.meta_title);
+                formData.append('meta_desc', this.data.meta_desc);
+                formData.append('meta_keywords', this.data.meta_keywords);
 
                 return this.saveData(formData)
             }
             return this.saveData(this.data)
         },
         saveData(data) {
+            console.log(this.data.meta)
             this.$axios.post(this.$route.params.id
                 ? `admin/products/update/${this.$route.params.id}`
                 : 'admin/products/create', data)
@@ -262,7 +263,7 @@ export default {
                     }
                 })
                 .catch((error) => {
-                    //
+                    this.handleAjaxError(error)
                 })
         },
         handleFileUpload() {
@@ -274,7 +275,7 @@ export default {
                     this.categories = data.data.data;
                 })
                 .catch((error) => {
-                    //
+                    this.handleAjaxError(error)
                 })
         },
         createSizeModal() {
@@ -291,18 +292,19 @@ export default {
                 .then((data) => {
                     this.sizes = data.data.data
                 })
+            .catch((error) => this.handleAjaxError(error))
         },
         loadDataColors() {
             this.$axios.get('admin/products/colors/all')
                 .then((data) => {
                     this.colors = data.data.data
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         loadDataShipments() {
             this.$axios.get('admin/shipments/all')
                 .then((data) => {
                     this.shipments = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         handleInput(e) {
             let stringValue = e.target.value.toString()
@@ -332,14 +334,14 @@ export default {
                                             text: data.data.msg
                                         });
                                     }
-                                })
+                                }).catch((error) => this.handleAjaxError(error))
                         }
                     }
                 }
             )
         },
         checkAction() {
-            if (this.$route.params.id !== null) {
+            if (this.$route.params.id) {
                 this.$axios.get(`admin/products/find/${this.$route.params.id}`)
                     .then((data) => {
                         const product = data.data.data;
@@ -357,10 +359,10 @@ export default {
                         this.data.sizes = product.sizes;
                         this.data.colors = product.colors;
                         this.data.shipments = product.shipments;
-                        this.data.meta.title = product.meta.title;
-                        this.data.meta.description = product.meta.description;
-                        this.data.meta.keywords = product.meta.keywords;
-                    })
+                        this.data.meta_title = product.meta.title;
+                        this.data.meta_desc = product.meta.description;
+                        this.data.meta_keywords = product.meta.keywords;
+                    }).catch((error) => this.handleAjaxError(error))
             }
         }
     },

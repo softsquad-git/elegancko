@@ -62,6 +62,9 @@ export default {
             .then((data) => {
                 this.data = data.data;
             })
+            .catch((error) => {
+                this.handleAjaxError(error);
+            })
         }
     },
     created() {

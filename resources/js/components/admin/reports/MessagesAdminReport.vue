@@ -45,7 +45,7 @@ export default {
             this.$axios.get('admin/reports/messages')
             .then((data) => {
                 this.data = data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

@@ -33,7 +33,7 @@ export default {
             this.$axios.get('admin/reports/users')
             .then((data) => {
                 this.data = data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

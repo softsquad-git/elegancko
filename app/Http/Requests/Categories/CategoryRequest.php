@@ -21,15 +21,19 @@ class CategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            'name' => 'required|string|min:3',
-            'alias' => 'required|string|unique:categories',
-            'parent_id' => 'nullable|integer',
-            'position' => 'required|integer',
-            'is_active' => 'required|integer',
-            'locale' => 'required|string|min:2'
-        ];
+        $data = [];
+        $data['name'] = 'required|string|min:3';
+        if ($this->segment(4) == 'update')
+            $data['alias'] = 'required|string';
+        else
+            $data['alias'] = 'required|string|unique:categories';
+        $data['parent_id'] = 'nullable|integer';
+        $data['position'] = 'required|integer';
+        $data['is_active'] = 'required|integer';
+        $data['locale'] = 'required|string|min:2';
+
+        return $data;
     }
 }

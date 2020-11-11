@@ -92,6 +92,7 @@ import Multiselect from 'vue-multiselect'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
 import MetaComponent from "../MetaComponent";
+import { mapGetters } from 'vuex'
 Vue.use(Viewer)
 
 export default {
@@ -112,13 +113,18 @@ export default {
             relatedProducts: []
         }
     },
+    computed: {
+      ...mapGetters({
+          StoreCart: 'StoreCart'
+      })
+    },
     methods: {
         getProduct() {
             const id = this.$route.params.id;
             this.$axios.get(`front/products/find/${id}`)
                 .then((data) => {
                     this.product = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         addBasket() {
             this.data.product = this.product;
@@ -135,12 +141,20 @@ export default {
             this.$axios.get(`front/products/all?category_id=${1}&pagination=4`)
             .then((data) => {
                 this.relatedProducts = data.data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     watch: {
         '$route.params.id' () {
             this.getProduct();
+        },
+        StoreCart() {
+            this.$notify({
+                group: 'notification-success',
+                title: 'Udało się',
+                text: 'Produkt został dodany do koszyka'
+            })
+            this.data.color = ''; this.data.size = '';
         }
     },
     created() {

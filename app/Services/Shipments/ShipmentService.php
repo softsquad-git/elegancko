@@ -14,6 +14,14 @@ class ShipmentService
     private $shipmentRepository;
 
     /**
+     * @param ShipmentRepository $shipmentRepository
+     */
+    public function __construct(ShipmentRepository $shipmentRepository)
+    {
+        $this->shipmentRepository = $shipmentRepository;
+    }
+
+    /**
      * @param array $data
      * @return mixed
      * @throws Exception

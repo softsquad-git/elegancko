@@ -38,7 +38,7 @@ export default {
                         this.data._key = '';
                         this.closeModal();
                     }
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         openModal() {
             this.$refs['create-setting-type'].show();

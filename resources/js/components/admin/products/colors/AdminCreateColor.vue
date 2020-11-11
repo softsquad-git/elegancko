@@ -10,6 +10,13 @@
                        v-model="data.name">
             </div>
             <div class="form-group">
+                <select id="locale" aria-label="Wybierz język" v-model="data.locale" class="form-control">
+                    <option value="" selected>Wybierz język</option>
+                    <option value="pl">Polski</option>
+                    <option value="en">Angielski</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
             </div>
         </form>
@@ -24,14 +31,20 @@ export default {
             title: '',
             data: {
                 hex: '',
-                name: ''
-            }
+                name: '',
+                locale: ''
+            },
+            action: false,
+            colorId: ''
         }
     },
     methods: {
         save() {
-            console.log(this.data)
-            this.$axios.post('admin/products/colors/create', this.data)
+            let url = 'admin/products/colors/create';
+            if (this.action === true) {
+                url = `admin/products/colors/update/${this.colorId}`
+            }
+            this.$axios.post(url, this.data)
             .then((data) => {
                 if (data.data.success === 1) {
                     this.data.hex = '';
@@ -39,9 +52,16 @@ export default {
                     this.$emit('loadData');
                     this.closeModal();
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
-        openModal() {
+        openModal(action = null, item = null) {
+            if (action === 'edit') {
+                this.action = true;
+                this.colorId = item.id;
+                this.data.hex = item.hex;
+                this.data.name = item.name;
+                this.data.locale = item.locale_key;
+            }
             this.$refs['create-color'].show()
         },
         closeModal() {

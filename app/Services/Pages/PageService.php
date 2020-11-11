@@ -40,7 +40,7 @@ class PageService
         $item = Page::create($data);
         if (empty($item))
             throw new Exception(trans('exceptions.no_created'));
-        $this->saveMeta($item->id, $data['meta'], $item->locale);
+        $this->setMetaData($data, $item->id);
         return $item;
     }
 
@@ -53,16 +53,29 @@ class PageService
     public function update(array $data, int $pageId)
     {
         $item = $this->pageRepository->findById($pageId);
-        if ($item->meta) {
-            $this->metaInterface->setTitle($data['meta']['title'])
-                ->setDesc($data['meta']['description'])
-                ->setKeywords($data['meta']['keywords'])
-                ->updateMeta($item->meta);
-        } else {
-            $this->saveMeta($item->id, $data['meta'], $item->locale);
-        }
+        $meta = $this->setMetaData($data, $item->id);
+        if ($item->meta)
+            $meta->updateMeta($item->meta);
+        else
+            $meta->saveMeta();
         $item->update($data);
         return $item;
+    }
+
+    /**
+     * @param array $data
+     * @param int $itemId
+     * @return MetaInterface
+     */
+    private function setMetaData(array $data, int $itemId)
+    {
+        return $this->metaInterface
+            ->setResourceId($itemId)
+            ->setResourceType(MetaService::RESOURCE_PAGE)
+            ->setTitle($data['meta_title'])
+            ->setLocale($data['locale'])
+            ->setKeywords($data['meta_keywords'])
+            ->setDesc($data['meta_desc']);
     }
 
     /**
@@ -73,22 +86,5 @@ class PageService
     public function remove(int $pageId): ?bool
     {
         return $this->pageRepository->findById($pageId)->delete();
-    }
-
-    /**
-     * @param int $id
-     * @param array $meta
-     * @param string $locale
-     */
-    private function saveMeta(int $id, array $meta, string $locale)
-    {
-        $this->metaInterface
-            ->setResourceId($id)
-            ->setResourceType(MetaService::RESOURCE_PAGE)
-            ->setTitle($meta['title'])
-            ->setDesc($meta['description'])
-            ->setKeywords($meta['keywords'])
-            ->setLocale($locale)
-            ->saveMeta();
     }
 }

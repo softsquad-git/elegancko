@@ -17,6 +17,7 @@ class CreateSizesTable extends Migration
             $table->id();
             $table->string('key');
             $table->string('name');
+            $table->string('locale');
             $table->timestamps();
         });
     }

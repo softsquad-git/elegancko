@@ -71,7 +71,7 @@ export default {
             this.$axios.get(`categories/all?page=${page}&name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
                     this.data = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         }
     },
     watch: {

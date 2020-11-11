@@ -25,6 +25,7 @@ class CategoriesResource extends JsonResource
         $data['created_at'] = (string)$this->created_at;
         $data['c_products'] = count($this->products);
         $data['activated'] = $this->is_active== Status::STATUS_ON ? true : false;
+        $data['parent_id'] = $this->parent_id;
         return $data;
     }
 }

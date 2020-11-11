@@ -151,7 +151,7 @@ export default {
                             title: 'Udało się',
                             text: data.data.msg
                         });
-                    })
+                    }).catch((error) => this.handleAjaxError(error))
             }
             this.$axios.post('front/orders/create', this.data)
             .then((data) => {
@@ -176,7 +176,7 @@ export default {
                     });
                     this.$router.push({name: 'OrderPay', params: {orderId: orderId}});
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         buyCompany(type) {
             this.data.type = type;

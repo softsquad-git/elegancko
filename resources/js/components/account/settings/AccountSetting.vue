@@ -47,17 +47,15 @@
                 </div>
             </div>
         </div>
-        <error-data-comonent :errors="errors"/>
     </div>
 </template>
 
 <script>
 import AdminAccountEmailSetting from "../../admin/settings/AdminAccountEmailSetting";
 import AdminAccountPasswordSetting from "../../admin/settings/AdminAccountPasswordSetting";
-import ErrorDataComonent from "../../ErrorDataComonent";
 export default {
     name: "AccountSetting",
-    components: {ErrorDataComonent, AdminAccountPasswordSetting, AdminAccountEmailSetting},
+    components: {AdminAccountPasswordSetting, AdminAccountEmailSetting},
     data() {
         return {
             title: 'Twoje dane',
@@ -87,10 +85,7 @@ export default {
                     }
                 })
             .catch((error) => {
-                if (error.response.status === 422) {
-                    this.errors = error.response.data.errors;
-                    this.$refs.showErrors.openModal()
-                }
+                this.handleAjaxError(error);
             })
         },
         loadData() {
@@ -110,6 +105,7 @@ export default {
                     this.data.post_code = user.post_code;
                     this.data.address = user.address;
                 })
+            .catch((error) => this.handleAjaxError(error))
         },
     },
     watch: {

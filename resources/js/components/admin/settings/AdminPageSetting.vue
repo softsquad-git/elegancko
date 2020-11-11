@@ -78,7 +78,7 @@ export default {
             this.$axios.get(`admin/settings/all`)
             .then((data) => {
                 this.data = data.data.data;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         remove(id) {
 

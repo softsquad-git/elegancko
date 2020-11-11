@@ -49,7 +49,7 @@ export default {
             this.$axios.get('admin/reports/orders')
                 .then((data) => {
                     this.data = data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

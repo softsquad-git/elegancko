@@ -13,6 +13,7 @@ class ProductSize extends Model
 
     protected $fillable = [
         'key',
-        'name'
+        'name',
+        'locale'
     ];
 }

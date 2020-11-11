@@ -55,7 +55,7 @@ export default {
                         text: 'Kody zostały wysłane na obecny i nowy adres e-mail. Sprawdź pocztę'
                     })
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         saveSecond() {
             this.$axios.post('settings/email-second', this.dataSecond)
@@ -72,13 +72,13 @@ export default {
                     // redirect to logout
                     window.location.reload();
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         checkEmail() {
             this.$axios.get('settings/check-email')
             .then((data) => {
                 this.changeStatus = data.data.status;
-            })
+            }).catch((error) => this.handleAjaxError(error))
         },
         removeChangeKey() {
             this.$axios.delete('settings/change-email-delete')
@@ -86,7 +86,7 @@ export default {
                 if (data.data.success === 1) {
                     this.checkEmail();
                 }
-            })
+            }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {

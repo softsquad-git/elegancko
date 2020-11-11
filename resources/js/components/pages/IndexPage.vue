@@ -6,9 +6,9 @@
                    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
                        <div class="top-banner-txt">
                            <h1 class="big">
-                               {{ settings[1].value }}
+                               {{ settings[1] ? settings[1].value : '' }}
                            </h1>
-                           <p>{{ settings[2].value }}</p>
+                           <p>{{ settings[2] ? settings[2].value : '' }}</p>
                        </div>
                    </div>
                </div>
@@ -98,19 +98,20 @@ export default {
             this.$axios.get('front/products/all?type=2&pagination=3')
                 .then((data) => {
                     this.products_promo = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
         loadProductsNews() {
             this.$axios.get('front/products/all?type=3&pagination=3')
                 .then((data) => {
                     this.products_news = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         }
     },
     created() {
         this.$axios.post('front/settings/find-by-types', this.data)
             .then((data) => {
                 this.settings = data.data.data;
+                console.log(data.data.data)
             })
         this.loadProductsPromo();
         this.loadProductsNews();
@@ -138,11 +139,15 @@ export default {
 }
 
 @media only screen and (max-width: 650px) {
+    .top-banner {
+        background-position: center top!important;
+    }
     .top-banner-txt {
         padding: 6em 2em;
     }
     .top-banner-txt h1.big {
-        font-size: 5em;
+        font-size: 4em!important;
+        text-align: left;
     }
     .top-banner-txt p {
         font-size: 1em;
@@ -153,6 +158,9 @@ export default {
     .top-banner-txt {
         padding: 6em 2em;
         text-align: center!important;
+    }
+    .top-banner-txt h1.big {
+        font-size: 3em!important;
     }
 }
 

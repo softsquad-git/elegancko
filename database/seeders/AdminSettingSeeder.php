@@ -28,7 +28,7 @@ class AdminSettingSeeder extends Seeder
             AdminSetting::create([
                 'type_id' => $type->id,
                 'resource_type' => $resourceType,
-                'value' => ''
+                'value' => '...'
             ]);
         }
     }

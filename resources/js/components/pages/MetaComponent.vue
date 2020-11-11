@@ -44,7 +44,7 @@ export default {
                     this.meta.title = meta.title;
                     this.meta.description = meta.description;
                     this.meta.keywords = meta.keywords;
-                })
+                }).catch((error) => this.handleAjaxError(error))
             }
         }
     },

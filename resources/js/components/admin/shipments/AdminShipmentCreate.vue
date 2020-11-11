@@ -33,12 +33,18 @@ export default {
                 name: '',
                 price: '',
                 locale: ''
-            }
+            },
+            action: false,
+            shipmentId: ''
         }
     },
     methods: {
         save() {
-            this.$axios.post('admin/shipments/create', this.data)
+            let url = 'admin/shipments/create';
+            if (this.action === true) {
+                url = `admin/shipments/update/${this.shipmentId}`;
+            }
+            this.$axios.post(url, this.data)
                 .then((data) => {
                     if (data.data.success === 1) {
                         this.$emit('loadData');
@@ -47,9 +53,16 @@ export default {
                         this.data.locale = '';
                         this.closeModal();
                     }
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
-        openModal() {
+        openModal(action = null, item = null) {
+            if (action === 'edit') {
+                this.action = true;
+                this.shipmentId = item.id;
+                this.data.locale = item.locale_key;
+                this.data.price = item.price;
+                this.data.name = item.name;
+            }
             this.$refs['create-shipment'].show()
         },
         closeModal() {

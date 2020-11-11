@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Shipments;
 
+use App\Helpers\Images;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShipmentResource extends JsonResource
@@ -14,6 +15,10 @@ class ShipmentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $data = parent::toArray($request);
+        $data['locale'] = Images::getLocaleFlag($this->locale);
+        $data['locale_key'] = $this->locale;
+
+        return $data;
     }
 }

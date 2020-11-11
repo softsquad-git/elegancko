@@ -15,6 +15,9 @@
                 <b-nav-item-dropdown text="Ustawienia" right>
                     <b-dropdown-item :to="{name: 'AdminPageSetting'}">Strony</b-dropdown-item>
                     <b-dropdown-item :to="{name: 'AdminAccountSetting'}">Dane podstawowe</b-dropdown-item>
+                    <b-dropdown-item :to="{name: 'AdminColorsList'}">Kolory</b-dropdown-item>
+                    <b-dropdown-item :to="{name: 'AdminSizesList'}">Rozmiary</b-dropdown-item>
+                    <b-dropdown-item :to="{name: 'AdminShipmentsList'}">Wysyłka</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">

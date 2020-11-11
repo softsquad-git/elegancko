@@ -47,7 +47,9 @@ class CategoryService
         DB::beginTransaction();
         try {
             $item = Category::create($data);
-            $this->saveMeta($item->id, $data['meta'], $item->locale);
+            if ($data['meta_title'] != null || $data['meta_desc'] != null || $data['meta_keywords'] != null) {
+                $this->setMetaData($data, $item->id)->saveMeta();
+            }
             DB::commit();
             return $item;
         } catch (Exception $e) {
@@ -71,33 +73,32 @@ class CategoryService
         $item = $this->categoryRepository->findById($categoryId);
         if ($data['parent_id'] && $data['parent_id'] != $item->parent_id)
             $this->categoryRepository->findById($data['parent_id']);
-        if ($item->meta) {
-            $this->metaInterface->setTitle($data['meta']['title'])
-                ->setDesc($data['meta']['description'])
-                ->setKeywords($data['meta']['keywords'])
-                ->updateMeta($item->meta);
-        } else{
-            $this->saveMeta($item->id, $data['meta'], $item->locale);
+        if ($data['meta_title'] != null || $data['meta_desc'] != null || $data['meta_keywords'] != null) {
+            $meta = $this->setMetaData($data, $item->id);
+            if ($item->meta) {
+                $meta->updateMeta($item->meta);
+            } else {
+                $meta->saveMeta();
+            }
         }
         $item->update($data);
         return $item;
     }
 
     /**
-     * @param int $id
-     * @param array $meta
-     * @param string $locale
+     * @param array $data
+     * @param int $itemId
+     * @return MetaInterface
      */
-    private function saveMeta(int $id, array $meta, string $locale)
+    private function setMetaData(array $data, int $itemId): MetaInterface
     {
-        $this->metaInterface
-            ->setResourceId($id)
+        return $this->metaInterface
+            ->setResourceId($itemId)
             ->setResourceType(MetaService::RESOURCE_CATEGORY)
-            ->setTitle($meta['title'])
-            ->setDesc($meta['description'])
-            ->setKeywords($meta['keywords'])
-            ->setLocale($locale)
-            ->saveMeta();
+            ->setTitle($data['meta_title'])
+            ->setLocale($data['locale'])
+            ->setKeywords($data['meta_keywords'])
+            ->setDesc($data['meta_desc']);
     }
 
     /**

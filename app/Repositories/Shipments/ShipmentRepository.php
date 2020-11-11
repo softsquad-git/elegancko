@@ -5,6 +5,7 @@ namespace App\Repositories\Shipments;
 use App\Models\Shipment;
 use Illuminate\Support\Facades\App;
 use \Exception;
+use Illuminate\Support\Facades\Auth;
 
 class ShipmentRepository
 {
@@ -14,9 +15,10 @@ class ShipmentRepository
      */
     public function findAll(array $params)
     {
-        return Shipment::orderBy('id', $params['ordering'] ?? config('app.df.ordering'))
-            ->where('locale', App::getLocale())
-            ->paginate($params['pagination'] ?? config('app.df.pagination'));
+        $data = Shipment::orderBy('id', $params['ordering'] ?? config('app.df.ordering'));
+        if (Auth::user()->role != config('app.users.roles.admin'))
+            $data->where('locale', App::getLocale());
+        return $data->paginate($params['pagination'] ?? config('app.df.pagination'));
     }
 
     /**

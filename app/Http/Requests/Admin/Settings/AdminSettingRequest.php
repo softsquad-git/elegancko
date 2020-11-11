@@ -23,10 +23,14 @@ class AdminSettingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'type_id' => 'required|integer',
-            'resource_type' => 'required|string',
-            'value' => 'required|string|min:3'
-        ];
+        $data = [];
+        $data['type_id'] = 'required|integer';
+        $data['resource_type'] = 'required|integer';
+        if ($this->get('resource_type') == 1)
+            $data['value'] = 'required|string';
+        else
+            $data['value'] = 'required|mimes:jpeg,jpg,png';
+
+        return $data;
     }
 }

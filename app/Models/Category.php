@@ -43,7 +43,10 @@ class Category extends Model
             ->where('resource_type', CategoryService::RESOURCE_TYPE);
     }
 
-    public function meta()
+    /**
+     * @return HasOne
+     */
+    public function meta(): HasOne
     {
         return $this->hasOne(Meta::class, 'resource_id', 'id')
             ->where('resource_type', MetaService::RESOURCE_CATEGORY);

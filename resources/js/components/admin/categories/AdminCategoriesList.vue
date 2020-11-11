@@ -119,6 +119,9 @@ export default {
                 .then((data) => {
                     this.data = data.data;
                 })
+                .catch((error) => {
+                    this.handleAjaxError(error);
+                })
         },
         ordering(ordering) {
             this.params.ordering = ordering;
@@ -147,6 +150,9 @@ export default {
                                     if (data.data.success === 1) {
                                         this.loadData()
                                     }
+                                })
+                                .catch((error) => {
+                                    this.handleAjaxError(error);
                                 })
                         }
                     }

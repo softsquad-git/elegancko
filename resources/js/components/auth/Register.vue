@@ -88,7 +88,7 @@
                         }
                     })
                     .catch((error) => {
-                        //
+                        this.handleAjaxError(error);
                     })
             }
         }

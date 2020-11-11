@@ -20,37 +20,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="configuration command">
-      <change afterPath="$PROJECT_DIR$/.env-prod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/0457e4dd3499814234b9dc769b6782d4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/2369c6adafb13c17b6bdf1f3ae6bf5e2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/8480e2be1bb73779ad927b6982cf6305.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/9a5a6e49cb9c34b239df4286ec4fcc88.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/a7473d0aab314d6ae0ff62f2cfd786f5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/bd4dffa1f0a7d02f7ddc7f9b19fea6c8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/8/225630cd84559d27ba69ff17ef5bd7ed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/9/869c2bd814f48781d948d58ec567e662.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/products/9/a75befc51193aed9dd4bf7a4922bb5c8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/3/c768569fb55627c027cd6ee25df0abf0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/4/d7c2cbd8df79cfa14d8093af8cfb224e.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeInfo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/43.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/44.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/13/3c92a933755a2061167ba30bc4f117c6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/14/4f83d020517558d17b5e690fbd889667.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/15/f955f72e30a837e795d55382499250d1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/4/88f56364053b2405cc4cc71c73bcc4ab.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/categories/7/60e94fc0fdd3c09c315e578f132d72fc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/10/5f49ffc3437473d466407402a5e32b9d.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/10/d2854c4b7e22ce105d2d04124f325e9a.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/3/db3328c0de1ae9b92e278bfb596e76b7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/4/86e00a12a148d25c8685959fe396f612.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/4/dfe12daa50457de8c9816affdfbc30fb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/5/38bcae082cc4012370e8f1108ea12dc1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/5/5c5ce760cfa57e8602e3f8f5d4de3480.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/6/ac7b5dc982d6fbe7f672a39dc6b8d3ab.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/6/d20e5a3b0e0f2d2cf9529932b1fccb32.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/93bba14521fcef94471d3d5f00c10c97.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/7/e0edc59c15fbd1a6ab306c2ff628fb15.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/8/cf40663ed4fa2a9bc52c3ffaccfcce55.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/products/9/89c82155f284e24649358e23dd3641ae.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/11/df948462705deb653cbf98a471ed661d.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/data/settings/2/4/db2145309cdd60160162151dc0f779b0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/mixins/error-handling.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Products/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Products/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/Pages/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/Pages/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/Products/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/Products/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/Settings/PageSettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/Settings/PageSettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Admin/Settings/AdminSettingResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Admin/Settings/AdminSettingResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoryResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Pages/PagesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Pages/PagesResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductImagesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductImagesResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductsResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Users/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Users/UserResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PageSettingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PageSettingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Products/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Products/ProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Products/ProductImageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Products/ProductImageService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Settings/AdminSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Settings/AdminSettingRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Categories/CategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Categories/CategoryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Settings/BasicSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Settings/BasicSettingRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Settings/PasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Settings/PasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Categories/CategoriesResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductColorsResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductColorsResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Products/ProductSizesResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Products/ProductSizesResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Shipments/ShipmentResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Shipments/ShipmentResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products/ProductColor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/ProductColor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Products/ProductSize.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Products/ProductSize.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Shipments/ShipmentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Shipments/ShipmentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Categories/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Pages/PageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Pages/PageService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/Products/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Products/ProductService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Shipments/ShipmentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Shipments/ShipmentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_13_181935_create_colors_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_13_181935_create_colors_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_13_181947_create_sizes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_13_181947_create_sizes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/AdminSettingSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AdminSettingSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
@@ -63,6 +77,7 @@
       <change beforePath="$PROJECT_DIR$/public/17.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/17.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/18.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/19.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/19.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/20.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/21.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/21.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/22.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/22.js" afterDir="false" />
@@ -71,8 +86,21 @@
       <change beforePath="$PROJECT_DIR$/public/25.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/25.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/26.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/26.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/27.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/27.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/28.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/28.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/29.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/29.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/30.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/30.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/31.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/31.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/32.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/32.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/33.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/33.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/34.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/34.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/35.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/35.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/36.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/36.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/37.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/37.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/38.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/38.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/39.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/39.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/40.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/40.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
@@ -83,18 +111,50 @@
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ErrorDataComonent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/pages/ShowPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/account/orders/AccountOrdersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/account/orders/AccountOrdersList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/account/settings/AccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/account/settings/AccountSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomeCategories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeCategories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminColorsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminColorsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/AuthLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/AuthLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/orders/OrderPay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/orders/OrderPay.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/admin.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/admin.api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/front.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/front.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +304,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -345,6 +405,18 @@
       <workItem from="1603929736494" duration="644000" />
       <workItem from="1603980036660" duration="24157000" />
       <workItem from="1604007695999" duration="7047000" />
+      <workItem from="1604103465647" duration="23999000" />
+      <workItem from="1604422560252" duration="29681000" />
+      <workItem from="1604855349719" duration="5660000" />
+      <workItem from="1604865865414" duration="307000" />
+      <workItem from="1604867415110" duration="18000" />
+      <workItem from="1604877938232" duration="4346000" />
+      <workItem from="1604883518727" duration="652000" />
+      <workItem from="1604945124703" duration="768000" />
+      <workItem from="1604947598004" duration="13000" />
+      <workItem from="1604958950618" duration="20000" />
+      <workItem from="1604962396982" duration="10078000" />
+      <workItem from="1605106790684" duration="471000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -528,7 +600,35 @@
       <option name="project" value="LOCAL" />
       <updated>1603974458177</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="meta">
+      <created>1604110976412</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604110976412</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Configuration i18n">
+      <created>1604263939154</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604263939154</updated>
+    </task>
+    <task id="LOCAL-00029" summary="prod">
+      <created>1604523790022</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1604523790022</updated>
+    </task>
+    <task id="LOCAL-00030" summary="front">
+      <created>1604525393649</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1604525393649</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,65 +656,72 @@
     <MESSAGE value="settings" />
     <MESSAGE value="poprawki" />
     <MESSAGE value="cart &amp;&amp;&amp;" />
-    <MESSAGE value="front" />
     <MESSAGE value="seeders configuration" />
     <MESSAGE value="Merge branch 'master' of https://github.com/softsquad-git/elegancko&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/Helpers/Status.php&#10;#&#9;app/Http/Controllers/Controller.php&#10;#&#9;app/Http/Controllers/Front/IndexController.php&#10;#&#9;app/Models/User.php&#10;#&#9;app/Providers/AppServiceProvider.php&#10;#&#9;app/Repositories/SoftSquadRepository.php&#10;#&#9;artisan&#10;#&#9;composer.json&#10;#&#9;composer.lock&#10;#&#9;config/app.php&#10;#&#9;config/auth.php&#10;#&#9;database/migrations/2014_10_12_000000_create_users_table.php&#10;#&#9;database/migrations/2020_10_11_200636_create_user_verify_key_table.php&#10;#&#9;package.json&#10;#&#9;public/0.js&#10;#&#9;public/1.js&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js&#10;#&#9;resources/js/app.js&#10;#&#9;resources/js/bootstrap.js&#10;#&#9;resources/js/components/App.vue&#10;#&#9;resources/js/components/pages/IndexPage.vue&#10;#&#9;resources/js/components/pages/products/Index.vue&#10;#&#9;resources/js/components/pages/products/Show.vue&#10;#&#9;resources/sass/app.scss&#10;#&#9;resources/views/index.blade.php&#10;#&#9;routes/api.php&#10;#&#9;yarn.lock" />
     <MESSAGE value="redirect" />
     <MESSAGE value="configuration" />
     <MESSAGE value="configuration command" />
-    <option name="LAST_COMMIT_MESSAGE" value="configuration command" />
+    <MESSAGE value="meta" />
+    <MESSAGE value="Configuration i18n" />
+    <MESSAGE value="prod" />
+    <MESSAGE value="front" />
+    <option name="LAST_COMMIT_MESSAGE" value="front" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="355" width="574" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603212948419">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="668" y="355" width="574" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1603212948419" />
-    <state x="734" y="263" width="441" height="602" key="#com.intellij.ide.util.MemberChooser" timestamp="1603925584748">
+    <state x="734" y="263" width="441" height="616" key="#com.intellij.ide.util.MemberChooser" timestamp="1604435469271">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="734" y="263" width="441" height="602" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1603925584748" />
-    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603988209624">
+    <state x="734" y="263" width="441" height="616" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1604435469271" />
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604610409374">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603988209624" />
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604000439378">
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604610409374" />
+    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604966388820">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604000439378" />
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1603974457983">
+    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604966388820" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1604525393484">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603974457983" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1604525393484" />
+    <state x="693" y="468" width="523" height="178" key="ComposerInitDialogKey" timestamp="1604100367923">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="468" width="523" height="178" key="ComposerInitDialogKey/0.27.1920.1053@0.27.1920.1053" timestamp="1604100367923" />
     <state x="615" y="320" width="682" height="434" key="EditFileWatcherDialog" timestamp="1602532269247">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="615" y="320" width="682" height="434" key="EditFileWatcherDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602532269247" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603318220642">
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605099931169">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="743" y="291" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602526920107" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1603318220642" />
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1603217144173">
+    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1605099931169" />
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1604100302807">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1603217144173" />
-    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1603217144173">
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1604100302807" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1604100302807">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1603217144173" />
-    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1603217144172">
+    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1604100302807" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1604100302807">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1603217144172" />
-    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1603217144173">
+    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1604100302807" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1604100302807">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603217144173" />
-    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog" timestamp="1603925499932">
+    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1604100302807" />
+    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog" timestamp="1604104432440">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="702" y="252" width="456" height="539" key="NewPhpClassDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602534828881" />
-    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603925499932" />
+    <state x="702" y="273" width="657" height="568" key="NewPhpClassDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604104432440" />
     <state x="755" y="479" width="399" height="156" key="NewPhpFileDialog" timestamp="1603812679552">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -636,10 +743,10 @@
     </state>
     <state x="100" y="100" width="1716" height="877" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602528935502" />
     <state x="100" y="125" width="1716" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603933334533" />
-    <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603831743408">
+    <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604527302227">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603831743408" />
+    <state x="100" y="127" width="1720" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604527302227" />
     <state x="100" y="127" width="1720" height="853" key="dock-window-1" timestamp="1603325040505">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -648,10 +755,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="100" y="127" width="1720" height="853" key="dock-window-2/0.27.1920.1053@0.27.1920.1053" timestamp="1603179261272" />
-    <state x="972" y="444" width="649" height="522" key="find.popup" timestamp="1604011252195">
+    <state x="972" y="444" width="667" height="522" key="find.popup" timestamp="1604974323476">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="972" y="444" width="649" height="522" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604011252195" />
+    <state x="972" y="444" width="667" height="522" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604974323476" />
     <state x="685" y="247" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog" timestamp="1603929890036">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -660,23 +767,23 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1603753472719" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1604012881079">
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1604109305802">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="621" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602531178906" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604012881079" />
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604109305802" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/app.js</url>
-          <line>229</line>
+          <line>286</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database/migrations/2020_10_22_194759_create_orders_table.php</url>
-          <line>32</line>
+          <line>33</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -26,7 +26,7 @@ export default {
             this.$axios.get(`front/products/all?pagination=6`)
                 .then((data) => {
                     this.data = data.data.data;
-                })
+                }).catch((error) => this.handleAjaxError(error))
         },
     },
     created() {
