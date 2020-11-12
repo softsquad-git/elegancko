@@ -56,7 +56,7 @@ export default {
                     this.isLoading = false;
                     this.data = data.data;
                 }).catch((error) => {
-                    this.isLoading = false;this.handleAjaxError(error)
+                   this.handleAjaxError(error)
             })
         }
     },

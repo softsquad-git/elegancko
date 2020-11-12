@@ -19,12 +19,14 @@ export default {
                 this.$router.push({
                     name: 'IndexPage'
                 })
+                window.location.reload();
             }
         })
         .catch((error) => {
             if (error.response.status === 401) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('userId');
+                localStorage.removeItem('name')
                 this.$router.push({
                     name: 'IndexPage'
                 })

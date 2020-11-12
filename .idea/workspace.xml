@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,7 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/30.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/30.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/39.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/39.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Logout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Logout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/i18n.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,7 +301,8 @@
       <workItem from="1605131656838" duration="5479000" />
       <workItem from="1605215126909" duration="29000" />
       <workItem from="1605217796991" duration="215000" />
-      <workItem from="1605268766296" duration="30976000" />
+      <workItem from="1605268766296" duration="33740000" />
+      <workItem from="1605140032706" duration="431000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -527,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605309295421</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="front">
+      <created>1605309623256</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1605309623256</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,10 +605,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604966388820" />
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1605309295024">
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1605309623103">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1605309295024" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1605309623103" />
     <state x="693" y="468" width="523" height="178" key="ComposerInitDialogKey" timestamp="1604100367923">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -633,10 +655,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1603398243136" />
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605309305064">
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605309628425">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605309305064" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605309628425" />
     <state x="100" y="125" width="1716" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603933334533">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -670,11 +692,11 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605137276781" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1605301922598">
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1605312122383">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="621" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602531178906" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605301922598" />
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605312122383" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

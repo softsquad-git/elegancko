@@ -31,7 +31,8 @@ const messages = {
             'auth': {
                 'login': 'Zaloguj się',
                 'register': 'Zarejestruj się',
-                'forgot_pass': 'Przypomnij hasło'
+                'forgot_pass': 'Przypomnij hasło',
+                'hello': 'Cześć, '
             }
         },
         'page': {

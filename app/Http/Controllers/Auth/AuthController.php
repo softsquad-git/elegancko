@@ -65,7 +65,8 @@ class AuthController extends Controller
             'user_id' => Auth::id(),
             'success' => 1,
             'activated' => Auth::user()->is_activated,
-            'role' => Auth::user()->role
+            'role' => Auth::user()->role,
+            'name' => Auth::user()->name
         ]);
     }
 

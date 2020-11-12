@@ -16,7 +16,8 @@
 
                     </b-navbar-nav>
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
+                        <b-nav-item v-if="token" @click="redirect"><span class="fa fa-user"></span> {{ $t('nav.auth.hello') }} {{name}}</b-nav-item>
+                        <b-nav-item v-if="!token" :to="{name: 'Login'}"><span class="fa fa-user"></span></b-nav-item>
                         <b-nav-item :to="{name: 'BasketIndexPage'}"><span
                             class="fa fa-shopping-basket"></span>
                         </b-nav-item>
@@ -75,8 +76,29 @@ export default {
             service_name: '',
             mail: '',
             phone: '',
+            location: '',
             pagesTop: [],
-            pagesBottom: []
+            pagesBottom: [],
+            token: localStorage.getItem('token'),
+            name: localStorage.getItem('name')
+        }
+    },
+    methods: {
+        redirect() {
+            this.$axios.get('user/logged')
+            .then((data) => {
+                let role = data.data.role;
+                if(role == 2) {
+                    return this.$router.push({name: 'AdminPageIndex'})
+                }
+                if (role == 1) {
+                    return this.$router.push({name: 'AccountPageIndex'})
+                }
+            }).catch(() => {
+                this.$router.push({
+                    name: 'Logout'
+                })
+            })
         }
     },
     created() {
