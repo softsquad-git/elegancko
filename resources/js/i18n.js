@@ -115,9 +115,13 @@ const messages = {
     }
 }
 
+function setLang() {
+    localStorage.setItem('lang', window.navigator.language)
+    return window.navigator.language;
+}
 
 const v18n = new VueI18n({
-    locale: localStorage.getItem('lang'), // set locale
+    locale: localStorage.getItem('lang') ? localStorage.getItem('lang') : setLang(), // set locale
     fallbackLocale: 'en-EN', // set fallback locale
     messages,
 })
