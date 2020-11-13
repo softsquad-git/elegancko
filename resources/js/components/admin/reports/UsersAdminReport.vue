@@ -4,7 +4,8 @@
             {{ title }}
             <router-link :to="{name: 'AdminUsersList'}" class="fa fa-eye"></router-link>
         </div>
-        <table class="table">
+        <circle-spinner v-if="isLoading" :loading="isLoading"></circle-spinner>
+        <table v-if="!isLoading" class="table">
             <thead>
             <tr>
             </tr>
@@ -20,18 +21,23 @@
 </template>
 
 <script>
+import {CircleSpinner} from 'vue-spinners'
 export default {
     name: "UsersAdminReport",
+    components: {CircleSpinner},
     data() {
         return {
             title: 'Użytkownicy',
-            data: {}
+            data: {},
+            isLoading: false
         }
     },
     methods: {
         loadData() {
+            this.isLoading = true;
             this.$axios.get('admin/reports/users')
             .then((data) => {
+                this.isLoading = false;
                 this.data = data.data;
             }).catch((error) => this.handleAjaxError(error))
         }

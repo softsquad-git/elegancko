@@ -75,10 +75,15 @@ export default {
     },
     methods: {
         loadData() {
+            this.$Progress.start();
             this.$axios.get(`admin/settings/all`)
             .then((data) => {
+                this.$Progress.finish();
                 this.data = data.data.data;
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {
+                this.$Progress.fail()
+                this.handleAjaxError(error)
+            })
         },
         remove(id) {
 

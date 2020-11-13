@@ -5,60 +5,60 @@
             <form @submit.prevent="save">
                 <div class="form-group row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="Imię" class="form-control" placeholder="Imię" v-model="data.name">
+                        <input :aria-label="$t('form.first_name')" class="form-control" :placeholder="$t('form.first_name')" v-model="data.name">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="Nazwisko" class="form-control" placeholder="Nazwisko" v-model="data.last_name">
+                        <input :aria-label="$t('form.last_name')" class="form-control" :placeholder="$t('form.last_name')" v-model="data.last_name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="E-mail" class="form-control" placeholder="E-mail" v-model="data.email">
+                        <input :aria-label="$t('form.email')" class="form-control" :placeholder="$t('form.email')" v-model="data.email">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="Numer telefonu" class="form-control" placeholder="Numer telefonu" v-model="data.number_phone">
+                        <input :aria-label="$t('form.phone')" class="form-control" :placeholder="$t('form.phone')" v-model="data.number_phone">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input aria-label="Kod pocztowy" class="form-control" placeholder="Kod pocztowy" v-model="data.post_code">
+                        <input :aria-label="$t('form.post_code')" class="form-control" :placeholder="$t('form.post_code')" v-model="data.post_code">
                     </div>
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <input aria-label="Miasto" class="form-control" placeholder="Miasto" v-model="data.city">
+                        <input :aria-label="$t('form.city')" class="form-control" :placeholder="$t('form.city')" v-model="data.city">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <input aria-label="Adres" class="form-control" placeholder="Adres" v-model="data.address">
+                        <input :aria-label="$t('form.address')" class="form-control" :placeholder="$t('form.address')" v-model="data.address">
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <input aria-label="Kraj" class="form-control" placeholder="Kraj" v-model="data.country">
+                        <input :aria-label="$t('form.address')" class="form-control" :placeholder="$t('form.country')" v-model="data.country">
                     </div>
                 </div>
                 <div class="form-group row">
                    <div class="col-12">
                        <b-button type="button" value="2" @click="buyCompany(data.type == 1 ? 2 : 1)" ref="company" variant="outline-secondary">
-                            Kupuję jako firma  <span class="ml-2" :class="data.type == 2 ? 'fa fa-angle-up' : 'fa fa-angle-down'"></span>
+                            {{ $t('page.order.buy_company') }}  <span class="ml-2" :class="data.type == 2 ? 'fa fa-angle-up' : 'fa fa-angle-down'"></span>
                        </b-button>
                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <textarea class="form-control" aria-label="Uwagi" v-model="data.comments" placeholder="Uwagi (opcjonalnie)"></textarea>
+                        <textarea class="form-control" :aria-label="$t('page.order.warning')" v-model="data.comments" :placeholder="$t('page.order.warning')"></textarea>
                     </div>
                 </div>
                 <div v-if="data.type == 2" class="form-group row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="Nazwa firmy" class="form-control" placeholder="Nazwa firmy" v-model="data.company_name">
+                        <input :aria-label="$t('page.order.company_nip')" class="form-control" :placeholder="$t('page.order.company_name')" v-model="data.company_name">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input aria-label="NIP" class="form-control" placeholder="NIP" v-model="data.nip">
+                        <input :aria-label="$t('page.order.company_nip')" class="form-control" :placeholder="$t('page.order.company_nip')" v-model="data.nip">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <select v-model="data.shipment_id" class="form-control" aria-label="Wysyłka">
-                            <option value="" selected>Wybierz wysyłkę</option>
+                        <select v-model="data.shipment_id" class="form-control" :aria-label="$t('page.basket.select_shipment')">
+                            <option value="" selected>{{ $t('page.basket.select_shipment') }}</option>
                             <option v-for="shipment in shipments" :value="shipment.id">{{ shipment.name }}</option>
                         </select>
                     </div>
@@ -72,17 +72,17 @@
                             value="1"
                             unchecked-value="0"
                         >
-                            załóż konto <router-link to="#">poznaj korzyści z posiadania konta</router-link>
+                            {{ $t('page.order.create_account') }} <router-link to="#">{{ $t('page.order.create_account_profit') }}</router-link>
                         </b-form-checkbox>
                     </div>
                     <div v-if="createAccount == 1" class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input id="password" type="password" class="form-control" placeholder="Hasło do konta"
-                        v-model="password" aria-label="Hasło do konta">
+                        <input id="password" type="password" class="form-control" :placeholder="$t('page.order.create_account_pass')"
+                        v-model="password" :aria-label="$t('page.order.create_account_pass')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <b-button type="submit" variant="outline-secondary">Dalej</b-button>
+                        <b-button type="submit" variant="outline-secondary">{{ $t('btn.next') }}</b-button>
                     </div>
                 </div>
             </form>
@@ -96,7 +96,7 @@ export default {
     name: "OrderPage",
     data() {
         return {
-            title: 'Zamówienie',
+            title: this.$t('page.order.title'),
             data: {
                 name: '',
                 last_name: '',

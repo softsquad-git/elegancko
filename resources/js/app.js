@@ -9,8 +9,7 @@ import store from './store';
 import auth from './middleware/auth';
 import guest from './middleware/guest';
 import createPersistedState from "vuex-persistedstate";
-
-
+import i18n from './i18n'
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueRouter);
@@ -374,5 +373,6 @@ const app = new Vue({
         plugins: [createPersistedState({
 
         })]
-    })
+    }),
+    i18n
 });

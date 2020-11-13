@@ -130,8 +130,10 @@ export default {
             this.data.type = type;
         },
         save() {
+            this.$Progress.start();
             this.$axios.post(`admin/orders/update/${this.$route.params.id}`, this.data)
                 .then((data) => {
+                    this.$Progress.finish()
                     if (data.data.success === 1) {
                         this.$router.push({
                             name: 'AdminOrderFind',
@@ -145,6 +147,7 @@ export default {
                     }
                 })
             .catch((error) => {
+                this.$Progress.fail();
                 this.handleAjaxError(error);
             })
         },

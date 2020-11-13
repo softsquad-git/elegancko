@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
+                <b-button variant="outline-secondary" type="submit"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
             </div>
         </form>
     </b-modal>
@@ -35,24 +35,27 @@ export default {
                 locale: ''
             },
             action: false,
-            sizeId: ''
+            sizeId: '',
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             let url = 'admin/products/sizes/create';
             if (this.action === true) {
                 url = `admin/products/sizes/update/${this.sizeId}`
             }
             this.$axios.post(url, this.data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.$emit('loadData')
                         this.data.key = '';
                         this.data.name = '';
                         this.closeModal();
                     }
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {this.loadSpinner = false; this.handleAjaxError(error)})
         },
         closeModal() {
             this.$refs['create-size'].hide()

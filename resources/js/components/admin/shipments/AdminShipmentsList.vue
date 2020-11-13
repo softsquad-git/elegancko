@@ -23,7 +23,8 @@
             </b-dropdown>
         </div>
         <div class="content mt-4">
-            <table v-if="data.data.length > 0" class="table">
+            <circle-spinner v-if="isLoadSpinner" class="m-auto" :loading="isLoadSpinner"></circle-spinner>
+            <table v-if="data.data.length > 0 && !isLoadSpinner" class="table">
                 <thead>
                 <tr>
                     <th scope="col" class="text-center">L.p.</th>
@@ -55,9 +56,10 @@
 
 <script>
 import AdminShipmentCreate from "./AdminShipmentCreate";
+import { CircleSpinner } from 'vue-spinners'
 export default {
     name: "AdminShipmentsList",
-    components: {AdminShipmentCreate},
+    components: {AdminShipmentCreate, CircleSpinner},
     data() {
         return {
             title: 'Wysyłka',
@@ -65,13 +67,16 @@ export default {
             params: {
                 ordering: '',
                 pagination: ''
-            }
+            },
+            isLoadSpinner: false
         }
     },
     methods: {
         loadData(page = 1) {
+            this.isLoadSpinner = true;
             this.$axios.get(`admin/shipments/all?page=${page}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
             .then((data) => {
+                this.isLoadSpinner = false;
                 this.data = data.data;
             }).catch((error) => this.handleAjaxError(error))
         },

@@ -10,7 +10,7 @@
                        v-model="data._key">
             </div>
             <div class="form-group">
-                <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
+                <b-button variant="outline-secondary" type="submit"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
             </div>
         </form>
     </b-modal>
@@ -25,20 +25,26 @@ export default {
                 name: '',
                 _key: ''
             },
-            title: 'Dodaj własny type ustawień'
+            title: 'Dodaj własny type ustawień',
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             this.$axios.post('admin/settings/types/create', this.data)
                 .then((data) => {
+                    this.loadSpinner = true;
                     if (data.data.success === 1) {
                         this.$emit('loadData');
                         this.data.name = '';
                         this.data._key = '';
                         this.closeModal();
                     }
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                    this.loadSpinner = false;
+                    this.handleAjaxError(error)
+            })
         },
         openModal() {
             this.$refs['create-setting-type'].show();

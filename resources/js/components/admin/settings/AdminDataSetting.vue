@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+                    <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                 </div>
             </form>
         </div>
@@ -57,7 +57,8 @@ export default {
                 value: '',
             },
             types: [],
-            is_edit: false
+            is_edit: false,
+            loadSpinner: false
         }
     },
     methods: {
@@ -84,12 +85,14 @@ export default {
             }
         },
         saveData(data) {
+            this.loadSpinner = true;
             let url = 'admin/settings/create'
             if (this.$route.params.id) {
                 url = `admin/settings/update/${this.$route.params.id}`
             }
             this.$axios.post(url, data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.data.type_id = '';
                         this.data.value = '';
@@ -101,7 +104,10 @@ export default {
                         })
                         this.$router.push({name: 'AdminPageSetting'})
                     }
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                    this.loadSpinner = false;
+                    this.handleAjaxError(error)
+            })
         }
     },
     created() {

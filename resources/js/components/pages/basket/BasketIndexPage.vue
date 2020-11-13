@@ -5,7 +5,7 @@
                <div class="col-lg-8">
                    <div class="mb-3">
                        <div class="pt-4 wish-list">
-                           <h5 class="mb-4">Koszyk (<span>{{ $store.getters.StoreCart.length }}</span>)</h5>
+                           <h5 class="mb-4">{{ $t('page.basket.title') }} (<span>{{ $store.getters.StoreCart.length }}</span>)</h5>
                            <div v-for="(basket, index) in $store.getters.StoreCart" :key="basket.id" class="row mb-4">
                                <div class="col-md-5 col-lg-3 col-xl-3">
                                    <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
@@ -17,9 +17,9 @@
                                        <div class="d-flex justify-content-between">
                                            <div>
                                                <h5><router-link :to="{name: 'ProductShow', params: {id: basket.product.id, title: basket.product.title}}">{{ basket.product.title }}</router-link></h5>
-                                               <p class="mb-3 text-muted text-uppercase small">Cena: {{formatPrice(basket.product.price.price)}} {{basket.product.price.currency}}</p>
-                                               <p class="mb-2 text-muted text-uppercase small">Kolor: {{ basket.color.name }}</p>
-                                               <p class="mb-3 text-muted text-uppercase small">Rozmiar: {{ basket.size.name }}</p>
+                                               <p class="mb-3 text-muted text-uppercase small">{{ $t('page.basket.amount') }}: {{formatPrice(basket.product.price.price)}} {{basket.product.price.currency}}</p>
+                                               <p class="mb-2 text-muted text-uppercase small">{{ $t('page.basket.color') }}: {{ basket.color.name }}</p>
+                                               <p class="mb-3 text-muted text-uppercase small">{{ $t('page.basket.size') }}: {{ basket.size.name }}</p>
                                            </div>
                                            <div>
                                                <div class="def-number-input number-input safari_only mb-0 w-100">
@@ -44,8 +44,7 @@
                            </div>
                            <hr class="mb-4">
 
-                           <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Nie zwlekaj z zakupem,
-                           dodanie produktów do koszyka nie oznacza ich rezerwacji</p>
+                           <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> {{ $t('page.basket.info') }}</p>
 
                        </div>
                    </div>
@@ -54,35 +53,35 @@
                    <div class="mb-3">
                        <div class="pt-4">
 
-                           <h5 class="mb-3">Podsumowanie</h5>
+                           <h5 class="mb-3">{{ $t('page.basket.summary') }}</h5>
 
                            <ul class="list-group list-group-flush">
                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                   Cena:
+                                   {{ $t('page.basket.amount') }}:
                                    <span>{{ formatPrice(sumPrice()) }}</span>
                                </li>
                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                   <select v-model="shipment" class="form-control w-100" style="border: 0!important;" aria-label="Wysyłka">
-                                       <option value="" selected>Wybierz wysyłkę</option>
+                                   <select v-model="shipment" class="form-control w-100" style="border: 0!important;" :aria-label="$t('page.basket.select_shipment')">
+                                       <option value="" selected>{{ $t('page.basket.select_shipment') }}</option>
                                        <option v-for="shipment in shipments" :value="shipment">{{ shipment.name }}</option>
                                    </select>
                                    <span>{{ shipment.price }}</span>
                                </li>
                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                    <div>
-                                       <strong>Łącznie</strong>
+                                       <strong>{{ $t('page.basket.total_amount') }}</strong>
                                    </div>
                                    <span><strong>{{ formatPrice(sumPriceShipment()) }}</strong></span>
                                </li>
                            </ul>
-                           <b-button @click="showOrder ^= true" type="button" variant="outline-secondary" class="w-100">Realizuj</b-button>
+                           <b-button @click="showOrder ^= true" type="button" variant="outline-secondary" class="w-100">{{ $t('btn.next') }}</b-button>
                        </div>
                    </div>
                </div>
                <order-page :shipment="shipment" class="mt-3" v-if="showOrder"/>
            </div>
        </section>
-       <no-data-component v-if="$store.getters.StoreCart.length < 1" :msg="'Brak produktów w koszyku'"/>
+       <no-data-component v-if="$store.getters.StoreCart.length < 1" :msg="$t('msg.no_basket')"/>
    </div>
 </template>
 

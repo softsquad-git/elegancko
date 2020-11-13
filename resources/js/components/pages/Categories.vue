@@ -1,6 +1,6 @@
 <template>
 <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-4 p-0" v-for="category in categories">
+    <div v-if="categories.data.length > 0" class="col-xl-4 col-lg-4 col-md-4 p-0" v-for="category in categories.data">
         <router-link :to="{name: 'ProductsIndex', params: {category: category.alias }}" class="category-bg-3 _category-bg" :style="'background: url('+category.image+')'">
             <div class="category-bg vertical-center">
                 <div class="category-name">
@@ -9,12 +9,15 @@
             </div>
         </router-link>
     </div>
+    <no-data-component v-if="categories.data.length < 1" :msg="$t('msg.no_data')"/>
 </div>
 </template>
 
 <script>
+import NoDataComponent from "../NoDataComponent";
 export default {
     name: "Categories",
+    components: {NoDataComponent},
     data() {
         return {
             categories: []
@@ -28,9 +31,11 @@ export default {
     },
     methods: {
         loadCategories(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`categories/all?page=${page}&position=${this.position}&pagination=${this.limit}&name=${this.name}&ordering=${this.ordering}`)
             .then((data) => {
-                this.categories = data.data.data;
+                this.$Progress.finish();
+                this.categories = data.data;
             }).catch((error) => this.handleAjaxError(error))
         }
     },

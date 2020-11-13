@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
+                <b-button variant="outline-secondary" type="submit"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
             </div>
         </form>
     </b-modal>
@@ -35,24 +35,27 @@ export default {
                 locale: ''
             },
             action: false,
-            colorId: ''
+            colorId: '',
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             let url = 'admin/products/colors/create';
             if (this.action === true) {
                 url = `admin/products/colors/update/${this.colorId}`
             }
             this.$axios.post(url, this.data)
             .then((data) => {
+                this.loadSpinner = false;
                 if (data.data.success === 1) {
                     this.data.hex = '';
                     this.data.name = '';
                     this.$emit('loadData');
                     this.closeModal();
                 }
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {this.loadSpinner = false; this.handleAjaxError(error)})
         },
         openModal(action = null, item = null) {
             if (action === 'edit') {

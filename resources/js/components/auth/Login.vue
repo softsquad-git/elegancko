@@ -5,16 +5,16 @@
         </h2>
         <form class="mt-4" @submit.prevent="save">
             <div class="form-group">
-                <input id="email" class="form-control" aria-label="E-mail" type="email" placeholder="E-mail"
+                <input id="email" class="form-control" :aria-label="$t('form.email')" type="email" :placeholder="$t('form.email')"
                        v-model="data.email">
             </div>
             <div class="form-group">
-                <input id="password" class="form-control" aria-label="Hasło" type="password" placeholder="Hasło"
+                <input id="password" class="form-control" :aria-label="$t('form.pass')" type="password" :placeholder="$t('form.pass')"
                        v-model="data.password">
             </div>
             <div class="form-group row mr-0 ml-0">
                 <b-button type="submit" variant="outline-secondary">{{ title }}</b-button>
-                <router-link :to="{name: 'Register'}" class="link-register" title="Zarejestruj się">Zarejestruj się
+                <router-link :to="{name: 'Register'}" class="link-register" :title="$t('nav.auth.register')">{{ $t('nav.auth.register') }}
                 </router-link>
             </div>
         </form>
@@ -32,7 +32,7 @@ export default {
     components: {MetaComponent, Index},
     data() {
         return {
-            title: 'Zaloguj się',
+            title: this.$t('nav.auth.login'),
             data: {
                 email: '',
                 password: ''

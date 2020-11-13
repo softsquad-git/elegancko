@@ -116,11 +116,14 @@ export default {
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`admin/orders/all?page=${page}&email=${this.params.email}&status=${this.params.status}&payment_status=${this.params.payment_status}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data;
                 })
                 .catch((error) => {
+                    this.$Progress.fail();
                     this.handleAjaxError(error);
                 })
         },
@@ -142,8 +145,10 @@ export default {
                     },
                     callback: confirm => {
                         if (confirm) {
+                            this.loadSpinner = true;
                             this.$axios.delete(`admin/orders/remove/${id}`)
                                 .then((data) => {
+                                    this.loadSpinner = false;
                                     if (data.data.success === 1) {
                                         this.loadData();
                                         this.$notify({
@@ -152,7 +157,10 @@ export default {
                                             text: data.data.msg
                                         })
                                     }
-                                }).catch((error) => this.handleAjaxError(error))
+                                }).catch((error) => {
+                                this.handleAjaxError(error);
+                                this.loadSpinner = false;
+                            })
                         }
                     }
                 }

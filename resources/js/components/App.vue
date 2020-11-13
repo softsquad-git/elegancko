@@ -2,13 +2,13 @@
     <div class="page">
         <section class="header sticky-top">
             <b-navbar toggleable="lg" type="light">
-                <b-navbar-brand :to="{name: 'IndexPage'}" class="logo-text">{{ settings[0].value }}</b-navbar-brand>
+                <b-navbar-brand :to="{name: 'IndexPage'}" class="logo-text">{{ service_name }}</b-navbar-brand>
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <b-nav-item :to="{name: 'IndexPage'}">Strona główna</b-nav-item>
-                        <b-nav-item :to="{name: 'ProductsIndex'}">Sklep</b-nav-item>
-                        <b-nav-item :to="{name: 'CategoriesIndex'}">Kategorie</b-nav-item>
+                        <b-nav-item :to="{name: 'IndexPage'}">{{ $t('nav.front.home') }}</b-nav-item>
+                        <b-nav-item :to="{name: 'ProductsIndex'}">{{ $t('nav.front.shop') }}</b-nav-item>
+                        <b-nav-item :to="{name: 'CategoriesIndex'}">{{ $t('nav.front.categories') }}</b-nav-item>
                         <b-nav-item v-for="page in pagesTop.slice(0, 5)" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{ page.title }}</b-nav-item>
                         <b-nav-item-dropdown v-if="pagesTop.length > 5" right>
                             <b-dropdown-item v-for="page in pagesTop.slice(5, 100)" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{page.title}}</b-dropdown-item>
@@ -31,12 +31,18 @@
             <div class="container">
                 <div class="footer">
                     <div class="c">
-                        <a class="mr-2" :href="'tel:'+settings[1].value"><span class="fc fa fa-phone"></span> {{ settings[1].value }}</a>
-                        <a class="mr-2" :href="'mailto:'+settings[3].value"><span class="fc fa fa-envelope"></span> {{ settings[3].value }}</a>
-                        <span class="fc fa fa-map-marker-alt"></span> {{ settings[2].value }}
+                        <a class="mr-2" :href="'tel:'+phone"><span class="fc fa fa-phone"></span> {{ phone }}</a>
+                        <a class="mr-2" :href="'mailto:'+mail"><span class="fc fa fa-envelope"></span> {{ mail }}</a>
+                        <span class="fc fa fa-map-marker-alt"></span> {{ location }}
                     </div>
                     <div class="links">
                         <router-link v-if="pagesBottom.length > 0" v-for="page in pagesBottom" :to="{name: 'ShowPage', params: {title: page.title, id: page.id}}">{{ page.title }}</router-link>
+                    </div>
+                    <div class="text-center mt-3">
+                        <select-language/>
+                            <a :href="fb" target="_blank" class="ml-2">
+                               {{ $t('nav.front.sm') }} <span class="fa fa-facebook fb"></span>
+                            </a>
                     </div>
                     <div class="footer-info">
                         Copyright &copy 2020 | Created by: <a href="http://softsquad.pl/" target="_blank">SoftSquad</a>
@@ -47,33 +53,33 @@
         <vue-confirm-dialog></vue-confirm-dialog>
         <notifications group="notification-success" position="bottom left" type="success"/>
         <notifications group="notification-error" position="bottom left" type="error"/>
+        <vue-progress-bar></vue-progress-bar>
     </div>
 </template>
 
 <script>
+import SelectLanguage from "./SelectLanguage";
 export default {
     name: "App",
+    components: {
+        SelectLanguage
+        //
+    },
     data() {
         return {
+            loading: true,
             params: {
                 title: ''
             },
-            data: [
-                'service_name',
-                'shop_address',
-                'email_contact',
-                'phone_contact'
-            ],
-            settings: [],
+            fb: '',
+            service_name: '',
+            mail: '',
+            phone: '',
             pagesTop: [],
             pagesBottom: []
         }
     },
     created() {
-        this.$axios.post('front/settings/find-by-types', this.data)
-            .then((data) => {
-                this.settings = data.data.data;
-            }).catch((error) => this.handleAjaxError(error))
         this.$axios.get(`front/pages/all?position=bottom&pagination=8`)
         .then((data) => {
             this.pagesBottom = data.data.data
@@ -82,6 +88,27 @@ export default {
         .then((data) => {
             this.pagesTop = data.data.data;
         }).catch((error) => this.handleAjaxError(error))
+
+        this.$axios.get('front/settings/find-by-type/service_name')
+            .then((data) => {
+                this.service_name = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/shop_address')
+            .then((data) => {
+                this.location = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/email_contact')
+            .then((data) => {
+                this.mail = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/phone_contact')
+            .then((data) => {
+                this.phone = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/facebook_url')
+            .then((data) => {
+                this.fb = data.data.data.value
+            });
     }
 }
 </script>
@@ -94,6 +121,16 @@ section.header {
 
 .logo img {
     width: 150px;
+}
+
+.fb {
+    background: #4867aa;
+    padding: 3px 5px 5px 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    color: #fff;
+    font-size: 14px;
 }
 
 .header {

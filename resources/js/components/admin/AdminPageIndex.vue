@@ -3,7 +3,8 @@
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="admin-page-title">{{ adminData.title }} <router-link :to="{name: 'AdminAccountSetting'}" class="fa fa-edit"></router-link> </div>
-            <table class="table">
+            <circle-spinner v-if="isLoading" :loading="isLoading"></circle-spinner>
+            <table v-if="!isLoading" class="table">
                 <thead>
                 <tr>
                 </tr>
@@ -37,24 +38,27 @@
     import UsersAdminReport from "./reports/UsersAdminReport";
     import OrdersAdminReport from "./reports/OrdersAdminReport";
     import MessagesAdminReport from "./reports/MessagesAdminReport";
+    import { CircleSpinner } from 'vue-spinners'
     export default {
         name: "AdminPageIndex",
-        components: {MessagesAdminReport, OrdersAdminReport, UsersAdminReport},
+        components: {MessagesAdminReport, OrdersAdminReport, UsersAdminReport, CircleSpinner},
         data() {
             return {
                 title: 'Panel administratora',
                 adminData: {
                     title: 'Dane podstawowe',
                     data: []
-                }
+                },
+                isLoading: false
             }
         },
         methods: {
             loadBasicData() {
+                this.isLoading = true;
                 this.$axios.get('user/logged')
                 .then((data) => {
+                    this.isLoading = false;
                     this.adminData.data = data.data;
-                    console.log(data.data)
                 }).catch((error) => this.handleAjaxError(error))
             }
         },

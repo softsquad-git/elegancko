@@ -20,12 +20,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f920d85-2752-463c-a2f7-b7b0429d4bcf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/SelectLanguage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/11.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/11.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/12.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/12.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/13.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/13.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/14.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/14.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/15.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/15.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/16.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/16.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/17.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/17.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/18.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/19.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/19.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/20.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/21.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/21.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/22.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/22.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/23.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/23.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/24.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/24.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/25.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/25.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/26.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/26.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/27.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/27.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/28.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/28.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/29.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/29.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/30.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/30.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/31.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/31.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/32.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/32.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/33.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/33.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/34.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/34.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/35.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/35.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/36.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/36.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/37.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/37.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/38.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/38.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/39.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/39.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/40.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/40.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/41.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/41.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/44.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/44.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/42.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/42.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/43.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/43.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/8.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NoDataComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NoDataComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AdminPageIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminCategoriesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/categories/AdminDataCategory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaData.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/meta/AdminMetaList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderFind.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrderProducts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/orders/AdminOrdersList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminDataPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/pages/AdminPagesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminDataProduct.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/AdminProductsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/colors/AdminCreateColor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/products/sizes/AdminSizeCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/MessagesAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/OrdersAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/reports/UsersAdminReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountEmailSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountPasswordSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminAccountSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminCreateSettingType.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminDataSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/settings/AdminPageSetting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/shipments/AdminShipmentsList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/users/AdminUsersList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Register.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/orders/OrderPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Categories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomeInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomeProducts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/IndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/MetaComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/basket/BasketIndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/categories/CategoriesIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/pages/ShowPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/pages/ShowPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/products/Show.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/i18n.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/locales/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/locales/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/locales/translations.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +381,10 @@
       <workItem from="1604958950618" duration="20000" />
       <workItem from="1604962396982" duration="10078000" />
       <workItem from="1605106790684" duration="471000" />
-      <workItem from="1605131656838" duration="5083000" />
+      <workItem from="1605131656838" duration="5479000" />
+      <workItem from="1605215126909" duration="29000" />
+      <workItem from="1605217796991" duration="215000" />
+      <workItem from="1605268766296" duration="30560000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -514,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605131952236</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="configuration command">
+      <created>1605136929660</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1605136929660</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,10 +673,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1604966388820" />
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1605131951846">
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2" timestamp="1605136929522">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1605131951846" />
+    <state x="499" y="27" width="912" height="916" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1605136929522" />
     <state x="693" y="468" width="523" height="178" key="ComposerInitDialogKey" timestamp="1604100367923">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -620,10 +723,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1603398243136" />
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605131984776">
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605136940493">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605131984776" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605136940493" />
     <state x="100" y="125" width="1716" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603933334533">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -653,22 +756,22 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="685" y="247" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1603929890036" />
-    <state x="624" y="252" key="run.anything.popup" timestamp="1603753472719">
+    <state x="624" y="252" key="run.anything.popup" timestamp="1605137276781">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1603753472719" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1604109305802">
+    <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605137276781" />
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup" timestamp="1605301922598">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="621" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602531178906" />
-    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604109305802" />
+    <state x="621" y="259" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605301922598" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/app.js</url>
-          <line>286</line>
+          <line>285</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

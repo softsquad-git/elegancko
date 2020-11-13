@@ -5,48 +5,48 @@
         </h2>
         <form class="mt-4" @submit.prevent="save">
             <div class="form-group">
-                <input id="name" class="form-control" aria-label="Imię" type="text" placeholder="Imię"
+                <input id="name" class="form-control" :aria-label="$t('form.first_name')" type="text" :placeholder="$t('form.first_name')"
                        v-model="data.name">
             </div>
             <div class="form-group">
-                <input id="last_name" class="form-control" aria-label="Nazwisko" placeholder="Nazwisko"
+                <input id="last_name" class="form-control" :aria-label="$t('form.last_name')" :placeholder="$t('form.last_name')"
                        v-model="data.last_name">
             </div>
             <div class="form-group">
-                <input id="email" class="form-control" aria-label="E-mail" type="email" placeholder="E-mail"
+                <input id="email" class="form-control" :aria-label="$t('form.email')" type="email" :placeholder="$t('form.email')"
                        v-model="data.email">
             </div>
             <div class="form-group">
-                <input id="password" class="form-control" aria-label="Hasło" type="password" placeholder="Hasło"
+                <input id="password" class="form-control" :aria-label="$t('form.pass')" type="password" :placeholder="$t('form.pass')"
                        v-model="data.password">
             </div>
             <span class="link-register mb-3 pl-0 pointer" @click="showMoreInput ^= true">
                 <span class="fa" :class="showMoreInput ? 'fa-chevron-up' : 'fa-chevron-down'"
-                      :title="showMoreInput ? 'mniej' : 'więcej'"></span>
+                      :title="showMoreInput ? $t('form.min') : $t('form.more')"></span>
             </span>
             <div v-if="showMoreInput">
                 <div class="form-group">
-                    <input id="phone" class="form-control" aria-label="Telefon" type="tel" placeholder="Telefon"
+                    <input id="phone" class="form-control" :aria-label="$t('form.phone')" type="tel" :placeholder="$t('form.phone')"
                            v-model="data.phone">
                 </div>
                 <div class="form-group row">
                     <div class="col-xl-4 col-lg-4 col-md-4">
-                        <input id="post_code" class="form-control" aria-label="Kod pocztowy" type="text"
-                               placeholder="Kod pocztowy" v-model="data.post_code">
+                        <input id="post_code" class="form-control" :aria-label="$t('form.post_code')" type="text"
+                               :placeholder="$t('form.post_code')" v-model="data.post_code">
                     </div>
                     <div class="col-xl-8 col-lg-8 col-md-8">
-                        <input id="city" class="form-control" aria-label="Miasto" type="text" placeholder="Miasto"
+                        <input id="city" class="form-control" :aria-label="$t('form.city')" type="text" :placeholder="$t('form.city')"
                                v-model="data.city">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input id="address" class="form-control" aria-label="Adres" type="text" placeholder="Adres"
+                    <input id="address" class="form-control" :aria-label="$t('form.address')" type="text" :placeholder="$t('form.address')"
                            v-model="data.address">
                 </div>
             </div>
             <div class="form-group row mr-0 ml-0">
                 <b-button type="submit" variant="outline-secondary">{{title}}</b-button>
-                <router-link :to="{name: 'Login'}" class="link-register" title="Zarejestruj się">Zaloguj się
+                <router-link :to="{name: 'Login'}" class="link-register" :title="$t('nav.auth.login')">{{ $t('nav.auth.login') }}
                 </router-link>
             </div>
         </form>
@@ -64,7 +64,7 @@
         components: {MetaComponent, Index},
         data() {
             return {
-                title: 'Zarejestruj się',
+                title: this.$t('nav.auth.register'),
                 showMoreInput: false,
                 data: {
                     name: '',

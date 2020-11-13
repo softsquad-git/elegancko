@@ -113,11 +113,16 @@ export default {
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`admin/users/all?page=${page}&name=${this.params.name}&email=${this.params.email}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data;
                     console.log(data.data.data);
-                })
+                }).catch((error) => {
+                    this.$Progress.fail();
+                    this.handleAjaxError(error)
+            })
         },
         ordering(ordering) {
             this.params.ordering = ordering;

@@ -74,7 +74,8 @@
                     <td v-html="page.locale"></td>
                     <td>
                         <router-link :to="{name: 'AdminDataPage', params: {action: 'edit', id: page.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
-                        <b-button @click="remove(page.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>
+                        <b-button @click="remove(page.id)" class="btn-sm" variant="outline-secondary">
+                            <b-spinner v-if="loadSpinner === page.id" small></b-spinner> Usuń</b-button>
                     </td>
                 </tr>
                 </tbody>
@@ -101,23 +102,31 @@ export default {
                 ordering: '',
                 pagination: ''
             },
-            showSearch: false
+            showSearch: false,
+            loadSpinner: null
         }
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`admin/pages/all?page=${page}&title=${this.params.title}&is_active=${this.params.is_active}&position=${this.params.position}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
             .then((data) => {
+                this.$Progress.finish();
                 this.data = data.data
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {
+                this.$Progress.fail();
+                this.handleAjaxError(error)
+            })
         },
         remove(id) {
+            this.loadSpinner = id
             this.$axios.delete(`admin/pages/remove/${id}`)
             .then((data) => {
+                this.loadSpinner = null;
                 if (data.data.success === 1) {
                     this.loadData();
                 }
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {this.loadSpinner = null; this.handleAjaxError(error)})
         }
     },
     created() {

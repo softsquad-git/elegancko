@@ -76,7 +76,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+                        <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                     </div>
                 </div>
             </form>
@@ -105,7 +105,8 @@ export default {
                 meta_title: '',
                 meta_desc: '',
                 meta_keywords: ''
-            }
+            },
+            loadSpinner: false
         }
     },
     methods: {
@@ -130,12 +131,14 @@ export default {
             }
         },
         saveData(data) {
+            this.loadSpinner = true;
             let url = 'admin/categories/create';
             if (this.$route.params.id) {
                 url = `admin/categories/update/${this.$route.params.id}`;
             }
             this.$axios.post(url, data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.$router.push({name: 'AdminCategoriesList'})
                         this.data.name = '';
@@ -147,6 +150,7 @@ export default {
                     }
                 })
                 .catch((error) => {
+                    this.spinnerSaveData = false;
                     this.handleAjaxError(error)
                 })
         }

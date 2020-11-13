@@ -80,7 +80,8 @@
                         <router-link :to="{name: 'AdminDataCategory', params: {action: 'edit', id: category.id}}"
                                      class="btn btn-outline-secondary btn-sm">Edytuj
                         </router-link>
-                        <b-button @click="remove(category.id)" class="btn-sm" variant="outline-secondary">Usuń
+                        <b-button @click="remove(category.id)" class="btn-sm" variant="outline-secondary">
+                            <b-spinner v-if="loadSpinner === category.id" small></b-spinner> Usuń
                         </b-button>
                     </td>
                 </tr>
@@ -110,16 +111,20 @@ export default {
                 is_active: '',
                 locale: ''
             },
-            showSearch: false
+            showSearch: false,
+            loadSpinner: null
         }
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`admin/categories/all?page=${page}&name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&is_active=${this.params.is_active}&locale=${this.params.locale}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data;
                 })
                 .catch((error) => {
+                    this.$Progress.fail();
                     this.handleAjaxError(error);
                 })
         },
@@ -145,13 +150,16 @@ export default {
                     },
                     callback: confirm => {
                         if (confirm) {
+                            this.loadSpinner = id;
                             this.$axios.delete(`admin/categories/remove/${id}`) // id = id category
                                 .then((data) => {
                                     if (data.data.success === 1) {
+                                        this.loadSpinner = null;
                                         this.loadData()
                                     }
                                 })
                                 .catch((error) => {
+                                    this.loadSpinner = null;
                                     this.handleAjaxError(error);
                                 })
                         }

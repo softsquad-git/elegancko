@@ -44,7 +44,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+                        <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                     </div>
                 </div>
             </form>
@@ -64,7 +64,8 @@ export default {
                 keywords: '',
                 locale: '',
                 resource_type: ''
-            }
+            },
+            loadSpinner: false
         }
     },
     methods: {
@@ -92,8 +93,10 @@ export default {
             if (this.$route.params.id) {
                 url = `admin/meta/update/${this.$route.params.id}`;
             }
+            this.loadSpinner = true;
             this.$axios.post(url, this.data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.$router.push({
                             name: 'AdminMetaList'
@@ -106,6 +109,7 @@ export default {
                     }
                 })
                 .catch((error) => {
+                    this.loadSpinner = false;
                     this.handleAjaxError(error);
                 })
         }

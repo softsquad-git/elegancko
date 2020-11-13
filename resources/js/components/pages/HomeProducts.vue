@@ -1,6 +1,7 @@
 <template>
     <div class="row p-2">
-        <div v-for="product in data" class="col-xl-2 col-lg-2 col-md-3 p-0">
+        <circle-spinner v-if="isSpinner" :loading="isSpinner"></circle-spinner>
+        <div v-if="!isSpinner" v-for="product in data" class="col-xl-2 col-lg-2 col-md-3 p-0">
             <router-link :to="{name: 'ProductShow', params: {title: product.title, id: product.id}}"
                          class="home-products-list" :style="'background: url('+product.image+')'">
                 <div class="bg">
@@ -14,19 +15,27 @@
 </template>
 
 <script>
+import {CircleSpinner} from 'vue-spinners'
 export default {
     name: "HomeProducts",
+    components: {CircleSpinner},
     data() {
         return {
-            data: []
+            data: [],
+            isSpinner: false
         }
     },
     methods: {
         loadData() {
+            this.isSpinner = true;
             this.$axios.get(`front/products/all?pagination=6`)
                 .then((data) => {
+                    this.isSpinner = false;
                     this.data = data.data.data;
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                this.isSpinner = false;
+                this.handleAjaxError(error)
+            })
         },
     },
     created() {
@@ -50,9 +59,11 @@ export default {
             font-size: 25px;
             color: transparent;
         }
+
         &:hover {
             transition: all 0.5s;
             background: #0000009e;
+
             .price {
                 color: #fff;
             }

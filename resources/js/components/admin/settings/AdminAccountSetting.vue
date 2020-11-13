@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+                        <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                     </div>
                 </div>
             </form>
@@ -68,13 +68,16 @@ export default {
                 post_code: '',
                 address: '',
                 user_id: ''
-            }
+            },
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             this.$axios.post('settings/basic-data', this.data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.loadData();
                         this.$notify({
@@ -83,7 +86,10 @@ export default {
                             text: 'Dane zostały zapisane'
                         })
                     }
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                    this.loadSpinner = false;
+                    this.handleAjaxError(error)
+            })
         },
         loadData() {
             let url = 'user/logged';

@@ -1,20 +1,8 @@
-<template>
-    <div class="no-data text-center">
-        {{ msg }}
-    </div>
-</template>
-
+<template><div class="no-data text-center">{{ msg }}</div></template>
 <script>
 export default {
     name: "NoDataComponent",
-    data() {
-        return {
-            //
-        }
-    },
-    props: {
-        msg: ''
-    }
+    props: {msg: ''}
 }
 </script>
 

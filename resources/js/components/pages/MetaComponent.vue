@@ -1,7 +1,4 @@
-<template>
-
-</template>
-
+<template></template>
 <script>
 export default {
     name: "MetaComponent",
@@ -53,7 +50,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>

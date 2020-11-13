@@ -9,19 +9,19 @@
             <form class="mt-5 mb-5" @submit.prevent="loadData">
                 <div class="row pl-1 pr-1">
                     <div class="col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                        <input id="name" aria-label="Nazwa" class="form-control" placeholder="Nazwa ..."
+                        <input id="name" :aria-label="$t('form.name')" class="form-control" :placeholder="$t('form.name')"
                                v-model="params.name">
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <select id="category" aria-label="Sortuj" class="form-control" v-model="params.ordering">
-                            <option selected value="">Sortuj od</option>
-                            <option value="ASC">Najstarsze</option>
-                            <option value="DESC">Najnowsze</option>
+                        <select id="category" :aria-label="$t('form.sort.title')" class="form-control" v-model="params.ordering">
+                            <option selected value="">{{ $t('form.sort.title') }}</option>
+                            <option value="ASC">{{ $t('form.sort.options.asc') }}</option>
+                            <option value="DESC">{{ $t('form.sort.options.desc') }}</option>
                         </select>
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <select id="type" aria-label="Na strone" class="form-control" v-model="params.pagination">
-                            <option selected value="">Rekordów na stronę</option>
+                            <option selected value="">{{ $t('form.pagination.title') }}</option>
                             <option value="3">3</option>
                             <option value="6">6</option>
                             <option value="9">9</option>
@@ -56,7 +56,7 @@ export default {
     components: {MetaComponent, Categories},
     data() {
         return {
-            title: 'Kategorie',
+            title: this.$t('nav.front.categories'),
             data: [],
             banner: '',
             params: {
@@ -68,8 +68,10 @@ export default {
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`categories/all?page=${page}&name=${this.params.name}&ordering=${this.params.ordering}&pagination=${this.params.pagination}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data.data;
                 }).catch((error) => this.handleAjaxError(error))
         }

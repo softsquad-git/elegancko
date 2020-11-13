@@ -5,9 +5,13 @@ import VueConfirmDialog from 'vue-confirm-dialog'
 import VueNotification from "vue-notification";
 import VueMeta from 'vue-meta';
 import ErrorHandling from './mixins/error-handling'
-
+import VueProgressBar from 'vue-progressbar';
+Vue.use(VueProgressBar, {})
 window.Vuex = Vuex;
+import VueSpinners from 'vue-spinners'
 
+
+Vue.use(VueSpinners)
 Vue.use(Vuex);
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.mixin(ErrorHandling);

@@ -6,7 +6,7 @@
                     <span class="fa fa-shipping-fast"></span>
                 </div>
                 <p class="desc">
-                    Szykba dostawa
+                    {{ $t('page.home.info.shipment') }}
                 </p>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -14,7 +14,7 @@
                     <span class="fa fa-shield-alt"></span>
                 </div>
                 <p class="desc">
-                    Bezpieczne płatności
+                    {{ $t('page.home.info.security') }}
                 </p>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -22,7 +22,7 @@
                     <span class="fa fa-life-ring"></span>
                 </div>
                 <p class="desc">
-                    Bezproblemowe zakupy
+                    {{ $t('page.home.info.support') }}
                 </p>
             </div>
         </div>

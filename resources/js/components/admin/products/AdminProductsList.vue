@@ -7,7 +7,8 @@
             <b-button :to="{name: 'AdminDataProduct', params: {action: 'create'}}" variant="outline-secondary"><span
                 class="fa fa-plus"></span>
             </b-button>
-            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span></b-button>
+            <b-button @click="showSearch ^= true" variant="outline-secondary"><span class="fa fa-search"></span>
+            </b-button>
             <b-dropdown variant="outline-secondary">
                 <template v-slot:button-content>
                     <span class="fa fa-filter"></span>
@@ -28,7 +29,8 @@
         <form v-if="showSearch" class="mt-3 mb-3" @submit.prevent="loadData">
             <div class="row pl-3 pr-3">
                 <div class="col-xl-2 p-0 col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                    <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..." v-model="params.title">
+                    <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..."
+                           v-model="params.title">
                 </div>
                 <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category">
@@ -79,22 +81,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(product, index) in data.data">
-                        <th scope="row" class="text-center">{{ index + 1 }}</th>
-                        <td><img style="width: 100px;" :src="product.image" :alt="product.title"></td>
-                        <td>{{ product.title }}</td>
-                        <td>{{ product.category.name }}</td>
-                        <td>
-                            <del v-if="product.price.old">{{ product.price.old }}</del> {{ product.price.price }}
-                        </td>
-                        <td v-html="product.locale"></td>
-                        <td>{{ product.created_at | moment('calendar') }}</td>
-                        <td>{{ product.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
-                        <td>
-                            <router-link :to="{name: 'AdminDataProduct', params: {action: 'edit', id: product.id}}" class="btn btn-outline-secondary btn-sm">Edytuj</router-link>
-                            <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">Usuń</b-button>
-                        </td>
-                    </tr>
+                <tr v-for="(product, index) in data.data">
+                    <th scope="row" class="text-center">{{ index + 1 }}</th>
+                    <td><img style="width: 100px;" :src="product.image" :alt="product.title"></td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>
+                        <del v-if="product.price.old">{{ product.price.old }}</del>
+                        {{ product.price.price }}
+                    </td>
+                    <td v-html="product.locale"></td>
+                    <td>{{ product.created_at | moment('calendar') }}</td>
+                    <td>{{ product.is_activated == 1 ? 'Tak' : 'Nie' }}</td>
+                    <td>
+                        <router-link :to="{name: 'AdminDataProduct', params: {action: 'edit', id: product.id}}"
+                                     class="btn btn-outline-secondary btn-sm">Edytuj
+                        </router-link>
+                        <b-button @click="remove(product.id)" class="btn-sm" variant="outline-secondary">
+                            <b-spinner v-if="loadSpinner === product.id" small></b-spinner>
+                            Usuń
+                        </b-button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <pagination :data="data" @pagination-change-page="loadData"></pagination>
@@ -105,6 +113,7 @@
 
 <script>
 import NoDataComponent from "../../NoDataComponent";
+
 export default {
     name: "AdminProductsList",
     components: {NoDataComponent},
@@ -127,7 +136,8 @@ export default {
                 {value: 3, text: 'Nowość'},
                 {value: 4, text: 'Nowość w promocji'}
             ],
-            showSearch: false
+            showSearch: false,
+            loadSpinner: null
         }
     },
     methods: {
@@ -140,12 +150,15 @@ export default {
             this.loadData();
         },
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`admin/products/all?page=${page}&title=${this.params.title}&category=${this.params.category}&is_activated=${this.params.is_activated}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}&locale=${this.params.locale}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data;
                     this.loadCategories();
                 })
                 .catch((error) => {
+                    this.$Progress.fail();
                     this.handleAjaxError(error)
                 })
         },
@@ -159,8 +172,10 @@ export default {
                     },
                     callback: confirm => {
                         if (confirm) {
+                            this.loadSpinner = id;
                             this.$axios.delete(`admin/products/remove/${id}`)
                                 .then((data) => {
+                                    this.loadSpinner = null;
                                     if (data.data.success === 1) {
                                         this.loadData();
                                         this.$notify({
@@ -169,7 +184,10 @@ export default {
                                             text: 'Produkt został usunięty ze sklepu'
                                         })
                                     }
-                                }).catch((error) => this.handleAjaxError(error))
+                                }).catch((error) => {
+                                this.handleAjaxError(error);
+                                this.loadSpinner = null
+                            })
                         }
                     }
                 }

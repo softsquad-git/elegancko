@@ -136,7 +136,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
+                        <b-button variant="outline-secondary" type="submit"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                     </div>
                 </div>
             </form>
@@ -145,7 +145,7 @@
                     <div class="col-12">
                         <b-button variant="outline-danger" class="btn-sm mb-2" @click="remove"
                                   v-if="productsIds.length > 0">
-                            Usuń
+                            <b-spinner v-if="loadSpinnerImg" small></b-spinner> Usuń
                         </b-button>
                     </div>
                     <div v-for="image in productImages" class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -213,7 +213,9 @@ export default {
             shipments: [],
             previousPrice: null,
             productImages: [],
-            productsIds: []
+            productsIds: [],
+            loadSpinner: false,
+            loadSpinnerImg: false
         }
     },
     methods: {
@@ -249,11 +251,12 @@ export default {
             return this.saveData(this.data)
         },
         saveData(data) {
-            console.log(this.data.meta)
+            this.loadSpinner = true;
             this.$axios.post(this.$route.params.id
                 ? `admin/products/update/${this.$route.params.id}`
                 : 'admin/products/create', data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         if (this.$route.params.action == 'edit') {
                             window.location.reload();
@@ -263,6 +266,7 @@ export default {
                     }
                 })
                 .catch((error) => {
+                    this.loadSpinner = false;
                     this.handleAjaxError(error)
                 })
         },
@@ -324,8 +328,11 @@ export default {
                     },
                     callback: confirm => {
                         if (confirm) {
+                            this.loadSpinnerImg = true;
                             this.$axios.post(`admin/products/remove-images/${this.$route.params.id}`, this.productsIds)
                                 .then((data) => {
+                                    this.loadSpinnerImg = false;
+                                    this.productsIds = [];
                                     if (data.data.success === 1) {
                                         this.checkAction();
                                         this.$notify({
@@ -334,7 +341,7 @@ export default {
                                             text: data.data.msg
                                         });
                                     }
-                                }).catch((error) => this.handleAjaxError(error))
+                                }).catch((error) => {this.loadSpinnerImg = false; this.handleAjaxError(error)})
                         }
                     }
                 }

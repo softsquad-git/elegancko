@@ -58,11 +58,14 @@ export default {
     },
     methods: {
         loadData() {
+            this.$Progress.start();
             this.$axios.get('admin/meta/all')
             .then((data) => {
+                this.$Progress.finish();
                 this.data = data.data;
             })
             .catch((error) => {
+                this.$Progress.fail();
                 this.handleAjaxError(error);
             })
         }

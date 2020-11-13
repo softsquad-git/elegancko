@@ -9,17 +9,17 @@
             <form class="mt-3 mb-3" @submit.prevent="loadData">
                 <div class="row pl-1 pr-1">
                     <div class="col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                        <input id="title" aria-label="Tytuł" class="form-control" placeholder="Tytuł ..." v-model="params.title">
+                        <input id="title" :aria-label="$t('form.title')" class="form-control" :placeholder="$t('form.title')" v-model="params.title">
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <select id="category" aria-label="Kategoria" class="form-control" v-model="params.category">
-                            <option selected value="">Wybierz kategorię</option>
+                        <select id="category" :aria-label="$t('form.category')" class="form-control" v-model="params.category">
+                            <option selected value="">{{ $t('form.category') }}</option>
                             <option v-for="category in categories" :value="category.alias">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="col-xl-3 p-0 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <select id="type" aria-label="Rodzaj" class="form-control" v-model="params.type">
-                            <option selected value="">Wybierz rodzaj</option>
+                        <select id="type" :aria-label="$t('form.type')" class="form-control" v-model="params.type">
+                            <option selected value="">{{ $t('form.type') }}</option>
                             <option v-for="type in types" :value="type.value">{{ type.text }}</option>
                         </select>
                     </div>
@@ -33,11 +33,11 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-2 col-md-2 offset-xl-10 offset-lg-10 offset-md-10">
                     <select id="ordering" aria-label="Sortuj" class="form-control min-select" v-model="params.ordering">
-                        <option selected value="">Sortuj wg</option>
-                        <option value="ASC">Najstarsze</option>
-                        <option value="DESC">Najnowsze</option>
-                        <option value="PRICE_MIN">Cena (rosnąco)</option>
-                        <option value="PRICE_MAX">Cena (malejąco)</option>
+                        <option selected value="">{{ $t('form.sort.title') }}</option>
+                        <option value="ASC">{{ $t('form.sort.options.asc') }}</option>
+                        <option value="DESC">{{ $t('form.sort.options.desc') }}</option>
+                        <option value="PRICE_MIN">{{ $t('form.sort.options.price_min') }}</option>
+                        <option value="PRICE_MAX">{{ $t('form.sort.options.price_max') }}</option>
                     </select>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <no-data-component v-if="data.data.length < 1" :msg="'Brak danych do wyświetlenia'"/>
+                        <no-data-component v-if="data.data.length < 1" :msg="$t('msg.no_data')"/>
                     </div>
                 </div>
                 <div class="col-12 mt-4">
@@ -103,8 +103,10 @@ export default {
     },
     methods: {
         loadData(page = 1) {
+            this.$Progress.start();
             this.$axios.get(`front/products/all?page=${page}&title=${this.params.title}&category=${this.params.category}&ordering=${this.params.ordering}&pagination=${this.params.pagination}&type=${this.params.type}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.data = data.data;
                 }).catch((error) => this.handleAjaxError(error))
         },

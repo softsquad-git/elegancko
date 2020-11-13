@@ -17,7 +17,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <b-button variant="outline-secondary" type="submit">Zapisz</b-button>
+                <b-button variant="outline-secondary" type="submit">
+                    <b-spinner v-if="loadSpinner" small></b-spinner>
+                    Zapisz
+                </b-button>
             </div>
         </form>
     </b-modal>
@@ -35,17 +38,20 @@ export default {
                 locale: ''
             },
             action: false,
-            shipmentId: ''
+            shipmentId: '',
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             let url = 'admin/shipments/create';
             if (this.action === true) {
                 url = `admin/shipments/update/${this.shipmentId}`;
             }
             this.$axios.post(url, this.data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.$emit('loadData');
                         this.data.name = '';
@@ -53,7 +59,10 @@ export default {
                         this.data.locale = '';
                         this.closeModal();
                     }
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                this.loadSpinner = false;
+                this.handleAjaxError(error)
+            })
         },
         openModal(action = null, item = null) {
             if (action === 'edit') {

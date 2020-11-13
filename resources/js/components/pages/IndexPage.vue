@@ -1,24 +1,26 @@
 <template>
     <div class="home">
-        <div class="top-banner" :style="'background: url('+settings[0].value+')'">
+        <div class="top-banner" :style="'background: url('+top_banner+')'">
            <div class="container-fluid">
+               <circle-spinner v-if="isLoadingSetting" class="m-auto" :loading="isLoadingSetting"></circle-spinner>
                <div class="row">
                    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
                        <div class="top-banner-txt">
                            <h1 class="big">
-                               {{ settings[1] ? settings[1].value : '' }}
+                               {{ title }}
                            </h1>
-                           <p>{{ settings[2] ? settings[2].value : '' }}</p>
+                           <p>{{ description }}</p>
                        </div>
                    </div>
                </div>
            </div>
         </div>
         <div class="container text-center mt-5">
-            <div class="subtitle">najlepsze</div>
-            <div class="title text-uppercase">Promocje</div>
+            <div class="subtitle">{{ $t('page.home.best') }}</div>
+            <div class="title text-uppercase">{{ $t('page.home.promo') }}</div>
             <div class="row mt-4 mb-5">
-                <div v-for="product in products_promo" class="col-xl-4 col-lg-4 col-md-4">
+                <circle-spinner v-if="isLoadingPromoProduct" class="m-auto" :loading="isLoadingPromoProduct"></circle-spinner>
+                <div v-if="!isLoadingPromoProduct" v-for="product in products_promo" class="col-xl-4 col-lg-4 col-md-4">
                     <div class="single-product">
                         <router-link
                             :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
@@ -41,10 +43,11 @@
             <categories :limit="3" :position="2" :name="''" :ordering="''"/>
         </div>
         <div class="container text-center mt-5">
-            <div class="subtitle">najlepsze</div>
-            <div class="title text-uppercase">Nowości</div>
+            <div class="subtitle">{{ $t('page.home.best') }}</div>
+            <div class="title text-uppercase">{{ $t('page.home.news') }}</div>
             <div class="row mt-4">
-                <div v-for="product in products_news" class="col-xl-4 col-lg-4 col-md-4">
+                <circle-spinner v-if="isLoadingNewsProduct" class="ml-auto mr-auto" :loading="isLoadingNewsProduct"></circle-spinner>
+                <div v-if="!isLoadingNewsProduct" v-for="product in products_news" class="col-xl-4 col-lg-4 col-md-4">
                     <div class="single-product">
                         <router-link
                             :to="{name: 'ProductShow', params: {id: product.id, title: product.title}}">
@@ -75,44 +78,66 @@ import Categories from "./Categories";
 import HomeInfo from "./HomeInfo";
 import HomeProducts from "./HomeProducts";
 import MetaComponent from "./MetaComponent";
+import {CircleSpinner} from 'vue-spinners'
 
 export default {
     name: "IndexPage",
-    components: {MetaComponent, HomeProducts, HomeInfo, Categories},
+    components: {MetaComponent, HomeProducts, HomeInfo, Categories, CircleSpinner},
     data() {
         return {
+            title: '',
+            description: '',
             top_banner: '',
             products_promo: [],
             products_news: [],
             categories: [],
-            data: [
-                'home_top_banner',
-                'home_top_banner_title',
-                'home_top_banner_desc'
-            ],
-            settings: []
+            settings: [],
+            isLoadingSetting: false,
+            isLoadingPromoProduct: false,
+            isLoadingNewsProduct: false
         }
     },
     methods: {
         loadProductsPromo() {
+            this.isLoadingPromoProduct = true;
             this.$axios.get('front/products/all?type=2&pagination=3')
                 .then((data) => {
+                    this.isLoadingPromoProduct = false;
                     this.products_promo = data.data.data;
-                }).catch((error) => this.handleAjaxError(error))
+                }).catch((error) => {
+                    this.isLoadingPromoProduct = false;
+                     this.handleAjaxError(error)
+            })
         },
         loadProductsNews() {
+            this.isLoadingNewsProduct = true;
             this.$axios.get('front/products/all?type=3&pagination=3')
                 .then((data) => {
-                    this.products_news = data.data.data;
-                }).catch((error) => this.handleAjaxError(error))
+                    this.isLoadingNewsProduct = false
+                    this.products_news = data.data.data
+                }).catch((error) => {
+                    this.isLoadingNewsProduct = false;
+                this.handleAjaxError(error)
+            })
         }
     },
     created() {
-        this.$axios.post('front/settings/find-by-types', this.data)
+        this.isLoadingSetting = true;
+        this.$axios.get('front/settings/find-by-type/home_top_banner_text')
             .then((data) => {
-                this.settings = data.data.data;
-                console.log(data.data.data)
-            })
+                this.title = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/home_top_banner_desc')
+            .then((data) => {
+                this.description = data.data.data.value
+            });
+        this.$axios.get('front/settings/find-by-type/home_top_banner')
+            .then((data) => {
+                this.isLoadingSetting = false;
+                this.top_banner = data.data.data.value
+            }).catch(() => {
+                this.isLoadingSetting = false;
+        })
         this.loadProductsPromo();
         this.loadProductsNews();
     }

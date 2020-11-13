@@ -4,7 +4,8 @@
             {{ title }}
             <router-link :to="{name: 'AdminMessagesList'}" class="fa fa-eye"></router-link>
         </div>
-        <table class="table">
+        <circle-spinner v-if="isLoading" :loading="isLoading"></circle-spinner>
+        <table v-if="!isLoading" class="table">
             <thead>
             <tr>
             </tr>
@@ -31,21 +32,30 @@
     </div>
 </template>
 
+
 <script>
+import { CircleSpinner } from 'vue-spinners'
 export default {
     name: "MessagesAdminReport",
+    components: {CircleSpinner},
     data() {
         return {
             title: 'Wiadomości',
-            data: {}
+            data: {},
+            isLoading: false
         }
     },
     methods: {
         loadData(){
+            this.isLoading = true;
             this.$axios.get('admin/reports/messages')
             .then((data) => {
+                this.isLoading = false;
                 this.data = data.data;
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {
+                this.isLoading = false;
+                this.handleAjaxError(error)
+            })
         }
     },
     created() {

@@ -9,7 +9,7 @@
             <input id="new_password" type="password" aria-label="Nowe hasło" class="form-control" v-model="data.new_password" placeholder="Nowe hasło">
         </div>
         <div class="form-group">
-            <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+            <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
         </div>
     </form>
 </div>
@@ -25,13 +25,16 @@ export default {
                 old_password: '',
                 user_id: ''
             },
-            title: 'Zmień hasło'
+            title: 'Zmień hasło',
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             this.$axios.post('settings/password', this.data)
             .then((data) => {
+                this.loadSpinner = false;
                 if (data.data.success === 1) {
                     this.data.new_password = '';
                     this.data.old_password = '';
@@ -41,7 +44,10 @@ export default {
                         text: 'Hasło zostało zmienione. Wyloguj się i zaloguj używając nowego hasła'
                     })
                 }
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {
+                this.loadSpinner = false;
+                this.handleAjaxError(error);
+            })
         }
     },
     created() {

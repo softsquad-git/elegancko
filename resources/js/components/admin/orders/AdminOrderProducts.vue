@@ -40,10 +40,13 @@ export default {
     },
     methods: {
         loadData() {
+            this.$Progress.start();
             this.$axios.get(`admin/orders/all-products/${this.id}`)
             .then((data) => {
+                this.$Progress.finish()
                 this.data = data.data
             }).catch((error) => {
+                this.$Progress.fail();
                 this.handleAjaxError(error)
             })
         }

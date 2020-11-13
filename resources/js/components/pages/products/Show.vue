@@ -10,7 +10,7 @@
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h4 class="title">{{ product.title }}</h4>
-            <div><span class="text-bold">Kategoria: </span><router-link :to="{name: 'ProductsIndex', params: {category: product.category.alias }}">{{ product.category.name }}</router-link></div>
+            <div><span class="text-bold">{{ $t('page.product.category') }}: </span><router-link :to="{name: 'ProductsIndex', params: {category: product.category.alias }}">{{ product.category.name }}</router-link></div>
             <p class="desc">
                 {{ product.desc }}
             </p>
@@ -24,7 +24,7 @@
                     label="name"
                     :close-on-select="true"
                     :multiple="false"
-                    placeholder="Wybierz rozmiar"
+                    :placeholder="$t('page.product.select_size')"
                     track-by="id"
                 ></multiselect>
                 <multiselect
@@ -35,16 +35,16 @@
                     label="name"
                     :close-on-select="true"
                     :multiple="false"
-                    placeholder="Wybierz kolor"
+                    :placeholder="$t('page.product.select_color')"
                     track-by="id"
                 ></multiselect>
             </div>
             <div class="row mt-4">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <b-button variant="outline-secondary" @click="addBasket" class="w-100 br-0 margin-bottom-15">Dodaj do koszyka</b-button>
+                    <b-button variant="outline-secondary" @click="addBasket" class="w-100 br-0 margin-bottom-15">{{ $t('page.product.add_basket') }}</b-button>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <b-button variant="outline-secondary" @click="finalize" class="w-100 br-0">Kup teraz</b-button>
+                    <b-button variant="outline-secondary" @click="finalize" class="w-100 br-0">{{ $t('page.product.buy_now') }}</b-button>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
     </div>
     <div v-if="relatedProducts.length > 0" class="row mt-5 mb-5">
         <div class="col-12">
-            <h4 class="title mb-2">W tej samej kategorii</h4>
+            <h4 class="title mb-2">{{ $t('page.product.in_some_category') }} <b-spinner v-if="isLoadingRelatedProduct" class="float-right" small :label="$t('page.product.loading_related_product')"></b-spinner></h4>
         </div>
         <div v-for="item in relatedProducts" class="col-xl-3 col-lg-3 col-md-3">
             <div class="single-product">
@@ -110,7 +110,8 @@ export default {
                 product: '',
                 quantity: 1
             },
-            relatedProducts: []
+            relatedProducts: [],
+            isLoadingRelatedProduct: false
         }
     },
     computed: {
@@ -120,9 +121,11 @@ export default {
     },
     methods: {
         getProduct() {
+            this.$Progress.start();
             const id = this.$route.params.id;
             this.$axios.get(`front/products/find/${id}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.product = data.data.data;
                 }).catch((error) => this.handleAjaxError(error))
         },
@@ -138,10 +141,15 @@ export default {
             }
         },
         getRelatedProducts() {
+            this.isLoadingRelatedProduct = true;
             this.$axios.get(`front/products/all?category_id=${1}&pagination=4`)
             .then((data) => {
+                this.isLoadingRelatedProduct = false;
                 this.relatedProducts = data.data.data;
-            }).catch((error) => this.handleAjaxError(error))
+            }).catch((error) => {
+                this.isLoadingRelatedProduct = false;
+                this.handleAjaxError(error)
+            })
         }
     },
     watch: {

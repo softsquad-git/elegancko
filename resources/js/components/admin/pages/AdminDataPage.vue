@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <b-button type="submit" variant="outline-secondary">Zapisz</b-button>
+                        <b-button type="submit" variant="outline-secondary"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
                     </div>
                 </div>
             </form>
@@ -93,17 +93,20 @@ export default {
                 meta_title: '',
                 meta_desc: '',
                 meta_keywords: ''
-            }
+            },
+            loadSpinner: false
         }
     },
     methods: {
         save() {
+            this.loadSpinner = true;
             let url = 'admin/pages/create';
             if (this.$route.params.id) {
                 url = `admin/pages/update/${this.$route.params.id}`
             }
             this.$axios.post(url, this.data)
                 .then((data) => {
+                    this.loadSpinner = false;
                     if (data.data.success === 1) {
                         this.$router.push({name: 'AdminPagesList'})
                         this.$notify({
@@ -114,14 +117,17 @@ export default {
                     }
                 })
                 .catch((error) => {
+                    this.loadSpinner = false;
                     this.handleAjaxError(error)
                 })
         }
     },
     created() {
         if (this.$route.params.id) {
+            this.$Progress.start()
             this.$axios.get(`admin/pages/find/${this.$route.params.id}`)
                 .then((data) => {
+                    this.$Progress.finish()
                     let page = data.data.data;
                     this.data.title = page.title;
                     this.data.content = page.content;
@@ -133,6 +139,7 @@ export default {
                     this.data.meta_keywords = page.meta.keywords;
                 })
                 .catch((error) => {
+                    this.$Progress.fail();
                     this.handleAjaxError(error);
                 })
         }

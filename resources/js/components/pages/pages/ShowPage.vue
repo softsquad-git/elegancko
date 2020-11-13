@@ -23,9 +23,11 @@ export default {
     },
     methods: {
         loadData() {
+            this.$Progress.start();
             let id = this.$route.params.id;
             this.$axios.get(`front/pages/find/${id}`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.page = data.data.data;
                 })
                 .catch((error) => this.handleAjaxError(error))
