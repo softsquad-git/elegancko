@@ -2,11 +2,13 @@
 <div class="container single-product-page">
     <div class="row mb-2">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div v-viewer>
-                <div class="row p-2">
-                    <img class="w-100 col-xl-4 col-lg-4 col-md-4 col-sm-2 col-xs-2 p-0" v-for="image in product.images" :src="image.src" alt="'sd">
+            <viewer :images="product.images">
+                <div class="row">
+                    <div class="col-4 p-1" v-for="image in product.images" :key="image.src">
+                        <img class="w-100 product-show-image img-thumbnail" :alt="image.src" :src="image.src">
+                    </div>
                 </div>
-            </div>
+            </viewer>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h4 class="title">{{ product.title }}</h4>
