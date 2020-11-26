@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <form class="mt-5 mb-5" @submit.prevent="loadData">
+            <form v-if="isFilters" class="mt-5 mb-5" @submit.prevent="loadData">
                 <div class="row pl-1 pr-1">
                     <div class="col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <input id="name" :aria-label="$t('form.name')" class="form-control" :placeholder="$t('form.name')"
@@ -37,9 +37,17 @@
                     </div>
                 </div>
             </form>
+            <div class="row">
+                <div class="col-12">
+                    <b-button @click="isFilters ^= true" class="search-btn btn-sm float-right" variant="outline-secondary">
+                        <span :class="isFilters ? 'fa fa-search-minus' : 'fa fa-search-plus'"></span>
+                    </b-button>
+                </div>
+            </div>
             <categories :limit="this.params.pagination"
                         :name="this.params.name"
                         :position="''"
+                        class="mt-4"
                         :ordering="this.params.ordering"></categories>
         </div>
         <meta-component
@@ -56,6 +64,7 @@ export default {
     components: {MetaComponent, Categories},
     data() {
         return {
+            isFilters: false,
             title: this.$t('nav.front.categories'),
             data: [],
             banner: '',

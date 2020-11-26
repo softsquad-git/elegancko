@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="container">
-            <form class="mt-3 mb-3" @submit.prevent="loadData">
+            <form v-if="isFilters" class="mt-3 mb-3" @submit.prevent="loadData">
                 <div class="row pl-1 pr-1">
                     <div class="col-xl-5 p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <input id="title" :aria-label="$t('form.title')" class="form-control" :placeholder="$t('form.title')" v-model="params.title">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </form>
-            <div class="row">
+            <div v-if="isFilters" class="row">
                 <div class="col-xl-2 col-lg-2 col-md-2 offset-xl-10 offset-lg-10 offset-md-10">
                     <select id="ordering" aria-label="Sortuj" class="form-control min-select" v-model="params.ordering">
                         <option selected value="">{{ $t('form.sort.title') }}</option>
@@ -39,6 +39,13 @@
                         <option value="PRICE_MIN">{{ $t('form.sort.options.price_min') }}</option>
                         <option value="PRICE_MAX">{{ $t('form.sort.options.price_max') }}</option>
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <b-button @click="isFilters ^= true" class="search-btn btn-sm float-right" variant="outline-secondary">
+                        <span :class="isFilters ? 'fa fa-search-minus' : 'fa fa-search-plus'"></span>
+                    </b-button>
                 </div>
             </div>
             <div class="row">
@@ -83,6 +90,7 @@ export default {
     components: {MetaComponent, NoDataComponent},
     data() {
         return {
+            isFilters: false,
             title: 'Produkty',
             params: {
                 title: '',

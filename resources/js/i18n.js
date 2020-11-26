@@ -5,7 +5,111 @@ Vue.use(VueI18n);
 
 const messages = {
     'en-EN': {
-
+        'btn': {
+            'save': 'Save',
+            'cancel': 'Cancel',
+            'next': 'Next'
+        },
+        'nav': {
+            'front': {
+                'home': 'Home',
+                'shop': 'Shop',
+                'categories': 'Categories',
+                'contact': 'Contact',
+                'terms': 'Regulation',
+                'pp': 'Private policy',
+                'sm': 'Visit us on:'
+            },
+            'account': {
+                'order': 'Orders',
+                'setting': 'Settings',
+                'logout': 'Logout'
+            },
+            'auth': {
+                'login': 'Sign In',
+                'register': 'Sign Up',
+                'forgot_pass': 'Forgot password',
+                'hello': 'Hello, '
+            }
+        },
+        'page': {
+            'home': {
+                'best': 'Best',
+                'news': 'News',
+                'promo': 'Promotion',
+                'info': {
+                    'shipment': 'Quick delivery',
+                    'security': 'Secure payments',
+                    'support': 'Hassle-free shopping'
+                }
+            },
+            'product': {
+                'category': 'Category',
+                'in_some_category': 'In the some category',
+                'select_color': 'Select color',
+                'select_size': 'Select size',
+                'add_basket': 'Add to basket',
+                'buy_now': 'Buy now',
+                'loading_related_product': 'Loading related products'
+            },
+            'basket': {
+                'title': 'Basket',
+                'size': 'Size',
+                'color': 'Color',
+                'amount': 'Price',
+                'total_amount': 'Total price',
+                'summary': 'Summary',
+                'select_shipment': 'Select shipment',
+                'info': 'Nie zwlekaj z zakupem,\n' +
+                    '                           dodanie produktów do koszyka nie oznacza ich rezerwacji'
+            },
+            'order': {
+                'title': 'Order',
+                'buy_company': 'Kupuję jako firma',
+                'warning': 'Comments (optional)',
+                'company_name': 'Company name',
+                'company_nip': 'NIP',
+                'create_account': 'register account',
+                'create_account_profit': 'learn about the benefits of having an account',
+                'create_account_pass': 'Password to account'
+            }
+        },
+        'form': {
+            'title': 'Title ...',
+            'category': 'Select category',
+            'type': 'Select type',
+            'name': 'Name ...',
+            'email': 'E-mail',
+            'pass': 'Password',
+            'first_name': 'First name',
+            'last_name': 'Last name',
+            'min': 'mniej',
+            'more': 'more',
+            'phone': 'Phone number',
+            'post_code': 'Post code',
+            'city': 'City',
+            'address': 'Address',
+            'country': 'Country',
+            'sort': {
+                'title': 'Sort by',
+                'options': {
+                    'asc': 'Oldest',
+                    'desc': 'Latest',
+                    'price_min': 'Price (ascending)',
+                    'price_max': 'Price (descending)'
+                }
+            },
+            'pagination': {
+                'title': 'Records on page'
+            }
+        },
+        'msg': {
+            'no_data': 'No data to display',
+            'no_basket': 'No products in basket'
+        },
+        'lang': {
+            'select': 'Select language'
+        }
     },
     'pl-PL': {
         'btn': {
