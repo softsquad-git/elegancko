@@ -294,6 +294,8 @@
       <workItem from="1605140032706" duration="431000" />
       <workItem from="1606320906567" duration="1415000" />
       <workItem from="1606332860891" duration="23000" />
+      <workItem from="1606346410769" duration="2862000" />
+      <workItem from="1606408691313" duration="824000" />
     </task>
     <task id="LOCAL-00001" summary="products">
       <created>1602720022004</created>
@@ -540,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605309623256</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="commit">
+      <created>1606349196114</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1606349196114</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +586,8 @@
     <MESSAGE value="prod" />
     <MESSAGE value="configuration command" />
     <MESSAGE value="front" />
-    <option name="LAST_COMMIT_MESSAGE" value="front" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="355" width="574" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603212948419">
@@ -608,11 +618,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="615" y="320" width="682" height="434" key="EditFileWatcherDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602532269247" />
-    <state x="743" y="291" width="424" height="491" key="FileChooserDialogImpl" timestamp="1606324455114">
+    <state x="743" y="291" width="530" height="592" key="FileChooserDialogImpl" timestamp="1606350742655">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="743" y="291" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602526920107" />
-    <state x="743" y="291" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606324455114" />
+    <state x="743" y="291" width="530" height="592" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606350742655" />
     <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1605099931169" />
     <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1604100302807">
       <screen x="0" y="27" width="1920" height="1053" />
@@ -647,9 +657,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="544" height="446" key="SwitcherDM/0.27.1920.1053@0.27.1920.1053" timestamp="1603398243136" />
-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605309628425">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="555" y="269" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1606349204638">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="555" y="269" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1606349204638" />
     <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605309628425" />
     <state x="100" y="125" width="1716" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603933334533">
       <screen x="0" y="27" width="1920" height="1053" />
@@ -672,9 +683,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="100" y="127" width="1720" height="853" key="dock-window-2/0.27.1920.1053@0.27.1920.1053" timestamp="1603179261272" />
-    <state x="972" y="444" width="667" height="522" key="find.popup" timestamp="1604974323476">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="972" y="144" width="736" height="936" key="find.popup" timestamp="1606408945121">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="972" y="144" width="736" height="936" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606408945121" />
     <state x="972" y="444" width="667" height="522" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1604974323476" />
     <state x="685" y="247" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog" timestamp="1603929890036">
       <screen x="0" y="27" width="1920" height="1053" />

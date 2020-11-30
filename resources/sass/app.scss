@@ -287,6 +287,17 @@ a, a:hover {
         }
     }
 }
+.top-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .top-banner-txt {
+        background: #7777775e;
+        color: #fff;
+        text-align: center;
+    }
+}
+
 button.navbar-toggler.collapsed {
     border: 0!important;
 }

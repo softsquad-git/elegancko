@@ -4,8 +4,8 @@
            <div class="container-fluid">
                <circle-spinner v-if="isLoadingSetting" class="m-auto" :loading="isLoadingSetting"></circle-spinner>
                <div class="row">
-                   <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                       <div class="top-banner-txt">
+                   <div class="col-12">
+                       <div class="top-banner-txt shadow">
                            <h1 class="big">
                                {{ title }}
                            </h1>
@@ -172,7 +172,6 @@ export default {
     }
     .top-banner-txt h1.big {
         font-size: 4em!important;
-        text-align: left;
     }
     .top-banner-txt p {
         font-size: 1em;
