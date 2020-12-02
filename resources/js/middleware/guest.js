@@ -9,7 +9,9 @@ export default function guest ({ next }){
                         name: 'AdminPageIndex'
                     })
                 } else if (user.role === 1) {
-
+                    return next({
+                        name: 'AccountPageIndex'
+                    })
                 } else {
                     return next({
                         name: 'IndexPage'
