@@ -23,7 +23,7 @@
                         <select id="category" aria-label="Kategoria" v-model="data.category_id"
                                 class="form-control input-admin">
                             <option selected value="">Wybierz kategorię</option>
-                            <option v-for="category in categories" v-if="category.parent_id === 0" :value="category.id">{{ category.name }}</option>
+                            <option v-for="category in categories" v-if="category.parent_id === 0" :value="category.id"> {{ category.name }}</option>
                         </select>
                     </div>
                 </div>

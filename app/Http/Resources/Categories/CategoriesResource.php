@@ -22,6 +22,7 @@ class CategoriesResource extends JsonResource
         $data['alias'] = $this->alias;
         $data['image'] = $image;
         $data['locale'] = Images::getLocaleFlag($this->locale);
+        $data['position'] = $this->position;
         $data['created_at'] = (string)$this->created_at;
         $data['c_products'] = count($this->products);
         $data['activated'] = $this->is_active== Status::STATUS_ON ? true : false;
