@@ -8,6 +8,7 @@ use App\Services\Categories\CategoryService;
 use App\Services\Meta\MetaService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use \Illuminate\Database\Eloquent\Relations\HasMany;
 use \Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -50,5 +51,21 @@ class Category extends Model
     {
         return $this->hasOne(Meta::class, 'resource_id', 'id')
             ->where('resource_type', MetaService::RESOURCE_CATEGORY);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function children(): HasMany
+    {
+        return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 }
