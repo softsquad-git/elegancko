@@ -23,7 +23,9 @@
                         <select id="category" aria-label="Kategoria" v-model="data.category_id"
                                 class="form-control input-admin">
                             <option selected value="">Wybierz kategorię</option>
-                            <option v-for="category in categories" v-if="category.parent_id === 0" :value="category.id"> {{ category.name }}</option>
+                            <option v-for="category in categories" :value="category.id">
+                                <span v-if="category.parent_id !== 0">--</span> {{ category.name }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -121,22 +123,28 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-title" class="form-control" v-model="data.meta_title" aria-label="Meta title" placeholder="Meta tytuł">
+                        <input id="meta-title" class="form-control" v-model="data.meta_title" aria-label="Meta title"
+                               placeholder="Meta tytuł">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <textarea id="meta-desc" class="form-control" v-model="data.meta_desc" aria-label="Meta opis" placeholder="Meta opis"></textarea>
+                        <textarea id="meta-desc" class="form-control" v-model="data.meta_desc" aria-label="Meta opis"
+                                  placeholder="Meta opis"></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12">
-                        <input id="meta-keywords" class="form-control" v-model="data.meta_keywords" aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
+                        <input id="meta-keywords" class="form-control" v-model="data.meta_keywords"
+                               aria-label="Meta słowa kluczowe" placeholder="Meta słowa kluczowe">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <b-button variant="outline-secondary" type="submit"><b-spinner v-if="loadSpinner" small></b-spinner> Zapisz</b-button>
+                        <b-button variant="outline-secondary" type="submit">
+                            <b-spinner v-if="loadSpinner" small></b-spinner>
+                            Zapisz
+                        </b-button>
                     </div>
                 </div>
             </form>
@@ -145,7 +153,8 @@
                     <div class="col-12">
                         <b-button variant="outline-danger" class="btn-sm mb-2" @click="remove"
                                   v-if="productsIds.length > 0">
-                            <b-spinner v-if="loadSpinnerImg" small></b-spinner> Usuń
+                            <b-spinner v-if="loadSpinnerImg" small></b-spinner>
+                            Usuń
                         </b-button>
                     </div>
                     <div v-for="image in productImages" class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -274,12 +283,15 @@ export default {
             this.data.images = this.$refs.file.files;
         },
         loadCategories() {
-            this.$axios.get('categories/all')
+            this.$Progress.start();
+            this.$axios.get(`admin/categories/all?pagination=50&is_active=1`)
                 .then((data) => {
+                    this.$Progress.finish();
                     this.categories = data.data.data;
                 })
                 .catch((error) => {
-                    this.handleAjaxError(error)
+                    this.$Progress.fail();
+                    this.handleAjaxError(error);
                 })
         },
         createSizeModal() {
@@ -296,7 +308,7 @@ export default {
                 .then((data) => {
                     this.sizes = data.data.data
                 })
-            .catch((error) => this.handleAjaxError(error))
+                .catch((error) => this.handleAjaxError(error))
         },
         loadDataColors() {
             this.$axios.get('admin/products/colors/all')
@@ -341,7 +353,10 @@ export default {
                                             text: data.data.msg
                                         });
                                     }
-                                }).catch((error) => {this.loadSpinnerImg = false; this.handleAjaxError(error)})
+                                }).catch((error) => {
+                                this.loadSpinnerImg = false;
+                                this.handleAjaxError(error)
+                            })
                         }
                     }
                 }

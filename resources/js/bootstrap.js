@@ -9,8 +9,8 @@ import VueProgressBar from 'vue-progressbar';
 Vue.use(VueProgressBar, {})
 window.Vuex = Vuex;
 import VueSpinners from 'vue-spinners'
-
-
+import ColourPicker from 'vue-colour-picker'
+Vue.use(ColourPicker)
 Vue.use(VueSpinners)
 Vue.use(Vuex);
 Vue.component('pagination', require('laravel-vue-pagination'));

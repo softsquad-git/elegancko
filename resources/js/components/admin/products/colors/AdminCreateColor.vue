@@ -2,8 +2,12 @@
     <b-modal ref="create-color" hide-footer :title="title">
         <form @submit.prevent="save">
             <div class="form-group">
-                <input id="key" type="text" placeholder="Klucz" class="form-control" aria-label="Klucz"
-                       v-model="data.hex">
+                <colour-picker
+                    v-model="data.hex"
+                    :value="data.hex"
+                    no-input
+                    label="Wybierz kolor"
+                    picker="sketch" />
             </div>
             <div class="form-group">
                 <input id="name" type="text" placeholder="Nazwa" class="form-control" aria-label="Nazwa"
@@ -24,8 +28,12 @@
 </template>
 
 <script>
+import ColourPicker from 'vue-colour-picker'
 export default {
     name: "AdminCreateColor",
+    components: {
+        ColourPicker
+    },
     data() {
         return {
             title: '',
