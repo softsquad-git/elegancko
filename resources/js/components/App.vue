@@ -2,7 +2,7 @@
     <div class="page">
         <section class="header sticky-top">
             <b-navbar toggleable="lg" type="light">
-                <b-navbar-brand :to="{name: 'IndexPage'}" class="logo-text">{{ service_name }}</b-navbar-brand>
+                <b-navbar-brand :to="{name: 'IndexPage'}" class="logo-text"><img class="logo-img" src="./../../img/logo.png" :alt="service_name"/> </b-navbar-brand>
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
@@ -156,9 +156,12 @@ section.header {
 }
 
 .header {
-    padding: 20px 0 20px 0;
+    background: #f2f2f2!important;
 }
-
+.logo-img {
+    width: 200px;
+    margin-top: 5px;
+}
 .active {
     border-bottom: 1px solid #000;
     font-weight: 500;
